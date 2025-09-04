@@ -41,8 +41,8 @@ public interface NoticeDAO {
 	/**
 	 * 공지 사항 번호로 조회된 공지글의 정보를 요청 받은 정보로 업데이트
 	 * 
-	 * @param nno
-	 * @throws Exception
+	 * @param nno 공지 사항 번호
+	 * @param vo 수정할 공지 사항 정보
 	 */
 	void updateNotice(int nno, BoardVO vo) throws Exception;
 	
