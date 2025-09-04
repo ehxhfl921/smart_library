@@ -1,4 +1,4 @@
--- 일반 사용자 계정을 만들 수 있도록 내부 설정 변경
+ -- 일반 사용자 계정을 만들 수 있도록 내부 설정 변경
 ALTER session set "_ORACLE_SCRIPT"=TRUE;
 
 -- 프로젝트용 계정 생성
@@ -117,7 +117,4 @@ CREATE TABLE library_info(
 	operating_hour	VARCHAR2(100) NOT NULL,			-- 이용 시간
 	closed_date		VARCHAR2(200) NOT NULL			-- 휴관일 정보
 );
-
-
-
 
