@@ -13,6 +13,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
+		System.out.println("내가 이런것도 해야하나?");
 		return "home";
 	}
 	
