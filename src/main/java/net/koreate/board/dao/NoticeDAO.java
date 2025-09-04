@@ -3,6 +3,7 @@ package net.koreate.board.dao;
 import java.util.List;
 
 import net.koreate.board.vo.BoardVO;
+import net.koreate.common.utils.Criteria;
 
 /**
  * 	공지 사항 목록 조회
@@ -17,11 +18,10 @@ public interface NoticeDAO {
 	 * 검색 시작 행 번호와 한 페이지에 출력할 행 개수로
 	 * notice 테이블에서 페이징 처리된 공지 사항 목록 조회
 	 * 
-	 * @param startRow 	 검색 시작 행 번호
-	 * @param perPageNum 한 페이지에 출력할 행 개수
+	 * @param cri 페이징 처리 정보
 	 * @return 페이징 처리된 공지 사항 게시글 목록
 	 */
-	List<BoardVO> noticeList(int startRow, int perPageNum) throws Exception;
+	List<BoardVO> noticeList(Criteria cri) throws Exception;
 	
 	/**
 	 * 공지 사항 게시글 번호로 notice 테이블에서 하나의 게시글 정보 조회
