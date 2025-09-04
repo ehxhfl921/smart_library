@@ -44,3 +44,5 @@ public interface SuggestionDAO {
 	 */
 	void suggsestionNotice(int sug_no, BoardVO vo) throws Exception;
 }
+
+
