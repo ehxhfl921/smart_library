@@ -26,9 +26,17 @@ public interface SuggestionService {
 	 * 전달 받은 건의 사항 게시글 번호로 게시글 검색 후 
 	 * s_status 컬럼 'N'으로 업데이트
 	 * 
-	 * @param nno 삭제 처리할 공지글 번호
+	 * @param nno 삭제 처리할 건의 사항 게시글 번호
 	 */
-	void delete(int nno) throws Exception;
+	void delete(int sug_no) throws Exception;
+	
+	/**
+	 * 전달 받은 건의 사항 게시글 번호로 게시글 검색 후 게시글 정보 반환
+	 * 
+	 * @param sug_no 검색할 건의 사항 게시글 번호
+	 * @return 검색된 건의 사항 게시글 정보
+	 */
+	BoardVO getDetail(int sug_no) throws Exception;
 	
 	/**
 	 * @return cri에 저장된 페이징 정보를 이용하여 검색된 건의 사항 목록 리스트와 
