@@ -40,6 +40,14 @@ public interface NoticeDAO {
 	 * @param vo 수정할 공지 사항 정보
 	 */
 	void updateNotice(BoardVO vo) throws Exception;
+
+	/**
+	 *  삭제 요청한 공지 사항 게시글 번호로 게시글 검색 후
+	 *  n_status 컬럼 'N'으로 변경 (삭제 처리)
+	 * @param nno
+	 * @throws Exception
+	 */
+	void deleteNotice(int nno) throws Exception;
 	
 	
 }

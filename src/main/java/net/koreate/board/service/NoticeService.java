@@ -29,6 +29,14 @@ public interface NoticeService {
 	void delete(int nno) throws Exception;
 	
 	/**
+	 * 전달 받은 공지글 번호로 공지글 검색 후 정보 반환
+	 * 
+	 * @param nno 검색할 공지글 번호
+	 * @return 검색된 하나의 공지글 정보
+	 */
+	BoardVO getDetail(int nno) throws Exception;
+	
+	/**
 	 * @param pageNum 요청 페이지 번호
 	 * @return cri에 저장된 페이징 정보를 이용하여 검색된 공지 사항 목록 리스트와 
 	 * 		   페이징 블럭 출력을 위한 PageMaker 객체를 Map에 저장 후 반환
