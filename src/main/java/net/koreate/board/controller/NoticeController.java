@@ -12,7 +12,6 @@ import net.koreate.common.utils.Criteria;
 
 @Controller
 @RequestMapping("/notice")
-@Slf4j
 public class NoticeController {
 
 	/**
