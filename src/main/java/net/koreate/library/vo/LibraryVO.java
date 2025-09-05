@@ -1,5 +1,8 @@
 package net.koreate.library.vo;
 
+import lombok.Data;
+
+@Data
 public class LibraryVO {
 	
 	private String library_name;       // 도서관 이름
