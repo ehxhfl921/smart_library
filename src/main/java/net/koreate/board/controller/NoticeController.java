@@ -70,5 +70,4 @@ public class NoticeController {
 		return null;
 	}
 	
-	
 }

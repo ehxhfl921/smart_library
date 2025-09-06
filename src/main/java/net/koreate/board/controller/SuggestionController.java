@@ -56,10 +56,10 @@ public class SuggestionController {
 	
 	/**
 	 * 건의 사항 수정 요청 처리
-	 * @param sug_no	수정할 건의 사항 게시글 번호
+	 * @param vo	수정할 건의 사항 게시글 정보
 	 */
 	@PostMapping("/modify")
-	public String suggestionModify(int sug_no, Model model) throws Exception{
+	public String suggestionModify(BoardVO vo, Model model) throws Exception{
 		return null;
 	}
 	
