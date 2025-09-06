@@ -16,6 +16,7 @@ public class SuggestionController {
 	
 	/**
 	 * 페이징 처리된 건의 사항 게시글 목록 페이지 요청 처리
+	 * 
 	 * @param cri
 	 * @param model 건의사항 리스트, PageMaker 객체
 	 */
@@ -28,9 +29,6 @@ public class SuggestionController {
 	 * 건의 사항 상세 페이지 보기 요청 처리
 	 * 
 	 * @param sug_no 상세 보기 요청한 건의사항 게시글 번호
-	 * @param model	 
-	 * @return
-	 * @throws Exception
 	 */
 	@GetMapping("/detail")
 	public String suggestionDetail(int sug_no, Model model) throws Exception{
@@ -47,17 +45,27 @@ public class SuggestionController {
 	}
 	
 	/**
+	 * 건의 사항 수정 폼 페이지 요청
+	 * 
+	 * @param sug_no	수정할 건의 사항 게시글 번호
+	 */
+	@GetMapping("/modifyForm")
+	public String goToModifyForm(int sug_no, Model model) throws Exception{
+		return null;
+	}
+	
+	/**
 	 * 건의 사항 수정 요청 처리
-	 * @param vo 수정할 건의 사항 게시글 정보
+	 * @param sug_no	수정할 건의 사항 게시글 번호
 	 */
 	@PostMapping("/modify")
-	public String suggestionModify(BoardVO vo, Model model) throws Exception{
+	public String suggestionModify(int sug_no, Model model) throws Exception{
 		return null;
 	}
 	
 	/**
 	 * 건의 사항 삭제 요청 처리
-	 * @param nno 삭제 처리할 건의 사항 게시글 번호
+	 * @param sug_no 삭제 처리할 건의 사항 게시글 번호
 	 */
 	@GetMapping("/delete")
 	public String suggestionDelete(int sug_no, Model model) throws Exception{

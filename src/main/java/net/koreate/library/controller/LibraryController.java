@@ -22,7 +22,7 @@ public class LibraryController {
 	 * 도서관 정보 수정 폼 페이지로 이동 요청 처리
 	 */
 	@GetMapping("/libraryInfo/modify")
-	public String goToModifyForm() {
+	public String goToModifyForm(Model model) {
 		return null;
 	}
 	
