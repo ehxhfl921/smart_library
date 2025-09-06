@@ -32,6 +32,16 @@ public class NoticeController {
 	public String noticeDetail(int nno, Model model) throws Exception{
 		return null;
 	}
+	
+	/**
+	 * 공지 사항 수정 폼 페이지 요청
+	 * 
+	 * @param nno	수정할 공지 사항 게시글 번호
+	 */
+	@GetMapping("/modifyForm")
+	public String goToModifyForm(int nno, Model model) throws Exception{
+		return null;
+	}
 
 	/**
 	 * 공지 사항 등록 요청 처리
@@ -59,6 +69,5 @@ public class NoticeController {
 	public String noticeDelete(int nno, Model model) throws Exception{
 		return null;
 	}
-	
 	
 }
