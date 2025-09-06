@@ -40,7 +40,7 @@ public class CommentContoroller {
 	 */
 	@PostMapping("/addComment")
 	@ResponseBody
-	public ResponseEntity<String> addComment(CommentVO vo) throws Exception{
+	public ResponseEntity<Map<String, Object>> addComment(CommentVO vo) throws Exception{
 		return null;
 	}
 	
@@ -51,7 +51,7 @@ public class CommentContoroller {
 	 */
 	@PatchMapping("/modifyComment")
 	@ResponseBody
-	public ResponseEntity<String> modifyComment(CommentVO vo) throws Exception{
+	public ResponseEntity<Map<String, Object>> modifyComment(CommentVO vo) throws Exception{
 		return null;
 	}
 	

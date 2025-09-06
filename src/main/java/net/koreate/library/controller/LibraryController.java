@@ -1,6 +1,7 @@
 package net.koreate.library.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -13,7 +14,7 @@ public class LibraryController {
 	 * 도서관 정보 페이지 요청 처리
 	 */
 	@GetMapping("/libraryInfo")
-	public String LibraryInfo() {
+	public String LibraryInfo(Model model) {
 		return null;
 	}
 	
@@ -32,7 +33,7 @@ public class LibraryController {
 	 * @return 수정 완료 후 도서관 정보 페이지로 이동
 	 */
 	@PostMapping("/libraryInfo/modify")
-	public String modifyLibraryInfo(LibraryVO vo) throws Exception{
+	public String modifyLibraryInfo(LibraryVO vo, Model model) throws Exception{
 		return null;
 	}
 }

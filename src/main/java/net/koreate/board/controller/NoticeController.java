@@ -38,7 +38,7 @@ public class NoticeController {
 	 * @param vo 등록할 공지 사항 게시글 정보
 	 */
 	@PostMapping("/register")
-	public String noticeRegister(BoardVO vo) throws Exception{
+	public String noticeRegister(BoardVO vo, Model model) throws Exception{
 		return null;
 	}
 	
@@ -47,7 +47,7 @@ public class NoticeController {
 	 * @param vo 수정할 공지 사항 게시글 정보
 	 */
 	@PostMapping("/modify")
-	public String noticeModify(BoardVO vo) throws Exception{
+	public String noticeModify(BoardVO vo, Model model) throws Exception{
 		return null;
 	}
 	
@@ -56,7 +56,7 @@ public class NoticeController {
 	 * @param nno 삭제 처리할 공지 사항 게시글 번호
 	 */
 	@GetMapping("/delete")
-	public String noticeDelete(int nno) throws Exception{
+	public String noticeDelete(int nno, Model model) throws Exception{
 		return null;
 	}
 	
