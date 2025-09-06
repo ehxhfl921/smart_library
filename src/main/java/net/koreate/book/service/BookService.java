@@ -69,4 +69,24 @@ public interface BookService {
 	 * @param bno 이달의 도서에서 제외할 도서 번호
 	 */
 	void removeFromBOM(int bno) throws Exception;
+	
+	/**
+	 * 전달 받은 도서 번호, cri에 저장된 페이징 정보로 도서 대출 테이블에서 대출 내역 검색 후
+	 * 페이징 처리된 해당 도서의 대출 내역 리스트, 페이징 블럭 출력용 PageMaker 객체 반환
+	 *  
+	 * @param bno	도서 대출 내역 조회할 도서 번호
+	 * @param cri	페이징 정보
+	 * @return		페이징 처리된 대출 내역 리스트와 pm 객체를 Map에 저장 후 반환
+	 */
+	Map<String, Object> getLoanListOfBook(int bno, Criteria cri) throws Exception;
+	
+	/**
+	 * 로그인 사용자의 아이디, cri에 저장된 페이징 정보로 도서 대출 테이블에서 대출 내역 검색 후
+	 * 페이징 처리된 로그인 사용자의 도서 대출 내역 리스트, 페이징 블럭 출력용 PageMaker 객체 반환
+	 * 
+	 * @param user_id	도서 대출 내역 조회할 사용자 아이디
+	 * @param cri		페이징 정보
+	 * @return			페이징 처리된 사용자의 대출 내역 리스트와 pm 객체를 Map에 저장 후 반환 
+	 */
+	Map<String, Object> getLoanListOfUser(String user_id, Criteria cri) throws Exception;
 }

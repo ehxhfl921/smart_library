@@ -14,4 +14,9 @@ public interface LibraryDAO {
 	 */
 	void libraryInfoUpdate(LibraryVO vo) throws Exception;
 	
+	/**
+	 * 도서관 정보 조회
+	 */
+	LibraryVO libraryInfo() throws Exception;
+	
 }

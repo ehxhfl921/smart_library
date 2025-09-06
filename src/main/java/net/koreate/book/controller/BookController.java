@@ -101,7 +101,7 @@ public class BookController {
 	 * @return 등록 후 관리자 전용 도서 관리 페이지로 redirect
 	 */
 	@PostMapping("/admin/register")
-	public String registerBook(BookVO vo) throws Exception{
+	public String registerBook(BookVO vo, Model model) throws Exception{
 		return null;
 	}
 	
@@ -119,7 +119,7 @@ public class BookController {
 	 * @param vo 수정할 도서 정보
 	 */
 	@PostMapping("/admin/modify")
-	public String modifyBook(BookVO vo) throws Exception{
+	public String modifyBook(BookVO vo, Model model) throws Exception{
 		return null;
 	}
 	
