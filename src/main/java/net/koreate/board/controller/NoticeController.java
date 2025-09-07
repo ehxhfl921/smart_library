@@ -12,6 +12,7 @@ import net.koreate.common.utils.Criteria;
 @Controller
 @RequestMapping("/notice")
 public class NoticeController {
+	
 
 	/**
 	 * 페이징 처리된 공지 사항 게시글 목록 페이지 요청 처리
