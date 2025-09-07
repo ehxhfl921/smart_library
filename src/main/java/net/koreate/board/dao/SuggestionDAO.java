@@ -6,11 +6,7 @@ import net.koreate.board.vo.BoardVO;
 import net.koreate.common.utils.Criteria;
 
 /**
- * 	건의 사항 목록 조회
- *	건의 사항 상세 페이지 조회
- *	작성 요청 시 테이블에 데이터 삽입
- *	수정 요청 시 테이블 데이터 업데이트
- *	삭제 요청 시 s_status 컬럼 'N'으로 업데이트
+ * 	건의 사항 관련 DB 작업
  */
 public interface SuggestionDAO {
 	/**
@@ -24,25 +20,35 @@ public interface SuggestionDAO {
 
 	/**
 	 * 건의 사항 게시글 번호로 suggestion 테이블에서 하나의 게시글 정보 조회
+	 * 
 	 * @param sug_no - 건의 사항 게시글 번호
 	 * @return 검색된 게시글 정보 반환
 	 */
 	BoardVO suggestionDetail(int sug_no) throws Exception;
 	
 	/**
-	 *  suggestion 테이블에 s_title, s_author, s_content 데이터 입력
+	 *  suggestion 테이블에 s_title, s_userid, s_author, s_content 데이터 입력
 	 *  
 	 * @param vo 테이블에 등록할 건의 사항 게시글 정보
 	 */
-	void suggestionNotice(BoardVO vo) throws Exception;
+	void suggestionWrite(BoardVO vo) throws Exception;
 	
 	/**
-	 *  건의 사항 번호로 조회된 건의길의 정보를 요청 받은 정보로 업데이트
+	 *  건의 사항 게시글 번호로 조회된 건의글의 정보를 요청 받은 정보로 업데이트
+	 *  
+	 *  @param vo 수정할 건의 사항 게시글 정보
+	 */
+	void suggsestionUpdate(BoardVO vo) throws Exception;
+
+	/**
+	 *  삭제 요청이 들어온 건의 사항 게시글 번호로 검색 후
+	 *  s_status 컬럼 'N'으로 변경(삭제 처리)
 	 *  
 	 * @param sug_no
-	 * @throws Exception
 	 */
-	void suggsestionNotice(int sug_no, BoardVO vo) throws Exception;
+	void suggsestionDelete(int sug_no) throws Exception;
+	
+	
 }
 
 

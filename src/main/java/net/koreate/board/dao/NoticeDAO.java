@@ -6,11 +6,7 @@ import net.koreate.board.vo.BoardVO;
 import net.koreate.common.utils.Criteria;
 
 /**
- * 	공지 사항 목록 조회
- *	공지 사항 상세 페이지 조회
- *	작성 요청 시 테이블에 데이터 삽입
- *	수정 요청 시 테이블 데이터 업데이트
- *	삭제 요청 시 n_status 컬럼 'N'으로 업데이트
+ * 	공지 사항 관련 DB 작업
  */
 public interface NoticeDAO {
 
@@ -41,10 +37,17 @@ public interface NoticeDAO {
 	/**
 	 * 공지 사항 번호로 조회된 공지글의 정보를 요청 받은 정보로 업데이트
 	 * 
-	 * @param nno 공지 사항 번호
 	 * @param vo 수정할 공지 사항 정보
 	 */
-	void updateNotice(int nno, BoardVO vo) throws Exception;
+	void updateNotice(BoardVO vo) throws Exception;
+
+	/**
+	 *  삭제 요청한 공지 사항 게시글 번호로 게시글 검색 후
+	 *  n_status 컬럼 'N'으로 변경 (삭제 처리)
+	 * @param nno
+	 * @throws Exception
+	 */
+	void deleteNotice(int nno) throws Exception;
 	
 	
 }
