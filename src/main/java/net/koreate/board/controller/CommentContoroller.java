@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.koreate.board.vo.CommentVO;
@@ -25,7 +25,6 @@ public class CommentContoroller {
 	 * @param cri	 해당 게시글에 달린 댓글 목록 페이징 정보
 	 */
 	@GetMapping("/{sug_no}/commentList")
-	@ResponseBody
 	public ResponseEntity<Map<String, Object>> getComments(
 			@PathVariable(name="sug_no") int sug_no,
 			Criteria cri
@@ -39,8 +38,9 @@ public class CommentContoroller {
 	 * @param vo 테이블에 저장될 댓글 정보
 	 */
 	@PostMapping("/addComment")
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> addComment(CommentVO vo) throws Exception{
+	public ResponseEntity<Map<String, Object>> addComment(
+			@RequestBody CommentVO vo
+			) throws Exception{
 		return null;
 	}
 	
@@ -50,8 +50,9 @@ public class CommentContoroller {
 	 * @param vo 수정할 댓글 정보
 	 */
 	@PatchMapping("/modifyComment")
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> modifyComment(CommentVO vo) throws Exception{
+	public ResponseEntity<Map<String, Object>> modifyComment(
+			@RequestBody CommentVO vo
+			) throws Exception{
 		return null;
 	}
 	
@@ -61,7 +62,6 @@ public class CommentContoroller {
 	 * @param rpl_no 삭제 처리할 댓글 번호
 	 */
 	@PatchMapping("/{rpl_no}/removeComment")
-	@ResponseBody
 	public ResponseEntity<String> removeComment(
 			@PathVariable(name="rpl_no") int rpl_no
 			) throws Exception{
