@@ -1,14 +1,11 @@
+<!-- 회원 가입 페이지 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../common/header.jsp" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
-</head>
-<body>
+<section>
+
     <h2>회원가입</h2>
     
     <form action="user/join" method="post">
@@ -47,5 +44,6 @@
             <button type="submit">가입하기</button>
         </div>
     </form>
-</body>
-</html>
+</section>
+
+<%@ include file="../common/footer.jsp" %>
