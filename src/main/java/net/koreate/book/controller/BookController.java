@@ -5,18 +5,19 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.koreate.book.vo.BookVO;
 import net.koreate.common.utils.Criteria;
 
-@RestController
+@Controller
 @RequestMapping("/book")
 public class BookController {
 
@@ -33,6 +34,7 @@ public class BookController {
 	 * @return	검색된 도서 목록과 페이징 블럭 출력용 pm 객체를 Map에 저장 후 전달
 	 */
 	@GetMapping("/search/list")
+	@ResponseBody
 	public ResponseEntity<Map<String, Object>> searchBooks(
 			@RequestParam String keyword,
 			Criteria cri

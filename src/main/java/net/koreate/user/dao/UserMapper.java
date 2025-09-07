@@ -1,0 +1,112 @@
+package net.koreate.user.dao;
+
+import java.util.List;
+
+import net.koreate.common.utils.Criteria;
+import net.koreate.user.vo.UserVO;
+
+/**
+ *  회원 관련 DB 작업
+ */
+public interface UserMapper {
+
+	/**
+	 *  회원 가입 - 회원 테이블에 정보 저장
+	 *  로그인 - 아이디, 비밀번호로 조회된 회원 정보
+	 *  아이디 찾기 - 전달 받은 이름, 이메일과 정보가 일치하는 회원의 이메일
+	 *  		   이메일로 조회된 회원의 아이디
+	 *  비밀번호 찾기 - 전달 받은 아이디, 이메일과 정보가 일치하는 회원의 이메일
+	 *  			아이디로 조회된 회원의 비밀번호 변경
+	 *  vo 객체에 저장된 회원 정보로 수정 처리(사용자 - 마이 페이지 내 정보 수정, 관리자 - 회원 관리 회원 정보 수정)
+	 *  회원 번호로 검색된 회원 탈퇴 처리(사용자 - 회원 탈퇴, 관리자 - 회원 삭제)
+	 *  
+	 *  전체 회원 목록 조회(페이징 처리)
+	 *  회원 번호로 한 명의 회원 정보 조회
+	 *  전체 회원 수 조회
+	 */
+	
+	/**
+	 * 전달 받은 회원 정보를 테이블에 입력(회원 가입)
+	 * 
+	 * @param vo	회원 정보
+	 */
+	void join(UserVO vo) throws Exception;
+	
+	/**
+	 * 전달 받은 아이디, 비밀번호로 회원 정보 조회
+	 * 
+	 * @param id	로그인할 아이디
+	 * @param pw	로그인할 비밀번호
+	 * @return		아이디, 비밀번호로 조회된 회원 정보
+	 */
+	UserVO login(String id, String pw) throws Exception;
+	
+	/**
+	 * 전달 받은 이름, 이메일과 정보가 일치하는 회원의 이메일 조회
+	 * 
+	 * @param name		아이디 찾기 할 회원 이름
+	 * @param email		아이디 찾기 할 회원 이메일
+	 * @return			이름과 이메일이 일치하는 회원의 이메일
+	 */
+	String getEmailForId(String name, String email) throws Exception;
+	
+	/**
+	 * 인증된 이메일과 이메일이 일치하는 회원의 아이디 조회
+	 * 
+	 * @param email		전달 받은 이메일
+	 * @return			이메일로 검색된 회원의 아이디
+	 */
+	String findId(String email) throws Exception;
+	
+	/**
+	 * 전달 받은 아이디, 이메일과 정보가 일치하는 회원의 이메일 조회
+	 * 
+	 * @param id		비밀번호 찾기 할 회원 아이디
+	 * @param email		비밀번호 찾기 할 회원 이메일
+	 * @return			아이디와 이메일이 일치하는 회원의 이메일
+	 */
+	String getEmailForPw(String id, String email) throws Exception;
+	
+	/**
+	 * 전달 받은 아이디로 회원 조회 후 새로 설정할 비밀번호로 업데이트
+	 *  
+	 * @param id	비밀번호 변경할 회원 아이디
+	 * @param pw	새로운 비밀번호
+	 */
+	void resetPassword(String id, String pw) throws Exception;
+	
+	/**
+	 * 전달 받은 정보로 회원 정보 수정 처리
+	 * 
+	 * @param vo	수정할 회원 정보
+	 */
+	void modifyInfo(UserVO vo) throws Exception;
+	
+	/**
+	 * 전달 받은 회원 번호로 검색된 회원 탈퇴 처리(status 컬럼 'N'으로 업데이트)
+	 * 
+	 * @param mno	회원 번호
+	 */
+	void withdraw(int mno) throws Exception;
+	
+	/**
+	 * 전달 받은 페이징 정보를 이용해 페이징 처리된 전체 회원 목록 조회
+	 * 
+	 * @param cri	페이징 정보
+	 * @return		페이징 처리된 회원 목록
+	 */
+	List<UserVO> memberList(Criteria cri) throws Exception;
+	
+	/**
+	 * 전달 받은 회원 번호로 한 명의 회원 정보 조회
+	 * 
+	 * @param mno	회원 번호
+	 * @return		회원 번호가 일치하는 회원의 정보
+	 */
+	UserVO memberDetail(int mno) throws Exception;
+	
+	/**
+	 * 전체 회원 수 조회
+	 */
+	void countMembers() throws Exception;
+}
