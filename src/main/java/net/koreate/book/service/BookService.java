@@ -1,5 +1,6 @@
 package net.koreate.book.service;
 
+import java.util.List;
 import java.util.Map;
 
 import net.koreate.book.vo.BookVO;
@@ -69,6 +70,11 @@ public interface BookService {
 	 * @param bno 이달의 도서에서 제외할 도서 번호
 	 */
 	void removeFromBOM(int bno) throws Exception;
+	
+	/**
+	 * 이달의 도서 전체 목록 조회
+	 */
+	List<BookVO> getBomList() throws Exception;
 	
 	/**
 	 * 전달 받은 도서 번호, cri에 저장된 페이징 정보로 도서 대출 테이블에서 대출 내역 검색 후
