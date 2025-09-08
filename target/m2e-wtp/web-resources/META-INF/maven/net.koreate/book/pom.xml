@@ -191,6 +191,13 @@
 		   <version>7.0.2</version>
 		</dependency>
 		
+		<!-- 파일 업로드 -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.6.0</version>
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>
