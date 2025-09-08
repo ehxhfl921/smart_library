@@ -18,6 +18,6 @@ public class BookDTO {
 	private String is_available;  // 대출 가능 여부
 	private String b_status;      // 상태 (삭제된 도서인지 아닌지)
 	
-	private MultipartFile coverFile;	//업로드된 이미지 파일
+	private MultipartFile coverFile;	//업로드할 이미지 파일
 
 }
