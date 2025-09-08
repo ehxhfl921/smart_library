@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 public class BoardVO {
 
+	private int rnum;			// 목록 출력 시 행 번호 저장
 	
 	private int nno; 			// 공지 사항 게시글 번호
 	private String n_title;		// 공지 사항 제목

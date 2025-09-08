@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 public class BookVO {
 	
+	private int rnum;			  // 목록 출력 시 행 번호 저장
+	
 	private int bno; 			  // 도서 번호
 	private String title;	      // 제목	
 	private String author;	      // 저자
@@ -23,5 +25,4 @@ public class BookVO {
 	private int bom_no;			  // 이달의 도서 번호
 	private String bom_status;	  // 이달의 도서 등록 여부
 	
-
 }
