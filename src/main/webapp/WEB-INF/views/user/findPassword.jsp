@@ -37,8 +37,8 @@
 
     <p>입력하신 이메일(<b>${email}</b>)로 인증코드를 발송했습니다.</p>
     <form action="" method="post">
-      <input type="hidden" name="id" value="${id}">
-      <input type="hidden" name="email" value="${email}">
+      <input type="hidden" name="id" value="">
+      <input type="hidden" name="email" value="">
       <table>
         <tr>
           <th>인증코드</th>

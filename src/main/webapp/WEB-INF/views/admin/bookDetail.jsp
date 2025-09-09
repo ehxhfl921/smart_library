@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section>
+<section class=jinju1>
 <h2>도서 상세 페이지</h2>
 
     <!-- 도서 상세 정보 -->
