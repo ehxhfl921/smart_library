@@ -2,7 +2,10 @@ package net.koreate.book.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import net.koreate.book.vo.BookVO;
+import net.koreate.common.utils.Criteria;
 
 /**
  * 	도서 대출 관련 DB 작업
@@ -21,9 +24,10 @@ public interface LoanMapper {
 	 * 도서 번호로 해당 도서의 대출 기록을 대출 테이블에서 검색 후 리스트로 반환 (페이징 처리)
 	 * 
 	 * @param bno 대출 기록을 확인할 도서 번호
-	 * @throws Exception
 	 */
-	List<BookVO> loanListOfBook(int bno) throws Exception;
+	@Select("SELECT * FROM book_loan WHERE bno = #{bno} ORDER BY loan_no DESC "
+			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
+	List<BookVO> loanListOfBook(int bno, Criteria cri) throws Exception;
 	
 	/**
 	 * 로그인 사용자의 아이디를 전달받아 해당 사용자의 도서 대출 내역을 조회 후 리스트로 반환(페이징 처리)
@@ -31,7 +35,9 @@ public interface LoanMapper {
 	 * @param user_id 대출 내역을 검색할 사용자 아이디
 	 * @return 해당 사용자의 도서 대출 내역(목록)
 	 */
-	List<BookVO> loanListOfUser(String user_id) throws Exception;
+	@Select("SELECT * FROM book_loan WHERE user_id = #{user_id} ORDER BY loan_no DESC "
+			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
+	List<BookVO> loanListOfUser(String user_id, Criteria cri) throws Exception;
 	
 	/**
 	 * 도서 대출 테이블에서 대출자 아이디가 로그인 사용자의 아이디와 일치하는 행 개수 조회
@@ -39,6 +45,7 @@ public interface LoanMapper {
 	 * @param user_id 대출 내역을 조회할 사용자 아이디
 	 * @return 해당 사용자의 대출 내역의 전체 개수
 	 */
+	@Select("SELECT count(*) FROM book_loan WHERE user_id = #{user_id}")
 	int countUsersLoanList(String user_id) throws Exception;
 	
 	/**
@@ -47,6 +54,7 @@ public interface LoanMapper {
 	 * @param bno 대출 내역을 조회할 도서의 번호
 	 * @return 해당 도서의 대출 내역의 전체 개수
 	 */
+	@Select("SELECT count(*) FROM book_loan WHERE bno = #{bno}")
 	int countLoanListOfBook(int bno) throws Exception;
 
 }

@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +20,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.RequiredArgsConstructor;
 import net.koreate.book.dto.BookDTO;
+import net.koreate.book.service.BookService;
+import net.koreate.book.vo.BookVO;
 import net.koreate.common.utils.Criteria;
+import net.koreate.user.vo.UserVO;
 
 @Controller
 @RequestMapping("/book")
+@RequiredArgsConstructor
 public class BookController {
 
+	private final BookService bs;
+	
 	/**
 	 * 도서 검색 페이지로 이동 요청 처리
 	 * 	-> 키워드가 넘어오지 않은 경우 검색창만 있는 기본 도서 검색 페이지로 이동 -> 원하는 키워드로 검색 시 ajax 목록 호출,
@@ -42,7 +50,24 @@ public class BookController {
 			Criteria cri,
 			Model model
 			) {
-		return "book/searchBookList"; // 그냥 search로 요청 시 검색창만 있는 jsp 페이지 출력
+		
+		if(keyword != null && !keyword.isEmpty()) {
+			// 키워드가 null이 아닐 때 (메인 페이지에서 바로 검색한 경우)
+			try {
+				// 키워드로 검색 후 검색된 도서 목록, pm 객체
+				Map<String, Object> searchResult = bs.getSerchBookList(cri, keyword);
+				
+				// 각각 list, pm으로 모델에 저장
+				model.addAttribute("list", searchResult.get("list"));
+				model.addAttribute("pm", searchResult.get("pm"));
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} // end if
+		
+		return "book/searchBookList"; // 검색창만 있는 jsp 페이지
 	}
 	
 	/**
@@ -58,7 +83,21 @@ public class BookController {
 			@RequestParam String keyword,
 			Criteria cri
 			) throws Exception{
-		return null;
+		
+		ResponseEntity<Map<String, Object>> entity = null;
+		
+		try {
+			// 키워드로 검색 후 검색된 도서 목록, pm 객체
+			Map<String, Object> searchResult = bs.getSerchBookList(cri, keyword);
+			
+			entity = new ResponseEntity<Map<String, Object>>(searchResult, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
 	}
 	
 	/**
@@ -74,7 +113,17 @@ public class BookController {
 	public String myLoanList(
 			Criteria cri, Model model, HttpSession session
 			) throws Exception{
-		return null;
+		// 세션에 로그인 사용자를 loginMember 라고 저장했다고 가정
+		UserVO loginMember = (UserVO)session.getAttribute("loginMember");
+		
+		// 로그인 사용자 아이디, 페이징 정보로 목록과 pm 객체 조회
+		Map<String, Object> result = bs.getLoanListOfUser(loginMember.getId(), cri);
+		
+		// map에 저장된 목록, pm 객체 model에 저장
+		model.addAttribute("list", result.get("list"));
+		model.addAttribute("pm", result.get("pm"));
+		
+		return "book/loanList"; // 내 서재 - 도서 대출 내역 페이지
 	}
 	
 	/**
@@ -85,7 +134,13 @@ public class BookController {
 	 */
 	@GetMapping("/admin/list")
 	public String showAllBooks(Criteria cri, Model model) throws Exception{
-		return null;
+		
+		Map<String, Object> result = bs.getAllBookList(cri);
+		
+		model.addAttribute("list", result.get("list"));
+		model.addAttribute("pm", result.get("pm"));
+		
+		return "admin/bookList"; // 관리자 전용 - 도서 관리 페이지
 	}
 	
 	/**
@@ -104,7 +159,19 @@ public class BookController {
 			Model model,
 			Criteria cri
 			) throws Exception{
-		return null;
+		
+		// 상세 페이지에 출력할 도서 정보
+		BookVO book = bs.getBookDetail(bno);
+		
+		// 해당 도서의 대출 내역
+		Map<String, Object> result = bs.getLoanListOfBook(bno, cri);
+		
+		// 도서 정보, 대출 내역, pm 객체 model에 저장
+		model.addAttribute("book", book);
+		model.addAttribute("list", result.get("list"));
+		model.addAttribute("pm", result.get("pm"));
+		
+		return "admin/bookDetail";
 	}
 	
 	/**
@@ -112,7 +179,7 @@ public class BookController {
 	 */
 	@GetMapping("/admin/register")
 	public String goToRegisterPage() {
-		return null;
+		return "admin/bookRegisterForm";
 	}
 	
 	/**
@@ -124,11 +191,32 @@ public class BookController {
 	 * 서비스.registerBook(vo) 호출해서 테이블에 도서 정보 등록
 	 * 
 	 * @param dto 등록할 신규 도서 정보
-	 * @return 등록 후 관리자 전용 도서 관리 페이지로 redirect
+	 * @return 등록 후 관리자 전용 도서 관리 페이지(목록)로
 	 */
 	@PostMapping("/admin/register")
 	public String registerBook(BookDTO dto, Model model) throws Exception{
-		return null;
+		
+		String fileName = uploadFile(dto.getCoverFile());
+		BookVO vo = new BookVO();
+		
+		vo.setBno(dto.getBno());
+		vo.setTitle(dto.getTitle());
+		vo.setAuthor(dto.getAuthor());
+		vo.setPublisher(dto.getPublisher());
+		vo.setP_date(dto.getP_date());
+		// 표지 이미지 경로("images/파일 이름") cover 필드에 저장
+		vo.setCover("images/"+fileName);
+		
+		// vo에 저장된 신규 도서 정보 테이블에 저장
+		try {
+			bs.registerBook(vo);
+			model.addAttribute("msg", "신규 도서 등록이 완료되었습니다.");
+		} catch (Exception e) {
+			model.addAttribute("msg", "신규 도서 등록에 실패하였습니다.");
+		}
+
+		
+		return "admin/bookList";
 	}
 	
 	/**
