@@ -28,6 +28,7 @@
     </form>
   </div>
 
+
   <!-- 아이디/비번 찾기/회원가입 -->
   <ul class="find_wrap">
     <li><a href="#">비밀번호 찾기</a></li>
