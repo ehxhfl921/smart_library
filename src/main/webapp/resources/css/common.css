@@ -188,3 +188,602 @@ div.libraryInfo div.infoLeft{
 div.libraryInfo div.infoRight{
 	width: 260px;
 }
+
+/* 효진 */
+/* libraryInfo */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+    }
+section.hyojin .content h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+section.hyojin .notice-header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+      font-weight: bold;
+    }
+section.hyojin .notice-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+section.hyojin .notice-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+section.hyojin .notice-list li:last-child {
+      border-bottom: none;
+    }
+    
+/* loanList */    
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+    }
+section.hyojin .content h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+section.hyojin .notice-header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+      font-weight: bold;
+    }
+section.hyojin .notice-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+section.hyojin .notice-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+section.hyojin .notice-list li:last-child {
+      border-bottom: none;
+    }
+
+/* noticeDetail */
+section.hyojin .content {
+            flex:1;
+            padding:24px;
+            background:#fff;
+            box-sizing:border-box;
+            display: flex;
+            flex-direction: column;
+        }
+section.hyojin .content h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+section.hyojin .notice-header {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+        }
+section.hyojin .notice-list {
+            min-height: 150px;
+            margin-top: 10px;
+            flex:1;
+        }
+section.hyojin .notice-footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 10px;
+        }
+section.hyojin .button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+/* noticeForm */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+    }
+section.hyojin .content h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+section.hyojin .notice-header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+      font-weight: bold;
+    }
+section.hyojin .notice-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+section.hyojin .notice-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+section.hyojin .notice-list li:last-child {
+      border-bottom: none;
+    }
+
+/* noticeList */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+    }
+section.hyojin .content h2 {
+      margin:0;
+      margin-bottom:15px;
+    }
+section.hyojin .main-header {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      margin-bottom:15px;
+    }
+section.hyojin .write-btn {
+      padding:6px 12px;
+      background-color:#0d47a1;
+      color:white;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      font-size:14px;
+    }
+section.hyojin .write-btn:hover {
+      background-color:#0056b3;
+    }
+
+section.hyojin .notice-header {
+      display:flex;
+      justify-content: space-between;
+      padding-bottom:5px;
+      border-bottom:1px solid #ccc;
+      font-weight:bold;
+    }
+section.hyojin .notice-list {
+      min-height:150px;
+      margin-top:10px;
+      flex:1;
+    }
+
+/* noticeUpdate */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+    }
+
+section.hyojin .content h2 {
+      margin:0 0 15px 0;
+    }
+
+section.hyojin .notice-header {
+      display:flex;
+      justify-content: space-between;
+      padding-bottom:5px;
+      border-bottom:1px solid #ccc;
+      font-weight:bold;
+      margin-bottom:15px;
+    }
+
+section.hyojin .notice-list {
+      flex:1;
+      min-height:150px;
+    }
+
+section.hyojin .notice-footer {
+      display:flex;
+      justify-content:center;
+      margin-top:15px;
+      gap:10px;
+    }
+
+section.hyojin .button {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      cursor:pointer;
+      border-radius:4px;
+    }
+
+/* noticeWrite */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+    }
+
+section.hyojin .content h2 {
+      margin:0 0 15px 0;
+    }
+
+section.hyojin .notice-header {
+      display:flex;
+      justify-content: space-between;
+      padding-bottom:5px;
+      border-bottom:1px solid #ccc;
+      font-weight:bold;
+      margin-bottom:15px;
+    }
+
+section.hyojin .notice-list {
+      flex:1;
+      min-height:150px;
+    }
+
+section.hyojin .notice-footer {
+      display:flex;
+      justify-content:center;
+      margin-top:15px;
+      gap:10px;
+    }
+
+section.hyojin .button {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      cursor:pointer;
+      border-radius:4px;
+    }
+
+/* reservationList */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+    }
+section.hyojin .content h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+section.hyojin .notice-header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+      font-weight: bold;
+    }
+section.hyojin .notice-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+section.hyojin .notice-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+section.hyojin .notice-list li:last-child {
+      border-bottom: none;
+    }
+    
+/* roomReservation */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+    }
+
+section.hyojin .content h2 {
+      margin:0 0 15px 0;
+    }
+
+section.hyojin .date-selection {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+section.hyojin .date-input {
+      flex-grow: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+section.hyojin .select-button {
+      padding: 8px 15px;
+      border: none;
+      background-color: #0d47a1;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+section.hyojin .select-button:hover {
+      background-color: #0371e6;
+    }
+
+section.hyojin .extra-box {
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      padding: 15px;
+      margin-top: 15px;
+      flex:1;
+    }
+
+/* searchBookList */
+section.hyojin .content {
+      flex:1;
+      padding:0;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+      gap:20px;
+    }
+
+section.hyojin h2 {
+      margin:0 0 15px 0;
+    }
+
+section.hyojin .search-section, .info-section {
+      border:1px solid #ccc;
+      padding:15px;
+    }
+section.hyojin .search-section h2, .info-section h3 {
+      margin:0 0 15px 0;
+      font-size:18px;
+      color:#555;
+    }
+section.hyojin .search-box {
+      display:flex;
+      gap:10px;
+    }
+section.hyojin .search-box input[type="text"] {
+      flex-grow:1;
+      padding:10px;
+      border:1px solid #ddd;
+      font-size:16px;
+    }
+section.hyojin .search-box button {
+      padding:10px 20px;
+      background-color:#0d47a1;
+      color:white;
+      border:none;
+      cursor:pointer;
+      font-size:16px;
+    }
+section.hyojin .search-box button:hover {
+      background-color:#0056b3;
+    }
+
+/* suggestionDetail */
+section.hyojin .content {
+      flex:1;
+      padding:0;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+      gap:20px;
+    }
+
+section.hyojin h2 { margin:0 0 15px 0; }
+
+section.hyojin .notice-header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+      font-weight: bold;
+    }
+
+section.hyojin .notice-list {
+      min-height: 150px;
+    }
+
+section.hyojin .notice-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 10px;
+    }
+section.hyojin .button {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+section.hyojin .comment-section {
+      border-top: 2px solid #ccc;
+      padding-top: 10px;
+    }
+section.hyojin .comment-section h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+    }
+section.hyojin .comment-list {
+      min-height: 80px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+section.hyojin .comment-item {
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+section.hyojin .comment-item:last-child { border-bottom: none; }
+    .comment-form {
+      display: flex;
+      gap: 10px;
+    }
+section.hyojin .comment-input {
+      flex: 1;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+section.hyojin .comment-btn {
+      padding: 6px 12px;
+      background-color: #ccc;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+/* suggestionList */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+    }
+section.hyojin .content h2 {
+      margin:0;
+      margin-bottom:15px;
+    }
+section.hyojin .main-header {
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      margin-bottom:15px;
+    }
+section.hyojin .write-btn {
+      padding:6px 12px;
+      background-color:#0d47a1;
+      color:white;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+      font-size:14px;
+    }
+section.hyojin .write-btn:hover {
+      background-color:#0056b3;
+    }
+
+section.hyojin .notice-header {
+      display:flex;
+      justify-content: space-between;
+      padding-bottom:5px;
+      border-bottom:1px solid #ccc;
+      font-weight:bold;
+    }
+section.hyojin .notice-list {
+      min-height:150px;
+      margin-top:10px;
+      flex:1;
+    }
+
+/* suggestionUpdate */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+    }
+
+section.hyojin .content h2 {
+      margin:0 0 15px 0;
+    }
+
+section.hyojin .notice-header {
+      display:flex;
+      justify-content: space-between;
+      padding-bottom:5px;
+      border-bottom:1px solid #ccc;
+      font-weight:bold;
+      margin-bottom:15px;
+    }
+
+section.hyojin .notice-list {
+      flex:1;
+      min-height:150px;
+    }
+
+section.hyojin .notice-footer {
+      display:flex;
+      justify-content:center;
+      margin-top:15px;
+      gap:10px;
+    }
+
+section.hyojin .button {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      cursor:pointer;
+      border-radius:4px;
+    }
+
+/* suggestionWrite */
+section.hyojin .content {
+      flex:1;
+      padding:24px;
+      background:#fff;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction: column;
+    }
+
+section.hyojin .content h2 {
+      margin:0 0 15px 0;
+    }
+
+section.hyojin .notice-header {
+      display:flex;
+      justify-content: space-between;
+      padding-bottom:5px;
+      border-bottom:1px solid #ccc;
+      font-weight:bold;
+      margin-bottom:15px;
+    }
+
+section.hyojin .notice-list {
+      flex:1;
+      min-height:150px;
+    }
+
+section.hyojin .notice-footer {
+      display:flex;
+      justify-content:center;
+      margin-top:15px;
+      gap:10px;
+    }
+
+section.hyojin .button {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      cursor:pointer;
+      border-radius:4px;
+    }
+
+
