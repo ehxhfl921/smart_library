@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/* 효진 */
+section.hyojin .sidebar{
+	width: 260px;
+      margin: 20px;
+      height: 450px;
+      box-sizing: border-box;
+      border:1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* 고정 헤더 */
+section.hyojin .sidebar-header {
+      background: #0d47a1;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      padding: 16px 0;
+      margin-bottom: 12px;
+      border-radius: 4px;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* 메뉴 아이템 */
+section.hyojin s.sidebar-item a {
+      display: block;
+      text-decoration: none;
+      color: #000;          /* 항상 검은색 */
+      padding: 12px 16px;
+      transition: background .2s ease, color .2s ease;
+      border-bottom: 1px solid #ddd; /* 메뉴 사이 구분선 */
+    }
+section.hyojin .sidebar-item:last-child a {
+      border-bottom: none; /* 마지막 메뉴는 선 제거 */
+    }
+section.hyojin .sidebar-item a:hover {
+      background: #f1f3f5;
+      color: #000;
+    }

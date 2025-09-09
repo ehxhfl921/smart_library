@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+footer{
+	margin: 0;
+	text-align: center;
+	background-color: #0c3e89;
+	color: white;
+	padding: 10px;
+}
+
+footer div{
+	margin: 10px;
+}
+
+footer div p{
+	margin: 0;
+}

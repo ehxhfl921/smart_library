@@ -77,9 +77,14 @@ public interface BookMapper {
 	 * 이달의 도서 테이블에서 도서 번호로 검색 후
 	 * 해당 도서의 bom_status를 'N'으로 변경(이달의 도서에서 제거 처리)
 	 * @param bno
-	 * @throws Exeption
 	 */
 	void removeFromBOM(int bno) throws Exception;
+	
+	/**
+	 * 이달의 도서 전체 목록 조회
+	 * @return 리스트로 반환
+	 */
+	List<BookVO> bookOfTheMonthList() throws Exception;
 	
 	/**
 	 * 도서 테이블의 전체 행 개수 조회(N 상태인 도서 제외하고 카운트)

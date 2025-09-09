@@ -1,19 +1,18 @@
 package net.koreate.common.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	/**
+	 * 이달의 도서 목록, 도서관 정보 model에 저장
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		System.out.println("내가 이런것도 해야하나?");
+	public String home(Model model) {
 		return "home";
 	}
 	
