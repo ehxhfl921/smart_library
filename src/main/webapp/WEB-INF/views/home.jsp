@@ -13,18 +13,20 @@
 </div>
 
 <div class="mainBox2">
-	<p class="title">
+	<p class="titleBom">
 		<span class="bom">📚 이달의 도서</span>
+	</p>
+	<p class="title">
 		<span>📢 도서관 안내</span>
 	</p>
-
+	
 	<!-- 이달의 도서 출력 -->
 	<div class="bookOftheMonth">
 	
 			<!-- 테스트 -->
 			<div class="slideBookCard">
 				<div class="img">
-					<img alt="테스트" src="/images/2.jpg">
+					<img alt="테스트" src="images/2.jpg">
 				</div>
 				<div class="bomInfo">
 					<div class="bold">
