@@ -39,9 +39,19 @@ public interface SuggestionService {
 	BoardVO getDetail(int sug_no) throws Exception;
 	
 	/**
+	 * 건의 사항 페이지 - 페이징 처리된 건의 사항 목록
+	 * 
 	 * @return cri에 저장된 페이징 정보를 이용하여 검색된 건의 사항 목록 리스트와 
 	 * 		   페이징 블럭 출력을 위한 PageMaker 객체를 Map에 저장 후 반환
 	 */
 	Map<String, Object> list(Criteria cri) throws Exception;
 	
+	/**
+	 * 내 서재 - 작성한 건의 사항 페이지
+	 * 페이징 처리된 로그인 사용자가 작성한 건의 사항 게시글 목록
+	 * 
+	 * @param user_id	로그인 사용자 아이디
+	 * @param cri		페이징 정보
+	 */
+	Map<String, Object> getMySuggestionLst(String user_id, Criteria cri) throws Exception;
 }

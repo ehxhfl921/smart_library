@@ -1,5 +1,7 @@
 package net.koreate.board.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,28 @@ public class SuggestionController {
 	 */
 	@GetMapping("/list")
 	public String suggestionList(Criteria cri, Model model) throws Exception{
+		return null;
+	}
+	
+	/**
+	 * 내 서재 - 작성한 건의 사항 페이지로 이동 요청 처리
+	 * 페이징 처리된 로그인 사용자가 작성한 건의 사항 목록 페이지
+	 * 
+	 * 세션에 저장된 로그인 사용자 정보에서 아이디 가져와서 
+	 * 해당 사용자가 작성한 건의 사항 목록, 페이징 블럭 출력용 PageMaker 객체를 model에 저장
+	 * 
+	 * @param cri
+	 * @param session
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@GetMapping("/mySuggestion")
+	public String mySuggestionList(
+				Criteria cri,
+				HttpSession session,
+				Model model
+			) throws Exception{
 		return null;
 	}
 	
