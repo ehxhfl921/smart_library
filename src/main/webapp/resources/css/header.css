@@ -1,1 +1,137 @@
 @charset "UTF-8";
+
+/* 진주 */
+section.jinju header{ background:#fff; }
+
+/* 위쪽 헤더 */
+section.jinju .header-top{
+  height:100px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  background:#fff;
+  color:#000;
+  font-size:15px;
+  font-weight:bold;
+  border-bottom:1px solid #ccc; 
+}
+section.jinju .utils{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:12px;
+  font-size:15px;
+  font-weight:normal;
+}
+section.jinju .utils li a{
+  text-decoration:none;
+  color:#000;
+  transition: color .2s ease; 
+}
+section.jinju .utils li a:hover{
+  color:#0d47a1;
+  text-decoration:underline;
+}
+
+/* 메뉴바 */
+section.jinju .menu-bar{
+  height:80px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid #ccc;
+  position: relative;
+  z-index: 10;
+}
+section.jinju .menu-bar .inner{
+  width:100%;
+  box-sizing:border-box;
+  display:flex;
+  justify-content:center;   /* ✅ 가운데 정렬 */
+}
+section.jinju .main-nav {
+  list-style:none;
+  display:flex;
+  gap:120px;   /* ✅ 메뉴 간격 */
+  margin:0;
+  padding:0;
+}
+section.jinju .main-nav > li {
+  position: relative;
+}
+section.jinju .main-nav > li > a {
+  text-decoration:none;
+  color:#111;
+  font-weight:bold;
+  font-size:20px;
+  padding:10px;
+  display:block;
+}
+
+/* 드롭다운 */
+section.jinju .dropdown {
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  border:1px solid #ccc;
+  list-style:none;
+  padding:8px 0;
+  margin:0;
+  min-width:160px;
+  z-index:1000;
+}
+section.jinju .dropdown li a {
+  display:block;
+  font-size:15px;
+  font-weight:normal;
+  padding:8px 16px;
+  color:#333;
+  white-space:nowrap;
+}
+section.jinju .dropdown li a:hover {
+  background:#f0f4ff;
+}
+section.jinju .main-nav > li:hover .dropdown,
+section.jinju .main-nav > li:focus-within .dropdown {
+  display:block;
+}
+
+/* 페이지 기본 레이아웃 */
+section.jinju .page{ 
+  flex:1; 
+  display:flex;
+  min-height:0; 
+}
+section.jinju .sidebar{
+  width:300px;              
+  background:#e9ecef;
+  padding:20px;
+  box-sizing:border-box;
+}
+section.jinju .sidebar.right{
+  background:transparent;  
+  padding:0;
+  border-left:1px solid #eee;
+}
+section.jinju .content{
+  flex:1;
+  padding:24px;
+  background:#fff;
+  box-sizing:border-box;
+}
+
+/* 푸터 */
+footer{
+  height:60px;
+  background:#fff;
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  border-top:1px solid #ccc;
+}

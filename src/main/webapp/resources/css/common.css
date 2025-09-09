@@ -785,5 +785,466 @@ section.hyojin .button {
       cursor:pointer;
       border-radius:4px;
     }
+    
+/* 진주 */
+/* admin css*/    
+section.jinju1 h2 { text-align: center; }
 
+/* Container */
+section.jinju1 .container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+/* Page head */
+section.jinju1 .page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 0 16px;
+}
+
+section.jinju1 .page-title {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* Layout helpers */
+section.jinju1 .row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+section.jinju1 .col {
+  flex: 1 1 0;
+}
+
+/* Card */
+section.jinju1 .card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+section.jinju1 .card + .card {
+  margin-top: 12px;
+}
+
+section.jinju1 .card-title {
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+/* Tables */
+section.jinju1 .table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+section.jinju1 .table th,
+section.jinju1 .table td {
+  border: 1px solid #e5e7eb;
+  padding: 10px 8px;
+}
+
+section.jinju1 .table th {
+  background: #f8fafc;
+  font-weight: 700;
+  text-align: center;
+}
+
+section.jinju1 .table td {
+  vertical-align: middle;
+}
+
+section.jinju1 .table tr:hover {
+  background: #f3f7ff;
+}
+
+section.jinju1 .table .center {
+  text-align: center;
+}
+
+section.jinju1 .table .right {
+  text-align: right;
+}
+
+/* Form tables */
+section.jinju1 .form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+section.jinju1 .form-table th {
+  background: #f8fafc;
+  text-align: center;
+  font-weight: 700;
+  /* min-width 제거 */
+}
+
+section.jinju1 .form-table td:first-child {
+  width: 220px;   /* 고정폭 표지 칸 */
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 왼쪽 첫 칸(표지) */
+section.jinju1 .form-table td:first-child {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Inputs */
+section.jinju1 input[type="text"],
+section.jinju1 input[type="password"],
+section.jinju1 input[type="email"],
+section.jinju1 input[type="number"],
+section.jinju1 input[type="date"],
+section.jinju1 textarea,
+section.jinju1 select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 15px;
+}
+
+section.jinju1 input[readonly] {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+section.jinju1 textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Buttons */
+section.jinju1 .btn {
+  display: inline-block;
+  padding: 6px 12px;  
+  border: 1px solid #0d47a1;
+  background: #0d47a1;
+  color: #fff;
+  border-radius: 4px; 
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 13px;  
+}
+
+section.jinju1 .btn.outline {
+  background: #fff;
+  color: #0d47a1;
+}
+
+section.jinju1 .btn.weak {
+  background: #e6eefc;
+  color: #0d47a1;
+  border-color: #e6eefc;
+}
+
+section.jinju1 .btn.ok {
+  background: #14532d;
+  border-color: #14532d;
+}
+
+section.jinju1 .btn.warn {
+  background: #b45309;
+  border-color: #b45309;
+}
+
+section.jinju1 .btn.bad {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+section.jinju1 .actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Image box (book cover) */
+section.jinju1 .cover-box {
+  width: 220px;
+  height: 300px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow: hidden;
+  margin: auto;
+}
+
+section.jinju1 .cover-box img,
+section.jinju1 .book-cover {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+/* Pagination */
+section.jinju1 .pagination {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 14px;
+  text-align: center;
+}
+
+section.jinju1 .pagination a,
+section.jinju1 .pagination b {
+  padding: 6px 10px;
+  text-decoration: none;
+  color: #1f2937;
+}
+
+
+section.jinju1 .pagination a {
+  border: none;      
+  background: none;  
+}
+
+section.jinju1 .pagination b {
+  font-weight: bold;  
+  border: none;       
+  background: none;
+  color: #0d47a1;     
+}
+
+/* ===== Reservation (Scoped) ===== */
+section.jinju1 .reservation-page h2 { margin:16px 0; }
+
+section.jinju1 .reservation-page .toolbar {
+  display:flex; justify-content:space-between; margin:12px 0;
+}
+section.jinju1 .reservation-page .hint { color:#666; font-size:12px; }
+
+/* 표 */
+section.jinju1 .reservation-page table { width:100%; border-collapse:collapse; }
+section.jinju1 .reservation-page th,
+section.jinju1 .reservation-page td {
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:center;
+}
+/* Reservation 전용 스타일*/
+
+/* 상태 배지 */
+section.jinju1 .badge {
+  display:inline-block;
+  padding:3px 8px;
+  border-radius:12px;
+  font-size:12px;
+  color:#fff;
+}
+section.jinju1 .badge-pending { background:#2e7d32; }   /* 대기중 */
+section.jinju1 .badge-approved { background:#1976d2; }  /* 승인됨 */
+section.jinju1 .badge-rejected { background:#d32f2f; }  /* 거절됨 */
+section.jinju1 .badge-cancelled,
+section.jinju1 .badge-finished { background:#000; }     /* 취소/완료 */
+
+/* 예약 관리 버튼 */
+section.jinju1 .btn-approve { background:#1976d2; color:#fff; border:none; }
+section.jinju1 .btn-reject  { background:#d32f2f; color:#fff; border:none; }
+section.jinju1 .btn-cancel  { background:#000;    color:#fff; border:none; }
+
+section.jinju1 .btn-approve,
+section.jinju1 .btn-reject,
+section.jinju1 .btn-cancel {
+  padding:6px 10px;
+  font-size:12px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* user css*/   
+/* 카드 컨테이너 */
+section.jinju2 #wrap{
+  max-width:520px;
+  margin:48px auto;
+  background:#fff;
+  padding:36px 40px;
+  border-radius:12px;
+  box-shadow:0 8px 24px rgba(15,23,42,.08);
+  box-sizing:border-box;
+}
+
+/* 타이틀 */
+section.jinju2 h1{
+  margin:0 0 24px;
+  text-align:center;
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:.3px;
+  color:#0d47a1;
+}
+
+/* 폼 공통 */
+section.jinju2 .input_item{ margin-bottom:14px; }
+
+section.jinju2 .input_item input,
+section.jinju2 .input_item select,
+section.jinju2 .input_item textarea{
+  width:100%;
+  padding:12px 14px;
+  font-size:15px;
+  border:1px solid #d9dee7;
+  border-radius:8px;
+  background:#f9fbff;
+  box-sizing:border-box;
+  transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+section.jinju2 .input_item input::placeholder{ color:#a0a7b4; }
+section.jinju2 .input_item input:focus,
+section.jinju2 .input_item select:focus,
+section.jinju2 .input_item textarea:focus{
+  outline:none;
+  border-color:#2f6bdc;
+  box-shadow:0 0 0 3px rgba(47,107,220,.18);
+  background:#fff;
+}
+section.jinju2 .input_item input[readonly],
+section.jinju2 .input_item input:disabled{
+  background:#f2f4f8;
+  color:#6b7280;
+}
+
+/* 체크박스 */
+section.jinju2 .login_keep_wrap{ margin:6px 0 16px; font-size:14px; }
+section.jinju2 .login_keep_wrap label{ display:flex; align-items:center; gap:10px; cursor:pointer; }
+section.jinju2 .login_keep_wrap input[type="checkbox"]{
+  appearance:none; -webkit-appearance:none;
+  width:18px; height:18px;
+  border:2px solid #c7ced9; border-radius:50%;
+  background:#fff; transition:all .15s ease;
+}
+section.jinju2 .login_keep_wrap input[type="checkbox"]:checked{
+  border-color:#0d47a1;
+  background: radial-gradient(#0d47a1 55%, transparent 56%);
+}
+
+/* 안내/검증 메시지 */
+section.jinju2 .result{ font-size:12px; color:#c62828; margin-top:6px; min-height:16px; }
+section.jinju2 .result.ok{ color:#0a7a42; }
+section.jinju2 .hint{ font-size:12px; color:#777; margin-top:6px; }
+
+/* 인라인 배치 */
+section.jinju2 .inline{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+section.jinju2 .inline input{ flex:1 1 200px; min-width:0; }
+
+/* 주소 입력 묶음 */
+section.jinju2 .addr{ margin-top:8px; }
+section.jinju2 .addr_post_row{ display:flex; gap:8px; flex-wrap:wrap; }
+
+/* 버튼 */
+section.jinju2 button, 
+section.jinju2 .btn_login, 
+section.jinju2 input[type="button"], 
+section.jinju2 input[type="submit"]{
+  font-family:inherit;
+  display:inline-block;
+  min-height:40px;
+  padding:12px 16px;
+  border:none;
+  border-radius:8px;
+  box-sizing:border-box;
+  cursor:pointer;
+  white-space:normal;
+  word-break:keep-all;
+}
+
+/* 기본 주요 버튼 */
+section.jinju2 .btn_login{
+  width:100%;
+  color:#fff;
+  font-size:16px; font-weight:700;
+  background: linear-gradient(0deg,#0a3a87,#0d47a1);
+  box-shadow: 0 2px 0 rgba(0,0,0,.08) inset;
+  transition: transform .02s ease, filter .15s ease;
+}
+section.jinju2 .btn_login:hover{ filter:brightness(.97); }
+section.jinju2 .btn_login:active{ transform:translateY(1px); }
+
+/* 보조 버튼 (주소찾기 같은 버튼) */
+section.jinju2 .btn-outline {
+  background: #f8f9fa;     
+  color: #333;              
+  border: none;    
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;   
+}
+
+section.jinju2 .btn-outline:hover {
+  background: #e6eefc;    
+  border-color: #0d47a1;       
+  color: #0d47a1;             
+}
+
+
+/* 버튼 그룹 (수정 / 탈퇴 등 두 개 이상 있을 때) */
+section.jinju2 .btn_group {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+section.jinju2 .btn_group form {
+  flex: 1;
+  margin: 0;
+}
+section.jinju2 .btn_group .btn_login {
+  width: 100%;
+  height: 48px; 
+}
+
+/* 하단 링크 */
+section.jinju2 .find_wrap{
+  display:flex; justify-content:space-between;
+  gap:24px; padding:0; margin:14px 0 0; list-style:none; font-size:14px;
+}
+section.jinju2 .find_wrap li{ flex:1; text-align:center; }
+section.jinju2 .find_wrap a{ color:#0d47a1; text-decoration:none; }
+section.jinju2 .find_wrap a:hover{ text-decoration:underline; }
+
+/* 테이블 기반 폼(join/mypage/updateInfo 등) */
+section.jinju2 table{ width:100%; border-collapse:collapse; }
+section.jinju2 th, section.jinju2 td{
+  padding:10px 8px;
+  border:1px solid #eef1f6;
+  vertical-align:middle;
+}
+section.jinju2 th{
+  width:140px;
+  text-align:left;
+  background:#f8fafc;
+  color:#374151;
+  font-weight:700;
+}
+section.jinju2 td input[type="text"],
+section.jinju2 td input[type="password"],
+section.jinju2 td input[type="email"],
+section.jinju2 td input[type="phone"],
+section.jinju2 td textarea{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid #d9dee7;
+  border-radius:8px;
+  background:#f9fbff;
+  font-size:15px;
+  box-sizing:border-box;
+}
+section.jinju2 td input:focus, section.jinju2 td textarea:focus{
+  outline:none; border-color:#2f6bdc;
+  box-shadow:0 0 0 3px rgba(47,107,220,.18);
+  background:#fff;
+}
 
