@@ -109,6 +109,8 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+/target/m2e-wtp/web-resources/META-INF/maven/net.koreate/book/pom.properties
+
 
 # Eclipse m2e generated files
 # Eclipse Core
@@ -141,5 +143,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,java,eclipse,maven

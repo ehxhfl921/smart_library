@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class UserVO {
+	
+	private int rnum;		// 목록 출력 시 행 번호 저장
 
 	private int mno;         // 회원 번호
 	private String id;       // 아이디
