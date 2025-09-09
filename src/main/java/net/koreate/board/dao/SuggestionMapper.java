@@ -48,7 +48,13 @@ public interface SuggestionMapper {
 	 */
 	void suggsestionDelete(int sug_no) throws Exception;
 	
-	
+	/**
+	 * 전달 받은 사용자 아이디로 로그인 사용자가 작성한 건의 사항 목록 조회(페이징)
+	 * 
+	 * @param user_id	작성한 건의 사항 조회할 아이디
+	 * @param cri		페이징 정보
+	 */
+	List<BoardVO> mySuggestion(String user_id, Criteria cri) throws Exception;
 }
 
 

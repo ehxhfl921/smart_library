@@ -6,6 +6,11 @@ footer{
 	background-color: #0c3e89;
 	color: white;
 	padding: 10px;
+	display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    height:100px;
 }
 
 footer div{
@@ -15,3 +20,4 @@ footer div{
 footer div p{
 	margin: 0;
 }
+
