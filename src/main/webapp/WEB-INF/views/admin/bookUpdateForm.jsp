@@ -1,4 +1,4 @@
-<!-- 관리자 전용 - 도서 신규 등록 폼 페이지 -->
+<!-- 관리자 전용 - 도서 정보 수정 폼 페이지 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,7 +7,7 @@
 <section class=jinju1>
 <div class="container">
 
-    <h2>신규 도서 등록</h2>
+    <h2>도서 정보 수정</h2>
 
     <form action="/book/register" method="post">
       <table class="form-table">
@@ -32,7 +32,7 @@
       <!-- 버튼 중앙 정렬 -->
       <div style="text-align:center; margin-top:16px;">
         <input type="file" name="file">
-        <input type="submit" value="등록" class="btn">
+        <input type="submit" value="수정" class="btn">
       </div>
     </form>
   </div>

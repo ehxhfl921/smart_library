@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import net.koreate.book.dto.BookDTO;
@@ -196,7 +197,16 @@ public class BookController {
 	@PostMapping("/admin/register")
 	public String registerBook(BookDTO dto, Model model) throws Exception{
 		
-		String fileName = uploadFile(dto.getCoverFile());
+		String fileName = null;
+		
+		if(dto.getCoverFile() != null) {
+			// 표지 이미지를 등록한 경우
+			fileName = uploadFile(dto.getCoverFile());
+		}else {
+			// 표지 이미지 없이 도서 등록하는 경우(임시 이미지 출력)
+			fileName = "tempImage.jpg";
+		}
+		
 		BookVO vo = new BookVO();
 		
 		vo.setBno(dto.getBno());
@@ -212,6 +222,7 @@ public class BookController {
 			bs.registerBook(vo);
 			model.addAttribute("msg", "신규 도서 등록이 완료되었습니다.");
 		} catch (Exception e) {
+			e.getStackTrace();
 			model.addAttribute("msg", "신규 도서 등록에 실패하였습니다.");
 		}
 
@@ -224,7 +235,7 @@ public class BookController {
 	 */
 	@GetMapping("/admin/modify")
 	public String goToModifyPage() {
-		return null;
+		return "admin/bookUpdateForm";
 	}
 	
 	/**
@@ -238,8 +249,46 @@ public class BookController {
 	 * @param vo 수정할 도서 정보
 	 */
 	@PostMapping("/admin/modify")
-	public String modifyBook(BookDTO dto, Model model) throws Exception{
-		return null;
+	public String modifyBook(
+				BookDTO dto,
+				RedirectAttributes rttr
+			) throws Exception{
+		
+		// dto에 저장된 도서 번호로 해당 도서 기존 정보 가져오기
+		BookVO vo = bs.getBookDetail(dto.getBno());
+		
+		vo.setTitle(dto.getTitle());
+		vo.setAuthor(dto.getAuthor());
+		vo.setPublisher(dto.getPublisher());
+		vo.setP_date(dto.getP_date());
+		
+		// 표지 이미지 새로 업로드할 경우 파일 이름 저장할 변수
+		String fileName = null;
+		
+		if(dto.getCoverFile() != null) {
+			// 표지 이미지를 새로 등록한 경우
+			
+			// 새로운 표지 이미지 업로드 후 파일 이름 받아오기
+			fileName = uploadFile(dto.getCoverFile());
+			// 표지 이미지 경로("images/새로운 파일 이름") cover 필드에 저장
+			vo.setCover("images/"+fileName);
+			
+		} // end if
+		
+		// vo에 저장된 수정된 도서 정보로 테이블 업데이트
+		try {
+			bs.modifyBook(vo);
+			rttr.addFlashAttribute("msg", "도서 정보 수정이 완료되었습니다.");
+		} catch (Exception e) {
+			e.getStackTrace();
+			rttr.addFlashAttribute("msg", "도서 정보 수정에 실패하였습니다.");
+		}
+		
+		// 리다이렉트로 기존 도서 상세 페이지로 이동할 때 필요한 도서 번호, 페이지 번호
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", 1);
+		
+		return "redirect:/admin/bookDetail";
 	}
 	
 	/**
@@ -249,9 +298,22 @@ public class BookController {
 	 */
 	@GetMapping("/admin/remove/{bno}")
 	public String removeBook(
-			@PathVariable(name="bno") int bno
+			@PathVariable(name="bno") int bno,
+			Criteria cri,
+			RedirectAttributes rttr
 			) throws Exception{
-		return null;
+		
+		try {
+			bs.removeBook(bno);
+			rttr.addFlashAttribute("msg", "도서가 삭제되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			rttr.addFlashAttribute("msg", "도서 삭제에 실패하였습니다.");
+		}
+		
+		rttr.addAttribute("page", cri.getPage());
+		
+		return "redirect:/admin/bookList";
 	}
 	
 	/**
