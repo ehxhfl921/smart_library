@@ -29,7 +29,7 @@ public class UserController {
 	 */
 	@GetMapping("/join")
 	public String goToJoinForm() throws Exception{
-		return null;
+		return "user/join";
 	}
 	
 	/**
@@ -40,7 +40,8 @@ public class UserController {
 	 */
 	@PostMapping("/join")
 	public String join(UserVO vo, Model model) throws Exception{
-		return null;
+		model.addAttribute("msg","회원 가입 완료되었습니다.");
+		return "redirect:/";
 	}
 	
 	/**
@@ -48,7 +49,7 @@ public class UserController {
 	 */
 	@GetMapping("/goToLogin")
 	public String loginPage() throws Exception{
-		return null;
+		return "user/login";
 	}
 	
 	/**
@@ -60,9 +61,11 @@ public class UserController {
 	 */
 	@PostMapping("/login")
 	public String login(
-			String id, String pw, 
+			String id, 
+			String pw, 
 			HttpSession session, Cookie cookie
 			) throws Exception{
+
 		return null;
 	}
 	
@@ -72,6 +75,7 @@ public class UserController {
 	 */
 	@GetMapping("/logout")
 	public String logout(HttpSession session, Cookie cookie) throws Exception{
+		
 		return null;
 	}
 	
