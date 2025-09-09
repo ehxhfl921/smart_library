@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 /* 진주 */
-section.jinju header{ background:#fff; }
+header{ background:#fff; }
 
 /* 위쪽 헤더 */
-section.jinju .header-top{
+.header-top{
   height:100px;
   display:flex;
   align-items:center;
@@ -16,7 +16,7 @@ section.jinju .header-top{
   font-weight:bold;
   border-bottom:1px solid #ccc; 
 }
-section.jinju .utils{
+.utils{
   list-style:none;
   margin:0;
   padding:0;
@@ -25,18 +25,18 @@ section.jinju .utils{
   font-size:15px;
   font-weight:normal;
 }
-section.jinju .utils li a{
+.utils li a{
   text-decoration:none;
   color:#000;
   transition: color .2s ease; 
 }
-section.jinju .utils li a:hover{
+ .utils li a:hover{
   color:#0d47a1;
   text-decoration:underline;
 }
 
 /* 메뉴바 */
-section.jinju .menu-bar{
+.menu-bar{
   height:80px;
   background:#fff;
   display:flex;
@@ -45,23 +45,23 @@ section.jinju .menu-bar{
   position: relative;
   z-index: 10;
 }
-section.jinju .menu-bar .inner{
+.menu-bar .inner{
   width:100%;
   box-sizing:border-box;
   display:flex;
   justify-content:center;   /* ✅ 가운데 정렬 */
 }
-section.jinju .main-nav {
+.main-nav {
   list-style:none;
   display:flex;
   gap:120px;   /* ✅ 메뉴 간격 */
   margin:0;
   padding:0;
 }
-section.jinju .main-nav > li {
+.main-nav > li {
   position: relative;
 }
-section.jinju .main-nav > li > a {
+.main-nav > li > a {
   text-decoration:none;
   color:#111;
   font-weight:bold;
@@ -71,7 +71,7 @@ section.jinju .main-nav > li > a {
 }
 
 /* 드롭다운 */
-section.jinju .dropdown {
+ .dropdown {
   display:none;
   position:absolute;
   top:100%;
@@ -84,7 +84,7 @@ section.jinju .dropdown {
   min-width:160px;
   z-index:1000;
 }
-section.jinju .dropdown li a {
+.dropdown li a {
   display:block;
   font-size:15px;
   font-weight:normal;
@@ -92,32 +92,21 @@ section.jinju .dropdown li a {
   color:#333;
   white-space:nowrap;
 }
-section.jinju .dropdown li a:hover {
+ .dropdown li a:hover {
   background:#f0f4ff;
 }
-section.jinju .main-nav > li:hover .dropdown,
-section.jinju .main-nav > li:focus-within .dropdown {
+ .main-nav > li:hover .dropdown,
+ .main-nav > li:focus-within .dropdown {
   display:block;
 }
 
 /* 페이지 기본 레이아웃 */
-section.jinju .page{ 
+ .page{ 
   flex:1; 
   display:flex;
   min-height:0; 
-}
-section.jinju .sidebar{
-  width:300px;              
-  background:#e9ecef;
-  padding:20px;
-  box-sizing:border-box;
-}
-section.jinju .sidebar.right{
-  background:transparent;  
-  padding:0;
-  border-left:1px solid #eee;
-}
-section.jinju .content{
+ }
+ .content{
   flex:1;
   padding:24px;
   background:#fff;
