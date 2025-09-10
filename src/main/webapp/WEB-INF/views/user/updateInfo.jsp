@@ -25,7 +25,7 @@
         </tr>
         <tr>
           <th>이름</th>
-          <td><input type="text" name="name" value="" readonly></td>
+          <td><input type="text" name="name" value=""></td>
         </tr>
         <tr>
           <th>전화번호</th>
@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <th>생년월일</th>
-          <td><input type="text" name="birth" value="" readonly></td>
+          <td><input type="text" name="birth" value=""></td>
         </tr>
         <tr>
           <th>주소</th>
