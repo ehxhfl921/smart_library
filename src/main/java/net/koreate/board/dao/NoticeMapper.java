@@ -21,8 +21,10 @@ public interface NoticeMapper {
 	 * @param cri 페이징 처리 정보
 	 * @return 페이징 처리된 공지 사항 게시글 목록
 	 */
-	@Select("SELECT * FROM notice ORDER BY nno DESC "
-			+ " OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
+	@Select("SELECT * FROM notice " +
+	        "WHERE n_status = 'Y' " +
+	        "ORDER BY nno DESC " +
+	        "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
 	List<BoardVO> noticeList(Criteria cri) throws Exception;
 	
 	/**
@@ -51,7 +53,6 @@ public interface NoticeMapper {
 	@Update("UPDATE notice SET "
 			+ " n_title = #{n_title} , "
 			+ " n_content = #{n_content} , "
-			+ " n_author = #{n_author} "
 			+ " WHERE nno = #{nno}")
 	void updateNotice(BoardVO vo) throws Exception;
 
