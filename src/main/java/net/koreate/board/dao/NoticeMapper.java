@@ -43,7 +43,7 @@ public interface NoticeMapper {
 	 */
 	@Insert("INSERT INTO notice(n_title, n_author, n_content) "
 			+ " VALUES(#{n_title}, #{n_author}, #{n_content})")	
-	void writeNotice(BoardVO vo) throws Exception;
+	int writeNotice(BoardVO vo) throws Exception;
 	
 	/**
 	 * 공지 사항 번호로 조회된 공지글의 정보를 요청 받은 정보로 업데이트
@@ -54,7 +54,7 @@ public interface NoticeMapper {
 			+ " n_title = #{n_title} , "
 			+ " n_content = #{n_content} , "
 			+ " WHERE nno = #{nno}")
-	void updateNotice(BoardVO vo) throws Exception;
+	int updateNotice(BoardVO vo) throws Exception;
 
 	/**
 	 *  삭제 요청한 공지 사항 게시글 번호로 게시글 검색 후
@@ -63,8 +63,10 @@ public interface NoticeMapper {
 	 * @throws Exception
 	 */
 	@Update("UPDATE notice SET n_status = 'N' WHERE nno = #{nno}")
-	void deleteNotice(int nno) throws Exception;
+	int deleteNotice(int nno) throws Exception;
 	
-	
+	@Select("SELECT count(*) FROM notice WHERE n_status = 'Y'")
+	int countNotice() throws Exception;
+
 }
 
