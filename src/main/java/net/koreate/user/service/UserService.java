@@ -12,6 +12,7 @@ public interface UserService {
 	 * 
 	 * @param vo	가입 요청한 회원 정보
 	 */
+	
 	void join(UserVO vo) throws Exception;
 	
 	/**
