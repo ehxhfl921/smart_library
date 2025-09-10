@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import net.koreate.common.utils.Criteria;
+import net.koreate.common.utils.PageMaker;
 import net.koreate.user.dao.UserMapper;
 import net.koreate.user.vo.UserVO;
 
@@ -69,13 +70,21 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Map<String, Object> getMemberList(Criteria cri) throws Exception {
-		Map<String, Object> result = new HashMap<>();
-		List<UserVO> list = mapper.memberList(cri);
+		PageMaker pm = new PageMaker();
+		
 		int totalCount = mapper.countMembers();
-
-		result.put("list", list);
-		result.put("totalCount", totalCount);
-		return result;
+		
+		pm.setCri(cri);
+		pm.setTotalCount(totalCount);
+		pm.setDisplayPageNum(10);
+		
+		List<UserVO> list = mapper.memberList(cri);		
+		
+		Map<String, Object> map = new HashMap<>();		
+		map.put("list", list);
+		map.put("pm", pm);
+		
+		return map;
 	}
 
 	@Override
