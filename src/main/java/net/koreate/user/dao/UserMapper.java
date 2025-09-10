@@ -2,12 +2,19 @@ package net.koreate.user.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
 import net.koreate.common.utils.Criteria;
 import net.koreate.user.vo.UserVO;
 
 /**
  *  회원 관련 DB 작업
  */
+@Mapper
 public interface UserMapper {
 
 	/**
@@ -30,6 +37,8 @@ public interface UserMapper {
 	 * 
 	 * @param vo	회원 정보
 	 */
+	@Insert("INSERT INTO member(id, pw, name, phone, email, addr, info) " +
+            " VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{addr}, #{info})")
 	void join(UserVO vo) throws Exception;
 	
 	/**
@@ -39,7 +48,8 @@ public interface UserMapper {
 	 * @param pw	로그인할 비밀번호
 	 * @return		아이디, 비밀번호로 조회된 회원 정보
 	 */
-	UserVO login(String id, String pw) throws Exception;
+	@Select("SELECT * FORM member WHERE id=#{id} AND pw=#{pw} AND status='Y'") 
+	UserVO login(@Param("id") String id, @Param("pw") String pw) throws Exception;
 	
 	/**
 	 * 전달 받은 이름, 이메일과 정보가 일치하는 회원의 이메일 조회
@@ -48,7 +58,8 @@ public interface UserMapper {
 	 * @param email		아이디 찾기 할 회원 이메일
 	 * @return			이름과 이메일이 일치하는 회원의 이메일
 	 */
-	String getEmailForId(String name, String email) throws Exception;
+	@Select("SELECT email * FROM member WHERE name=#{name} AND email=#{email} AND status='Y'")
+	String getEmailForId(@Param("name")String name, @Param("email")String email) throws Exception;
 	
 	/**
 	 * 인증된 이메일과 이메일이 일치하는 회원의 아이디 조회
@@ -56,7 +67,8 @@ public interface UserMapper {
 	 * @param email		전달 받은 이메일
 	 * @return			이메일로 검색된 회원의 아이디
 	 */
-	String findId(String email) throws Exception;
+	@Select("SELECT id * FROM member WHERE email=#{email} AND status='Y'")
+	String findId(@Param("email")String email) throws Exception;
 	
 	/**
 	 * 전달 받은 아이디, 이메일과 정보가 일치하는 회원의 이메일 조회
@@ -65,7 +77,8 @@ public interface UserMapper {
 	 * @param email		비밀번호 찾기 할 회원 이메일
 	 * @return			아이디와 이메일이 일치하는 회원의 이메일
 	 */
-	String getEmailForPw(String id, String email) throws Exception;
+	@Select("SELECT email FROM member WHERE id=#{id} AND email=#{email} AND status='Y'")
+	String getEmailForPw(@Param("id")String id, @Param("email")String email) throws Exception;
 	
 	/**
 	 * 전달 받은 아이디로 회원 조회 후 새로 설정할 비밀번호로 업데이트
@@ -73,13 +86,15 @@ public interface UserMapper {
 	 * @param id	비밀번호 변경할 회원 아이디
 	 * @param pw	새로운 비밀번호
 	 */
-	void resetPassword(String id, String pw) throws Exception;
+	@Update("UPDATE member SET  pw =#{pw} WHERE id=#{id} AND status='Y'")
+	void resetPassword(@Param("id")String id, @Param("pw")String pw) throws Exception;
 	
 	/**
 	 * 전달 받은 정보로 회원 정보 수정 처리
 	 * 
 	 * @param vo	수정할 회원 정보
 	 */
+	@Update("UPDATE member SET pw=#{pw}, name=#{name}, phone=#{phone}, birth=#{birth}, addr=#{addr} WHERE mno=#{mno} ")
 	void modifyInfo(UserVO vo) throws Exception;
 	
 	/**
@@ -87,6 +102,7 @@ public interface UserMapper {
 	 * 
 	 * @param mno	회원 번호
 	 */
+	@Update("UPDATE member SET status='N' WHERE mno=#{mno}")
 	void withdraw(int mno) throws Exception;
 	
 	/**
@@ -95,6 +111,8 @@ public interface UserMapper {
 	 * @param cri	페이징 정보
 	 * @return		페이징 처리된 회원 목록
 	 */
+	@Select("SELECT * FROM member WHERE status='Y'  ORDER BY mno DESC"
+			+ " OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
 	List<UserVO> memberList(Criteria cri) throws Exception;
 	
 	/**
@@ -103,10 +121,12 @@ public interface UserMapper {
 	 * @param mno	회원 번호
 	 * @return		회원 번호가 일치하는 회원의 정보
 	 */
+	@Select("SELECT * FROM member WHERE mno = #{mno}")
 	UserVO memberDetail(int mno) throws Exception;
 	
 	/**
 	 * 전체 회원 수 조회
 	 */
-	void countMembers() throws Exception;
+	@Select("SELECT COUNT (*) FROM member WHERE status='Y'" )
+	int countMembers() throws Exception;
 }
