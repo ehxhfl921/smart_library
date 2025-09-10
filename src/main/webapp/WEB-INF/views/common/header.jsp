@@ -26,7 +26,7 @@
         <li>님</li>
         <li><a href="${path}/user/myPage">My Page</a></li>
         <li><a href="${path}/user/logout">로그아웃</a></li>
-        <li><a href="#">운영 관리</a></li>
+        <li><a href="${path}/user/memberList">운영 관리</a></li>
       </ul>
     </div>
 

@@ -3,6 +3,7 @@ package net.koreate.book.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -36,7 +37,7 @@ public interface BookMapper {
 			+ "author LIKE '%' || #{keyword} || '%' AND b_status = 'Y' "
 			+ "ORDER BY bno DESC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
-	List<BookVO> serchBookList(Criteria cri, String keyword) throws Exception;
+	List<BookVO> serchBookList(@Param("cri") Criteria cri, @Param("keyword") String keyword) throws Exception;
 	
 	/**
 	 * 페이징 처리된 전체 도서 목록 조회
@@ -105,7 +106,7 @@ public interface BookMapper {
 	 * 이달의 도서 전체 목록 조회
 	 * @return 리스트로 반환
 	 */
-	@Select("SELECT * FROM book_of_the_month ORDER BY bom_no DESC WHERE bom_status = 'Y'")
+	@Select("SELECT * FROM book_of_the_month WHERE bom_status = 'Y' ORDER BY bom_no DESC")
 	List<BookVO> bookOfTheMonthList() throws Exception;
 	
 	/**
