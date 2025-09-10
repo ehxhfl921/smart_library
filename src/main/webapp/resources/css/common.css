@@ -200,12 +200,17 @@ div.libraryInfo div.infoRight{
 
 /* 효진 */
 /* libraryInfo */
+
 section.hyojin .content {
       flex:1;
       padding:24px;
       background:#fff;
       box-sizing:border-box;
-    }
+      align-items: center;
+      
+      min-height: 655px;
+}
+    
 section.hyojin .content h2 {
       margin-top: 0;
       margin-bottom: 15px;
@@ -237,10 +242,12 @@ section.hyojin .content {
       background:#fff;
       box-sizing:border-box;
     }
+    
 section.hyojin .content h2 {
       margin-top: 0;
       margin-bottom: 15px;
     }
+    
 section.hyojin .notice-header {
       display: flex;
       justify-content: space-between;
@@ -542,40 +549,42 @@ section.hyojin .extra-box {
     }
 
 /* searchBookList */
-section.hyojin .content {
-      flex:1;
+
+section.searchBook{
+	display: flex;
+	width: 800px;
+	margin: 20px auto;
+}
+
+section.searchBook .content {
       padding:0;
-      background:#fff;
       box-sizing:border-box;
       display:flex;
       flex-direction: column;
-      gap:20px;
+      width: 900px;
+      min-height: 653px;
     }
 
-section.hyojin h2 {
-      margin:0 0 15px 0;
-    }
-
-section.hyojin .search-section, .info-section {
+section.searchBook .search-section, .info-section {
       border:1px solid #ccc;
       padding:15px;
     }
-section.hyojin .search-section h2, .info-section h3 {
+section.searchBook .search-section h2, .info-section h3 {
       margin:0 0 15px 0;
       font-size:18px;
       color:#555;
     }
-section.hyojin .search-box {
+section.searchBook .search-box {
       display:flex;
       gap:10px;
     }
-section.hyojin .search-box input[type="text"] {
+section.searchBook .search-box input[type="text"] {
       flex-grow:1;
       padding:10px;
       border:1px solid #ddd;
       font-size:16px;
     }
-section.hyojin .search-box button {
+section.searchBook .search-box button {
       padding:10px 20px;
       background-color:#0d47a1;
       color:white;
@@ -583,22 +592,49 @@ section.hyojin .search-box button {
       cursor:pointer;
       font-size:16px;
     }
-section.hyojin .search-box button:hover {
+section.searchBook .search-box button:hover {
       background-color:#0056b3;
     }
 
-/* suggestionDetail */
-section.hyojin .content {
-      flex:1;
-      padding:0;
-      background:#fff;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-      gap:20px;
-    }
 
-section.hyojin h2 { margin:0 0 15px 0; }
+section.searchBook div#searchList { 
+	width: 800px; 
+	margin: 0 auto; 
+	padding: 0; 
+} 
+
+section.searchBook div#bookCard { 
+	width: 800px; 
+	height: 400px; 
+	margin: 20px auto; 
+	padding: 15px auto; 
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+	border: 2px solid #ccc; 
+	border-radius: 10px; 
+} 
+
+section.searchBook div#bookCard .bookInfo{ 
+	width: 500px; 
+	display: flex; 
+	flex-wrap: wrap; 
+	justify-content: space-around; 
+	padding: 0; 
+} 
+
+section.searchBook div#bookCard .coverBox{ 
+	width: 250px; 
+	height: 350px; 
+} 
+
+section.searchBook div#bookCard .coverBox img{ 
+	width: 100%; 
+	height: 100%; 
+	object-fit: cover; 
+}
+
+/* suggestionDetail */
 
 section.hyojin .notice-header {
       display: flex;
@@ -1256,4 +1292,3 @@ section.jinju2 td input:focus, section.jinju2 td textarea:focus{
   box-shadow:0 0 0 3px rgba(47,107,220,.18);
   background:#fff;
 }
-

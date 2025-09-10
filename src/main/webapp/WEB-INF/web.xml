@@ -20,6 +20,11 @@
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<Connector port="8080" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443"
+           URIEncoding="UTF-8" />
+	
 	
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
