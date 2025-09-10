@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import lombok.RequiredArgsConstructor;
 import net.koreate.book.service.BookService;
 import net.koreate.book.vo.BookVO;
+import net.koreate.library.service.LibraryService;
+import net.koreate.library.vo.LibraryVO;
 
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
 	
 	private final BookService bs;
+	private final LibraryService ls;
 	
 	/**
 	 * 이달의 도서 목록, 도서관 정보 model에 저장
@@ -26,6 +29,13 @@ public class HomeController {
 		try {
 			List<BookVO> list = bs.getBomList();
 			model.addAttribute("list", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			LibraryVO info = ls.getLibraryInfo();
+			model.addAttribute("info", info);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
