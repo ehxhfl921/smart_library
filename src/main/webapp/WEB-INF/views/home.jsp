@@ -35,10 +35,10 @@
 						</div>
 						<div class="bomInfo">
 							<div class="bold">
-							<p>제목</p>
-							<p>저자</p>
-							<p>발행기관</p>
-							<p>발행일</p>
+								<p>제목</p>
+								<p>저자</p>
+								<p>발행기관</p>
+								<p>발행일</p>
 							</div>
 							<div>
 								<p>${book.title}</p>
@@ -51,14 +51,14 @@
 				
 			</c:forEach>
 			</div>
-		</div>
+		</div> <!-- end slideWrapper -->
 		
-	</div>
+	</div> <!-- end bom -->
 
 	<!-- 도서관 정보 출력 -->
 	<div class="libraryInfo">
 		<div class="libName">
-			<p>• 스마트 도서관</p>
+			<p>⦁ ${info.library_name}</p>
 		</div>
 		<div class="libInfo">
 			<div class="infoLeft">
@@ -68,15 +68,28 @@
 				<p>휴관일</p>
 			</div>
 			<div class="infoRight">
-				<p>051.1234.9876</p>
-				<p>부산광역시 동래구 충렬대로 84</p>
-				<p>9:00 ~ 17:00</p>
-				<p>매달 둘째 주 일요일</p>
+				<p>${info.tel}</p>
+				<p>${info.location}</p>
+				<p>${info.operating_hour}</p>
+				<p>${info.closed_date}</p>
 			</div>
 		</div>
 	</div>
 
 </div>
 </section>
+
+<script>
+	const slide = document.querySelector(".slide");
+	const totalCards = slide.children.length;
+	let currentIndex = 0;
+	
+	function slideCard(){
+		currentIndex = (currentIndex + 1) % totalCards;
+		slide.style.transform = "translateX(-"+ (currentIndex * 600) +"px)";
+	}
+	
+	setInterval(slideCard, 2000);
+</script>
 
 <%@ include file="common/footer.jsp" %>

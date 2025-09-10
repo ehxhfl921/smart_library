@@ -102,7 +102,7 @@ section.main .mainBox2 div.bookOftheMonth .slideWrapper{
 
 section.main .mainBox2 div.bookOftheMonth .slide{
 	display: flex;
-	transition: transform 0.5s ease;
+	transition: transform 2s ease;
 }
 
 section.main .mainBox2 div.slideBookCard{
@@ -147,11 +147,12 @@ div.slideBookCard div.bomInfo div{
 	text-align: left;
 	height: 300px;
 	line-height: 50px;
-	font-size: 20px;
+	font-size: 23px;
 }
 
 div.slideBookCard div.bomInfo div.bold{
-	font-weight: bold;	
+	font-weight: bold;
+	margin-right: 10px;
 }
 
 

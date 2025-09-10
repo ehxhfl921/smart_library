@@ -222,4 +222,14 @@ VALUES('2', '초승달 엔딩 클럽', '조예은', '위즈덤하우스', '2024'
 INSERT INTO book_of_the_month(bno, title, author, publisher, p_date, cover)
 VALUES('5', '첫 여름, 완주', '김금희', '무제', '2025', 'images/5.jpg');
 
+INSERT INTO book_of_the_month(bno, title, author, publisher, p_date, cover)
+VALUES('6', '스파클', '최현진', '창비', '2025', 'images/6.jpg');
+
+
+
+-- 도서관 정보 입력
+INSERT INTO library_info(library_name, tel, location, operating_hour, closed_date)
+VALUES('스마트 도서관', '051.2345.8765', '부산광역시 충렬대로 84', '09:00 ~ 18:00', '매달 둘째 주 월요일');
+
+UPDATE library_info SET location = '부산광역시 동래구 충렬대로 84';
 commit
