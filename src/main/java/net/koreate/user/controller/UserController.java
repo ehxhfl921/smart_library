@@ -2,6 +2,7 @@ package net.koreate.user.controller;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.RequiredArgsConstructor;
 import net.koreate.common.utils.Criteria;
+import net.koreate.user.service.UserService;
 import net.koreate.user.vo.UserVO;
 
 @Controller
@@ -23,6 +25,7 @@ import net.koreate.user.vo.UserVO;
 public class UserController {
 	
 	private final JavaMailSender mailSender;
+	private final UserService userService;
 	
 	/**
 	 * 회원 가입 페이지로 이동 요청 처리
@@ -63,20 +66,37 @@ public class UserController {
 	public String login(
 			String id, 
 			String pw, 
-			HttpSession session, Cookie cookie
+			HttpSession session, Cookie cookie,
+			HttpServletResponse response
 			) throws Exception{
+		
+		UserVO user = userService.login(id, pw);
+		if(user != null) {
+			session.setAttribute("userInfo", user);
+			if(cookie != null) {
+				cookie.setPath("/");
+				cookie.setMaxAge(60 * 60 * 3);  
+				response.addCookie(cookie);
+			}
+			return "redirect:/";
+		}
 
-		return null;
+		return "user/login";
 	}
-	
 	/**
 	 * 로그아웃 요청 처리 - 세션에 로그인 사용자 정보 삭제 (쿠키에 자동 로그인 정보 있으면 쿠키도 삭제)
 	 * 로그아웃 후 메인 페이지로 이동
 	 */
 	@GetMapping("/logout")
-	public String logout(HttpSession session, Cookie cookie) throws Exception{
+	public String logout(HttpSession session, Cookie cookie, HttpServletResponse response ) throws Exception{
+		session.invalidate();
 		
-		return null;
+		if(cookie != null) {
+			cookie.setMaxAge(0);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+		}
+		return "redirect:/";
 	}
 	
 	/**
@@ -84,7 +104,7 @@ public class UserController {
 	 */
 	@GetMapping("/myPage")
 	public String goToMyPage(HttpSession session) throws Exception{
-		return null;
+		return "user/maPage";
 	}
 	
 	/**
@@ -92,7 +112,7 @@ public class UserController {
 	 */
 	@GetMapping("/myPage/modifyInfo")
 	public String goToUpdateMyInfo() throws Exception{
-		return null;
+		return "user/modifyInfo";
 	}
 	
 	/**
@@ -104,8 +124,17 @@ public class UserController {
 	 * @param vo	수정할 정보가 담긴 UserVO 타입 객체
 	 */
 	@PostMapping("/modifyInfo")
-	public String updateMyInfo(UserVO vo) throws Exception{
-		return null;
+	public String updateMyInfo(UserVO vo, HttpSession session) throws Exception {
+		userService.modifyInfo(vo);
+		
+		UserVO loginUser = (UserVO) session.getAttribute("userInfo");
+		
+		if(loginUser != null && loginUser.getMno() == vo.getMno()) {
+			session.setAttribute("userInfo", vo);
+			return "redirect:/user/myPage";
+		}
+
+		return "redirect:/user/memberDetail?mno=" + vo.getMno();
 	}
 	
 	/**
