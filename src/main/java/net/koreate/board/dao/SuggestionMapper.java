@@ -3,6 +3,7 @@ package net.koreate.board.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -40,8 +41,8 @@ public interface SuggestionMapper {
     *  
     * @param vo 테이블에 등록할 건의 사항 게시글 정보
     */
-   @Insert("INSERT INTO notice(s_title, s_author, s_content) "
-         + " VALUES(#{s_title}, #{s_author}, #{s_content})")
+   @Insert("INSERT INTO notice(s_title, s_author, s_content, s_userid) "
+         + " VALUES(#{s_title}, #{s_author}, #{s_content}, #{s_userid})")
    void suggestionWrite(BoardVO vo) throws Exception;
    
    /**
@@ -70,8 +71,12 @@ public interface SuggestionMapper {
     * @param user_id   작성한 건의 사항 조회할 아이디
     * @param cri      페이징 정보
     */
-   @Select("SELECT count(*) FROM suggestion WHERE s_status = 'Y'")
-   List<BoardVO> mySuggestion(String user_id, Criteria cri) throws Exception;
+   @Select("SELECT * FROM suggestions WHERE user_id = #{user_id} ORDER BY created_at DESC"
+   		+ "LIMIT #{cri.perPageNum} OFFSET #{(cri.page - 1) * cri.perPageNum}")
+   List<BoardVO> mySuggestion(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
+   
+   @Select("SELECT count(*) FROM notice WHERE s_status = 'Y'")
+	int countSuggestion() throws Exception;
 }
 
 
