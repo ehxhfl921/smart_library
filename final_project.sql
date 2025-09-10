@@ -178,3 +178,48 @@ SELECT * FROM library_info;
 
 -- 테이블 제거
 DROP TABLE library_info PURGE;
+
+
+-- 테스트용 도서 데이터 입력
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('조금 망한 사랑', '김지연', '문학동네', '2024', 'images/1.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('초승달 엔딩 클럽', '조예은', '위즈덤하우스', '2024', 'images/2.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('낙엽 다이빙', '강은옥', '위즈덤하우스', '2023', 'images/3.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('스테로이드 인류 : 기적과 죽음의 연대기', '백승만', '히포크라테스', '2024', 'images/4.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('첫 여름, 완주', '김금희', '무제', '2025', 'images/5.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('스파클', '최현진', '창비', '2025', 'images/6.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('여름방학 숙제 조작단', '이진하', '사계절', '2021', 'images/7.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('얼음산 빙수 가게', '정현진', '올리', '2024', 'images/8.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('야외 수영장', '빌 그멜링 지음 (전은경 옮김)', '라임', '2021', 'images/9.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('어떤 토끼', '고정순', '반달', '2024', 'images/10.jpg');
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('해든 분식', '동지아', '문학동네', '2024', 'images/11.jpg');
+
+-- 테스트용 이달의 도서 데이터 입력
+INSERT INTO book_of_the_month(bno, title, author, publisher, p_date, cover)
+VALUES('2', '초승달 엔딩 클럽', '조예은', '위즈덤하우스', '2024', 'images/2.jpg');
+
+INSERT INTO book_of_the_month(bno, title, author, publisher, p_date, cover)
+VALUES('5', '첫 여름, 완주', '김금희', '무제', '2025', 'images/5.jpg');
+
+commit

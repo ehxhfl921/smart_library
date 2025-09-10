@@ -2,6 +2,7 @@ package net.koreate.book.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import net.koreate.book.vo.BookVO;
@@ -27,7 +28,7 @@ public interface LoanMapper {
 	 */
 	@Select("SELECT * FROM book_loan WHERE bno = #{bno} ORDER BY loan_no DESC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
-	List<BookVO> loanListOfBook(int bno, Criteria cri) throws Exception;
+	List<BookVO> loanListOfBook(@Param("bno") int bno, @Param("cri") Criteria cri) throws Exception;
 	
 	/**
 	 * 로그인 사용자의 아이디를 전달받아 해당 사용자의 도서 대출 내역을 조회 후 리스트로 반환(페이징 처리)
@@ -37,7 +38,7 @@ public interface LoanMapper {
 	 */
 	@Select("SELECT * FROM book_loan WHERE user_id = #{user_id} ORDER BY loan_no DESC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
-	List<BookVO> loanListOfUser(String user_id, Criteria cri) throws Exception;
+	List<BookVO> loanListOfUser(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
 	
 	/**
 	 * 도서 대출 테이블에서 대출자 아이디가 로그인 사용자의 아이디와 일치하는 행 개수 조회

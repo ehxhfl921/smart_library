@@ -6,8 +6,9 @@
 <section class="main">
 
 <div class="mainBox1">
-	<form action="book/search" method="POST">
+	<form action="book/search" method="GET">
 		<input type="text" name="keyword" placeholder="검색할 도서의 제목이나 저자를 입력하세요">
+		<input type="hidden" name="page" value="1">
 		<button>검색</button>
 	</form>
 </div>
@@ -23,31 +24,38 @@
 	<!-- 이달의 도서 출력 -->
 	<div class="bookOftheMonth">
 	
-			<!-- 테스트 -->
-			<div class="slideBookCard">
-				<div class="img">
-					<img alt="테스트" src="images/2.jpg">
+		<div class="slideWrapper">
+		
+			<div class="slide">
+			<c:forEach var="book" items="${list}">
+			
+				<div class="slideBookCard">
+						<div class="img">
+							<img alt="표지 이미지" src="${book.cover}">
+						</div>
+						<div class="bomInfo">
+							<div class="bold">
+							<p>제목</p>
+							<p>저자</p>
+							<p>발행기관</p>
+							<p>발행일</p>
+							</div>
+							<div>
+								<p>${book.title}</p>
+								<p>${book.author}</p>
+								<p>${book.publisher}</p>
+								<p>${book.p_date}년</p>
+							</div>
+						</div>
 				</div>
-				<div class="bomInfo">
-					<div class="bold">
-					<p>제목</p>
-					<p>저자</p>
-					<p>발행기관</p>
-					<p>발행일</p>
-					</div>
-					<div>
-						<p>테스트용 제목</p>
-						<p>테스트용 저자</p>
-						<p>테스트용 발행기관</p>
-						<p>테스트용 발행일</p>
-					</div>
-				</div>
+				
+			</c:forEach>
 			</div>
-	
+		</div>
+		
 	</div>
 
 	<!-- 도서관 정보 출력 -->
-	
 	<div class="libraryInfo">
 		<div class="libName">
 			<p>• 스마트 도서관</p>
