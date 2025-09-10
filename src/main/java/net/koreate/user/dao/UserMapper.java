@@ -48,7 +48,7 @@ public interface UserMapper {
 	 * @param pw	로그인할 비밀번호
 	 * @return		아이디, 비밀번호로 조회된 회원 정보
 	 */
-	@Select("SELECT * FORM member WHERE id=#{id} AND pw=#{pw} AND status='Y'") 
+	@Select("SELECT * FROM member WHERE id=#{id} AND pw=#{pw} AND status='Y'") 
 	UserVO login(@Param("id") String id, @Param("pw") String pw) throws Exception;
 	
 	/**
