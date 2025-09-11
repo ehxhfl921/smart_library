@@ -70,8 +70,12 @@ public interface SuggestionMapper {
     * @param user_id   작성한 건의 사항 조회할 아이디
     * @param cri      페이징 정보
     */
-   @Select("SELECT count(*) FROM suggestion WHERE s_status = 'Y'")
+   @Select(" SELECT * FROM suggestion WHERE s_userid = #{s_userid} ORDER BY s_create_date DESC"
+   		+ "LIMIT #{cri.perPageNum} OFFSET #{(cri.page - 1) * cri.perPageNum}")
    List<BoardVO> mySuggestion(String user_id, Criteria cri) throws Exception;
+   
+   @Select("SELECT count(*) FROM notice WHERE s_status = 'Y'")
+	int countSuggestion() throws Exception;
 }
 
 
