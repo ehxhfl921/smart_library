@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import net.koreate.common.utils.Criteria;
@@ -44,10 +45,17 @@ public class UserController {
 	@PostMapping("/join")
 	public String join(UserVO vo, Model model) throws Exception{
 		
-		userService.join(vo);
-		model.addAttribute("msg","회원 가입 완료되었습니다.");
-		
-		return "redirect:/";
+		try {
+			userService.join(vo);
+			model.addAttribute("msg","회원 가입이 완료되었습니다.");
+			
+			return "redirect:/user/goToLogin";
+			
+		}catch(Exception e) {
+			e.getStackTrace();
+			model.addAttribute("msg", "회원 가입 실패하였습니다.");
+		}
+			return "redirect:/user/join";
 	}
 	
 	/**
@@ -75,7 +83,7 @@ public class UserController {
 		
 		UserVO user = userService.login(id, pw);
 		if(user != null) {
-			session.setAttribute("userInfo", user);
+			session.setAttribute("loginMember", user);
 			if(cookie != null) {
 				cookie.setPath("/");
 				cookie.setMaxAge(60 * 60 * 3);  
@@ -286,10 +294,17 @@ public class UserController {
 	 * @param pw	변경할 새로운 비밀번호
 	 */
 	@PostMapping("/resetPw")
-	public String resetPassword(String id, String pw) throws Exception{
-	
-		userService.resetPassword(id, pw);
-		return "redirect:/user/goToLogin";
+	public String resetPassword(String id, String pw, RedirectAttributes rttr) throws Exception{
+		try {
+			userService.resetPassword(id, pw);
+			rttr.addAttribute("msg", "비밀번호가 성공적으로 변경되었습니다. 새 비밀번호로 로그인하세요");
+			return "redirect:/user/goToLogin";
+		}catch(Exception e){
+			e.getStackTrace();
+			rttr.addFlashAttribute("msg", "비밀번호 변경에 실패하였습니다. 다시 시도해 주세요.");
+	        return "redirect:/user/resetPwForm?id=" + id;
+		
+		}
 	}
 	
 	/**
