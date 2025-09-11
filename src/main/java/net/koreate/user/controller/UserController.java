@@ -43,7 +43,10 @@ public class UserController {
 	 */
 	@PostMapping("/join")
 	public String join(UserVO vo, Model model) throws Exception{
+		
+		userService.join(vo);
 		model.addAttribute("msg","회원 가입 완료되었습니다.");
+		
 		return "redirect:/";
 	}
 	
@@ -104,7 +107,8 @@ public class UserController {
 	 */
 	@GetMapping("/myPage")
 	public String goToMyPage(HttpSession session) throws Exception{
-		return "user/maPage";
+		
+		return "user/myPage";
 	}
 	
 	/**
@@ -112,6 +116,7 @@ public class UserController {
 	 */
 	@GetMapping("/myPage/modifyInfo")
 	public String goToUpdateMyInfo() throws Exception{
+		
 		return "user/modifyInfo";
 	}
 	
@@ -155,7 +160,17 @@ public class UserController {
 			int mno, Criteria cri,
 			HttpSession session, Cookie cookie
 			) throws Exception{
-		return null;
+		userService.withdraw(mno);
+		UserVO loginUser = (UserVO) session.getAttribute("userInfo");
+		if(loginUser != null && loginUser.getMno() == mno) {
+			session.invalidate();
+			if(cookie != null) {
+				cookie.setMaxAge(0);
+				cookie.setPath("/");
+			}
+			return "redirect:/";
+		}
+		return "redirect:/user/memberList?page=" + cri.getPage();
 	}
 	
 	/**
@@ -163,7 +178,8 @@ public class UserController {
 	 */
 	@GetMapping("/findIdForm")
 	public String goToFindId() throws Exception{
-		return null;
+		
+		return "user/findId";
 	}
 	
 	/**
@@ -171,7 +187,8 @@ public class UserController {
 	 */
 	@GetMapping("/findPwForm")
 	public String goToFindPw() throws Exception{
-		return null;
+		
+		return "user/findPw";
 	}
 	
 	/**
@@ -185,7 +202,8 @@ public class UserController {
 	@GetMapping("/checkEmailForId")
 	@ResponseBody
 	public String checkEmailForId(String name, String email) throws Exception{
-		return null;
+		
+		return userService.checkAndGetEmailForId(name, email);
 	}
 	
 	/**
@@ -199,7 +217,8 @@ public class UserController {
 	@GetMapping("/checkEmailForPw")
 	@ResponseBody
 	public String checkEmailForPw(String id, String email) throws Exception{
-		return null;
+		
+		return userService.checkAndGetEmailForPw(id, email);
 	}
 	
 	/**
@@ -240,7 +259,8 @@ public class UserController {
 	@GetMapping("/findId")
 	@ResponseBody
 	public String findId(String email) throws Exception{
-		return null;
+		
+		return userService.getId(email);
 	}
 	
 	/**
@@ -251,7 +271,8 @@ public class UserController {
 	 */
 	@GetMapping("/resetPwForm")
 	public String goToResetPw(String id) throws Exception{
-		return null;
+		
+		return "user/resetPw";
 	}
 	
 	/**
@@ -263,7 +284,9 @@ public class UserController {
 	 */
 	@PostMapping("/resetPw")
 	public String resetPassword(String id, String pw) throws Exception{
-		return null;
+	
+		userService.resetPassword(id, pw);
+		return "redirect:/user/goToLogin";
 	}
 	
 	/**
@@ -274,7 +297,9 @@ public class UserController {
 	 */
 	@GetMapping("/memberList")
 	public String memberList(Criteria cri, Model model) throws Exception{
-		return null;
+		
+		model.addAllAttributes(userService.getMemberList(cri));
+		return "user/memberList";
 	}
 	
 	/**
@@ -290,8 +315,18 @@ public class UserController {
 	 * @param cri	기존에 보던 목록 페이지 정보
 	 */
 	@GetMapping("/memberDetail")
-	public String memberDetail(int mno, Criteria cri) throws Exception{
-		return null;
+	public String memberDetail(int mno, Criteria cri, Model model) throws Exception {
+	   
+		model.addAttribute("member", userService.getMemberDetail(mno));
+	    model.addAttribute("cri", cri);
+	    return "user/memberDetail";
+
 	}
-	
-}
+}	
+	    
+	    
+	    
+	    
+	    
+	    
+	    
