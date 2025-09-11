@@ -41,5 +41,7 @@ public class Criteria {
 	public int getStartRow() {
 		return (this.page-1) * this.perPageNum;
 	} // end getStartRow()
+	
+	
 
 }

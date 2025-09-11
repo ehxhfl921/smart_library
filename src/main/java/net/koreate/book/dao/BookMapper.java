@@ -46,7 +46,7 @@ public interface BookMapper {
 	 * @return 전체 도서 목록
 	 */
 	@Select("SELECT * FROM book WHERE b_status = 'Y' ORDER BY bno DESC "
-			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
+			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
 	List<BookVO> allBookList(Criteria cri) throws Exception;
 	
 	/**
@@ -101,6 +101,15 @@ public interface BookMapper {
 	 */
 	@Update("UPDATE book_of_the_month SET bom_status = 'N' WHERE bno = #{bno}")
 	void removeFromBOM(int bno) throws Exception;
+	
+	/**
+	 * 도서 번호로 이달의 도서에 등록된 도서인지 상태 반환
+	 * 
+	 * @param bno
+	 */
+	@Select("SELECT * FROM (SELECT bom_status FROM book_of_the_month WHERE bno = #{bno} "
+			+"ORDER BY bom_no DESC) WHERE ROWNUM = 1")
+	String bomStatus(int bno) throws Exception;
 	
 	/**
 	 * 이달의 도서 전체 목록 조회
