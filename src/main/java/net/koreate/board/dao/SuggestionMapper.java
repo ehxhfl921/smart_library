@@ -71,7 +71,7 @@ public interface SuggestionMapper {
     * @param user_id   작성한 건의 사항 조회할 아이디
     * @param cri      페이징 정보
     */
-   @Select("SELECT * FROM suggestions WHERE user_id = #{user_id} ORDER BY created_at DESC"
+   @Select("SELECT * FROM suggestion WHERE s_userid = #{s_userid} ORDER BY s_create_date DESC"
    		+ "LIMIT #{cri.perPageNum} OFFSET #{(cri.page - 1) * cri.perPageNum}")
    List<BoardVO> mySuggestion(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
    
