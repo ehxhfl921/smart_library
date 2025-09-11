@@ -8,10 +8,9 @@
 <div id="wrap">
     <h1>비밀번호 변경</h1>
 
-    <form action="" method="post">
-      <input type="hidden" name="id" value="" />
-      <input type="hidden" name="email" value="" />
-      <input type="hidden" name="token" value="" />
+    <form action="${path}/user/resetPw" method="post">
+      <input type="hidden" name="id" value="${id}" />
+
 
       <table>
         <tr>
@@ -24,7 +23,7 @@
         </tr>
       </table>
 
-      <br />
+      <br/>
 
       <input type="submit" value="변경하기" class="btn_login" />
     </form>
