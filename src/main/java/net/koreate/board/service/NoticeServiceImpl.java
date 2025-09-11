@@ -26,8 +26,9 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public void update(BoardVO vo) throws Exception {
-        map.updateNotice(vo);
+    public String update(BoardVO vo) throws Exception {
+    	int result = map.updateNotice(vo);
+    	return result == 1 ? "공지사항 수정 성공" : "공지사항 수정 실패"; 
     }
 
     @Override
