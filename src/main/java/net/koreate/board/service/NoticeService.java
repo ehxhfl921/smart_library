@@ -12,21 +12,21 @@ public interface NoticeService {
 	 * 
 	 * @param vo 등록할 공지 사항 정보
 	 */
-	void write(BoardVO vo) throws Exception;
+	String write(BoardVO vo) throws Exception;
 	
 	/**
 	 * 전달 받은 공지글 번호로 공지글 검색 후 수정할 정보로 업데이트
 	 * 
 	 * @param vo 수정할 공지글 정보가 저장된 BoardVO 객체
 	 */
-	void update(BoardVO vo) throws Exception;
+	String update(BoardVO vo) throws Exception;
 	
 	/**
 	 * 전달 받은 공지글 번호로 공지글 검색 후 n_status 컬럼 'N'으로 업데이트
 	 * 
 	 * @param nno 삭제 처리할 공지글 번호
 	 */
-	void delete(int nno) throws Exception;
+	String delete(int nno) throws Exception;
 	
 	/**
 	 * 전달 받은 공지글 번호로 공지글 검색 후 정보 반환

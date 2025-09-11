@@ -226,6 +226,72 @@ INSERT INTO book_of_the_month(bno, title, author, publisher, p_date, cover)
 VALUES('6', '스파클', '최현진', '창비', '2025', 'images/6.jpg');
 
 
+------------------- 회원 등록
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('minsu89', 'pw1234', '김민수', '01023456789', 'minsu89@example.com', '서울특별시 강남구 테헤란로 123');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('seoyeon22', 'pw1234', '이서연', '01087654321', 'seoyeon22@example.com', '경기도 성남시 분당구 수내동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('jihun07', 'pw1234', '박지훈', '01011112222', 'jihun07@example.com', '부산광역시 해운대구 우동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('yerin95', 'pw1234', '최예린', '01033334444', 'yerin95@example.com', '대구광역시 수성구 만촌동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('wooyoung01', 'pw1234', '정우영', '01055556666', 'wooyoung01@example.com', '인천광역시 연수구 송도동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('jieun94', 'pw1234', '한지은', '01077778888', 'jieun94@example.com', '광주광역시 서구 화정동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('junho88', 'pw1234', '송준호', '01099990000', 'junho88@example.com', '대전광역시 서구 둔산동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('dahyun02', 'pw1234', '김다현', '01022223333', 'dahyun02@example.com', '울산광역시 남구 신정동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('doyoon77', 'pw1234', '이도윤', '01044445555', 'doyoon77@example.com', '강원도 춘천시 효자동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('minji09', 'pw1234', '장민지', '01066667777', 'minji09@example.com', '제주특별자치도 제주시 노형동');
+
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('yuri91', 'pw1234', '안유리', '01010102020', 'yuri91@example.com', '서울특별시 마포구 상암동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('sangho85', 'pw1234', '이상호', '01030304040', 'sangho85@example.com', '서울특별시 서초구 방배동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('eunji93', 'pw1234', '조은지', '01050506060', 'eunji93@example.com', '경기도 용인시 수지구 죽전동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('yeonju90', 'pw1234', '김연주', '01070708080', 'yeonju90@example.com', '서울특별시 송파구 문정동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('jiho88', 'pw1234', '손지호', '01090901111', 'jiho88@example.com', '경기도 고양시 덕양구 행신동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('mina96', 'pw1234', '박민아', '01012121313', 'mina96@example.com', '부산광역시 북구 화명동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('sungmin84', 'pw1234', '전성민', '01014141515', 'sungmin84@example.com', '서울특별시 강동구 성내동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('haneul92', 'pw1234', '공하늘', '01016161717', 'haneul92@example.com', '경기도 성남시 판교동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('jisoo01', 'pw1234', '강지수', '01018181919', 'jisoo01@example.com', '전라북도 전주시 효자동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('dasom97', 'pw1234', '윤다솜', '01020202121', 'dasom97@example.com', '경기도 안양시 동안구 관양동');
+
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('gayoung89', 'pw1234', '김가영', '01022222323', 'gayoung89@example.com', '서울특별시 강남구 압구정동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('sanghyuk88', 'pw1234', '박상혁', '01024242525', 'sanghyuk88@example.com', '서울특별시 용산구 이태원동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('sumin99', 'pw1234', '차수민', '01026262727', 'sumin99@example.com', '충청남도 천안시 두정동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('hyewon95', 'pw1234', '정혜원', '01028282929', 'hyewon95@example.com', '서울특별시 종로구 청운동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('junhyuk86', 'pw1234', '이준혁', '01030303131', 'junhyuk86@example.com', '서울특별시 강서구 등촌동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('dain01', 'pw1234', '김다인', '01032323333', 'dain01@example.com', '경기도 수원시 영통구 원천동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('sungwoo83', 'pw1234', '홍성우', '01034343535', 'sungwoo83@example.com', '경기도 부천시 중동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('soohyun87', 'pw1234', '임수현', '01036363737', 'soohyun87@example.com', '전라남도 순천시 조례동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('junghoon84', 'pw1234', '배정훈', '01038383939', 'junghoon84@example.com', '강원도 원주시 무실동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('seona93', 'pw1234', '서하늘', '01040404141', 'seona93@example.com', '충청북도 청주시 상당구 금천동');
+
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('skyblue21', 'pw1234', '오지훈', '01041414242', 'skyblue21@example.com', '서울특별시 관악구 봉천동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('happy_jh', 'pw1234', '신지호', '01043434444', 'happyjh@example.com', '경기도 광명시 철산동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('yoon93', 'pw1234', '윤세민', '01045454646', 'yoon93@example.com', '부산광역시 사하구 당리동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('minji88', 'pw1234', '백민지', '01047474848', 'minji88@example.com', '대구광역시 달서구 감삼동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('hwan_07', 'pw1234', '조성환', '01049495050', 'hwan07@example.com', '인천광역시 계양구 계산동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('solbin12', 'pw1234', '이솔빈', '01051515252', 'solbin12@example.com', '광주광역시 광산구 수완동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('park_dy90', 'pw1234', '박도윤', '01053535454', 'parkdy90@example.com', '대전광역시 동구 판암동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('narae01', 'pw1234', '김나래', '01055555656', 'narae01@example.com', '울산광역시 중구 반구동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('smileysu', 'pw1234', '정수아', '01057575858', 'smileysu@example.com', '경기도 군포시 산본동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('lee_gh92', 'pw1234', '이건희', '01059596060', 'leegh92@example.com', '강원도 강릉시 교동');
+
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('jiyoon_xx', 'pw1234', '최지윤', '01061616262', 'jiyoonxx@example.com', '충청북도 제천시 장락동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('dahyeok93', 'pw1234', '한다혁', '01063636464', 'dahyeok93@example.com', '경기도 평택시 합정동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('moon_lj', 'pw1234', '문예진', '01065656666', 'moonlj@example.com', '전라북도 군산시 수송동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('seung89', 'pw1234', '권승우', '01067676868', 'seung89@example.com', '경상북도 포항시 남구 이동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('hana95', 'pw1234', '송하나', '01069697070', 'hana95@example.com', '경상남도 창원시 마산회원구');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('kth_22', 'pw1234', '강태훈', '01071717272', 'kth22@example.com', '서울특별시 은평구 불광동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('prettyhj', 'pw1234', '허지민', '01073737474', 'prettyhj@example.com', '경기도 안산시 단원구 고잔동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('jo_ys01', 'pw1234', '조예슬', '01075757676', 'joys01@example.com', '부산광역시 북구 만덕동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('simplekm', 'pw1234', '김민정', '01077777878', 'simplekm@example.com', '대구광역시 북구 칠곡동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('leejae94', 'pw1234', '이재훈', '01079798080', 'leejae94@example.com', '경기도 성남시 수정구 신흥동');
+
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('seulgi12', 'pw1234', '강슬기', '01081818282', 'seulgi12@example.com', '서울특별시 중랑구 면목동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('namsoo85', 'pw1234', '남수현', '01083838484', 'namsoo85@example.com', '경기도 고양시 일산서구 주엽동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('arin99', 'pw1234', '오아린', '01085858686', 'arin99@example.com', '충청남도 아산시 배방읍');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('byul_star', 'pw1234', '정별이', '01087878888', 'byulstar@example.com', '강원도 원주시 단계동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('kangmh91', 'pw1234', '강민혁', '01089899090', 'kangmh91@example.com', '경기도 김포시 구래동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('sujin07', 'pw1234', '이수진', '01091919292', 'sujin07@example.com', '서울특별시 동대문구 장안동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('happyhj', 'pw1234', '김하준', '01093939494', 'happyhj@example.com', '경기도 의정부시 민락동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('yoona33', 'pw1234', '윤아름', '01095959696', 'yoona33@example.com', '경상북도 구미시 인동동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('leejh02', 'pw1234', '이진호', '01097979898', 'leejh02@example.com', '서울특별시 동작구 사당동');
+INSERT INTO member (id, pw, name, phone, email, addr) VALUES ('daon23', 'pw1234', '최다온', '01099991010', 'daon23@example.com', '경기도 하남시 신장동');
 
 -- 도서관 정보 입력
 INSERT INTO library_info(library_name, tel, location, operating_hour, closed_date)

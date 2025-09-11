@@ -43,19 +43,20 @@ public class UserController {
 	 * @param vo	가입할 회원 정보
 	 */
 	@PostMapping("/join")
-	public String join(UserVO vo, Model model) throws Exception{
-		
-		try {
-			userService.join(vo);
-			model.addAttribute("msg","회원 가입이 완료되었습니다.");
-			
-			return "redirect:/user/goToLogin";
-			
-		}catch(Exception e) {
-			e.getStackTrace();
-			model.addAttribute("msg", "회원 가입 실패하였습니다.");
-		}
-			return "redirect:/user/join";
+	public String join(UserVO vo, RedirectAttributes rttr) throws Exception {
+	    try {
+	        userService.join(vo);
+	        
+	        rttr.addFlashAttribute("msg", "회원 가입이 완료되었습니다.");
+	       
+	        return "redirect:/user/goToLogin";
+	    } catch (Exception e) {
+	    	
+	        e.printStackTrace();
+	        rttr.addFlashAttribute("msg", "회원 가입 실패하였습니다.");
+	        
+	        return "redirect:/user/join";
+	    }
 	}
 	
 	/**
@@ -75,38 +76,43 @@ public class UserController {
 	 */
 	@PostMapping("/login")
 	public String login(
-			String id, 
-			String pw, 
-			HttpSession session, Cookie cookie,
-			HttpServletResponse response
-			) throws Exception{
-		
-		UserVO user = userService.login(id, pw);
-		if(user != null) {
-			session.setAttribute("loginMember", user);
-			if(cookie != null) {
-				cookie.setPath("/");
-				cookie.setMaxAge(60 * 60 * 3);  
-				response.addCookie(cookie);
-			}
-			return "redirect:/";
-		}
+	        String id,
+	        String pw,
+	        String autoLogin,   
+	        HttpSession session,
+	        HttpServletResponse response
+	) throws Exception {
 
-		return "user/login";
+	    UserVO user = userService.login(id, pw);
+
+	    if (user != null) {
+
+	        session.setAttribute("userInfo", user);
+
+	        if ("Y".equals(autoLogin)) {
+	        	Cookie cookie = new Cookie("userInfo", user.getId());
+	            cookie.setPath("/");
+	            cookie.setMaxAge(60 * 60 * 3);
+	            response.addCookie(cookie);
+	        }
+	        return "redirect:/";
+	    }
+
+	    return "user/login";
 	}
 	/**
 	 * 로그아웃 요청 처리 - 세션에 로그인 사용자 정보 삭제 (쿠키에 자동 로그인 정보 있으면 쿠키도 삭제)
 	 * 로그아웃 후 메인 페이지로 이동
 	 */
 	@GetMapping("/logout")
-	public String logout(HttpSession session, Cookie cookie, HttpServletResponse response ) throws Exception{
+	public String logout(HttpSession session, HttpServletResponse response ) throws Exception{
 		session.invalidate();
 		
-		if(cookie != null) {
-			cookie.setMaxAge(0);
-			cookie.setPath("/");
-			response.addCookie(cookie);
-		}
+		 Cookie cookie = new Cookie("userInfo", null); 
+		    cookie.setMaxAge(0); 
+		    cookie.setPath("/"); 
+		    response.addCookie(cookie);
+		    
 		return "redirect:/";
 	}
 	
@@ -125,7 +131,7 @@ public class UserController {
 	@GetMapping("/myPage/modifyInfo")
 	public String goToUpdateMyInfo() throws Exception{
 		
-		return "user/modifyInfo";
+		return "user/updateInfo";
 	}
 	
 	/**
@@ -138,16 +144,24 @@ public class UserController {
 	 */
 	@PostMapping("/modifyInfo")
 	public String updateMyInfo(UserVO vo, HttpSession session) throws Exception {
-		userService.modifyInfo(vo);
-		
-		UserVO loginUser = (UserVO) session.getAttribute("userInfo");
-		
-		if(loginUser != null && loginUser.getMno() == vo.getMno()) {
-			session.setAttribute("userInfo", vo);
-			return "redirect:/user/myPage";
-		}
+	  
+	    UserVO userInfo = (UserVO) session.getAttribute("userInfo");
 
-		return "redirect:/user/memberDetail?mno=" + vo.getMno();
+	   
+	    if (vo.getPw() == null || vo.getPw().isEmpty()) {
+	        vo.setPw(userInfo.getPw());
+	    }
+
+	    
+	    userService.modifyInfo(vo);
+
+	   
+	    if (userInfo != null && userInfo.getMno() == vo.getMno()) {
+	        session.setAttribute("userInfo", vo);
+	        return "redirect:/user/myPage";
+	    }
+
+	    return "redirect:/user/memberDetail?mno=" + vo.getMno();
 	}
 	
 	/**
@@ -163,25 +177,26 @@ public class UserController {
 	 * 					사용자가 탈퇴할 경우에는 세션에 로그인 정보도 삭제
 	 * @param cookie	탈퇴 요청한 사용자가 자동 로그인 설정한 상태라면 쿠키에서도 정보 삭제(관리자가 회원 삭제한 경우에도)
 	 */
-	@GetMapping("/withdraw")
+	@PostMapping("/withdraw")
 	public String withdraw(
 			int mno, Criteria cri,
-			HttpSession session, Cookie cookie
+			HttpSession session, Cookie cookie,
+			HttpServletResponse response
 			) throws Exception{
 		userService.withdraw(mno);
-		
-		UserVO loginUser = (UserVO) session.getAttribute("userInfo");
-		if(loginUser != null && loginUser.getMno() == mno) {
-			
-			session.invalidate();
-			
-			if(cookie != null) {
-				cookie.setMaxAge(0);
-				cookie.setPath("/");
-			}
-			return "redirect:/";
-		}
-		return "redirect:/user/memberList?page=" + cri.getPage();
+
+	    UserVO loginUser = (UserVO) session.getAttribute("userInfo");
+	    if (loginUser != null && loginUser.getMno() == mno) {
+	        session.invalidate();
+
+	        if (cookie != null) {
+	            cookie.setMaxAge(0);
+	            cookie.setPath("/");
+	            response.addCookie(cookie);
+	        }
+	        return "redirect:/";   
+	    }
+	    return "redirect:/";       
 	}
 	
 	/**
@@ -190,8 +205,10 @@ public class UserController {
 	@GetMapping("/findIdForm")
 	public String goToFindId() throws Exception{
 		
-		return "user/findId";
+		return "user/findID";
 	}
+	
+	
 	
 	/**
 	 * 비밀번호 찾기 페이지로 이동 요청 처리
@@ -199,7 +216,7 @@ public class UserController {
 	@GetMapping("/findPwForm")
 	public String goToFindPw() throws Exception{
 		
-		return "user/findPw";
+		return "user/findPassword";
 	}
 	
 	/**
@@ -283,7 +300,7 @@ public class UserController {
 	@GetMapping("/resetPwForm")
 	public String goToResetPw(String id) throws Exception{
 		
-		return "user/resetPw";
+		return "user/resetPasswordForm";
 	}
 	
 	/**
