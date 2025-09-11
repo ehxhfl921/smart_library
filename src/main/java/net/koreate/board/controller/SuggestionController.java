@@ -1,5 +1,7 @@
 package net.koreate.board.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -8,12 +10,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.RequiredArgsConstructor;
+import net.koreate.board.service.SuggestionService;
 import net.koreate.board.vo.BoardVO;
 import net.koreate.common.utils.Criteria;
+import net.koreate.user.vo.UserVO;
 
 @Controller
 @RequestMapping("/suggest")
+@RequiredArgsConstructor
 public class SuggestionController {
+	
+	private final SuggestionService ss;
 
 	
 	/**
@@ -24,7 +32,20 @@ public class SuggestionController {
 	 */
 	@GetMapping("/list")
 	public String suggestionList(Criteria cri, Model model) throws Exception{
-		return null;
+		System.out.println("건의사항 목록 suggestionList 요청");
+	       
+	       String result = (String) model.getAttribute("result");
+	       if (result != null) {
+	           model.addAttribute("result", result);
+	           model.getAttribute("result");
+	       }
+	       
+	       System.out.println("noticeList Criteria : " + cri);
+	       
+	       // 조회된 건의사항 게시글 목록
+	       Map<String, Object> map = ss.list(cri);
+	       model.addAllAttributes(map);
+	       return "board/suggestionList";
 	}
 	
 	/**
@@ -46,7 +67,13 @@ public class SuggestionController {
 				HttpSession session,
 				Model model
 			) throws Exception{
-		return null;
+		UserVO logins = (UserVO)session.getAttribute("logins");
+		Map<String, Object> result = ss.getMySuggestionLst(logins.getId(), cri);
+				
+		model.addAttribute("list", result.get("list"));
+		model.addAttribute("pm", result.get("pm"));
+				
+		return "board/mySuggestionList";
 	}
 	
 	/**
@@ -56,7 +83,10 @@ public class SuggestionController {
 	 */
 	@GetMapping("/detail")
 	public String suggestionDetail(int sug_no, Model model) throws Exception{
-		return null;
+		  BoardVO board = ss.getDetail(sug_no);
+	      model.addAttribute("boardVO", board);
+	      
+	      return "board/SuggestionDetail";
 	}
 
 	/**
@@ -65,7 +95,10 @@ public class SuggestionController {
 	 */
 	@PostMapping("/register")
 	public String suggestionRegister(BoardVO vo, Model model) throws Exception{
-		return null;
+		System.out.println("param data : " + vo);
+	    String result = ss.write(vo);
+	    model.addAttribute("msg", result);
+	    return "redirect:/";
 	}
 	
 	/**
@@ -75,7 +108,9 @@ public class SuggestionController {
 	 */
 	@GetMapping("/modifyForm")
 	public String goToModifyForm(int sug_no, Model model) throws Exception{
-		return null;
+		BoardVO board = ss.getDetail(sug_no);
+	    model.addAttribute(board);
+	    return "board/suggestionUpdate";
 	}
 	
 	/**
@@ -84,7 +119,9 @@ public class SuggestionController {
 	 */
 	@PostMapping("/modify")
 	public String suggestionModify(BoardVO vo, Model model) throws Exception{
-		return null;
+		String result = ss.update(vo);
+	    model.addAttribute("result", result);
+	    return "redirect:/board/suggestionDetail?nno=" + vo.getNno();
 	}
 	
 	/**
@@ -93,6 +130,8 @@ public class SuggestionController {
 	 */
 	@GetMapping("/delete")
 	public String suggestionDelete(int sug_no, Model model) throws Exception{
-		return null;
+		 String result = ss.delete(sug_no);
+	     model.addAttribute("result", result);
+	     return "redirect:/board/suggestionDetail";
 	}
 }

@@ -40,21 +40,23 @@ public interface SuggestionMapper {
     *  suggestion 테이블에 s_title, s_userid, s_author, s_content 데이터 입력
     *  
     * @param vo 테이블에 등록할 건의 사항 게시글 정보
+ * @return 
     */
    @Insert("INSERT INTO notice(s_title, s_author, s_content, s_userid) "
          + " VALUES(#{s_title}, #{s_author}, #{s_content}, #{s_userid})")
-   void suggestionWrite(BoardVO vo) throws Exception;
+   int suggestionWrite(BoardVO vo) throws Exception;
    
    /**
     *  건의 사항 게시글 번호로 조회된 건의글의 정보를 요청 받은 정보로 업데이트
     *  
     *  @param vo 수정할 건의 사항 게시글 정보
+ * @return 
     */
    @Update("UPDATE suggestion SET "
          + " s_title = #{s_title} , "
          + " s_content = #{s_content} , "
          + " WHERE sug_no = #{sug_no}")
-   void suggsestionUpdate(BoardVO vo) throws Exception;
+   int suggsestionUpdate(BoardVO vo) throws Exception;
 
    /**
     *  삭제 요청이 들어온 건의 사항 게시글 번호로 검색 후
@@ -63,7 +65,7 @@ public interface SuggestionMapper {
     * @param sug_no
     */
    @Update("UPDATE suggestion SET s_status = 'N' WHERE sug_no = #{sug_no}")
-   void suggsestionDelete(int sug_no) throws Exception;
+   int suggsestionDelete(int sug_no) throws Exception;
    
    /**
     * 전달 받은 사용자 아이디로 로그인 사용자가 작성한 건의 사항 목록 조회(페이징)
