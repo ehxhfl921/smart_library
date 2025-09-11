@@ -161,9 +161,12 @@ public class UserController {
 			HttpSession session, Cookie cookie
 			) throws Exception{
 		userService.withdraw(mno);
+		
 		UserVO loginUser = (UserVO) session.getAttribute("userInfo");
 		if(loginUser != null && loginUser.getMno() == mno) {
+			
 			session.invalidate();
+			
 			if(cookie != null) {
 				cookie.setMaxAge(0);
 				cookie.setPath("/");
