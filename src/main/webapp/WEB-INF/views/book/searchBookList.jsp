@@ -5,6 +5,12 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class="searchBook">
+<aside class="book-sidebar">
+    <ul>
+        <li><a href="${path}/libraryInfo">이용 안내</a></li>
+        <li><a href="${path}/studyroom">스터디룸 예약</a></li>
+    </ul>
+</aside>
 	 <main class="content">
 	 
       <div class="search-section">

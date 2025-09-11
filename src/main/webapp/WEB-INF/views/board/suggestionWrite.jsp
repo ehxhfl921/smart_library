@@ -5,6 +5,13 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class="hyojin">
+<aside class="suggestions-sidebar">
+    <ul>
+    <li><a>열린공간</a></li>
+    <li><a href="${path}/notice/list">공지 사항</a></li>
+    <li><a href="${path}/suggest/list" class="active">건의 사항</a></li>
+    </ul>
+</aside>
 	 <main class="content">
       <h2>건의사항</h2>
 
