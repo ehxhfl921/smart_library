@@ -20,21 +20,23 @@ public class SuggestionServiceImpl implements SuggestionService {
 	private final SuggestionMapper sug;
 
 	@Override
-	public void write(BoardVO vo) throws Exception {
-		sug.suggestionWrite(vo);
+	public String write(BoardVO vo) throws Exception {
+		int result = sug.suggestionWrite(vo);
+        String message = (result != 0) ? "건의사항 등록 성공" : "건의사항 등록 실패";
+		return message;
 
 	}
 
 	@Override
-	public void update(BoardVO vo) throws Exception {
-		 sug.suggsestionUpdate(vo);
+	public String update(BoardVO vo) throws Exception {
+		int result = sug.suggsestionUpdate(vo);
+    	return result == 1 ? "건의사항 수정 성공" : "건의사항 수정 실패";
 
 	}
 
 	@Override
-	public void delete(int sug_no) throws Exception {
-		sug.suggsestionDelete(sug_no);
-
+	public String delete(int sug_no) throws Exception {
+		return sug.suggsestionDelete(sug_no) == 1 ? "공지사항 삭제 성공" : "공지사항 삭제 실패";
 	}
 
 	@Override
