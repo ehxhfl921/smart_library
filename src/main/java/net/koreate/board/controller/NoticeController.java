@@ -89,7 +89,7 @@ public class NoticeController {
    public String noticeModify(BoardVO vo, Model model) throws Exception{
       String result = ns.update(vo);
       model.addAttribute("result", result);
-      return "redirect:/notice/detail?nno=" + vo.getNno();
+      return "redirect:/notice/noticeDetail?nno=" + vo.getNno();
    }
    
    /**
@@ -100,7 +100,7 @@ public class NoticeController {
    public String noticeDelete(int nno, Model model) throws Exception{
       String result = ns.delete(nno);
       model.addAttribute("result", result);
-      return "redirect:/notice/list";
+      return "redirect:/notice/noticeDetail";
    }
    
 }
