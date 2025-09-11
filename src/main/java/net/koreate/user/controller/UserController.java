@@ -2,6 +2,7 @@ package net.koreate.user.controller;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import net.koreate.common.utils.Criteria;
+import net.koreate.user.service.UserService;
 import net.koreate.user.vo.UserVO;
 
 @Controller
@@ -23,6 +26,7 @@ import net.koreate.user.vo.UserVO;
 public class UserController {
 	
 	private final JavaMailSender mailSender;
+	private final UserService userService;
 	
 	/**
 	 * 회원 가입 페이지로 이동 요청 처리
@@ -39,9 +43,20 @@ public class UserController {
 	 * @param vo	가입할 회원 정보
 	 */
 	@PostMapping("/join")
-	public String join(UserVO vo, Model model) throws Exception{
-		model.addAttribute("msg","회원 가입 완료되었습니다.");
-		return "redirect:/";
+	public String join(UserVO vo, RedirectAttributes rttr) throws Exception {
+	    try {
+	        userService.join(vo);
+	        
+	        rttr.addFlashAttribute("msg", "회원 가입이 완료되었습니다.");
+	       
+	        return "redirect:/user/goToLogin";
+	    } catch (Exception e) {
+	    	
+	        e.printStackTrace();
+	        rttr.addFlashAttribute("msg", "회원 가입 실패하였습니다.");
+	        
+	        return "redirect:/user/join";
+	    }
 	}
 	
 	/**
@@ -61,22 +76,44 @@ public class UserController {
 	 */
 	@PostMapping("/login")
 	public String login(
-			String id, 
-			String pw, 
-			HttpSession session, Cookie cookie
-			) throws Exception{
+	        String id,
+	        String pw,
+	        String autoLogin,   
+	        HttpSession session,
+	        HttpServletResponse response
+	) throws Exception {
 
-		return null;
+	    UserVO user = userService.login(id, pw);
+
+	    if (user != null) {
+
+	        session.setAttribute("userInfo", user);
+
+	        if ("Y".equals(autoLogin)) {
+	        	Cookie cookie = new Cookie("userInfo", user.getId());
+	            cookie.setPath("/");
+	            cookie.setMaxAge(60 * 60 * 3);
+	            response.addCookie(cookie);
+	        }
+	        return "redirect:/";
+	    }
+
+	    return "user/login";
 	}
-	
 	/**
 	 * 로그아웃 요청 처리 - 세션에 로그인 사용자 정보 삭제 (쿠키에 자동 로그인 정보 있으면 쿠키도 삭제)
 	 * 로그아웃 후 메인 페이지로 이동
 	 */
 	@GetMapping("/logout")
-	public String logout(HttpSession session, Cookie cookie) throws Exception{
+	public String logout(HttpSession session, HttpServletResponse response ) throws Exception{
+		session.invalidate();
 		
-		return null;
+		 Cookie cookie = new Cookie("userInfo", null); 
+		    cookie.setMaxAge(0); 
+		    cookie.setPath("/"); 
+		    response.addCookie(cookie);
+		    
+		return "redirect:/";
 	}
 	
 	/**
@@ -84,7 +121,8 @@ public class UserController {
 	 */
 	@GetMapping("/myPage")
 	public String goToMyPage(HttpSession session) throws Exception{
-		return null;
+		
+		return "user/myPage";
 	}
 	
 	/**
@@ -92,7 +130,8 @@ public class UserController {
 	 */
 	@GetMapping("/myPage/modifyInfo")
 	public String goToUpdateMyInfo() throws Exception{
-		return null;
+		
+		return "user/updateInfo";
 	}
 	
 	/**
@@ -104,8 +143,25 @@ public class UserController {
 	 * @param vo	수정할 정보가 담긴 UserVO 타입 객체
 	 */
 	@PostMapping("/modifyInfo")
-	public String updateMyInfo(UserVO vo) throws Exception{
-		return null;
+	public String updateMyInfo(UserVO vo, HttpSession session) throws Exception {
+	  
+	    UserVO userInfo = (UserVO) session.getAttribute("userInfo");
+
+	   
+	    if (vo.getPw() == null || vo.getPw().isEmpty()) {
+	        vo.setPw(userInfo.getPw());
+	    }
+
+	    
+	    userService.modifyInfo(vo);
+
+	   
+	    if (userInfo != null && userInfo.getMno() == vo.getMno()) {
+	        session.setAttribute("userInfo", vo);
+	        return "redirect:/user/myPage";
+	    }
+
+	    return "redirect:/user/memberDetail?mno=" + vo.getMno();
 	}
 	
 	/**
@@ -121,12 +177,26 @@ public class UserController {
 	 * 					사용자가 탈퇴할 경우에는 세션에 로그인 정보도 삭제
 	 * @param cookie	탈퇴 요청한 사용자가 자동 로그인 설정한 상태라면 쿠키에서도 정보 삭제(관리자가 회원 삭제한 경우에도)
 	 */
-	@GetMapping("/withdraw")
+	@PostMapping("/withdraw")
 	public String withdraw(
 			int mno, Criteria cri,
-			HttpSession session, Cookie cookie
+			HttpSession session, Cookie cookie,
+			HttpServletResponse response
 			) throws Exception{
-		return null;
+		userService.withdraw(mno);
+
+	    UserVO loginUser = (UserVO) session.getAttribute("userInfo");
+	    if (loginUser != null && loginUser.getMno() == mno) {
+	        session.invalidate();
+
+	        if (cookie != null) {
+	            cookie.setMaxAge(0);
+	            cookie.setPath("/");
+	            response.addCookie(cookie);
+	        }
+	        return "redirect:/";   
+	    }
+	    return "redirect:/";       
 	}
 	
 	/**
@@ -134,15 +204,19 @@ public class UserController {
 	 */
 	@GetMapping("/findIdForm")
 	public String goToFindId() throws Exception{
-		return null;
+		
+		return "user/findID";
 	}
+	
+	
 	
 	/**
 	 * 비밀번호 찾기 페이지로 이동 요청 처리
 	 */
 	@GetMapping("/findPwForm")
 	public String goToFindPw() throws Exception{
-		return null;
+		
+		return "user/findPassword";
 	}
 	
 	/**
@@ -156,7 +230,8 @@ public class UserController {
 	@GetMapping("/checkEmailForId")
 	@ResponseBody
 	public String checkEmailForId(String name, String email) throws Exception{
-		return null;
+		
+		return userService.checkAndGetEmailForId(name, email);
 	}
 	
 	/**
@@ -170,7 +245,8 @@ public class UserController {
 	@GetMapping("/checkEmailForPw")
 	@ResponseBody
 	public String checkEmailForPw(String id, String email) throws Exception{
-		return null;
+		
+		return userService.checkAndGetEmailForPw(id, email);
 	}
 	
 	/**
@@ -211,7 +287,8 @@ public class UserController {
 	@GetMapping("/findId")
 	@ResponseBody
 	public String findId(String email) throws Exception{
-		return null;
+		
+		return userService.getId(email);
 	}
 	
 	/**
@@ -222,7 +299,8 @@ public class UserController {
 	 */
 	@GetMapping("/resetPwForm")
 	public String goToResetPw(String id) throws Exception{
-		return null;
+		
+		return "user/resetPasswordForm";
 	}
 	
 	/**
@@ -233,8 +311,17 @@ public class UserController {
 	 * @param pw	변경할 새로운 비밀번호
 	 */
 	@PostMapping("/resetPw")
-	public String resetPassword(String id, String pw) throws Exception{
-		return null;
+	public String resetPassword(String id, String pw, RedirectAttributes rttr) throws Exception{
+		try {
+			userService.resetPassword(id, pw);
+			rttr.addAttribute("msg", "비밀번호가 성공적으로 변경되었습니다. 새 비밀번호로 로그인하세요");
+			return "redirect:/user/goToLogin";
+		}catch(Exception e){
+			e.getStackTrace();
+			rttr.addFlashAttribute("msg", "비밀번호 변경에 실패하였습니다. 다시 시도해 주세요.");
+	        return "redirect:/user/resetPwForm?id=" + id;
+		
+		}
 	}
 	
 	/**
@@ -245,7 +332,9 @@ public class UserController {
 	 */
 	@GetMapping("/memberList")
 	public String memberList(Criteria cri, Model model) throws Exception{
-		return null;
+		
+		model.addAllAttributes(userService.getMemberList(cri));
+		return "user/memberList";
 	}
 	
 	/**
@@ -261,8 +350,18 @@ public class UserController {
 	 * @param cri	기존에 보던 목록 페이지 정보
 	 */
 	@GetMapping("/memberDetail")
-	public String memberDetail(int mno, Criteria cri) throws Exception{
-		return null;
+	public String memberDetail(int mno, Criteria cri, Model model) throws Exception {
+	   
+		model.addAttribute("member", userService.getMemberDetail(mno));
+	    model.addAttribute("cri", cri);
+	    return "user/memberDetail";
+
 	}
-	
-}
+}	
+	    
+	    
+	    
+	    
+	    
+	    
+	    

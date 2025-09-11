@@ -12,6 +12,9 @@ import net.koreate.common.utils.PageMaker;
 import net.koreate.user.dao.UserMapper;
 import net.koreate.user.vo.UserVO;
 
+/**
+ * @since 20250912
+ */
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {

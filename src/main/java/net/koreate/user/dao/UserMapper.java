@@ -94,7 +94,7 @@ public interface UserMapper {
 	 * 
 	 * @param vo	수정할 회원 정보
 	 */
-	@Update("UPDATE member SET pw=#{pw}, name=#{name}, phone=#{phone}, birth=#{birth}, addr=#{addr} WHERE mno=#{mno} ")
+	@Update("UPDATE member SET pw=#{pw}, name=#{name}, phone=#{phone}, addr=#{addr} WHERE mno=#{mno} ")
 	void modifyInfo(UserVO vo) throws Exception;
 	
 	/**
