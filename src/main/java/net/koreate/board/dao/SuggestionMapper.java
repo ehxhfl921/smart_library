@@ -75,9 +75,9 @@ public interface SuggestionMapper {
     */
    @Select("SELECT * FROM suggestion WHERE s_userid = #{s_userid} ORDER BY s_create_date DESC"
    		+ "OFFSET #{cri.perPageNum} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
-   List<BoardVO> mySuggestion(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
+   List<BoardVO> mySuggestion(@Param("s_userid") String user_id, @Param("cri") Criteria cri) throws Exception;
    
-   @Select("SELECT count(*) FROM notice WHERE s_status = 'Y'")
+   @Select("SELECT count(*) FROM suggestion WHERE s_status = 'Y'")
 	int countSuggestion() throws Exception;
 }
 
