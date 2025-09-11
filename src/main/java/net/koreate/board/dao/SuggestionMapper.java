@@ -72,7 +72,7 @@ public interface SuggestionMapper {
     * @param cri      페이징 정보
     */
    @Select("SELECT * FROM suggestion WHERE s_userid = #{s_userid} ORDER BY s_create_date DESC"
-   		+ "LIMIT #{cri.perPageNum} OFFSET #{(cri.page - 1) * cri.perPageNum}")
+   		+ "OFFSET #{cri.perPageNum} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
    List<BoardVO> mySuggestion(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
    
    @Select("SELECT count(*) FROM notice WHERE s_status = 'Y'")
