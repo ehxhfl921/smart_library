@@ -20,7 +20,7 @@ public interface NoticeService {
 	 * @param vo 수정할 공지글 정보가 저장된 BoardVO 객체
 	 * @return 
 	 */
-	void update(BoardVO vo) throws Exception;
+	String update(BoardVO vo) throws Exception;
 	
 	/**
 	 * 전달 받은 공지글 번호로 공지글 검색 후 n_status 컬럼 'N'으로 업데이트
