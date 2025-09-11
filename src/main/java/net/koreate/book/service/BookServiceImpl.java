@@ -91,6 +91,12 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
+	public String getBomStatus(int bno) throws Exception {
+		String status = book.bomStatus(bno);
+		return status;
+	}
+	
+	@Override
 	public List<BookVO> getBomList() throws Exception {
 		List<BookVO> list = book.bookOfTheMonthList();
 		return list;

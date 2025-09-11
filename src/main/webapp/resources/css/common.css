@@ -916,8 +916,21 @@ section.hyojin .button {
     }
     
 /* 진주 */
-/* admin css*/    
-section.jinju1 h2 { text-align: center; }
+/* admin css*/  
+section.jinju1{
+	width: 1300px;
+	padding: 20px;
+	display: flex;
+	min-height: 653px;
+	justify-content: center;
+	margin: 40px auto;
+}  
+
+section.jinju1 h2.up { 
+	text-align: center; 
+	padding: 0;
+	margin-top: -35px;
+}
 
 /* Container */
 section.jinju1 .container {
@@ -945,6 +958,7 @@ section.jinju1 .row {
   gap: 16px;
   align-items: flex-start;
 }
+
 
 section.jinju1 .col {
   flex: 1 1 0;
@@ -1003,21 +1017,69 @@ section.jinju1 .table .right {
 
 /* Form tables */
 section.jinju1 .form-table {
-  width: 100%;
+  width: 1000px;
   border-collapse: collapse;
+  border: 1px solid #ccc;
+  min-height: 100px;
+  text-align: center;
+}
+
+section.jinju1 div.bookDetail{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 800px;
+	flex-wrap: wrap;
+	margin: 30px auto;
+	padding: 20px;
+}
+
+section.jinju1 div.bookDetail h2.down{
+	margin-top: 80px;
 }
 
 section.jinju1 .form-table th {
-  background: #f8fafc;
-  text-align: center;
-  font-weight: 700;
-  /* min-width 제거 */
+  	background: #f8fafc;
+  	text-align: center;
+  	font-weight: 700;
+	height: 40px;
+	border: 1px solid #ccc;
+}
+
+section.jinju1 .form-table tr:hover {
+  background: #f3f7ff;
+}
+
+section.jinju1 .form-table tr{
+	 height: 40px;
+	 border: 1px solid #ccc;
+}
+
+section.jinju1 .form-table td {
+	border: 1px solid #ccc;
+}
+
+section.jinju1 .form-table td a{
+	color: black;
+	text-decoration: none;
+}
+
+section.jinju1 .form-table td a:visited{
+	color: #0056b3;
 }
 
 section.jinju1 .form-table td:first-child {
-  width: 220px;   /* 고정폭 표지 칸 */
+  width: 210px;   /* 고정폭 표지 칸 */
   text-align: center;
   vertical-align: middle;
+  padding: 0;
+}
+
+section.jinju1 .form-table td img{
+	width: 100%;
+	height:100%;
+	border:1px solid #ccc;
+	object-fit: cover;
 }
 
 /* 왼쪽 첫 칸(표지) */
@@ -1095,6 +1157,7 @@ section.jinju1 .actions {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Image box (book cover) */
@@ -1375,4 +1438,45 @@ section.jinju2 td input:focus, section.jinju2 td textarea:focus{
   outline:none; border-color:#2f6bdc;
   box-shadow:0 0 0 3px rgba(47,107,220,.18);
   background:#fff;
+}
+
+
+.sidebar{
+	  width: 260px;
+      margin: 20px;
+      height: 280px;
+      box-sizing: border-box;
+      border:1px solid #ccc;
+      border-radius: 4px;
+}
+
+.sidebar-header {
+      background: #0d47a1;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      padding: 16px 0;
+      margin-bottom: 12px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      cursor: default;
+      pointer-events: none;
+}
+
+.sidebar-item a {
+      display: block;
+      text-decoration: none;
+      color: #000;          /* 항상 검은색 */
+      padding: 12px 16px;
+      transition: background .2s ease, color .2s ease;
+      border-bottom: 1px solid #ddd; /* 메뉴 사이 구분선 */
+ }
+ 
+.sidebar-item:last-child a {
+      border-bottom: none; /* 마지막 메뉴는 선 제거 */
+}
+.sidebar-item a:hover {
+      background: #f1f3f5;
+      color: #000;
 }

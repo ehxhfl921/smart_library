@@ -72,6 +72,13 @@ public interface BookService {
 	void removeFromBOM(int bno) throws Exception;
 	
 	/**
+	 * 전달 받은 도서 번호로 해당 도서가 이달의 도서로 등록된 상태인지 문자열로 반환
+	 * 
+	 * @param bno
+	 */
+	String getBomStatus(int bno) throws Exception;
+	
+	/**
 	 * 이달의 도서 전체 목록 조회
 	 */
 	List<BookVO> getBomList() throws Exception;

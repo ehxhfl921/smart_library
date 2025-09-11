@@ -4,8 +4,18 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju1>
-<h2>도서 목록</h2>
+<section class="jinju1">
+
+<aside class="sidebar">
+      <div class="sidebar-header">운영/관리</div>
+      <div class="sidebar-item"><a href="${path}/user/memberList">회원 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/book/admin/list">도서 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/studyroom/admin/reservationList">스터디룸 예약 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/libraryInfo">도서관 정보 관리</a></div>
+</aside>
+
+<main class="manageBook">
+<h2 class="up">도서 목록</h2>
 
   <!-- 도서 목록 테이블 -->
   <table class="form-table">
@@ -13,36 +23,62 @@
       <th>번호</th>
       <th>제목</th>
       <th>저자</th>
-      <th>출판사</th>
-      <th>발행연도</th>
+      <th>발행 기관</th>
+      <th>발행 연도</th>
     </tr>
 
-      <tr>
-        <td class="center">${book.bno}</td>
-        <td>
-          <a href="">
-            ${book.title}
-          </a>
-        </td>
-        <td>${book.author}</td>
-        <td>${book.publisher}</td>
-        <td class="center">${book.p_date}</td>
-      </tr>
-
+<c:choose>
+	<c:when test="${not empty list}"> 
+		<c:forEach var="book" items="${list}">
+	      <tr>
+	        <td class="center">${book.bno}</td>
+	        <td>
+	          <a href="${path}/book/admin/${book.bno}?page=1">
+	            ${book.title}
+	          </a>
+	        </td>
+	        <td>${book.author}</td>
+	        <td>${book.publisher}</td>
+	        <td class="center">${book.p_date}</td>
+	      </tr>
+		</c:forEach>
+	</c:when>
+	<c:otherwise>
       <tr>
         <td colspan="5" class="center">등록된 도서가 없습니다.</td>
       </tr>
+    </c:otherwise>
+</c:choose>
   </table>
 
   <!-- 페이징 처리 -->
-<div class="pagination">
-    <a href="/book/list?page=${page-1}&size=${size}">이전</a>
+<c:choose>
+	<c:when test="${not empty pm}"> 
+		<div class="pagination">
+		
+			<c:if test="${pm.first}">
+	    		<a href="${path}/book/admin/list?page=1">처음</a>
+	    	</c:if>
 
-          [${p}]
-      <a href="/book/list?page=${p}&size=${size}">[${p}]</a>
-
-      <a href="/book/list?page=${page+1}&size=${size}">다음</a>
-  </div>
+			<c:if test="${pm.prev}">
+	    		<a href="${path}/book/admin/list?page=${pm.startPage-1}">이전</a>
+	    	</c:if>
+	    	
+			<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+		      	<a href="${path}/book/admin/list?page=${i}">[${i}]</a>
+  			</c:forEach>
+		
+			<c:if test="${pm.next}">
+	    		<a href="${path}/book/admin/list?page=${pm.endPage+1}">다음</a>
+	    	</c:if>
+	    	
+	    	<c:if test="${pm.last}">
+		      	<a href="${path}/book/admin/list?page=${pm.maxPage}">마지막</a>
+		    </c:if>
+		</div>
+  	</c:when>
+</c:choose>
+</main>
 </section>
 
 <%@ include file="../common/footer.jsp" %>

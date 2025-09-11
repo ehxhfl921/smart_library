@@ -4,16 +4,16 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju1>
-<h2>도서 상세 페이지</h2>
+<section class="jinju1">
+<div class="bookDetail">
+<h2 class="up">도서 상세 페이지</h2>
 
     <!-- 도서 상세 정보 -->
     <table class="form-table">
         <tr>
             <td rowspan="5" width="220" align="center">
-                <img src=""
-                     alt="책 표지"
-                     style="width:200px; height:260px; border:1px solid #ccc;">
+                <img src="${path}/${book.cover}"
+                     alt="${book.title}">
             </td>
             <th width="100">제목</th>
             <td>${book.title}</td>
@@ -34,12 +34,15 @@
             <th>관리</th>
             <td>
               <div class="actions">
-                <form action="" method="post" style="display:inline;" 
-                      onsubmit="return confirm('이달의 도서로 등록하시겠습니까?');">
-                  <input type="hidden" name="id" value="${book.bno}">
-                  <input type="submit" value="이달의 도서로 등록" class="btn">
-                </form>
-
+              	<c:choose>
+              		<c:when test="${isBom eq 'Y'}">
+	                  <button id="bomDBtn" class="btn" style="background-color:#b91c1c;">이달의 도서에서 삭제</button>
+              		</c:when>
+              		<c:otherwise>
+                  		<button id="bomBtn" class="btn">이달의 도서로 등록</button>
+                  	</c:otherwise>
+                </c:choose>
+                
                 <form action="/book/updateForm" method="get" style="display:inline;">
                   <input type="hidden" name="id" value="${book.bno}">
                   <input type="submit" value="수정하기" class="btn outline">
@@ -51,32 +54,107 @@
                   <input type="submit" value="삭제하기" class="btn bad">
                 </form>
               </div>
-            </td>
+           </td>
           </tr>
     </table>
 
     <br>
 
     <!-- 대출 현황 -->
-    <h2>대출 현황</h2>
+    <h2 class="down">대출 현황</h2>
     <table class="form-table">
         <tr>
-            <th>대출번호</th>
-            <th>사용자ID</th>
+            <th>대출 번호</th>
+            <th>대출자ID</th>
             <th>대출일</th>
+            <th>반납일</th>
             <th>상태</th>
         </tr>
-            <tr>
-                <td>${loan.loan_no}</td>
-                <td>${loan.user_id}</td>
-                
-                <td>${loan.loan_status}</td>
-            </tr>
-            <tr>
-                <td colspan="4" align="center">대출 내역이 없습니다.</td>
-            </tr>
+        
+        <c:choose>
+	        <c:when test="${not empty list}">
+		        <tr>
+		            <td>${list.loan_no}</td>
+		            <td>${list.user_id}</td>
+		            <td>${list.borrow_date}</td>
+		            <td>${list.return_date}</td>
+		            <td>${list.loan_status}</td>
+		        </tr>	
+	        </c:when>
+	        
+	        <c:otherwise>
+		        <tr>
+		            <td colspan="5" align="center">대출 내역이 없습니다.</td>
+		        </tr>
+		    </c:otherwise>
+        </c:choose>
     </table>
-
+</div>
 </section>
 
+<script>
+const contextPath = document.querySelector("meta[name='context-path']").content;
+
+const pathParts = window.location.pathname.split("/");
+const bno = pathParts[pathParts.length - 1]; 
+console.log(bno); // "9"
+
+const params = new URLSearchParams(window.location.search);
+const page = params.get("page");
+console.log(page); // "1"
+
+const bomBtn = document.querySelector("#bomBtn");
+const bomDBtn = document.querySelector("#bomDBtn");
+
+if(bomBtn){
+	
+	// 이달의 도서로 등록
+	bomBtn.addEventListener("click", () => {
+		
+	  if (confirm("이 도서를 이달의 도서로 등록하시겠습니까?")) {
+		// 경로에서 bno 꺼내기
+	    const pathParts = window.location.pathname.split("/");
+	    const bno = pathParts[pathParts.length - 1];
+	
+	    fetch(`\${contextPath}/book/registerBom?bno=\${bno}`, {
+	      method: "GET"
+	    }).then(res => res.json())
+	    .then(data => {
+	    	alert(data.msg);
+	    }).catch(err => {
+	    	alert("등록 실패: " + err);
+	    });
+	  } // end if
+	  
+	}); // end 이달의 도서 등록 이벤트
+	
+	
+
+} // end 등록
+
+if(bomDBtn){
+	
+	// 이달의 도서에서 삭제
+	bomDBtn.addEventListener("click", () => {
+		
+		if (confirm("이 도서를 이달의 도서에서 제거하시겠습니까?")) {
+			// 경로에서 bno 꺼내기
+		    const pathParts = window.location.pathname.split("/");
+		    const bno = pathParts[pathParts.length - 1];
+	
+		    fetch(`\${contextPath}/book/removeBom?bno=\${bno}`, {
+		    	method: "GET"
+		    }).then(res => res.json())
+		    .then(data => {
+		    	alert(data.msg);
+		    }).catch(err => {
+		    	alert("삭제 실패: " + err);
+		    });
+		  } // end if
+		
+	});
+
+}
+
+</script>
 <%@ include file="../common/footer.jsp" %>

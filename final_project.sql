@@ -81,6 +81,8 @@ CREATE TABLE book_of_the_month(
 -- 전체 조회
 SELECT * FROM book_of_the_month;
 
+SELECT bom_status FROM book_of_the_month WHERE bno = 9 ORDER BY bom_no DESC LIMIT 1;
+
 -- 테이블 제거
 DROP TABLE book_of_the_month PURGE;
 
@@ -225,7 +227,9 @@ VALUES('5', '첫 여름, 완주', '김금희', '무제', '2025', 'images/5.jpg')
 INSERT INTO book_of_the_month(bno, title, author, publisher, p_date, cover)
 VALUES('6', '스파클', '최현진', '창비', '2025', 'images/6.jpg');
 
-
+-- 관리자 정보 입력
+INSERT INTO member(id, pw, name, phone, email, addr, info)
+VALUES('admin', 'admin', '관리자', '01098651936', 'admin@smart.com', '부산광역시 해운대구', 'Y');
 
 -- 도서관 정보 입력
 INSERT INTO library_info(library_name, tel, location, operating_hour, closed_date)
