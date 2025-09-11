@@ -18,6 +18,7 @@ public interface NoticeService {
 	 * 전달 받은 공지글 번호로 공지글 검색 후 수정할 정보로 업데이트
 	 * 
 	 * @param vo 수정할 공지글 정보가 저장된 BoardVO 객체
+	 * @return 
 	 */
 	void update(BoardVO vo) throws Exception;
 	
@@ -42,4 +43,5 @@ public interface NoticeService {
 	 * 		   페이징 블럭 출력을 위한 PageMaker 객체를 Map에 저장 후 반환
 	 */
 	Map<String, Object> list(Criteria cri) throws Exception;
+
 }

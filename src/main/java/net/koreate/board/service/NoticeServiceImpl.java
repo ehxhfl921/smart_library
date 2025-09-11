@@ -27,7 +27,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public void update(BoardVO vo) throws Exception {
-        map.updateNotice(vo);
+        return;
     }
 
     @Override
