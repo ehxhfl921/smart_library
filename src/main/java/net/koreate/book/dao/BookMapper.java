@@ -63,7 +63,7 @@ public interface BookMapper {
 	 * @param vo 새로 등록할 도서 정보를 담은 BookVO 객체
 	 */
 	@Insert("INSERT INTO book(title, author, publisher, p_date, cover) "
-			+ "VALUES(#{title}, #{author}, #{publisher}, #{p_date}, #{cover}")
+			+ "VALUES(#{title}, #{author}, #{publisher}, #{p_date}, #{cover})")
 	void addBook(BookVO vo) throws Exception;
 	
 	/**

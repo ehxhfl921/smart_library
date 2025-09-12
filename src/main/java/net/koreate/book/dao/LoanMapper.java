@@ -32,11 +32,16 @@ public interface LoanMapper {
 	
 	/**
 	 * 로그인 사용자의 아이디를 전달받아 해당 사용자의 도서 대출 내역을 조회 후 리스트로 반환(페이징 처리)
+	 * 도서 번호로 도서 테이블에서 제목, 저자도 같이 검색
 	 * 
 	 * @param user_id 대출 내역을 검색할 사용자 아이디
 	 * @return 해당 사용자의 도서 대출 내역(목록)
 	 */
-	@Select("SELECT * FROM book_loan WHERE user_id = #{user_id} ORDER BY loan_no DESC "
+	@Select("SELECT bl.loan_no, bl.loan_status, bl.borrow_date, bl.return_date, "
+			+ "b.title, b.author "
+			+ "FROM book_loan bl "
+			+ "INNER JOIN book b ON bl.bno = b.bno "
+			+ "WHERE bl.user_id = #{user_id} ORDER BY loan_no DESC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
 	List<BookVO> loanListOfUser(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
 	

@@ -60,8 +60,16 @@ CREATE TABLE book_loan(
 	return_date 	DATE																-- 반납일
 );
 
+SELECT l.loan_no, l 
+
 -- 전체 조회
 SELECT * FROM book_loan;
+
+INSERT INTO book_loan(bno, user_id) VALUES(2, 'rlaehdms');
+INSERT INTO book_loan(bno, user_id) VALUES(5, 'rlaehdms');
+INSERT INTO book_loan(bno, user_id) VALUES(25, 'rlaehdms');
+
+commit
 
 -- 테이블 제거
 DROP TABLE book_loan PURGE;

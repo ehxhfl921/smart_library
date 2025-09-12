@@ -3,6 +3,11 @@ package net.koreate.room.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
 import net.koreate.common.utils.Criteria;
 import net.koreate.room.vo.RoomVO;
 
@@ -31,6 +36,7 @@ public interface RoomMapper {
 	 * studyroom 테이블에서 스터디룸 정보 조회
 	 * @return 조회된 스터디룸 정보를 리스트로 반환
 	 */
+	@Select("SELECT sno, s_name FROM studyroom ORDER BY sno ")
 	List<RoomVO> rooms() throws Exception;
 	
 	/**
@@ -41,6 +47,10 @@ public interface RoomMapper {
 	 * @param reserve_date	전달 받은 사용자가 예약하려는 날짜
 	 * @return				해당 날짜의 스터디룸 예약 정보 리스트
 	 */
+	@Select("SELECT * "
+			+ "FROM studyroom_reservation "
+			+ "WHERE reserve_date = #{reserve_date} AND  status = 'APPROVED' "
+			+ "ORDER BY rno DESC")
 	List<RoomVO> searchReservationByDate(Date reserve_date) throws Exception;
 	
 	/**
@@ -48,6 +58,9 @@ public interface RoomMapper {
 	 * 
 	 * @param vo	스터디룸 예약 정보를 담은 RoomVO 타입 객체
 	 */
+	@Insert("INSERT INTO studyroom_reservation "
+			+ "(sno, user_id, user_name, reserve_date)"
+			+ "VALUES(#{sno},#{user_id}, #{user_name}, #{reserve_date})")
 	void makeReservation(RoomVO vo) throws Exception;
 	
 	/**
@@ -58,7 +71,11 @@ public interface RoomMapper {
 	 * @param cri		페이징 정보
 	 * @return			페이징 처리된 로그인 사용자의 스터디룸 이용(예약) 내역 리스트 반환
 	 */
-	List<RoomVO> myReservationList(String user_id, Criteria cri) throws Exception;
+	@Select("SELECT * FROM studyroom_reservation "
+			+ "WHERE user_id =#{user_id}"
+			+ "ORDER BY rno DESC"
+			+ "OFFSET#{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY ")
+	List<RoomVO> myReservationList(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
 	
 	/**
 	 * 스터디룸 예약 내역 전체 조회 - rno 최근 순으로 정렬
@@ -66,6 +83,9 @@ public interface RoomMapper {
 	 * @param cri	페이징 정보
 	 * @return		페이징 처리된 모든 스터디룸 예약 내역 리스트로 반환
 	 */
+	@Select( "SELECT * FROM studyroom_reservation "
+			+ "ORDER BY rno DESC "
+			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY ")
 	List<RoomVO> reservationList(Criteria cri) throws Exception;
 	
 	/**
@@ -73,6 +93,8 @@ public interface RoomMapper {
 	 *  
 	 * @param rno	검색할 예약 번호
 	 */
+	@Select("SELECT rno, sno, user_id, user_name, reserve_date, apply_date, status "
+			  + "FROM studyroom_reservation WHERE rno = #{rno}")
 	RoomVO reservationInfo(int rno) throws Exception;
 	
 	/**
@@ -80,6 +102,7 @@ public interface RoomMapper {
 	 * 
 	 * @param rno	예약 승인할 스터디룸 예약 번호
 	 */
+	@Update("UPDATE studyroom_reservation SET status = 'APPROVED' WHERE rno = #{rno} ")
 	void approve(int rno) throws Exception;
 	
 	/**
@@ -91,13 +114,17 @@ public interface RoomMapper {
 	 * @param sno			스터디룸 번호
 	 * @param reserve_date	예약 날짜
 	 */
-	void rejectOthers(int rno, int sno, Date reserve_date) throws Exception;
+	@Update("UPDATE studyroom_reservation "
+			+ "SET status = 'REJECTED' "
+			+ "WHERE sno = #{sno} AND reserve_date =#{reserve_date}")
+	void rejectOthers(@Param("rno")int rno, @Param("sno")int sno, @Param("reserve_date")Date reserve_date) throws Exception;
 	
 	/**
 	 * 전달 받은 스터디룸 예약 번호로 예약 거절 처리 - status 컬럼 'REJECTED'로 변경
 	 * 
 	 * @param rno 	예약 거절할 스터디룸 예약 번호
 	 */
+	@Update("UPDATE studyroom_reservation SET status = 'REJECTED' WHERE rno = #{rno}")
 	void reject(int rno) throws Exception;
 	
 	/**
@@ -105,11 +132,13 @@ public interface RoomMapper {
 	 * 
 	 * @param rno 	예약 거절할 스터디룸 예약 번호
 	 */
+	@Update("UPDATE studyroom_reservation SET status = 'CANCELED' WHERE rno = #{rno} ")
 	void cancel(int rno) throws Exception;
 	
 	/**
 	 * 스터디룸 예약 테이블의 전체 행 개수 조회
 	 */
+	@Select("SELECT count(*) FROM studyroom_reservation")
 	int countAllReservation() throws Exception;
 
 	/**
@@ -117,5 +146,6 @@ public interface RoomMapper {
 	 * 
 	 * @param user_id 로그인 사용자(스터디룸 이용 내역 개수 조회할 아이디)
 	 */
+	@Select("SELECT count(*) FROM studyroom_reservation WHERE user_id = #{user_id} ")
 	int countMyReservation(String user_id) throws Exception;
 }

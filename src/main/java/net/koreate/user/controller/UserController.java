@@ -179,25 +179,26 @@ public class UserController {
 	 */
 	@PostMapping("/withdraw")
 	public String withdraw(
-			int mno, Criteria cri,
-			HttpSession session, Cookie cookie,
-			HttpServletResponse response
+			int mno
 			) throws Exception{
+		
 		userService.withdraw(mno);
 
-	    UserVO loginUser = (UserVO) session.getAttribute("userInfo");
-	    if (loginUser != null && loginUser.getMno() == mno) {
-	        session.invalidate();
-
-	        if (cookie != null) {
-	            cookie.setMaxAge(0);
-	            cookie.setPath("/");
-	            response.addCookie(cookie);
-	        }
-	        return "redirect:/";   
-	    }
-	    return "redirect:/";       
+	    return "redirect:/user/logout";       
 	}
+	
+	@PostMapping("/admin/delete")
+	public String withdraw(
+			int mno, Criteria cri
+			) throws Exception{
+		
+		userService.withdraw(mno);
+
+
+	    	return "redirect:/user/memberList?page=" +cri.getPage();
+	    }
+
+	
 	
 	/**
 	 * 아이디 찾기 페이지로 이동 요청 처리
