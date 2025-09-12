@@ -55,6 +55,7 @@ public interface SuggestionMapper {
    @Update("UPDATE suggestion SET "
          + " s_title = #{s_title} , "
          + " s_content = #{s_content} , "
+         + " s_update_date = CURRENT_TIMESTAMP "
          + " WHERE sug_no = #{sug_no}")
    int suggsestionUpdate(BoardVO vo) throws Exception;
 
