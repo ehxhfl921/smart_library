@@ -69,6 +69,17 @@ public class NoticeController {
       return "notice/noticeUpdate";
    }
 
+   
+   /**
+    * 공지 사항 작성 폼 페이지로 이동 요청 처리
+    */
+   @GetMapping("/register")
+   public String noticeRegisterForm() throws Exception{
+	   
+	   return "notice/noticeWrite";
+   }
+   
+   
    /**
     * 공지 사항 등록 요청 처리
     * @param vo 등록할 공지 사항 게시글 정보
@@ -78,7 +89,7 @@ public class NoticeController {
       System.out.println("param data : " + vo);
       String result = ns.write (vo);
       model.addAttribute("msg", result);
-      return "redirect:/";
+      return "notice/noticeList";
    }
    
    /**
