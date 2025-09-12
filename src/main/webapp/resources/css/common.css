@@ -932,6 +932,11 @@ section.jinju1 h2.up {
 	margin-top: -35px;
 }
 
+section.jinju1 main.loanList{
+	margin: 0 60px;
+	
+}
+
 /* Container */
 section.jinju1 .container {
   max-width: 1100px;
@@ -1062,9 +1067,13 @@ section.jinju1 .registerBook .form-table td img{
 }
 
 section.jinju1 main.registerBook .form-table,
-section.jinju1 main.modifyBook .form-table{
+section.jinju1 main.modifyBook .form-table,{
 	height: 500px;
 	width: 500px;
+}
+
+section.jinju1 main.loanList .form-table{
+	width: 800px;
 }
 
 section.jinju1 .form-table th {
