@@ -37,7 +37,9 @@
 		      		<td>${loan.loan_no}</td>
 			        <td>${loan.title}</td>
 			        <td>${loan.author}</td>
-			        <td><fmt:formatDate value="${loan.borrow_date}" pattern="yyyy-MM-dd"/></td>
+			        <td>
+			        	<fmt:formatDate value="${loan.borrow_date}" pattern="yyyy-MM-dd"/>
+			        </td>
 			        <td>
 			        	<c:if test="${!empty loan.return_date}">
 			        		<fmt:formatDate value="${loan.return_date}" pattern="yyyy-MM-dd"/>

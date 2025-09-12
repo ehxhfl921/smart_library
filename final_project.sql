@@ -60,7 +60,8 @@ CREATE TABLE book_loan(
 	return_date 	DATE																-- 반납일
 );
 
-SELECT l.loan_no, l 
+UPDATE book_loan SET return_date = CURRENT_TIMESTAMP WHERE bno = 2;
+UPDATE book_loan SET loan_status = 'RETURNED' WHERE bno = 2;
 
 -- 전체 조회
 SELECT * FROM book_loan;

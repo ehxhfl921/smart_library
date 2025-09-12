@@ -26,7 +26,11 @@ public interface LoanMapper {
 	 * 
 	 * @param bno 대출 기록을 확인할 도서 번호
 	 */
-	@Select("SELECT * FROM book_loan WHERE bno = #{bno} ORDER BY loan_no DESC "
+	@Select("SELECT bl.loan_no, bl.user_id, bl.loan_status, bl.borrow_date, bl.return_date, "
+			+ "u.name "
+			+ "FROM book_loan bl "
+			+ "INNER JOIN member u ON bl.user_id = u.id "
+			+ "WHERE bl.bno = #{bno} ORDER BY loan_no DESC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
 	List<BookVO> loanListOfBook(@Param("bno") int bno, @Param("cri") Criteria cri) throws Exception;
 	
