@@ -1,5 +1,7 @@
 package net.koreate.book.vo;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -19,6 +21,8 @@ public class BookVO {
 	private int loan_no; 		  // 대출 번호
 	private String user_id;		  // 대출자 아이디 
 	private String loan_status;	  // 도서 대출 상태 (대출 중/반납)
+	private Date borrow_date;	  // 대출한 날짜
+	private Date return_date;	  // 반납한 날짜
 	
 	private int bom_no;			  // 이달의 도서 번호
 	private String bom_status;	  // 이달의 도서 등록 여부
