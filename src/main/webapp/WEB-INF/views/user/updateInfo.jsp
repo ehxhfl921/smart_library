@@ -10,8 +10,8 @@
 
   <div class="login_wrap">
     <form  method="post" action="${path}/user/modifyInfo" autocomplete="off">
-      <table>
        <input type="hidden" name="mno" value="${userInfo.mno}">
+      <table>
         <tr>
           <th>아이디</th>
           <td><input type="text" name="id" value="${userInfo.id}" readonly></td>
