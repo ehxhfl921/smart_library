@@ -71,7 +71,7 @@
     <table class="form-table">
         <tr>
             <th>대출 번호</th>
-            <th>대출자ID</th>
+            <th>대출자 ID</th>
             <th>대출일</th>
             <th>반납일</th>
             <th>상태</th>
@@ -79,13 +79,31 @@
         
         <c:choose>
 	        <c:when test="${not empty list}">
-		        <tr>
-		            <td>${list.loan_no}</td>
-		            <td>${list.user_id}</td>
-		            <td>${list.borrow_date}</td>
-		            <td>${list.return_date}</td>
-		            <td>${list.loan_status}</td>
-		        </tr>	
+	        	<c:forEach var="loan" items="${list}">
+			        <tr>
+			            <td>${loan.loan_no}</td>
+			            <td>${loan.name}(${loan.user_id})</td>
+			            <td>
+							<fmt:formatDate value="${loan.borrow_date}" pattern="yyyy-MM-dd"/>
+						</td>
+			            <td>
+							<c:if test="${!empty loan.return_date}">
+			        			<fmt:formatDate value="${loan.return_date}" pattern="yyyy-MM-dd"/>
+			        		</c:if>
+			        		<c:if test="${empty loan.return_date}">
+			        			-
+			        		</c:if>
+						</td>
+			            <td>
+			            	<c:if test="${loan.loan_status eq 'BORROWED'}">
+			            		대출 중
+			            	</c:if>
+			            	<c:if test="${loan.loan_status eq 'RETURNED'}">
+			            		반납
+			            	</c:if>
+			            </td>
+			        </tr>	
+		        </c:forEach>
 	        </c:when>
 	        
 	        <c:otherwise>

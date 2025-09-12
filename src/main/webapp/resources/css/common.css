@@ -934,7 +934,6 @@ section.jinju1 h2.up {
 
 section.jinju1 main.loanList{
 	margin: 0 60px;
-	
 }
 
 /* Container */
@@ -1045,7 +1044,8 @@ section.jinju1 div.bookDetail h2.down{
 
 section.jinju1 .bookDetail .table tr:hover,
 section.jinju1 .modifyBook .form-table tr:hover,
-section.jinju1 .registerBook .form-table tr:hover{
+section.jinju1 .registerBook .form-table tr:hover,
+section.jinju1 .loanList .form-table tr:hover{
 	background-color: white;
 }
 
@@ -1067,7 +1067,7 @@ section.jinju1 .registerBook .form-table td img{
 }
 
 section.jinju1 main.registerBook .form-table,
-section.jinju1 main.modifyBook .form-table,{
+section.jinju1 main.modifyBook .form-table{
 	height: 500px;
 	width: 500px;
 }
@@ -1218,7 +1218,7 @@ section.jinju1 main.manageBook p.newBookBtnBox .btn:hover{
 	font-weight: bold;
 }
 
-section.jinju1 main.manageBook a.activePage{
+section.jinju1 a.activePage{
 	font-weight: bold;
 	color: #0d47a1;
 }
@@ -1512,7 +1512,7 @@ section.jinju2 td input:focus, section.jinju2 td textarea:focus{
 .sidebar{
 	  width: 260px;
       margin: 20px;
-      height: 280px;
+      height: 255px;
       box-sizing: border-box;
       border:1px solid #ccc;
       border-radius: 4px;
@@ -1525,7 +1525,6 @@ section.jinju2 td input:focus, section.jinju2 td textarea:focus{
       font-size: 16px;
       text-align: center;
       padding: 16px 0;
-      margin-bottom: 12px;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
       cursor: default;
