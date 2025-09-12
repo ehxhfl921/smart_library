@@ -9,7 +9,6 @@
  	<main class="content">
     <h2 class="up">공지사항</h2>
     <button class="btn" onclick="if(confirm('공지 사항을 작성하시겠습니까?'))location.href='${path}/notice/register';">작성</button>
-
   
   <table class="form-table">
     <thead>
