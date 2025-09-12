@@ -4,18 +4,34 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
+<c:if test="${not empty msg}">
+    <script>
+        alert('${msg}');
+    </script>
+</c:if>
+
 <section class="jinju1">
 
 <aside class="sidebar">
       <div class="sidebar-header">운영/관리</div>
       <div class="sidebar-item"><a href="${path}/user/memberList">회원 관리</a></div>
-      <div class="sidebar-item"><a href="${path}/book/admin/list">도서 관리</a></div>
+      <div class="sidebar-item">
+      	<a href="${path}/book/admin/list" 
+      	   style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
+      	   도서 관리
+      	</a>
+      </div>
       <div class="sidebar-item"><a href="${path}/studyroom/admin/reservationList">스터디룸 예약 관리</a></div>
       <div class="sidebar-item"><a href="${path}/libraryInfo">도서관 정보 관리</a></div>
 </aside>
 
 <main class="manageBook">
-<h2 class="up">도서 목록</h2>
+<h2 class="up">도서 관리</h2>
+<p class="newBookBtnBox">
+	<button class="btn" onclick="if(confirm('신규 도서를 등록하시겠습니까?'))location.href='${path}/book/admin/register';">
+		신규 도서 등록
+	</button>
+</p>
 
   <!-- 도서 목록 테이블 -->
   <table class="form-table">
@@ -65,7 +81,10 @@
 	    	</c:if>
 	    	
 			<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
-		      	<a href="${path}/book/admin/list?page=${i}">[${i}]</a>
+			      	<a href="${path}/book/admin/list?page=${i}"
+			      	   <c:if test='${i == pm.cri.page}'> class='activePage' </c:if> >
+			      		[${i}]
+			      	</a>
   			</c:forEach>
 		
 			<c:if test="${pm.next}">

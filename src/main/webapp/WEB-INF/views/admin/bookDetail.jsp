@@ -4,14 +4,20 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
+<c:if test="${not empty msg}">
+    <script>
+        alert('${msg}');
+    </script>
+</c:if>
+
 <section class="jinju1">
 <div class="bookDetail">
 <h2 class="up">도서 상세 페이지</h2>
 
     <!-- 도서 상세 정보 -->
-    <table class="form-table">
+    <table class="table">
         <tr>
-            <td rowspan="5" width="220" align="center">
+            <td rowspan="5" align="center">
                 <img src="${path}/${book.cover}"
                      alt="${book.title}">
             </td>
@@ -23,12 +29,12 @@
             <td>${book.author}</td>
         </tr>
         <tr>
-            <th>출판사</th>
+            <th>발행 기관</th>
             <td>${book.publisher}</td>
         </tr>
         <tr>
-            <th>발행연도</th>
-            <td>${book.p_date}</td>
+            <th>발행 연도</th>
+            <td>${book.p_date}년</td>
         </tr>
         <tr>
             <th>관리</th>
@@ -36,21 +42,21 @@
               <div class="actions">
               	<c:choose>
               		<c:when test="${isBom eq 'Y'}">
-	                  <button id="bomDBtn" class="btn" style="background-color:#b91c1c;">이달의 도서에서 삭제</button>
+	                  <button id="bomDBtn" class="btn" style="background-color:#b91c1c;border:none;">이달의 도서에서 삭제</button>
               		</c:when>
               		<c:otherwise>
                   		<button id="bomBtn" class="btn">이달의 도서로 등록</button>
                   	</c:otherwise>
                 </c:choose>
                 
-                <form action="/book/updateForm" method="get" style="display:inline;">
-                  <input type="hidden" name="id" value="${book.bno}">
+                <form action="${path}/book/admin/modify" method="get" style="display:inline;">
+                  <input type="hidden" name="bno" value="${book.bno}">
                   <input type="submit" value="수정하기" class="btn outline">
                 </form>
 
-                <form action="" method="post" style="display:inline;" 
+                <form action="${path}/book/admin/remove/${book.bno}" method="get" style="display:inline;" 
                       onsubmit="return confirm('삭제하시겠습니까?');">
-                  <input type="hidden" name="id" value="${book.bno}">
+                  <input type="hidden" name="page" value="${pm.cri.page}">
                   <input type="submit" value="삭제하기" class="btn bad">
                 </form>
               </div>
@@ -121,6 +127,7 @@ if(bomBtn){
 	    }).then(res => res.json())
 	    .then(data => {
 	    	alert(data.msg);
+	    	location.reload();
 	    }).catch(err => {
 	    	alert("등록 실패: " + err);
 	    });
@@ -147,6 +154,7 @@ if(bomDBtn){
 		    }).then(res => res.json())
 		    .then(data => {
 		    	alert(data.msg);
+		    	location.reload();
 		    }).catch(err => {
 		    	alert("삭제 실패: " + err);
 		    });
