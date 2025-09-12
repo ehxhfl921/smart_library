@@ -30,14 +30,6 @@ public class NoticeController {
    public String noticeList(Criteria cri, Model model) throws Exception{
       System.out.println("공지사항 목록 noticeList 요청");
        
-       String result = (String) model.getAttribute("result");
-       if (result != null) {
-           model.addAttribute("result", result);
-           model.getAttribute("result");
-       }
-       
-       System.out.println("noticeList Criteria : " + cri);
-       
        // 조회된 공지사항 게시글 목록
        Map<String, Object> map = ns.list(cri);
        model.addAllAttributes(map);
