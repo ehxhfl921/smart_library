@@ -30,7 +30,7 @@ public class RoomServiceImpl implements RoomService {
 		List<RoomVO> reserved = mapper.searchReservationByDate(reserve_date);
 		
 		map.put("rooms", rooms);
-		map.put("reserved", reserved);
+		map.put("reservedRooms", reserved);
 		return map;
 	}
 

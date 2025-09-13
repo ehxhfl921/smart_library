@@ -503,53 +503,100 @@ section.hyojin .notice-list li:last-child {
     }
     
 /* roomReservation */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-    }
+section.jinju1 .roomReservation {
+	width:800px; 
+    box-sizing:border-box;
+    margin: 0 60px;
+}
 
-section.hyojin .content h2 {
-      margin:0 0 15px 0;
-    }
+section.jinju1 div#studyroomBox{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	gap: 30px;
+	padding: 20px;
+}
 
-section.hyojin .date-selection {
+section.jinju1 div#studyroomBox p{
+	font-weight:bold;
+	width:800px;
+	margin: 0;
+	padding: 20px;
+}
+
+section.jinju1 div#studyroomBox p span{
+	margin-right: 20px;	
+}
+
+section.jinju1 div#studyroomBox .available{
+	border:3px solid #0d47a1; 
+	width:200px; 
+	height:200px;
+	border-radius: 30px;
+	text-align: center;
+	line-height: 200px;
+	font-size: 20px;
+}
+
+section.jinju1 div#studyroomBox .unavailable{
+	border:3px solid #ccc; 
+	width:200px; 
+	height:200px;
+	border-radius: 30px;
+	text-align: center;
+	line-height: 200px;
+	font-size: 20px;
+	color: #ccc;
+}
+
+
+div#studyroomBox .available.selected{
+	background-color: #0d47a1;
+	color: white;
+}
+
+section.jinju1 div#studyroomBox .available:hover{
+	background-color: #0d47a1;
+	transition: 0.1s ease;
+	color: white;
+	cursor: pointer;
+}
+
+section.jinju1 .roomReservation .btnBox{
+	width: 500px;
+	text-align: center;
+	margin: 20px auto;
+}
+
+section.jinju1 .date-selection {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 15px;
-    }
+}
 
-section.hyojin .date-input {
-      flex-grow: 1;
+section.jinju1 .date-input {
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 4px;
-    }
+      width: 400px;
+}
 
-section.hyojin .select-button {
+section.jinju1 .select-button {
       padding: 8px 15px;
       border: none;
       background-color: #0d47a1;
       color: white;
       border-radius: 4px;
       cursor: pointer;
+      width: 100px;
+      height: 40px;
     }
 
-section.hyojin .select-button:hover {
+section.jinju1 .select-button:hover {
       background-color: #0371e6;
     }
 
-section.hyojin .extra-box {
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-      padding: 15px;
-      margin-top: 15px;
-      flex:1;
-    }
 
 /* searchBookList */
 
@@ -694,6 +741,7 @@ section.searchBook .pageBtn:hover{
 	background-color: #0d47a1;
 	cursor: pointer;
 	font-weight: bold;
+	transition: 0.1s ease;
 }
 
 section.searchBook .pageBtn:active{
@@ -718,6 +766,7 @@ section.searchBook div#pagenation #textBtn:hover{
 	background-color: #0d47a1;
 	cursor: pointer;
 	font-weight: bold;
+	transition: 0.1s ease;
 }
 
 /* suggestionDetail */
@@ -966,6 +1015,7 @@ section.jinju1 main.lobraryInfo .btn:hover{
 	color: #0d47a1;
 	cursor: pointer;
 	font-weight: bold;
+	transition: 0.1s ease;
 }
 
 section.jinju1 main.libraryInfo div.content{
@@ -1282,6 +1332,7 @@ section.jinju1 main.manageBook div.newBookBtnBox .btn:hover{
 	color: #0d47a1;
 	border: 2px solid #0d47a1;
 	font-weight: bold;
+	transition: 0.1s ease;
 }
 
 section.jinju1 a.activePage{

@@ -1,10 +1,13 @@
 package net.koreate.room.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import net.koreate.common.utils.Criteria;
 import net.koreate.room.service.RoomService;
+import net.koreate.room.vo.RoomVO;
+import net.koreate.user.vo.UserVO;
 
 @Controller
 @RequestMapping("/studyroom")
@@ -45,9 +49,24 @@ public class RoomController {
 	@GetMapping("/{reserve_date}")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> getRoomsByDate(
-				@PathVariable("reserve_date") Date reserve_date
+				@PathVariable("reserve_date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date reserve_date
 			) throws Exception{
-		return null;
+		
+		ResponseEntity<Map<String, Object>> entity = null;
+		Map<String, Object> result = null;
+		
+		try {
+			
+			result = rs.getRoomsByDate(reserve_date);
+			entity = new ResponseEntity<>(result, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+
+		return entity;
 	}
 	
 	/**
@@ -56,14 +75,54 @@ public class RoomController {
 	 * @param sno			예약할 스터디룸 번호
 	 * @param reserve_date	예약 희망일
 	 */
-	@PostMapping("")
+	@PostMapping(value="", produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public ResponseEntity<String> makeReservation(
-			@RequestBody int sno,
-			@RequestBody Date reserve_date,
+			@RequestBody Map<String, Object> data,
 			HttpSession session
 			) throws Exception{
-		return null;
+		
+		String snoStr = (String) data.get("sno");
+		int sno = Integer.parseInt(snoStr);
+		
+	    String dateStr = (String) data.get("date");
+	    Date reserve_date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+	    
+		ResponseEntity<String> entity = null;
+		
+		RoomVO vo = new RoomVO();
+		
+		UserVO user = (UserVO)session.getAttribute("userInfo");
+		
+		// 인터셉터 만든 뒤 삭제
+		if(user == null) {
+		    return new ResponseEntity<>("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
+		}
+		
+		
+		if(user != null) {
+			String user_id = user.getId();
+			String user_name = user.getName();
+			vo.setUser_id(user_id);
+			vo.setUser_name(user_name);
+		}
+		
+		vo.setSno(sno);
+		vo.setReserve_date(reserve_date);
+		
+		try {
+			
+			rs.makeReservation(vo);
+			String msg = "스터디룸 예약 신청을 완료했습니다.";
+			entity = new ResponseEntity<>(msg, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			String msg = "스터디룸 예약 신청을 완료하지 못했습니다.";
+			entity = new ResponseEntity<>(msg, HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
 	}
 	
 	/**
@@ -75,9 +134,24 @@ public class RoomController {
 	@GetMapping("/myReservationList")
 	public String goToMyReservationList(
 			Criteria cri,
-			HttpSession session
+			HttpSession session,
+			Model model
 			) throws Exception{
-		return null;
+		
+		UserVO user = (UserVO)session.getAttribute("userInfo");
+		String user_id = null;
+		
+		if(user != null) {
+			user_id = user.getId();
+			try {
+				Map<String, Object> result = rs.getMyReservation(user_id, cri);
+				model.addAllAttributes(result);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return "room/reservationList";
 	}
 	
 	/**
@@ -109,13 +183,19 @@ public class RoomController {
 	@PatchMapping("/approve/{rno}")
 	@ResponseBody
 	public String approveReservation(
-			@PathVariable("rno") int rno,
-			Criteria cri,
-			RedirectAttributes rttr
-			) throws Exception{
-		rs.approveReservation(rno);
-		rttr.addFlashAttribute("msg","예약 승인되었습니다.");
-		return "redirect:/studyroom/admin/reservationList?page=" + cri.getPage();
+			@PathVariable("rno") int rno) throws Exception{
+		
+		String msg = "";
+		
+		try {
+			rs.approveReservation(rno);
+			msg = "예약을 승인하였습니다.";
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg = "예약 승인에 실패하였습니다.";
+		}
+		
+		return msg;
 	}
 	
 	/**
@@ -126,13 +206,21 @@ public class RoomController {
 	@PatchMapping("/reject/{rno}")
 	@ResponseBody
 	public  String rejectReservation(
-			@PathVariable("rno") int rno,
-			Criteria cri,
-			RedirectAttributes rttr
+			@PathVariable("rno") int rno
 			) throws Exception{
-		rs.rejectReservation(rno);
-		rttr.addFlashAttribute("msg", "예약 거절되었습니다.");
-		return "redirect:/studyroom/admin/reservationList?page=" + cri.getPage();
+		
+		String msg = "";
+		
+		try {
+			rs.rejectReservation(rno);
+			msg = "예약을 거절하였습니다.";
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg = "예약 거절에 실패하였습니다.";
+		}
+		
+		
+		return msg;
 	}
 	
 	/**
@@ -143,19 +231,20 @@ public class RoomController {
 	@PatchMapping("/cancel/{rno}")
 	@ResponseBody
 	public String cancelReservation(
-			@PathVariable("rno") int rno, 
-			Criteria cri,
-			RedirectAttributes rttr
+			@PathVariable("rno") int rno
 			) throws Exception{
+		
+		String msg = "";
+		
 		try {
 			rs.cancelReservation(rno);
-			rttr.addFlashAttribute("msg", "예약 취소되었습니다.");
+			msg = "예약을 취소하였습니다.";
 		}catch(Exception e) {
 			e.printStackTrace();
-			rttr.addFlashAttribute("msg", "취소 처리 중 오류가 발생했습니다. ");
-			
+			msg = "예약 취소 처리 중 오류가 발생했습니다.";
 		}
-		return "redirect:/studyroom/admin/reservationList?page=" + cri.getPage();
+		
+		return msg;
 	}
 	
 }
