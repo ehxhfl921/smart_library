@@ -245,4 +245,6 @@ INSERT INTO library_info(library_name, tel, location, operating_hour, closed_dat
 VALUES('스마트 도서관', '051.2345.8765', '부산광역시 충렬대로 84', '09:00 ~ 18:00', '매달 둘째 주 월요일');
 
 UPDATE library_info SET location = '부산광역시 동래구 충렬대로 84';
+
+DELETE FROM member WHERE id = 'skris0125';
 commit
