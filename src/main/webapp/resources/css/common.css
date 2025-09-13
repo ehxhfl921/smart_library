@@ -1302,8 +1302,14 @@ section.jinju1 .btn.warn {
 }
 
 section.jinju1 .btn.bad {
-  background: #b91c1c;
-  border-color: #b91c1c;
+  background: #cf1f1f;
+  border-color: #cf1f1f;
+}
+
+section.jinju1 .btn.bad:hover{
+	background: #df2f2f;
+  	border-color: #df2f2f;
+  	transition: 0.1s ease;
 }
 
 section.jinju1 .actions {

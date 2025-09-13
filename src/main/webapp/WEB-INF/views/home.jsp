@@ -89,7 +89,7 @@
 		slide.style.transform = "translateX(-"+ (currentIndex * 600) +"px)";
 	}
 	
-	setInterval(slideCard, 2000);
+	setInterval(slideCard, 4000);
 </script>
 
 <%@ include file="common/footer.jsp" %>

@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<jsp:useBean id="now" class="java.util.Date" />
+<c:set var="today" value="${now}" />
 <!-- 헤더 JSP에 포함 -->
 
 <!DOCTYPE html>
