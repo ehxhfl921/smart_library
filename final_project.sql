@@ -60,15 +60,15 @@ CREATE TABLE book_loan(
 	return_date 	DATE																-- 반납일
 );
 
-UPDATE book_loan SET return_date = CURRENT_TIMESTAMP WHERE bno = 2;
-UPDATE book_loan SET loan_status = 'RETURNED' WHERE bno = 2;
+UPDATE book_loan SET return_date = CURRENT_TIMESTAMP WHERE bno = 25;
+UPDATE book_loan SET loan_status = 'RETURNED' WHERE bno = 25;
 
 -- 전체 조회
 SELECT * FROM book_loan;
 
-INSERT INTO book_loan(bno, user_id) VALUES(2, 'rlaehdms');
-INSERT INTO book_loan(bno, user_id) VALUES(5, 'rlaehdms');
-INSERT INTO book_loan(bno, user_id) VALUES(25, 'rlaehdms');
+INSERT INTO book_loan(bno, user_id) VALUES(6, 'rlaehdms');
+INSERT INTO book_loan(bno, user_id) VALUES(42, 'rlaehdms');
+INSERT INTO book_loan(bno, user_id) VALUES(43, 'rlaehdms');
 
 commit
 

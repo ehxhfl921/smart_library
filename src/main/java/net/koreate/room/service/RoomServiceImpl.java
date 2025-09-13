@@ -91,6 +91,7 @@ public class RoomServiceImpl implements RoomService {
 		PageMaker pm = new PageMaker();
 		pm.setCri(cri);
 		pm.setTotalCount(totalCount);
+		pm.setDisplayPageNum(10);
 
 		map.put("list", list);
 		map.put("pm", pm);

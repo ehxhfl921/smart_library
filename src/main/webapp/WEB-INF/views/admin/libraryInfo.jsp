@@ -57,7 +57,9 @@
 					</td>
 				</tr>
 			</table>
-			<button type="submit" class="btn">수정하기</button>
+			<div style="text-align: center;width:750px;margin:20px auto;">
+				<button type="submit" class="btn">수정하기</button>
+			</div>
 		</form>
 	
 	</div>
