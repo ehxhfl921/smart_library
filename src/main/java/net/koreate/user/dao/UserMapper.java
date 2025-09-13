@@ -58,7 +58,7 @@ public interface UserMapper {
 	 * @param email		아이디 찾기 할 회원 이메일
 	 * @return			이름과 이메일이 일치하는 회원의 이메일
 	 */
-	@Select("SELECT email * FROM member WHERE name=#{name} AND email=#{email} AND status='Y'")
+	@Select("SELECT email FROM member WHERE name=#{name} AND email=#{email} AND status='Y'")
 	String getEmailForId(@Param("name")String name, @Param("email")String email) throws Exception;
 	
 	/**
