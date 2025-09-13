@@ -35,12 +35,12 @@
                         <tr>
                             <td class="center">${notice.nno}</td>
                             <td>
-                                <a href="${path}/book/notice/${notice.nno}?page=1">
+                                <a href="${path}/notice/detail?nno=${notice.nno}">
                                     ${notice.n_title}
                                 </a>
                             </td>
                             <td>${notice.n_author}</td>
-                            <td class="center">${book.p_date}</td>
+                            <td class="center">${notice.n_create_date}</td>
 	      				</tr>
 							</c:forEach>
 						</c:when>
