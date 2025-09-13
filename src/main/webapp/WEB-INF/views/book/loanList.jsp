@@ -9,18 +9,18 @@
 <aside class="sidebar" style="width:220px;">
       <div class="sidebar-header">내 서재</div>
       <div class="sidebar-item">
-      	<a href="${path}/book/admin/list" 
+      	<a href="${path}/book/myPage/loans?page=1" 
       	   style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
       	   도서 대출 현황
       	</a>
       </div>
-      <div class="sidebar-item"><a href="${path}/user/memberList">스터디룸 예약 현황</a></div>
-      <div class="sidebar-item"><a href="${path}/studyroom/admin/reservationList">작성한 건의 사항</a></div>
+      <div class="sidebar-item"><a href="${path}/studyroom/myReservationList">스터디룸 예약 현황</a></div>
+      <div class="sidebar-item"><a href="${path}/suggest/mySuggestion">작성한 건의 사항</a></div>
 </aside>
 
 	<main class="loanList">
       <h2>나의 도서 대출 현황</h2>
-      
+      <hr style="margin: 30px 0;">
 	<table class="form-table">
     	<tr>
 	      		<th>대출 번호</th>

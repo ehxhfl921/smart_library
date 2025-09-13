@@ -22,17 +22,17 @@
       	</a>
       </div>
       <div class="sidebar-item"><a href="${path}/studyroom/admin/reservationList">스터디룸 예약 관리</a></div>
-      <div class="sidebar-item"><a href="${path}/libraryInfo">도서관 정보 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/manageInfo">도서관 정보 관리</a></div>
 </aside>
 
 <main class="manageBook">
-<h2 class="up">도서 관리</h2>
-<p class="newBookBtnBox">
+<div class="newBookBtnBox">
+	<h2>도서 관리</h2>
 	<button class="btn" onclick="if(confirm('신규 도서를 등록하시겠습니까?'))location.href='${path}/book/admin/register';">
 		신규 도서 등록
 	</button>
-</p>
-
+</div>
+<hr>
   <!-- 도서 목록 테이블 -->
   <table class="form-table">
     <tr>

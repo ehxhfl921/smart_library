@@ -4,47 +4,45 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju1>
-<h2>도서관리</h2>
-    <div style="text-align: right; margin-bottom: 10px;">
-         <form action="/book/registerForm" method="get" style="margin:0;">
-            <input type="submit" value="신규 도서 등록">
-        </form>
-    </div>
-<table class="form-table">
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>저자</th>
-            <th>출판사</th>
-            <th>발행연도</th>
-        </tr>
+<c:if test="${not empty msg}">
+    <script>
+        alert('${msg}');
+    </script>
+</c:if>
 
-        <tr onclick="">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr><td colspan="5" align="center">등록된 도서가 없습니다.</td></tr>
+<section class="jinju1">
 
-</table>
+<aside class="sidebar">
+      <div class="sidebar-header">운영/관리</div>
+      <div class="sidebar-item"><a href="${path}/user/memberList">회원 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/book/admin/list">도서 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/studyroom/admin/reservationList">스터디룸 예약 관리</a></div>
+      <div class="sidebar-item">
+      	<a href="${path}/manageInfo"  style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
+      		도서관 정보 관리
+      	</a>
+      </div>
+</aside>
 
-<!-- 페아장 처리 -->
-<div style="margin-top:14px; text-align:center;">
+<main class="libraryInfo">
+	<div class="head">
+		<h2>도서관 정보 관리</h2>
+		<button onclick="if(confirm('도서관 정보를 수정하시겠습니까?'))location.href='${path}/libraryInfo/modify';">도서관 정보 수정</button>
+	</div>
+	<hr>
+	<div class="content">
+		<p class="libName">• ${info.library_name}</p>
+		<p>▶ 전화 번호 : <span>${info.tel}</span></p>
+		<p>▶ 위치 : <span>${info.location}</span></p>
+		<p>▶ 이용 시간 : <span>${info.operating_hour}</span></p>
+		<p>▶ 휴관일 : <span>${info.closed_date}</span></p>
+		
+		<br>
+		<p>- 모든 도서의 대출 기간은 2주입니다. 반납일에 꼭 반납해 주세요.</p>
+		<p>- 휴관일에는 스터디룸 이용이 불가합니다. 휴관일로 예약 시 예약이 거절됩니다.</p>
+	</div>
+</main>
 
-    <a href="/manageInfo?page=${page-1}&size=${size}">이전</a>
-
-        <a href="/manageInfo?page=${p}&size=${size}">[${p}]</a>
-
-
-
-
-
-    <a href="/manageInfo?page=${page+1}&size=${size}">다음</a>
-
-</div>
 </section>
 
 <%@ include file="../common/footer.jsp" %>
