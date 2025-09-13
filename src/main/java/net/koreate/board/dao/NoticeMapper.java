@@ -50,10 +50,10 @@ public interface NoticeMapper {
 	 * 
 	 * @param vo 수정할 공지 사항 정보
 	 */
-	@Update("UPDATE notice SET "
-			+ " n_title = #{n_title} , "
-			+ " n_content = #{n_content} , "
-			+ " WHERE nno = #{nno}")
+	@Update("UPDATE notice "
+		      + "SET n_title = #{n_title}, "
+		      + "    n_content = #{n_content} "
+		      + "WHERE nno = #{nno}")
 	int updateNotice(BoardVO vo) throws Exception;
 
 	/**

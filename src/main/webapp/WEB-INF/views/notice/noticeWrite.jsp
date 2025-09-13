@@ -4,25 +4,28 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class="hyojin">
-	 <main class="content">
-      <h2>공지사항 작성</h2>
-
-      <div class="notice-header">
-        <span>No.</span>
-        <span>제목</span>
-        <span>작성자</span>
-        <span>작성일</span>
-      </div>
-
-      <div class="notice-list">
-        <!-- 작성 폼 내용 추가 가능 -->
-      </div>
-
-      <div class="notice-footer">
-        <div class="button">작성</div>
-      </div>
-    </main>
+<section class="jinju1">
+  <main class="content">
+    <h2 class="up">공지사항 작성</h2>
+    <form method="POST" action="${path}/notice/register">
+        <div>
+            <label>제목</label>
+            <input type="text" name="n_title" required >
+        </div>
+        <div>
+            <label>작성 내용</label>
+            <textarea name="n_content" required rows="5" cols="20"></textarea>
+        </div>
+        <div>
+            <label>작성자</label>
+            <input type="text" name="n_author" required >
+        </div>
+        <div>
+            <button type="submit" class="btn"
+                onclick="return confirm('공지 사항을 작성하시겠습니까?')">작성</button>
+        </div>
+    </form>
+  </main>
 </section>
 
 <%@ include file="../common/footer.jsp" %>
