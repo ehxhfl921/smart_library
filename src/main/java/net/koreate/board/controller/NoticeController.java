@@ -2,11 +2,14 @@ package net.koreate.board.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import net.koreate.board.service.NoticeService;
@@ -76,11 +79,19 @@ public class NoticeController {
     * @param vo 등록할 공지 사항 게시글 정보
     */
    @PostMapping("/register")
-   public String noticeRegister(BoardVO vo, Model model) throws Exception{
+   public String noticeRegister(BoardVO vo,
+		   RedirectAttributes rttr
+		   ) throws Exception{
       System.out.println("param data : " + vo);
-      String result = ns.write (vo);
-      model.addAttribute("msg", result);
-      return "notice/noticeList";
+      
+      try {
+		String result = ns.write (vo);
+	    rttr.addFlashAttribute("msg", "공지 사항을 등록했습니다.");
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+      
+      return "redirect:/notice/list";
    }
    
    /**

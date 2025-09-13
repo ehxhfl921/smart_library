@@ -5,55 +5,84 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f" %>
 <%@ include file="../common/header.jsp" %>
 
-<section class="jinju1">
- 	<main class="content">
-    <h2 class="up">공지사항</h2>
-    <button class="btn" onclick="if(confirm('공지 사항을 작성하시겠습니까?'))location.href='${path}/notice/register';">작성</button>
-  
-  <table class="form-table">
-    <thead>
-      <tr>
-        <th>No.</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성일</th>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach var="notice" items="${list}">
-        <tr>
-          <td>${notice.nno}</td>
-          <td>
-            <a href="${path}/notice/read?id=${notice.nno}">${notice.n_title}</a>
-          </td>
-          <td>${notice.n_author}</td>
-          <td>
-            <f:formatDate value="${notice.n_create_date}" pattern="yyyy-MM-dd" />
-          </td>
-        </tr>
-      </c:forEach>
-    </tbody>
-  </table>
+<c:if test="${not empty msg}">
+    <script>
+        alert('${msg}');
+    </script>
+</c:if>
 
-  <!-- ✅ 페이징 -->
-  <div class="pagination">
-    <c:if test="${pm.first}">
-      <a href="?page=1">[&laquo;]</a>
-    </c:if>
-    <c:if test="${pm.prev}">
-      <a href="?page=${pm.startPage - 1}">[&lt;]</a>
-    </c:if>
-    <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
-      <a href="?page=${i}" class="${i == param.page ? 'active' : ''}">[${i}]</a>
-    </c:forEach>
-    <c:if test="${pm.next}">
-      <a href="?page=${pm.endPage + 1}">[&gt;]</a>
-    </c:if>
-    <c:if test="${pm.last}">
-      <a href="?page=${pm.maxPage}">[&raquo;]</a>
-    </c:if>
-  </div>
-  </main>
+<section class="jinju1">
+    <main class="content">
+        <h2 class="up">공지사항</h2>
+        <button class="btn" 
+            onclick="if(confirm('공지 사항을 작성하시겠습니까?')) location.href='${path}/notice/register';">
+            작성
+        </button>
+
+        <table class="form-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+            <c:choose>
+                <c:when test="${not empty lists}">
+                    <c:forEach var="notice" items="${lists}">
+                        <tr>
+                            <td class="center">${notice.nno}</td>
+                            <td>
+                                <a href="${path}/book/notice/${notice.nno}?page=1">
+                                    ${notice.n_title}
+                                </a>
+                            </td>
+                            <td>${notice.n_author}</td>
+                            <td class="center">${book.p_date}</td>
+	      				</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+                    <tr>
+                        <td colspan="4" class="center">등록된 공지사항이 없습니다.</td>
+                    </tr>
+                </c:otherwise>
+            </c:choose>
+            </tbody>
+        </table>
+
+        <!-- ✅ 페이징 -->
+        <c:choose>
+            <c:when test="${not empty pm}">
+                <div class="pagination">
+                    <c:if test="${pm.first}">
+                        <a href="${path}/notice/list?page=1">처음</a>
+                    </c:if>
+
+                    <c:if test="${pm.prev}">
+                        <a href="${path}/notice/list?page=${pm.startPage-1}">이전</a>
+                    </c:if>
+
+                    <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+                        <a href="${path}/notice/list?page=${i}" 
+                           <c:if test='${i == pm.cri.page}'> class='activePage' </c:if>>
+                            [${i}]
+                        </a>
+                    </c:forEach>
+
+                    <c:if test="${pm.next}">
+                        <a href="${path}/notice/list?page=${pm.endPage+1}">다음</a>
+                    </c:if>
+
+                    <c:if test="${pm.last}">
+                        <a href="${path}/notice/list?page=${pm.maxPage}">마지막</a>
+                    </c:if>
+                </div>
+            </c:when>
+        </c:choose>
+    </main>
 </section>
 
 <%@ include file="../common/footer.jsp" %>
