@@ -33,8 +33,8 @@ public interface BookMapper {
 	 * @param cri 페이징 정보
 	 * @return 키워드가 제목 혹은 작가에 포함된 도서 목록
 	 */
-	@Select("SELECT * FROM book WHERE title LIKE '%' || #{keyword} || '%' OR "
-			+ "author LIKE '%' || #{keyword} || '%' AND b_status = 'Y' "
+	@Select("SELECT * FROM book WHERE (title LIKE '%' || #{keyword} || '%' OR "
+			+ "author LIKE '%' || #{keyword} || '%') AND b_status = 'Y' "
 			+ "ORDER BY bno DESC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
 	List<BookVO> serchBookList(@Param("cri") Criteria cri, @Param("keyword") String keyword) throws Exception;
@@ -130,7 +130,7 @@ public interface BookMapper {
 	 * 제목이나 저자에 검색 키워드가 포함된 행 개수 조회
 	 * @return 검색 키워드가 포함된 행의 전체 개수
 	 */
-	@Select("SELECT count(*) FROM book WHERE title LIKE '%' || #{keyword} || '%' OR "
-			+ "author LIKE '%' || #{keyword} || '%' AND b_status = 'Y'")
+	@Select("SELECT count(*) FROM book WHERE (title LIKE '%' || #{keyword} || '%' OR "
+			+ "author LIKE '%' || #{keyword} || '%') AND b_status = 'Y'")
 	int countSearchBook(String keyword) throws Exception;
 }

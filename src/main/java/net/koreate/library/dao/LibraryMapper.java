@@ -15,8 +15,8 @@ public interface LibraryMapper {
 	 * 
 	 * @param vo 수정할 정보를 담은 LibraryVO 타입 객체
 	 */
-	@Update("UPDATE library_info(library_name, tel, location, operating_hour, closed_date) "
-			+ "VALUES(#{library_name}, #{tel}, #{location}, #{operating_hour}, #{closed_date})") 
+	@Update("UPDATE library_info SET library_name = #{library_name}, tel = #{tel}, location =#{location}, "
+			+ "operating_hour = #{operating_hour}, closed_date = #{closed_date}")
 	void libraryInfoUpdate(LibraryVO vo) throws Exception;
 	
 	/**

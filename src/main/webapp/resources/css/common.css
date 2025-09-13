@@ -595,6 +595,7 @@ section.searchBook .search-box button {
       cursor:pointer;
       font-size:16px;
     }
+    
 section.searchBook .search-box button:hover {
       background-color:#0056b3;
     }
@@ -624,7 +625,7 @@ section.searchBook div#bookCard {
 } 
 
 section.searchBook div#bookCard .bookInfo{ 
-	width: 450px; 
+	width: 420px; 
 	display: flex; 
 	flex-wrap: wrap; 
 	justify-content: space-around; 
@@ -641,20 +642,21 @@ section.searchBook .bookInfo div.info-left{
 }
 
 section.searchBook .bookInfo div.info-right{
-	width: 240px;
+	width: 220px;
 	padding: 0;
 	padding-left: 50px;
 	font-size: 20px;
 }
 
 section.searchBook .bookInfo div p#avail {
-	width:450px;
+	width:420px;
 	padding-left:95px;
 }
 
 section.searchBook div#bookCard .coverBox{ 
-	width: 250px; 
+	width: 270px; 
 	height: 350px; 
+	padding-left: 30px;
 } 
 
 section.searchBook div#bookCard .coverBox img{ 
@@ -921,7 +923,7 @@ section.jinju1{
 	width: 1300px;
 	padding: 20px;
 	display: flex;
-	min-height: 653px;
+	min-height: 575px;
 	justify-content: center;
 	margin: 40px auto;
 }  
@@ -935,6 +937,47 @@ section.jinju1 h2.up {
 section.jinju1 main.loanList{
 	margin: 0 60px;
 }
+
+section.jinju1 main.libraryInfo{
+	width: 800px;
+	margin: 0 60px;
+}
+
+section.jinju1 main.libraryInfo .head{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+section.jinju1 main.libraryInfo .head button,
+section.jinju1 main.lobraryInfo .btn{
+	height: 50px;
+	width: 130px;
+	border: 2px solid #0d47a1;
+	border-radius: 15px;
+	background-color: #0d47a1;
+	color: white;
+	font-size: 17px;
+}
+
+section.jinju1 main.libraryInfo .head button:hover,
+section.jinju1 main.lobraryInfo .btn:hover{
+	background-color: white;
+	color: #0d47a1;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+section.jinju1 main.libraryInfo div.content{
+	width: 700px;
+	margin: 0;	
+}
+
+section.jinju1 main.libraryInfo .content .libName{
+	font-size: 20px;
+	font-weight: bold;
+}
+
 
 /* Container */
 section.jinju1 .container {
@@ -1045,7 +1088,8 @@ section.jinju1 div.bookDetail h2.down{
 section.jinju1 .bookDetail .table tr:hover,
 section.jinju1 .modifyBook .form-table tr:hover,
 section.jinju1 .registerBook .form-table tr:hover,
-section.jinju1 .loanList .form-table tr:hover{
+section.jinju1 .loanList .form-table tr:hover,
+section.jinju1 main.libraryInfo .form-table tr:hover{
 	background-color: white;
 }
 
@@ -1056,7 +1100,8 @@ section.jinju1 .bookDetail .table td img{
 }
 
 section.jinju1 .modifyBook .form-table td,
-section.jinju1 .registerBook .form-table td{
+section.jinju1 .registerBook .form-table td,
+section.jinju1 main.libraryInfo .form-table td{
 	padding: 10px;	
 }
 
@@ -1072,8 +1117,25 @@ section.jinju1 main.modifyBook .form-table{
 	width: 500px;
 }
 
+section.jinju1 main.manageBook{
+	width: 900px;	
+	margin: 0 30px;
+}
+
+section.jinju1 main.manageBook .form-table{
+	width: 900px;
+}
+
+section.jinju1 main.manageBook hr{
+	margin-bottom: 20px;
+}
+
 section.jinju1 main.loanList .form-table{
 	width: 800px;
+}
+
+section.jinju1 main.libraryInfo .form-table{
+	width: 750px;
 }
 
 section.jinju1 .form-table th {
@@ -1201,17 +1263,21 @@ section.jinju1 .actions {
   justify-content: center;
 }
 
-section.jinju1 main.manageBook p.newBookBtnBox{
-	text-align: right;
+section.jinju1 main.manageBook div.newBookBtnBox{
+	display: flex;
+	justify-content: space-between;	
+	align-items: center;
 }
 
-section.jinju1 main.manageBook p.newBookBtnBox .btn{
-	width: 1000px;
-	height: 60px;
-	font-size: 20px;
+section.jinju1 main.manageBook div.newBookBtnBox .btn{
+	width: 140px;
+	height: 50px;
+	font-size: 17px;
+	border-radius: 15px;
+	vertical-align: middle;
 }
 
-section.jinju1 main.manageBook p.newBookBtnBox .btn:hover{
+section.jinju1 main.manageBook div.newBookBtnBox .btn:hover{
 	background-color: white;
 	color: #0d47a1;
 	border: 2px solid #0d47a1;

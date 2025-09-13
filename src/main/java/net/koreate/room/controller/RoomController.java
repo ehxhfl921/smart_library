@@ -33,7 +33,7 @@ public class RoomController {
 	 */
 	@GetMapping("")
 	public String goToStudyroomPage() {
-		return "room/reservationList";
+		return "room/roomReservation";
 	}
 	
 	/**

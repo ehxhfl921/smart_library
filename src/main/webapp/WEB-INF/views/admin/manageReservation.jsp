@@ -10,7 +10,7 @@
       <li><a href="${path}/user/memberList" class="active">회원 관리</a></li>
       <li><a href="${path}/book/admin/list">도서 관리</a></li>
       <li><a href="${path}/studyroom/admin/reservationList">스터디룸 예약 관리</a></li>
-      <li><a href="${path}/libraryInfo">도서관 정보</a></li>
+      <li><a href="${path}/manageInfo">도서관 정보 관리</a></li>
     </ul>
 </aside>
 

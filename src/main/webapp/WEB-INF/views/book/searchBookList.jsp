@@ -123,28 +123,28 @@ function printList(list){
 		let color = availableClass === "available" ? "color:blue;" : "color:red;";
 		html += `
 			<div id='bookCard'>
-	    		<div class='coverBox'>
-	    			<img alt=\${title} src=\${contextPath}/\${cover}>
-	    		</div>
-	    		<div class='bookInfo'>
-	    			<div class='info-left'>
-	        			<p>제목</p>
-	        			<p>저자</p>
-	        			<p>발행 기관</p>
-	        			<p>발행 연도</p>
-	    			</div>
-	    			<div class='info-right'>
-	        			<p>\${title}</p>
-	        			<p>\${author}</p>
-	        			<p>\${publisher}</p>
-	        			<p>\${p_date}년</p>
-	    			</div>
-	    			<div>
-      					<p class=\${availableClass} id='avail' style=\${color}>\${available}</p>
-    				</div>
-	    		</div>
-	    		
+    		<div class='coverBox'>
+    			<img alt=\${title} src=\${contextPath}/\${cover}>
     		</div>
+    		<div class='bookInfo'>
+    			<div class='info-left'>
+        			<p>제목</p>
+        			<p>저자</p>
+        			<p>발행 기관</p>
+        			<p>발행 연도</p>
+    			</div>
+    			<div class='info-right'>
+        			<p>\${title}</p>
+        			<p>\${author}</p>
+        			<p>\${publisher}</p>
+        			<p>\${p_date}년</p>
+    			</div>
+    			<div>
+  					<p class=\${availableClass} id='avail' style=\${color}>\${available}</p>
+				</div>
+    		</div>
+    		
+		</div>
 		`;
 	} // end for
 	
