@@ -2,7 +2,7 @@
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../common/header.jsp" %>
 
 <c:if test="${not empty msg}">
@@ -40,7 +40,9 @@
                                 </a>
                             </td>
                             <td>${notice.n_author}</td>
-                            <td class="center">${notice.n_create_date}</td>
+                           <td class="center">
+   							 <fmt:formatDate value="${notice.n_create_date}" pattern="yyyy-MM-dd"/>
+						</td>
 	      				</tr>
 							</c:forEach>
 						</c:when>

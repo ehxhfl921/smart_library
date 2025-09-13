@@ -2,13 +2,12 @@ package net.koreate.board.controller;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
@@ -44,12 +43,11 @@ public class NoticeController {
     * @param model 공지 사항 게시글 정보
     */
    @GetMapping("/detail")
-   public String noticeDetail(int nno, Model model) throws Exception{
-      BoardVO board = ns.getDetail(nno);
-      model.addAttribute("boardVO", board);
-      
-      return "notice/noticeDetail";
-   }
+   public String noticeDetail(@RequestParam("nno") int nno, Model model) throws Exception {
+	    BoardVO board = ns.getDetail(nno);
+	    model.addAttribute("boardVO", board);
+	    return "notice/noticeDetail";
+	}
    
    /**
     * 공지 사항 수정 폼 페이지 요청
@@ -57,10 +55,10 @@ public class NoticeController {
     * @param nno   수정할 공지 사항 게시글 번호
     */
    @GetMapping("/modifyForm")
-   public String goToModifyForm(int nno, Model model) throws Exception{
-      BoardVO board = ns.getDetail(nno);
-      model.addAttribute(board);
-      return "notice/noticeUpdate";
+   public String noticeModify(@RequestParam("nno") int nno, Model model) throws Exception {
+       BoardVO board = ns.getDetail(nno);
+       model.addAttribute("boardVO", board);
+       return "notice/noticeUpdate";
    }
 
    
@@ -93,27 +91,34 @@ public class NoticeController {
       
       return "redirect:/notice/list";
    }
-   
+ 
    /**
     * 공지 사항 수정 요청 처리
     * @param vo 수정할 공지 사항 게시글 정보
     */
    @PostMapping("/modify")
-   public String noticeModify(BoardVO vo, Model model) throws Exception{
-      String result = ns.update(vo);
-      model.addAttribute("result", result);
-      return "redirect:/notice/noticeDetail?nno=" + vo.getNno();
+   public String noticeModifyPost(BoardVO boardVO, RedirectAttributes redirectAttr) throws Exception {
+	   ns.update(boardVO); // 서비스에서 수정 처리
+	   return "redirect:/notice/detail?nno=" + boardVO.getNno(); // 수정 완료 후 detail 이동
+   }
+
+   @PostMapping("/update")
+   public String noticeUpdate(BoardVO board) throws Exception {
+       ns.update(board);
+       return "redirect:/notice/detail?nno=" + board.getNno();
    }
    
    /**
     * 공지 사항 삭제 요청 처리
     * @param nno 삭제 처리할 공지 사항 게시글 번호
     */
-   @GetMapping("/delete")
-   public String noticeDelete(int nno, Model model) throws Exception{
-      String result = ns.delete(nno);
-      model.addAttribute("result", result);
-      return "redirect:/notice/noticeDetail";
+	@PostMapping("/delete")
+	   public String deleteNotice(@RequestParam("nno") int nno, RedirectAttributes redirectAttr) throws Exception {
+	       ns.delete(nno); // 논리 삭제 처리
+	       redirectAttr.addFlashAttribute("msg", "공지사항이 삭제되었습니다.");
+	       return "redirect:/notice/list";
+	   }
+
    }
+
    
-}

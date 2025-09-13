@@ -6,7 +6,7 @@
 
 <section class="jinju1">
   <main class="content">
-    <h2 class="up">공지사항</h2>
+    <h2 class="up">공지사항 작성</h2>
     <form method="POST" action="${path}/notice/register">
         <div>
             <label>제목</label>
