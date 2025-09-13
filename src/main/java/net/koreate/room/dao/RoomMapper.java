@@ -36,7 +36,7 @@ public interface RoomMapper {
 	 * studyroom 테이블에서 스터디룸 정보 조회
 	 * @return 조회된 스터디룸 정보를 리스트로 반환
 	 */
-	@Select("SELECT sno, s_name FROM studyroom ORDER BY sno ")
+	@Select("SELECT * FROM studyroom")
 	List<RoomVO> rooms() throws Exception;
 	
 	/**
@@ -47,11 +47,12 @@ public interface RoomMapper {
 	 * @param reserve_date	전달 받은 사용자가 예약하려는 날짜
 	 * @return				해당 날짜의 스터디룸 예약 정보 리스트
 	 */
-	@Select("SELECT * "
-			+ "FROM studyroom_reservation "
-			+ "WHERE reserve_date = #{reserve_date} AND  status = 'APPROVED' "
-			+ "ORDER BY rno DESC")
+	@Select("SELECT * FROM studyroom_reservation "
+		      + "WHERE TRUNC(reserve_date) = TRUNC(#{reserve_date}) "
+		      + "AND status = 'APPROVED' "
+		      + "ORDER BY rno DESC")
 	List<RoomVO> searchReservationByDate(Date reserve_date) throws Exception;
+
 	
 	/**
 	 * 전달 받은 스터디룸 예약 정보(sno, user_id, user_name, reserve_date)를 예약 테이블에 입력(예약 신청)
@@ -60,7 +61,7 @@ public interface RoomMapper {
 	 */
 	@Insert("INSERT INTO studyroom_reservation "
 			+ "(sno, user_id, user_name, reserve_date)"
-			+ "VALUES(#{sno},#{user_id}, #{user_name}, #{reserve_date})")
+			+ "VALUES(#{sno}, #{user_id}, #{user_name}, #{reserve_date})")
 	void makeReservation(RoomVO vo) throws Exception;
 	
 	/**
@@ -116,7 +117,7 @@ public interface RoomMapper {
 	 */
 	@Update("UPDATE studyroom_reservation "
 			+ "SET status = 'REJECTED' "
-			+ "WHERE sno = #{sno} AND reserve_date =#{reserve_date}")
+			+ "WHERE (sno = #{sno} AND reserve_date =#{reserve_date}) AND rno <> #{rno}")
 	void rejectOthers(@Param("rno")int rno, @Param("sno")int sno, @Param("reserve_date")Date reserve_date) throws Exception;
 	
 	/**

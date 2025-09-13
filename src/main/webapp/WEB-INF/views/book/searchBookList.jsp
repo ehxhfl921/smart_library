@@ -33,7 +33,7 @@
 
 <script>
 
-const contextPath = document.querySelector("meta[name='context-path']").content;
+const contextPath = "${path}";
 
 
 const searchBox = document.querySelector("#keyword");
