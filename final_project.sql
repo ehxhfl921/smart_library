@@ -47,6 +47,7 @@ CREATE TABLE book(
 -- 전체 조회
 SELECT * FROM book;
 
+
 -- 테이블 제거
 DROP TABLE book PURGE;
 
@@ -60,15 +61,25 @@ CREATE TABLE book_loan(
 	return_date 	DATE																-- 반납일
 );
 
-UPDATE book_loan SET return_date = CURRENT_TIMESTAMP WHERE bno = 25;
-UPDATE book_loan SET loan_status = 'RETURNED' WHERE bno = 25;
+UPDATE book_loan SET return_date = CURRENT_TIMESTAMP WHERE bno = 42 AND user_id = 'rlaehdms';
+UPDATE book_loan SET loan_status = 'RETURNED' WHERE bno = 42 AND user_id = 'rlaehdms';
+UPDATE book_loan SET loan_status = 'BORROWED' WHERE bno = 42 AND user_id = 'rlaehdms';
 
 -- 전체 조회
 SELECT * FROM book_loan;
 
-INSERT INTO book_loan(bno, user_id) VALUES(6, 'rlaehdms');
-INSERT INTO book_loan(bno, user_id) VALUES(42, 'rlaehdms');
-INSERT INTO book_loan(bno, user_id) VALUES(43, 'rlaehdms');
+dahyun02
+minji09
+sangho85
+eunji93
+seona93
+skyblue21
+yoon93
+smileysu
+byul_star
+INSERT INTO book_loan(bno, user_id) VALUES(61, 'minji09');
+INSERT INTO book_loan(bno, user_id) VALUES(42, 'yoon93');
+INSERT INTO book_loan(bno, user_id) VALUES(6, 'sangho85');
 
 commit
 
@@ -225,6 +236,50 @@ VALUES('어떤 토끼', '고정순', '반달', '2024', 'images/10.jpg');
 
 INSERT INTO book(title, author, publisher, p_date, cover)
 VALUES('해든 분식', '동지아', '문학동네', '2024', 'images/11.jpg');
+
+
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('빨개져버린', '아하', '아름드리미디어', '2024', 'images/28.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('초등 호기심 백과', '봉현구', '삼성출판사', '2024', 'images/29.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('마음을 담은 병', '데버라 마르세로', '나는별', '2023', 'images/30.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('공룡의 이동 경로', '김화진', '스위밍꿀', '2023', 'images/32.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('홀짝홀짝 호로록', '손소영', '창비', '2024', 'images/33.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('감염 동물', '김시경', '위즈덤하우스', '2023', 'images/34.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('세상 끝의 고래', '크리스 빅', '곰곰', '2024', 'images/35.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('쓰게 될 것', '최진영', '안온', '2024', 'images/36.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('책을 사랑하는 사람들', '최아영', '책읽는곰', '2024', 'images/37.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('나의 쓸모', '최아영', '책읽는곰', '2024', 'images/38.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('과학 추리반 아이들', '윤자영', '한국경제신문', '2023', 'images/40.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('올빼미 기사', '크리스토퍼 데니스', '비룡소', '2023', 'images/41.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('윈터 씨의 해빙기', '슈테판 쿨만', '달로와 마인드빌딩', '2024', 'images/43.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('너의 장점은?', '최백규', '창비', '2024', 'images/45.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('하늘에서 떨어진 아이', '이꽃님', '문학동네', '2020', 'images/46.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('나답게 산다는 것', '박은미', '초록북스', '2024', 'images/49.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('달과 지구가 다툰 날', '데이비드 더프', '북극곰', '2024', 'images/52.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('띄어쓰기 경주', '곽미영', '만만한책방', '2024', 'images/53.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('열세 살 우리는', '문경민', '우리학교', '2023', 'images/57.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('노숙 인생', '실뱅 테송', '뮤진트리', '2024', 'images/58.jpg');
+INSERT INTO book(title, author, publisher, p_date, cover)
+VALUES('일만 번의 다이빙', '이송현', '다산책방', '2023', 'images/59.jpg');
 
 -- 테스트용 이달의 도서 데이터 입력
 INSERT INTO book_of_the_month(bno, title, author, publisher, p_date, cover)
