@@ -50,10 +50,10 @@
 							<td style="color:#0d47a1;">예약 확정</td>
 						</c:when>
 						<c:when test="${reservation.status eq 'REJECTED'}">
-							<td style="color:#b91c1c;">거절</td>
+							<td style="color:#b91c1c;">예약 거절</td>
 						</c:when>
 						<c:when test="${reservation.status eq 'CANCELED'}">
-							<td style="color:#ccc">취소</td>
+							<td style="color:#cdcdcd">예약 취소</td>
 						</c:when>
 			        	<c:otherwise>
 							-				        	
@@ -64,7 +64,9 @@
 			        	<c:choose>
 				        	<c:when test="${(reservation.status eq 'PENDING' or reservation.status eq 'APPROVED')
                     						and reservation.reserve_date >= today}">
-				        		<button class="btn bad" id="cancelBtn" data-rno="${reservation.rno}">예약 취소</button>
+				        		<button class="cancelBtn" id="cancelBtn" data-rno="${reservation.rno}">
+				        			예약 취소
+				        		</button>
 				        	</c:when>
 				        	<c:otherwise>
 								-				        	
@@ -116,8 +118,36 @@
 </section>
 <script>
 
-const cancelBtn = document.querySelector("#cancelBtn");
+let rno = null;
 
+document.querySelectorAll(".cancelBtn").forEach(div => {
+    div.addEventListener("click", () => {
+        
+    	
+        rno = div.dataset.rno; // data-rno 속성에서 번호 가져오기
+        console.log(rno);
+
+        const ok = confirm('(예약 번호 : '+ rno +') 스터디룸 예약을 취소하시겠습니까?');
+    	
+    	if(ok){
+    		
+	        
+	        fetch(`${path}/studyroom/cancel/\${rno}`, {
+	        	method : "PATCH",
+				headers : {"Content-Type" : "application/json"}
+	        }).then(res => res.text())
+	        .then(msg => {
+	        	alert(msg);
+	        	location.reload();
+	        })
+	        .catch(err => {
+	        	console.log(err.message);
+	        });
+	        
+    	} // end if ok
+        
+    });	// end eventListener
+}); // end forEach
 
 </script>
 

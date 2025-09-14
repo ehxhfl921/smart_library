@@ -113,7 +113,7 @@ public class RoomController {
 		try {
 			
 			rs.makeReservation(vo);
-			String msg = "스터디룸 예약 신청을 완료했습니다.";
+			String msg = "스터디룸 예약 신청을 완료했습니다. 관리자 승인 후 이용 가능합니다.";
 			entity = new ResponseEntity<>(msg, HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -162,7 +162,7 @@ public class RoomController {
 	 */
 	@GetMapping("/admin/reservationList")
 	public String goToManageReservation(
-			Criteria cri,Model model
+			Criteria cri, Model model
 			) throws Exception{
 		
 		try {
@@ -180,7 +180,7 @@ public class RoomController {
 	 * 
 	 * @param rno	예약 승인할 스터디룸 예약 번호
 	 */
-	@PatchMapping("/approve/{rno}")
+	@PatchMapping(value="/approve/{rno}", produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String approveReservation(
 			@PathVariable("rno") int rno) throws Exception{
@@ -203,7 +203,7 @@ public class RoomController {
 	 * 
 	 * @param rno	예약 거절할 스터디룸 예약 번호
 	 */
-	@PatchMapping("/reject/{rno}")
+	@PatchMapping(value="/reject/{rno}", produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public  String rejectReservation(
 			@PathVariable("rno") int rno
@@ -228,7 +228,7 @@ public class RoomController {
 	 * 
 	 * @param rno	예약 취소할 스터디룸 예약 번호
 	 */
-	@PatchMapping("/cancel/{rno}")
+	@PatchMapping(value="/cancel/{rno}", produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String cancelReservation(
 			@PathVariable("rno") int rno
@@ -241,7 +241,7 @@ public class RoomController {
 			msg = "예약을 취소하였습니다.";
 		}catch(Exception e) {
 			e.printStackTrace();
-			msg = "예약 취소 처리 중 오류가 발생했습니다.";
+			msg = "예약 취소에 실패하였습니다.";
 		}
 		
 		return msg;

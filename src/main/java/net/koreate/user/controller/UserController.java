@@ -142,26 +142,33 @@ public class UserController {
 	 * 
 	 * @param vo	수정할 정보가 담긴 UserVO 타입 객체
 	 */
-	@PostMapping("/modifyInfo")
-	public String updateMyInfo(UserVO vo, HttpSession session) throws Exception {
+	@PostMapping("/admin/modifyInfo")
+	public String updateInfo(UserVO vo, HttpSession session) throws Exception {
 	  
-	    UserVO userInfo = (UserVO) session.getAttribute("userInfo");
-
-	   
-	    if (vo.getPw() == null || vo.getPw().isEmpty()) {
-	        vo.setPw(userInfo.getPw());
-	    }
-
-	    
 	    userService.modifyInfo(vo);
 
-	   
-	    if (userInfo != null && userInfo.getMno() == vo.getMno()) {
-	        session.setAttribute("userInfo", vo);
-	        return "redirect:/user/myPage";
-	    }
-
 	    return "redirect:/user/memberDetail?mno=" + vo.getMno();
+	}
+	
+	@PostMapping("/modifyInfo")
+	public String updateMyInfo(UserVO vo, HttpSession session) throws Exception {
+		
+		UserVO userInfo = (UserVO) session.getAttribute("userInfo");
+		
+		
+		if (vo.getPw() == null || vo.getPw().isEmpty()) {
+			vo.setPw(userInfo.getPw());
+		}
+		
+		
+		userService.modifyInfo(vo);
+		
+		
+		if (userInfo != null && userInfo.getMno() == vo.getMno()) {
+			session.setAttribute("userInfo", vo);
+		}
+		
+		return "redirect:/user/myPage";
 	}
 	
 	/**
@@ -195,8 +202,8 @@ public class UserController {
 		userService.withdraw(mno);
 
 
-	    	return "redirect:/user/memberList?page=" +cri.getPage();
-	    }
+	    return "redirect:/user/memberList?page=" +cri.getPage();
+	}
 
 	
 	
@@ -331,7 +338,7 @@ public class UserController {
 	 * @param cri	페이징 정보
 	 * @param model	페이징 처리된 회원 목록과 페이징 블럭 출력용 PageMaker 객체 저장
 	 */
-	@GetMapping("/memberList")
+	@GetMapping("/admin/memberList")
 	public String memberList(Criteria cri, Model model) throws Exception{
 		
 		model.addAllAttributes(userService.getMemberList(cri));
@@ -350,7 +357,7 @@ public class UserController {
 	 * @param mno	관리자가 상세 페이지 요청한 회원 번호
 	 * @param cri	기존에 보던 목록 페이지 정보
 	 */
-	@GetMapping("/memberDetail")
+	@GetMapping("/admin/memberDetail")
 	public String memberDetail(int mno, Criteria cri, Model model) throws Exception {
 	   
 		model.addAttribute("member", userService.getMemberDetail(mno));

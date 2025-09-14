@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
+<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="todayStr" />
 
 <section class="jinju1">
 
@@ -22,9 +23,11 @@
 	<main class="roomReservation">
       <h2>스터디룸 예약</h2>
 	  <hr>
-      <p>* 예약하실 날짜를 선택해 주세요.</p>
+      <p>* 당일 예약은 불가합니다.</p>
+      <p>* 스터디룸 예약을 신청하신 뒤, 관리자의 승인 후에 이용 가능합니다. (최대 3 영업일 소요)</p>
+      <p>* 예약 신청하실 날짜를 선택해 주세요.</p>
       <div class="date-selection">
-        <input type="date" id="date" class="date-input">
+        <input type="date" id="date" class="date-input" min="${todayStr}">
         <button class="select-button" id="btn">선택</button>
       </div>
 
@@ -45,11 +48,25 @@
 	let reserveDate = null;
 	
 	btn.addEventListener("click", ()=>{
-		console.log("이벤트 등록");
 		const date = dateInput.value;
 		reserveDate = date;
 		
+		// 날짜 선택하지 않고 클릭한 경우 return
 	    if(!date) return;
+	    
+	    const todayStr = "${todayStr}";
+		
+	    // 오늘 날짜가 선택된 경우 return
+	    if (date === todayStr) {
+	    	alert("당일 예약은 불가합니다.");
+	      	return;
+	    }
+	    
+	    // 오늘 이전의 날짜가 선택된 경우 return
+	    if(date < todayStr){
+	    	alert("오늘 이전 날짜는 예약할 수 없습니다.");
+	    	return;
+	    }
 		
 		fetch(`\${contextPath}/studyroom/\${date}`)
 		.then(res => {
@@ -134,7 +151,7 @@
 	            }
 
 	        	// confirm으로 선택 정보 확인
-	            const confirmMsg = `\${reserveDate}에 \${selectedRoom}번 스터디룸을 예약하시겠습니까?`;
+	            const confirmMsg = `\${reserveDate}에 \${selectedRoom}번 스터디룸을 예약 신청하시겠습니까?`;
 	            const ok = confirm(confirmMsg);
 	            if(!ok) return; // 취소하면 아무것도 안 함
 	        	

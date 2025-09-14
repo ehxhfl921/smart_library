@@ -12,8 +12,8 @@ public class RoomVO {
 	
 	private int rnum;			// 목록 출력 시 행 번호 저장
 	
-	private int sno;		// 스터디룸 번호
-	private String s_name;	// 스터디룸 이름
+	private int sno;			// 스터디룸 번호
+	private String s_name;		// 스터디룸 이름
 
 	private int rno;			// 스터디룸 예약 번호
 	private String user_id; 	// 예약자 아이디

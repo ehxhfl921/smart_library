@@ -4,12 +4,14 @@
 
 <footer>
 	<div class="information">
-		<p>전화 번호 : 051.1234.9876</p>
-		<p>부산광역시 동래구 충렬대로 84</p>
+		<p>⦁ ${info.library_name}</p>
+		<p>전화 번호 : ${info.tel}</p>
+		<p>위치 : ${info.location}</p>
+		<p>운영 시간 : ${info.operating_hour}</p>
 	</div>
 	
 	<div class="copyright">
-		<p>Copyright &copy; SMARTLIBRARY. All rights reserved.</p>
+		<p>Copyright &copy; 2025 SMARTLIBRARY. All rights reserved.</p>
 	</div>
 </footer>
 	

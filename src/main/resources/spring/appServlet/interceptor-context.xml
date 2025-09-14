@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="login" class="net.koreate.common.interceptor.LoginInterceptor" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+	        <mvc:mapping path="/studyroom/**"/>
+	        
+	        <mvc:mapping path="/user/myPage/**"/>
+	        <mvc:mapping path="/user/admin/**"/>
+	        <mvc:mapping path="/user/modifyInfo"/>
+	        <mvc:mapping path="/user/withdraw"/>
+	        
+	        <mvc:mapping path="/manageInfo"/>
+	        <mvc:mapping path="/libraryInfo/modify"/>
+	        
+	        <mvc:mapping path="/book/myPage/loans"/>
+	        <mvc:mapping path="/book/admin/**"/>
+	        <mvc:mapping path="/book/registerBom"/>
+	        <mvc:mapping path="/book/removeBom"/>
+	        
+	        <mvc:mapping path="/suggest/**"/>
+	        <mvc:mapping path="/notice/**"/>
+	        <mvc:mapping path="/comment/**"/>
+
+	        <mvc:exclude-mapping path="/suggest/list"/>
+	        <mvc:exclude-mapping path="/notice/list"/>
+	        <mvc:exclude-mapping path="/notice/detail"/>
+	        <ref bean="login"/>
+		</mvc:interceptor>
+	</mvc:interceptors>	
+	
+	<bean id="admin" class="net.koreate.common.interceptor.CheckAdminInterceptor" />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/admin/**"/>
+			
+			<mvc:mapping path="/manageInfo"/>
+			<mvc:mapping path="/libraryInfo/modify"/>
+			
+			<mvc:mapping path="/book/admin/**"/>
+			<mvc:mapping path="/book/registerBom"/>
+			<mvc:mapping path="/book/removeBom"/>
+			
+			<mvc:mapping path="/notice/**"/>
+			
+			<mvc:mapping path="/studyroom/admin/**"/>
+			<mvc:mapping path="/studyroom/approve/**"/>
+			<mvc:mapping path="/studyroom/reject/**"/>
+			
+			<mvc:exclude-mapping path="/notice/list"/>
+			<mvc:exclude-mapping path="/notice/detail"/>
+			<ref bean="admin" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>

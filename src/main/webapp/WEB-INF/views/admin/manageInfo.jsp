@@ -18,7 +18,7 @@
       <div class="sidebar-item"><a href="${path}/book/admin/list">도서 관리</a></div>
       <div class="sidebar-item"><a href="${path}/studyroom/admin/reservationList">스터디룸 예약 관리</a></div>
       <div class="sidebar-item">
-      	<a href="${path}/manageInfo"  style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
+      	<a href="${path}/manageInfo" style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
       		도서관 정보 관리
       	</a>
       </div>
