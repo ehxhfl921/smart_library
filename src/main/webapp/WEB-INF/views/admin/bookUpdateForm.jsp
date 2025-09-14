@@ -25,19 +25,19 @@
       		</tr>
 	        <tr>
 	          <th>제목</th>
-	          <td><input type="text" name="title" value="${book.title}" autofocus></td>
+	          <td><input type="text" name="title" value="${book.title}" required autofocus></td>
 	        </tr>
 	        <tr>
 	          <th>저자</th>
-	          <td><input type="text" name="author" value="${book.author}"></td>
+	          <td><input type="text" name="author" value="${book.author}" required></td>
 	        </tr>
 	        <tr>
 	          <th>발행기관</th>
-	          <td><input type="text" name="publisher" value="${book.publisher}"></td>
+	          <td><input type="text" name="publisher" value="${book.publisher}" required></td>
 	        </tr>
 	        <tr>
 	          <th>발행연도</th>
-	          <td><input type="number" name="p_date" value="${book.p_date}"></td>
+	          <td><input type="number" name="p_date" value="${book.p_date}" required></td>
 	        </tr>
 	      </table>
 	

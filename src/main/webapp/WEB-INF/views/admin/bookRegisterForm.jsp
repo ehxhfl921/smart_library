@@ -15,7 +15,7 @@
       	<tr>
       		<th>표지 이미지 미리보기</th>
       		<td> 
-      			<img class="coverImg" src='${path}/resources/tempImg.jpg' alt="표지 이미지가 없습니다." style="width: 200px;height: 300px;display:inline-block;">
+      			<img class="coverImg" src='${path}/resources/tempImg.png' alt="표지 이미지가 없습니다." style="width: 200px;height: 300px;display:inline-block;">
           	</td>
       	</tr>
       	<tr>
@@ -24,19 +24,19 @@
      		</tr>
         <tr>
           <th>제목</th>
-          <td><input type="text" name="title"></td>
+          <td><input type="text" name="title" required></td>
         </tr>
         <tr>
           <th>저자</th>
-          <td><input type="text" name="author"></td>
+          <td><input type="text" name="author" required></td>
         </tr>
         <tr>
           <th>발행 기관</th>
-          <td><input type="text" name="publisher"></td>
+          <td><input type="text" name="publisher" required></td>
         </tr>
         <tr>
           <th>발행 연도</th>
-          <td><input type="number" name="p_date"></td>
+          <td><input type="number" name="p_date" required></td>
         </tr>
       </table>
 
