@@ -6,7 +6,6 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <jsp:useBean id="now" class="java.util.Date" />
 <c:set var="today" value="${now}" />
-<!-- 헤더 JSP에 포함 -->
 
 <!DOCTYPE html>
 <html>
@@ -26,12 +25,20 @@
       	<a href="${path}/"><img alt="Logo" src="${path}/resources/logo_shadow.png"></a>
       </div>
       <ul class="utils">
-        <li><a href="${path}/user/goToLogin">로그인</a></li>
-        <li><a href="${path}/user/join">회원가입</a></li>
-        <li>님</li>
-        <li><a href="${path}/user/myPage">My Page</a></li>
-        <li><a href="${path}/user/logout">로그아웃</a></li>
-        <li><a href="${path}/book/admin/list?page=1">운영/관리</a></li>
+      
+      	<c:if test="${empty userInfo}">
+	        <li><a href="${path}/user/goToLogin">로그인</a></li>
+	        <li><a href="${path}/user/join">회원가입</a></li>
+        </c:if>
+        
+        <c:if test="${!empty userInfo}">
+	        <li>${userInfo.name} 님</li>
+	        <li><a href="${path}/user/myPage">My Page</a></li>
+	        <li><a href="${path}/user/logout">로그아웃</a></li>
+	        <c:if test="${userInfo.id eq 'admin'}">
+	        	<li><a href="${path}/book/admin/list?page=1">운영/관리</a></li>
+	        </c:if>
+        </c:if>
       </ul>
     </div>
 
