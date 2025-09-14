@@ -163,16 +163,29 @@
 
 	            fetch(`\${contextPath}/studyroom`, {
 	                method: "POST",
-	                headers: { "Content-Type": "application/json" },
+	                headers: { 
+	                	"Content-Type": "application/json",
+	                	"X-Requested-With": "XMLHttpRequest"
+	                },
 	                body: JSON.stringify(data)
-	            }).then(res =>res.text())
-	            .then(msg => {
+	            }).then(res =>{
+	            	
+	            	if (!res.ok) {
+	                    return res.json().then(err => { throw err; });  
+	                }
+	            	
+	                return res.text();
+	                
+	            }).then(msg => {
 	            	alert(msg);
 	            	
 	            	location.reload();
 	           
 	            }).catch(err => {
-	            	alert(err.message);
+	            	alert(err.msg);
+	            	if(err.redirect) {
+	                    location.href = err.redirect;
+	                }
 	            });
 	            
 	        }); // end 예약하기 event

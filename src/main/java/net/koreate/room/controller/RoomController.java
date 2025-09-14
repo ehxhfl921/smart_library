@@ -94,12 +94,6 @@ public class RoomController {
 		
 		UserVO user = (UserVO)session.getAttribute("userInfo");
 		
-		// 인터셉터 만든 뒤 삭제
-		if(user == null) {
-		    return new ResponseEntity<>("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
-		}
-		
-		
 		if(user != null) {
 			String user_id = user.getId();
 			String user_name = user.getName();

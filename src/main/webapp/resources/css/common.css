@@ -89,7 +89,7 @@ section.main .mainBox2 p.title{
 section.main .mainBox2 div.bookOftheMonth{
 	height: 450px;
 	width: 700px;
-	border: 2px solid #0d47a1;
+	border: 3px solid #0d47a1;
 	border-radius: 50px;
 	
 	display: flex;
@@ -162,10 +162,9 @@ div.slideBookCard div.bomInfo div.bold{
 section.main .mainBox2 div.libraryInfo{
 	height: 450px;
     width: 500px;
-    border: 2px solid #0d47a1;
+    border: 3px solid #0d47a1;
     border-radius: 50px;
     margin-left: 20px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;   

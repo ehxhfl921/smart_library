@@ -2,6 +2,7 @@ package net.koreate.board.controller;
 
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -11,13 +12,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
+import net.koreate.board.service.CommentService;
 import net.koreate.board.vo.CommentVO;
 import net.koreate.common.utils.Criteria;
 
 @RestController
 @RequestMapping("/comment")
+@RequiredArgsConstructor
 public class CommentContoroller {
 
+	private final CommentService cs;
+	
 	/**
 	 * 건의 사항에 작성된 페이징 처리된 댓글 목록 요청 처리
 	 * 
@@ -29,7 +35,20 @@ public class CommentContoroller {
 			@PathVariable(name="sug_no") int sug_no,
 			Criteria cri
 			) throws Exception{
-		return null;
+		
+		ResponseEntity<Map<String, Object>> entity = null;
+		
+		cri.setPerPageNum(5);
+		
+		try {
+			Map<String, Object> map = cs.commentList(sug_no, cri);
+			entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
 	}
 	
 	/**
@@ -38,10 +57,25 @@ public class CommentContoroller {
 	 * @param vo 테이블에 저장될 댓글 정보
 	 */
 	@PostMapping("/addComment")
-	public ResponseEntity<Map<String, Object>> addComment(
+	public ResponseEntity<String> addComment(
 			@RequestBody CommentVO vo
 			) throws Exception{
-		return null;
+		
+		ResponseEntity<String> entity = null;
+		
+		String msg = "";
+		
+		try {
+			cs.writeComment(vo);
+			msg = "댓글이 등록되었습니다.";
+			entity = new ResponseEntity<>(msg, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			entity = new ResponseEntity<>("댓글 등록에 실패하였습니다.", HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		
+		return entity;
 	}
 	
 	/**
@@ -50,10 +84,24 @@ public class CommentContoroller {
 	 * @param vo 수정할 댓글 정보
 	 */
 	@PatchMapping("/modifyComment")
-	public ResponseEntity<Map<String, Object>> modifyComment(
+	public ResponseEntity<String> modifyComment(
 			@RequestBody CommentVO vo
 			) throws Exception{
-		return null;
+		ResponseEntity<String> entity = null;
+		
+		String msg = "";
+		
+		try {
+			cs.updateComment(vo);
+			msg = "댓글이 수정되었습니다.";
+			entity = new ResponseEntity<>(msg, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			entity = new ResponseEntity<>("댓글 수정에 실패하였습니다.", HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		
+		return entity;
 	}
 	
 	/**
@@ -65,7 +113,22 @@ public class CommentContoroller {
 	public ResponseEntity<String> removeComment(
 			@PathVariable(name="rpl_no") int rpl_no
 			) throws Exception{
-		return null;
+		
+		ResponseEntity<String> entity = null;
+		
+		String msg = "";
+		
+		try {
+			cs.deleteComment(rpl_no);
+			msg = "댓글이 삭제되었습니다.";
+			entity = new ResponseEntity<>(msg, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			entity = new ResponseEntity<>("댓글 삭제에 실패하였습니다.", HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		
+		return entity;
 	}
 	
 	

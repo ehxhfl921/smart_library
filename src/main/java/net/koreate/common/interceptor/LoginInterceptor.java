@@ -1,5 +1,7 @@
 package net.koreate.common.interceptor;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,11 +38,31 @@ public class LoginInterceptor implements HandlerInterceptor {
         // 로그인 체크
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("userInfo") == null) {
-            response.setContentType("text/html; charset=UTF-8");
-            response.getWriter().write("<script>alert('로그인이 필요한 서비스입니다.'); location.href='"
-                    + contextPath + "/user/login';</script>");
-            response.getWriter().flush();
-            return false;
+        	
+        	boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+        	
+
+        	if (isAjax) {
+        		
+        	    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        	    response.setContentType("application/json; charset=UTF-8");
+        	    response.getWriter().write("{\"msg\":\"로그인이 필요한 서비스입니다.\",\"redirect\":\"" + contextPath + "/user/goToLogin\"}");
+        	    response.getWriter().flush();
+        	    return false;
+        	    
+        	} else {
+        		response.setContentType("text/html; charset=UTF-8");
+        		PrintWriter out = response.getWriter();
+                out.println("<!DOCTYPE html>");
+                out.println("<html><head><meta charset='UTF-8'></head><body>");
+                out.println("<script type='text/javascript'>");
+                out.println("alert('로그인이 필요한 서비스입니다.');");
+                out.println("location.href='" + contextPath + "/user/goToLogin';");
+                out.println("</script>");
+                out.println("</body></html>");
+                out.flush();
+                return false;
+        	}
         }
 
         return true;

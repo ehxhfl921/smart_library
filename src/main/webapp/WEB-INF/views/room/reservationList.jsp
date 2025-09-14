@@ -86,7 +86,7 @@
 </table>
  	<!-- 페이징 처리 -->
 	<c:choose>
-		<c:when test="${not empty pm}"> 
+		<c:when test="${not empty list and not empty pm}"> 
 			<div class="pagination">
 			
 				<c:if test="${pm.first}">
