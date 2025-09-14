@@ -7,6 +7,12 @@
   <div id="wrap">
 
     <h1>SMART 도서관</h1>
+    
+    <c:if test="${not empty msg}">
+	  <script>
+	    alert("${msg}");
+	  </script>
+	</c:if>
 
 	 <form id="frmLogin" method="POST" action="${path}/user/login">
 	  <div class="input_item">
