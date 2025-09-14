@@ -86,7 +86,7 @@ public interface RoomMapper {
 	 */
 	@Select( "SELECT * FROM studyroom_reservation "
 			+ "ORDER BY rno DESC "
-			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY ")
+			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY ")
 	List<RoomVO> reservationList(Criteria cri) throws Exception;
 	
 	/**

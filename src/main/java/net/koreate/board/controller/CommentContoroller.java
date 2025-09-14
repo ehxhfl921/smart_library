@@ -15,7 +15,7 @@ import net.koreate.board.vo.CommentVO;
 import net.koreate.common.utils.Criteria;
 
 @RestController
-@RequestMapping("/suggest")
+@RequestMapping("/comment")
 public class CommentContoroller {
 
 	/**

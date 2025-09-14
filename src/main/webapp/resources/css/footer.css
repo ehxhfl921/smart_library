@@ -1,23 +1,27 @@
-@charset "UTF-8";
-
-footer{
-	margin: 0;
-	text-align: center;
-	background-color: #0c3e89;
-	color: white;
-	padding: 10px;
-	display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:14px;
-    height:100px;
+footer {
+    margin: 0;
+    background-color: #0c3e89;
+    color: white;
+    padding: 20px;
+    position: relative;
+    font-size: 15px;
+    height: 150px;
+    align-items: center;
 }
 
-footer div{
-	margin: 10px;
+footer .information {
+    text-align: left;
+    margin-top: 20px;
 }
 
-footer div p{
-	margin: 0;
-}
+footer .copyright {
+	position: absolute;
+  	left: 50%;
+ 	top: 50%;
+ 	transform: translate(-50%, -50%);
+  	text-align: center;
+ }
 
+footer div p {
+    margin: 0;
+}

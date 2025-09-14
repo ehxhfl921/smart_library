@@ -15,7 +15,6 @@
 	<meta charset="UTF-8">
 	<title>Smart Library</title>
 <link href="${path}/resources/css/header.css" rel="stylesheet" type="text/css" />
-<link href="${path}/resources/css/sidebar.css" rel="stylesheet" type="text/css" />
 <link href="${path}/resources/css/common.css" rel="stylesheet" type="text/css" />
 <link href="${path}/resources/css/footer.css" rel="stylesheet" type="text/css" />
 

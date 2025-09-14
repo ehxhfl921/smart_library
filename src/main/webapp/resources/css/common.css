@@ -1167,16 +1167,19 @@ section.jinju1 main.modifyBook .form-table{
 	width: 500px;
 }
 
-section.jinju1 main.manageBook{
+section.jinju1 main.manageBook,
+section.jinju1 main.manageReservation{
 	width: 900px;	
 	margin: 0 30px;
 }
 
-section.jinju1 main.manageBook .form-table{
+section.jinju1 main.manageBook .form-table,
+section.jinju1 main.manageReservation .form-table{
 	width: 900px;
 }
 
-section.jinju1 main.manageBook hr{
+section.jinju1 main.manageBook hr,
+section.jinju1 main.manageReservation hr{
 	margin-bottom: 20px;
 }
 
@@ -1312,6 +1315,21 @@ section.jinju1 .btn.bad:hover{
   	transition: 0.1s ease;
 }
 
+section.jinju1 .cancelBtn{
+	color:white;
+	background-color:#cf1f1f;
+	border:1px solid #cf1f1f;
+	border-radius:10px;
+	width: 70px;
+	height: 30px;
+}
+
+section.jinju1 .cancelBtn:hover{
+	background-color:#df2f2f;
+	border:1px solid #df2f2f;
+	cursor: pointer;
+}
+
 section.jinju1 .actions {
   display: flex;
   gap: 8px;
@@ -1327,7 +1345,7 @@ section.jinju1 main.manageBook div.newBookBtnBox{
 
 section.jinju1 main.manageBook div.newBookBtnBox .btn{
 	width: 140px;
-	height: 50px;
+	height: 45px;
 	font-size: 17px;
 	border-radius: 15px;
 	vertical-align: middle;
@@ -1431,13 +1449,21 @@ section.jinju1 .badge-pending { background:#2e7d32; }   /* 대기중 */
 section.jinju1 .badge-approved { background:#1976d2; }  /* 승인됨 */
 section.jinju1 .badge-rejected { background:#d32f2f; }  /* 거절됨 */
 section.jinju1 .badge-cancelled,
-section.jinju1 .badge-finished { background:#000; }     /* 취소/완료 */
+section.jinju1 .badge-finished { background:#6a6a6a; }     /* 취소/완료 */
 
 /* 예약 관리 버튼 */
 section.jinju1 .btn-approve { background:#1976d2; color:#fff; border:none; }
+section.jinju1 .btn-approve:hover{ 
+	background:#4296ea;
+}
 section.jinju1 .btn-reject  { background:#d32f2f; color:#fff; border:none; }
-section.jinju1 .btn-cancel  { background:#000;    color:#fff; border:none; }
-
+section.jinju1 .btn-reject:hover{ 
+	background:#e25050;
+}
+section.jinju1 .btn-cancel  { background:#000; color:#fff; border:none; }
+section.jinju1 .btn-cancel:hover{ 
+	background:#535353;
+}
 section.jinju1 .btn-approve,
 section.jinju1 .btn-reject,
 section.jinju1 .btn-cancel {

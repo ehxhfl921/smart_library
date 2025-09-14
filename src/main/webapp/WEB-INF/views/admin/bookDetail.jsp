@@ -117,8 +117,6 @@
 </section>
 
 <script>
-const contextPath = document.querySelector("meta[name='context-path']").content;
-
 const pathParts = window.location.pathname.split("/");
 const bno = pathParts[pathParts.length - 1]; 
 console.log(bno); // "9"
@@ -140,7 +138,7 @@ if(bomBtn){
 	    const pathParts = window.location.pathname.split("/");
 	    const bno = pathParts[pathParts.length - 1];
 	
-	    fetch(`\${contextPath}/book/registerBom?bno=\${bno}`, {
+	    fetch(`${path}/book/registerBom?bno=\${bno}`, {
 	      method: "GET"
 	    }).then(res => res.json())
 	    .then(data => {
@@ -167,7 +165,7 @@ if(bomDBtn){
 		    const pathParts = window.location.pathname.split("/");
 		    const bno = pathParts[pathParts.length - 1];
 	
-		    fetch(`\${contextPath}/book/removeBom?bno=\${bno}`, {
+		    fetch(`${path}/book/removeBom?bno=\${bno}`, {
 		    	method: "GET"
 		    }).then(res => res.json())
 		    .then(data => {
