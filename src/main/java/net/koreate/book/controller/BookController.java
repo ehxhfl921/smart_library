@@ -2,6 +2,7 @@ package net.koreate.book.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -61,7 +62,6 @@ public class BookController {
 				// 각각 list, pm으로 모델에 저장
 				model.addAttribute("list", searchResult.get("list"));
 				model.addAttribute("pm", searchResult.get("pm"));
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -85,17 +85,21 @@ public class BookController {
 			Criteria cri
 			) throws Exception{
 		
+		cri.setPerPageNum(5);
+		
 		ResponseEntity<Map<String, Object>> entity = null;
 		
-		try {
-			// 키워드로 검색 후 검색된 도서 목록, pm 객체
-			Map<String, Object> searchResult = bs.getSerchBookList(cri, keyword);
-			
-			entity = new ResponseEntity<Map<String, Object>>(searchResult, HttpStatus.OK);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+		if(keyword != null && !keyword.isEmpty()) {
+			try {
+				// 키워드로 검색 후 검색된 도서 목록, pm 객체
+				Map<String, Object> searchResult = bs.getSerchBookList(cri, keyword);
+				
+				entity = new ResponseEntity<Map<String, Object>>(searchResult, HttpStatus.OK);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				entity = new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+			}
 		}
 		
 		return entity;
@@ -114,8 +118,8 @@ public class BookController {
 	public String myLoanList(
 			Criteria cri, Model model, HttpSession session
 			) throws Exception{
-		// 세션에 로그인 사용자를 loginMember 라고 저장했다고 가정
-		UserVO loginMember = (UserVO)session.getAttribute("loginMember");
+		
+		UserVO loginMember = (UserVO)session.getAttribute("userInfo");
 		
 		// 로그인 사용자 아이디, 페이징 정보로 목록과 pm 객체 조회
 		Map<String, Object> result = bs.getLoanListOfUser(loginMember.getId(), cri);
@@ -140,13 +144,13 @@ public class BookController {
 		
 		model.addAttribute("list", result.get("list"));
 		model.addAttribute("pm", result.get("pm"));
-		
 		return "admin/bookList"; // 관리자 전용 - 도서 관리 페이지
 	}
 	
 	/**
 	 * 관리자 전용 - 도서 상세 페이지 요청 처리
 	 * 검색된 하나의 도서 정보와, 해당 도서의 대출 내역(List), PageMaker 객체 model에 저장
+	 * 	+ 해당 도서가 이달의 도서로 등록되어 있는지 검색 후 상태 문자열로 받아서 model에 저장
 	 * 
 	 * @param bno 	상세 페이지에서 조회할 도서 번호
 	 * @param model 검색된 도서 정보를 담은 BookVO vo 객체,
@@ -167,10 +171,14 @@ public class BookController {
 		// 해당 도서의 대출 내역
 		Map<String, Object> result = bs.getLoanListOfBook(bno, cri);
 		
+		// 이달의 도서 등록 여부
+		String isBom = bs.getBomStatus(bno);
+		
 		// 도서 정보, 대출 내역, pm 객체 model에 저장
 		model.addAttribute("book", book);
 		model.addAttribute("list", result.get("list"));
 		model.addAttribute("pm", result.get("pm"));
+		model.addAttribute("isBom", isBom);
 		
 		return "admin/bookDetail";
 	}
@@ -195,21 +203,20 @@ public class BookController {
 	 * @return 등록 후 관리자 전용 도서 관리 페이지(목록)로
 	 */
 	@PostMapping("/admin/register")
-	public String registerBook(BookDTO dto, Model model) throws Exception{
+	public String registerBook(BookDTO dto, RedirectAttributes rttr) throws Exception{
 		
 		String fileName = null;
 		
-		if(dto.getCoverFile() != null) {
+		if(dto.getCoverFile() != null && !dto.getCoverFile().isEmpty()) {
 			// 표지 이미지를 등록한 경우
 			fileName = uploadFile(dto.getCoverFile());
 		}else {
 			// 표지 이미지 없이 도서 등록하는 경우(임시 이미지 출력)
-			fileName = "tempImage.jpg";
+			fileName = "tempImg.png";
 		}
 		
 		BookVO vo = new BookVO();
 		
-		vo.setBno(dto.getBno());
 		vo.setTitle(dto.getTitle());
 		vo.setAuthor(dto.getAuthor());
 		vo.setPublisher(dto.getPublisher());
@@ -220,21 +227,27 @@ public class BookController {
 		// vo에 저장된 신규 도서 정보 테이블에 저장
 		try {
 			bs.registerBook(vo);
-			model.addAttribute("msg", "신규 도서 등록이 완료되었습니다.");
+			rttr.addFlashAttribute("msg", "신규 도서 등록이 완료되었습니다.");
 		} catch (Exception e) {
-			e.getStackTrace();
-			model.addAttribute("msg", "신규 도서 등록에 실패하였습니다.");
+			e.printStackTrace();
+			rttr.addFlashAttribute("msg", "신규 도서 등록에 실패하였습니다.");
 		}
 
 		
-		return "admin/bookList";
+		return "redirect:/book/admin/list";
 	}
 	
 	/**
 	 * 관리자 전용 - 도서 정보 수정 폼 페이지 요청 처리
 	 */
 	@GetMapping("/admin/modify")
-	public String goToModifyPage() {
+	public String goToModifyPage(int bno, Model model) {
+		try {
+			BookVO vo = bs.getBookDetail(bno);
+			model.addAttribute("book", vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "admin/bookUpdateForm";
 	}
 	
@@ -265,7 +278,7 @@ public class BookController {
 		// 표지 이미지 새로 업로드할 경우 파일 이름 저장할 변수
 		String fileName = null;
 		
-		if(dto.getCoverFile() != null) {
+		if (dto.getCoverFile() != null && !dto.getCoverFile().isEmpty()) {
 			// 표지 이미지를 새로 등록한 경우
 			
 			// 새로운 표지 이미지 업로드 후 파일 이름 받아오기
@@ -281,14 +294,14 @@ public class BookController {
 			rttr.addFlashAttribute("msg", "도서 정보 수정이 완료되었습니다.");
 		} catch (Exception e) {
 			e.getStackTrace();
+			e.getMessage();
 			rttr.addFlashAttribute("msg", "도서 정보 수정에 실패하였습니다.");
 		}
 		
-		// 리다이렉트로 기존 도서 상세 페이지로 이동할 때 필요한 도서 번호, 페이지 번호
-		rttr.addAttribute("bno", vo.getBno());
+		// 리다이렉트로 기존 도서 상세 페이지로 이동할 때 필요한 페이지 번호
 		rttr.addAttribute("page", 1);
 		
-		return "redirect:/admin/bookDetail";
+		return "redirect:/book/admin/"+vo.getBno();
 	}
 	
 	/**
@@ -313,7 +326,7 @@ public class BookController {
 		
 		rttr.addAttribute("page", cri.getPage());
 		
-		return "redirect:/admin/bookList";
+		return "redirect:/book/admin/list";
 	}
 	
 	/**
@@ -340,4 +353,60 @@ public class BookController {
 		
 		return fileName;
 	}
+	
+	/**
+	 * 이달의 도서로 등록 요청 처리
+	 * 
+	 * @param bno	이달의 도서로 등록할 도서 번호
+	 */
+	@GetMapping("/registerBom")
+	@ResponseBody
+	public ResponseEntity<Map<String, String>> registerBom(int bno) throws Exception{
+		
+		ResponseEntity<Map<String, String>> entity = null;
+		Map<String, String> result = new HashMap<>();
+		
+		try {
+			// 도서 정보 검색 후
+			BookVO vo = bs.getBookDetail(bno);
+			// 해당 도서 이달의 도서로 등록
+			bs.regieterBOM(vo);
+			result.put("msg", "이달의 도서로 등록했습니다.");
+			
+			entity = new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			result.put("msg", "이달의 도서로 등록하지 못했습니다.");
+			entity = new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		
+		return entity;
+	}
+	
+	
+	/**
+	 * 이달의 도서에서 삭제 요청 처리
+	 * 
+	 * @param bno	이달의 도서로 등록할 도서 번호
+	 */
+	@GetMapping("/removeBom")
+	@ResponseBody
+	public ResponseEntity<Map<String, String>> reoveBom(int bno) throws Exception{
+		
+		ResponseEntity<Map<String, String>> entity = null;
+		Map<String, String> result = new HashMap<>();
+		
+		try {
+			bs.removeFromBOM(bno);
+			result.put("msg", "이달의 도서에서 제거했습니다.");
+			entity = new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			result.put("msg", "이달의 도서에서 제거하지 못했습니다.");
+			entity = new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		
+		return entity;
+	}
+	
 }
