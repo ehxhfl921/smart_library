@@ -7,7 +7,7 @@
 <section class=jinju1>
 <aside class="sidebar">
       <div class="sidebar-header">운영/관리</div>
-      <div class="sidebar-item"><a href="${path}/user/memberList">회원 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/user/admin/memberList">회원 관리</a></div>
       <div class="sidebar-item"><a href="${path}/book/admin/list">도서 관리</a></div>
       <div class="sidebar-item">
       	<a href="${path}/studyroom/admin/reservationList"

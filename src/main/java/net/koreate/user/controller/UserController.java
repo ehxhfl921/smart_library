@@ -147,7 +147,7 @@ public class UserController {
 	  
 	    userService.modifyInfo(vo);
 
-	    return "redirect:/admin/memberDetail?mno=" + vo.getMno();
+	    return "redirect:/user/admin/memberDetail?mno=" + vo.getMno();
 	}
 	
 	@PostMapping("/modifyInfo")
@@ -370,6 +370,12 @@ public class UserController {
 	    model.addAttribute("cri", cri);
 	    return "admin/memberDetail";
 
+	}
+	
+	@GetMapping("/admin/memberUpdate")
+	public String goToMemberUpdate(int mno, Model model) throws Exception {
+	    model.addAttribute("member", userService.getMemberDetail(mno));
+	    return "admin/memberUpdate";
 	}
 }	
 	    
