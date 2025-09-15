@@ -56,6 +56,7 @@ public class BookController {
 		if(keyword != null && !keyword.isEmpty()) {
 			// 키워드가 null이 아닐 때 (메인 페이지에서 바로 검색한 경우)
 			try {
+				cri.setPerPageNum(5);
 				// 키워드로 검색 후 검색된 도서 목록, pm 객체
 				Map<String, Object> searchResult = bs.getSerchBookList(cri, keyword);
 				

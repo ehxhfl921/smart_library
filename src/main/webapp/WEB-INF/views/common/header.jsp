@@ -21,9 +21,6 @@
 <body>
   <header>
     <div class="header-top">
-      <div class="logo">
-      	<a href="${path}/"><img alt="Logo" src="${path}/resources/logo_shadow.png"></a>
-      </div>
       <ul class="utils">
       
       	<c:if test="${empty userInfo}">
@@ -36,45 +33,50 @@
 	        <li><a href="${path}/user/myPage">My Page</a></li>
 	        <li><a href="${path}/user/logout">로그아웃</a></li>
 	        <c:if test="${userInfo.id eq 'admin'}">
-	        	<li><a href="${path}/book/admin/list?page=1">운영/관리</a></li>
+	        	<li><a href="${path}/user/admin/memberList">운영/관리</a></li>
 	        </c:if>
         </c:if>
       </ul>
     </div>
 
     <nav class="menu-bar" aria-label="주 메뉴">
-      <div class="inner">
-        <ul class="main-nav">
-          <li>
-            <a href="${path}/libraryInfo">도서관 이용</a>
-            <ul class="dropdown">
-              <li><a href="${path}/libraryInfo">이용 안내</a></li>
-              <li><a href="${path}/studyroom">스터디룸 예약</a></li>
-            </ul>
-          </li>
-          <li>
-          	<a href="${path}/book/search">자료 찾기</a>
-          	<ul class="dropdown">
-              <li><a href="${path}/book/search">도서 검색</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="${path}/notice/list">열린 공간</a>
-            <ul class="dropdown">
-              <li><a href="${path}/notice/list">공지 사항</a></li>
-              <li><a href="${path}/suggest/list">건의 사항</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="${path}/book/myPage/loans?page=1">내 서재</a>
-            <ul class="dropdown">
-              <li><a href="${path}/book/myPage/loans?page=1">도서 대출 현황</a></li>
-              <li><a href="${path}/studyroom/myReservationList">스터디룸 예약 현황</a></li>
-              <li><a href="${path}/suggest/mySuggestion">작성한 건의 사항</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+		<div class="inner">
+			<div class="logo" title="메인으로">
+		     	<a href="${path}/">
+		     		<img alt="Logo" src="${path}/resources/logo_shadow.png">
+		     	</a>
+		    </div>
+			<ul class="main-nav">
+			  <li>
+			    <a href="${path}/libraryInfo">도서관 이용</a>
+			    <ul class="dropdown">
+			      <li><a href="${path}/libraryInfo">이용 안내</a></li>
+			      <li><a href="${path}/studyroom">스터디룸 예약</a></li>
+			    </ul>
+			  </li>
+			  <li>
+			  	<a href="${path}/book/search">자료 찾기</a>
+			  	<ul class="dropdown">
+			      <li><a href="${path}/book/search">도서 검색</a></li>
+			    </ul>
+			  </li>
+			  <li>
+			    <a href="${path}/notice/list">열린 공간</a>
+			    <ul class="dropdown">
+			      <li><a href="${path}/notice/list">공지 사항</a></li>
+			      <li><a href="${path}/suggest/list">건의 사항</a></li>
+			    </ul>
+			  </li>
+			  <li>
+			    <a href="${path}/book/myPage/loans?page=1">내 서재</a>
+			    <ul class="dropdown">
+			      <li><a href="${path}/book/myPage/loans?page=1">도서 대출 현황</a></li>
+			      <li><a href="${path}/studyroom/myReservationList">스터디룸 예약 현황</a></li>
+			      <li><a href="${path}/suggest/mySuggestion">작성한 건의 사항</a></li>
+			    </ul>
+			  </li>
+			</ul>
+		</div>
     </nav>
   </header>
 

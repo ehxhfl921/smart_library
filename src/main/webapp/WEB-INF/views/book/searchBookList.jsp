@@ -179,8 +179,10 @@ function printPageNum(pm, keyword){
 	}
 	
 	if(prev){
+		let prevPage = (pm.startPage > 1 ? pm.startPage - 1 : 1);
+		
 		pagenation += `
-			<button class='pageBtn' id='textBtn' data-page=${pm.startPage-1}>이전</button>
+			<button class='pageBtn' id='textBtn' data-page=\${prevPage}>이전</button>
 		`;
 	}
 	
