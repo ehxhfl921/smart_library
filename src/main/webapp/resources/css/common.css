@@ -469,40 +469,10 @@ section.hyojin .button {
       cursor:pointer;
       border-radius:4px;
     }
-
-/* reservationList */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-    }
-section.hyojin .content h2 {
-      margin-top: 0;
-      margin-bottom: 15px;
-    }
-section.hyojin .notice-header {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #ccc;
-      font-weight: bold;
-    }
-section.hyojin .notice-list ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-section.hyojin .notice-list li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-section.hyojin .notice-list li:last-child {
-      border-bottom: none;
-    }
     
 /* roomReservation */
-section.jinju1 .roomReservation {
+section.jinju1 .roomReservation,
+section.jinju1 .noticeList {
 	width:800px; 
     box-sizing:border-box;
     margin: 0 60px;
@@ -986,18 +956,81 @@ section.jinju1 main.loanList{
 	margin: 0 60px;
 }
 
-section.jinju1 main.libraryInfo{
+section.jinju1 main.noticeDetail div.contentBox{
+	width: 900px;
+	border: 1px solid #ccc;
+	padding: 0;
+	margin: 20px auto;
+	min-height: 400px;
+}
+
+main.noticeDetail div.contentBox div.head{
+	border-bottom: 1px solid #ccc;
+	padding: 20px;
+	background-color: #f3f7fa;
+}
+
+main.noticeDetail div.contentBox p.noAndTitle{
+	font-size: 23px;
+	font-weight: bold;
+	padding: 0;
+	margin-top: 0;
+}
+
+div.contentBox p.noAndTitle span.no {
+	padding-right: 30px;
+}
+
+div.contentBox p.noAndTitle span.title {
+	padding-left: 30px;
+	border-left: 2px solid;
+}
+
+main.noticeDetail div.contentBox div.body{
+	padding: 20px;
+	font-size: 18px;
+}
+
+main.noticeDetail div.contentBox div.body pre{
+	font-family: sans-serif;
+}
+
+main.noticeDetail div.contentBox p.authAndDate{
+	margin-bottom: 0;
+	font-size: 14px;
+}
+
+main.noticeDetail .btnBox{
+	text-align: center;
+}
+
+section.jinju1 main.noticeUpdate {
+	text-align: center;
+}
+
+section.jinju1 main.noticeUpdate textarea{
+	font-family: sans-serif;	
+}
+
+section.jinju1 main.noticeUpdate .btnBox{
+	padding: 20px;	
+}
+
+section.jinju1 main.libraryInfo,
+section.jinju1 main.noticeList{
 	width: 800px;
 	margin: 0 60px;
 }
 
-section.jinju1 main.libraryInfo .head{
+section.jinju1 main.libraryInfo .head,
+section.jinju1 main.noticeList .head{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
 section.jinju1 main.libraryInfo .head button,
+section.jinju1 main.noticeList .head button,
 section.jinju1 main.lobraryInfo .btn{
 	height: 50px;
 	width: 130px;
@@ -1009,6 +1042,7 @@ section.jinju1 main.lobraryInfo .btn{
 }
 
 section.jinju1 main.libraryInfo .head button:hover,
+section.jinju1 main.noticeList .head button:hover,
 section.jinju1 main.lobraryInfo .btn:hover{
 	background-color: white;
 	color: #0d47a1;
@@ -1150,7 +1184,8 @@ section.jinju1 .bookDetail .table td img{
 
 section.jinju1 .modifyBook .form-table td,
 section.jinju1 .registerBook .form-table td,
-section.jinju1 main.libraryInfo .form-table td{
+section.jinju1 main.libraryInfo .form-table td,
+section.jinju1 main.noticeUpdate .form-table td{
 	padding: 10px;	
 }
 
@@ -1173,16 +1208,27 @@ section.jinju1 main.manageReservation{
 }
 
 section.jinju1 main.manageBook .form-table,
-section.jinju1 main.manageReservation .form-table{
+section.jinju1 main.manageReservation .form-table,
+section.jinju1 main.noticeUpdate .form-table{
 	width: 900px;
 }
 
+section.jinju1 main.noticeUpdate .form-table tr:last-child{
+	min-height: 400px;
+}
+
+section.jinju1 main.noticeUpdate .form-table th{
+	width: 100px;
+}
+
 section.jinju1 main.manageBook hr,
-section.jinju1 main.manageReservation hr{
+section.jinju1 main.manageReservation hr,
+section.jinju1 main.noticeList hr{
 	margin-bottom: 20px;
 }
 
-section.jinju1 main.loanList .form-table{
+section.jinju1 main.loanList .form-table,
+section.jinju1 main.noticeList .form-table{
 	width: 800px;
 }
 
@@ -1658,7 +1704,7 @@ section.jinju2 td input:focus, section.jinju2 td textarea:focus{
 
 
 .sidebar{
-	  width: 260px;
+	  width: 220px;
       margin: 20px;
       height: 255px;
       box-sizing: border-box;

@@ -84,7 +84,7 @@ public class NoticeController {
       
       try {
 		String result = ns.write (vo);
-	    rttr.addFlashAttribute("msg", "공지 사항을 등록했습니다.");
+	    rttr.addFlashAttribute(result);
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
