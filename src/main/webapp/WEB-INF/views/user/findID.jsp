@@ -88,29 +88,36 @@
       });
   };
 
-	//인증코드 확인
-	  document.getElementById("verifyCodeBtn").onclick = function(){
-	    const inputCode = document.getElementById("emailCodeInput").value.trim();
-	    const id = document.getElementById("id").value.trim();
-	
-	    if(inputCode === emailCode){
-	      verified = true;
-	      document.getElementById("resultMsg").innerHTML =
-	        "<p class='info-msg'>인증 성공했습니다. 비밀번호 변경 페이지로 이동합니다.</p>";
-	      
+  // 인증코드 확인 버튼
+  document.getElementById("verifyCodeBtn").onclick = function(){
+    const inputCode = document.getElementById("emailCodeInput").value.trim();
+    if(inputCode === emailCode){
+      verified = true;
+      document.getElementById("resultMsg").innerHTML =
+        "<p class='info-msg'>인증 성공했습니다. 이제 아이디 찾기를 진행하세요.</p>";
+    } else {
+      verified = false;
+      document.getElementById("resultMsg").innerHTML =
+        "<p class='info-msg' style='color:red'>인증코드가 일치하지 않습니다.</p>";
+    }
+  };
 
-	      setTimeout(() => {
-	        window.location.href = path + "/user/resetPwForm?id=" + encodeURIComponent(id);
-	      }, 1500);
-	
-	    } else {
-	      verified = false;
-	      document.getElementById("resultMsg").innerHTML =
-	        "<p class='info-msg'>인증코드가 일치하지 않습니다.</p>";
-	    }
-	  };
-	
-	};
+  // 아이디 찾기 버튼
+  document.getElementById("findIdBtn").onclick = function(){
+    if(!verified){
+      document.getElementById("resultMsg").innerHTML =
+        "<p class='info-msg' style='color:red'>먼저 이메일 인증을 완료해주세요.</p>";
+      return;
+    }
+
+    const email = document.getElementById("email").value.trim();
+    fetch(path + "/user/findId?email=" + email)
+      .then(res => res.text())
+      .then(userId => {
+        document.getElementById("resultMsg").innerHTML =
+          "<p class='info-msg'>회원님의 아이디는 <span class='highlight'>" + userId + "</span> 입니다.</p>";
+      });
+  };
 </script>
 
 <%@ include file="../common/footer.jsp" %>
