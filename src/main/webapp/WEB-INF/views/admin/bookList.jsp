@@ -14,7 +14,7 @@
 
 <aside class="sidebar">
       <div class="sidebar-header">운영/관리</div>
-      <div class="sidebar-item"><a href="${path}/user/memberList">회원 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/user/admin/memberList">회원 관리</a></div>
       <div class="sidebar-item">
       	<a href="${path}/book/admin/list" 
       	   style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">

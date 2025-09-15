@@ -147,7 +147,7 @@ public class UserController {
 	  
 	    userService.modifyInfo(vo);
 
-	    return "redirect:/user/memberDetail?mno=" + vo.getMno();
+	    return "redirect:/admin/memberDetail?mno=" + vo.getMno();
 	}
 	
 	@PostMapping("/modifyInfo")
@@ -202,7 +202,7 @@ public class UserController {
 		userService.withdraw(mno);
 
 
-	    return "redirect:/user/memberList?page=" +cri.getPage();
+	    return "redirect:/admin/memberList?page=" +cri.getPage();
 	}
 
 	
@@ -348,7 +348,7 @@ public class UserController {
 	public String memberList(Criteria cri, Model model) throws Exception{
 		
 		model.addAllAttributes(userService.getMemberList(cri));
-		return "user/memberList";
+		return "admin/memberList";
 	}
 	
 	/**
@@ -368,7 +368,7 @@ public class UserController {
 	   
 		model.addAttribute("member", userService.getMemberDetail(mno));
 	    model.addAttribute("cri", cri);
-	    return "user/memberDetail";
+	    return "admin/memberDetail";
 
 	}
 }	
