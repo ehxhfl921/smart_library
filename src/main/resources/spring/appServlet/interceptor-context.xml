@@ -7,6 +7,8 @@
 
 
 	<bean id="login" class="net.koreate.common.interceptor.LoginInterceptor" />
+	<bean id="admin" class="net.koreate.common.interceptor.CheckAdminInterceptor" />
+	<bean id="adminOrAuthor" class="net.koreate.common.interceptor.CheckAdminOrAuthorInterceptor" />
 
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -36,7 +38,6 @@
 		</mvc:interceptor>
 	</mvc:interceptors>	
 	
-	<bean id="admin" class="net.koreate.common.interceptor.CheckAdminInterceptor" />
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -52,12 +53,24 @@
 			<mvc:mapping path="/notice/**"/>
 			
 			<mvc:mapping path="/studyroom/admin/**"/>
-			<mvc:mapping path="/studyroom/approve/**"/>
+			<mvc:mapping path="/studyroom/approve/g**"/>
 			<mvc:mapping path="/studyroom/reject/**"/>
 			
 			<mvc:exclude-mapping path="/notice/list"/>
 			<mvc:exclude-mapping path="/notice/detail"/>
 			<ref bean="admin" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/studyroom/cancel/**"/>
+			<mvc:mapping path="/suggest/detail"/>
+			<mvc:mapping path="/suggest/delete"/>
+			<mvc:mapping path="/comment/**/addComment"/>
+			<mvc:mapping path="/comment/removeComment/**"/>
+			<ref bean="adminOrAuthor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>

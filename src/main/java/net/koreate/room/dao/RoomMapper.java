@@ -149,4 +149,13 @@ public interface RoomMapper {
 	 */
 	@Select("SELECT count(*) FROM studyroom_reservation WHERE user_id = #{user_id}")
 	int countMyReservation(String user_id) throws Exception;
+	
+	/**
+	 * 전달 받은 예약 번호로 스터디룸 예약 테이블에서 조회 후,
+	 * 해당 예약의 user_id 반환
+	 * 
+	 * @param rno
+	 */
+	@Select("SELECT user_id FROM studyroom_reservation WHERE rno = #{rno}")
+	String getUserIdByRno(int rno) throws Exception;
 }

@@ -77,4 +77,9 @@ public interface RoomService {
 	 */
 	Map<String, Object> getMyReservation(String user_id, Criteria cri) throws Exception;
 
+	/**
+	 *  전달 받은 예약 번호로 예약자 아이디 조회
+	 *  
+	 */
+	String getUserIdByRno(int rno) throws Exception;
 }

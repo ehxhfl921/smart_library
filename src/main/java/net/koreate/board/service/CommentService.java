@@ -29,4 +29,9 @@ public interface CommentService {
 	 *  Map에 저장하여 반환
 	 */
 	Map<String, Object> commentList(int sug_no, Criteria cri) throws Exception;
+	
+	/**
+	 *  전달 받은 댓글 번호로 댓글 작성자 아이디 조회 후 반환
+	 */
+	String getUserIdByRplNo(int rpl_no) throws Exception;
 }

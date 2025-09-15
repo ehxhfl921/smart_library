@@ -51,4 +51,12 @@ public class CommentServiceImpl implements CommentService {
 		return map;
 	}
 
+	@Override
+	public String getUserIdByRplNo(int rpl_no) throws Exception {
+		String user_id = cm.getUserIdByRplNo(rpl_no);
+		return user_id;
+	}
+	
+	
+
 }
