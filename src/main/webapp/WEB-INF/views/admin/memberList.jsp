@@ -6,48 +6,70 @@
 
 <section class=jinju1>
 <aside class="admin-sidebar">
-    <ul>
-      <li><a href="${path}/user/memberList" class="active">회원 관리</a></li>
-      <li><a href="${path}/book/admin/list">도서 관리</a></li>
-      <li><a href="${path}/studyroom/admin/reservationList">스터디룸 예약 관리</a></li>
-      <li><a href="${path}/manageInfo">도서관 정보 관리</a></li>
-    </ul>
+      <div class="sidebar-header">운영/관리</div>
+      <div class="sidebar-item">
+      	<a href="${path}/user/admin/memberList"
+           style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">회원 관리</a></div>
+	  <div class="sidebar-item"><a href="${path}/book/admin/list">도서 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/studyroom/admin/reservationList">스터디룸 예약 관리</a></div>
+      <div class="sidebar-item"><a href="${path}/manageInfo">도서관 정보 관리</a></div>
 </aside>
 
-<main>
+<main class="manageMember">
 <h2>회원 목록</h2>
 
 <table class="table" style="width:600px; margin:auto;">
-  <tr>
-    <th>회원번호</th>
-    <th>아이디</th>
-    <th>이름</th>
-  </tr>
-
-    <tr onclick="goDetail()">
-      <td class="center"></td>
-      <td></td>
-      <td></td>
-    </tr>
+	<tr>
+	    <th>회원번호</th>
+	    <th>아이디</th>
+	    <th>이름</th>
+  	</tr>
+    
+    <c:choose>
+    <c:when test="${not empty list}">
+      <c:forEach var="member" items="${list}">
+        <tr onclick="location.href='${path}/user/admin/memberDetail?mno=${member.mno}&page=${pm.cri.page}'">
+          <td class="center">${member.mno}</td>
+          <td>${member.id}</td>
+          <td>${member.name}</td>
+        </tr>
+      </c:forEach>
+    </c:when>
+  	</c:choose>
+    
 
 </table>
 
 <!-- 페이징 -->
-<div class="pagination">
-
-    <a href="/member/list?page=${page-1}">이전</a>
-
-
-        <b>${p}</b>
-
-
-        <a href="/member/list?page=${p}">${p}</a>
-
-
-
-    <a href="/member/list?page=${page+1}">다음</a>
-
-</div>
+<c:choose>
+	<c:when test="${not empty pm}">
+		<div class="pagination">
+		
+			<c:if test="${pm.first}">
+	    		<a href="${path}/user/admin/memberList?page=1">처음</a>
+	    	</c:if>
+			
+						<c:if test="${pm.prev}">
+	    		<a href="${path}/user/admin/memberList?page=${pm.startPage-1}">이전</a>
+	    	</c:if>
+	    	
+			<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+			      	<a href="${path}/user/admin/memberList?page=${i}"
+			      	   <c:if test='${i == pm.cri.page}'> class='activePage' </c:if> >
+			      		[${i}]
+			      	</a>
+  			</c:forEach>
+		
+			<c:if test="${pm.next}">
+	    		<a href="${path}/user/admin/memberList?page=${pm.endPage+1}">다음</a>
+	    	</c:if>
+	    	
+	    	<c:if test="${pm.last}">
+		      	<a href="${path}/user/admin/memberList?page=${pm.maxPage}">마지막</a>
+		    </c:if>	
+		</div>
+	</c:when>
+</c:choose>
 </main>
 </section>
 
