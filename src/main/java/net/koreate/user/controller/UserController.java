@@ -319,10 +319,16 @@ public class UserController {
 	 * @param pw	변경할 새로운 비밀번호
 	 */
 	@PostMapping("/resetPw")
-	public String resetPassword(String id, String pw, RedirectAttributes rttr) throws Exception{
+	public String resetPassword(String id, String pw, String confirmPassword, RedirectAttributes rttr) throws Exception{
+		
+	    if (!pw.equals(confirmPassword)) {
+	        rttr.addFlashAttribute("msg", "비밀번호가 일치하지 않습니다. 다시 입력하세요.");
+	        return "redirect:/user/resetPwForm?id=" + id;
+	    }
+		
 		try {
 			userService.resetPassword(id, pw);
-			rttr.addAttribute("msg", "비밀번호가 성공적으로 변경되었습니다. 새 비밀번호로 로그인하세요");
+			rttr.addFlashAttribute("msg", "비밀번호가 성공적으로 변경되었습니다. 새 비밀번호로 로그인하세요");
 			return "redirect:/user/goToLogin";
 		}catch(Exception e){
 			e.getStackTrace();
