@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Update;
 
 import net.koreate.board.vo.BoardVO;
 import net.koreate.common.utils.Criteria;
+import net.koreate.user.vo.UserVO;
 
 /**
  *    건의 사항 관련 DB 작업
@@ -21,12 +22,11 @@ public interface SuggestionMapper {
     * @param cri 페이징 처리 정보
     * @return 페이징 처리된 건의 사항 게시글 목록
     */
-   @Select("SELECT * FROM suggestion " +
-           "WHERE s_status = 'Y' " +
-           "ORDER BY sug_no DESC " +
-           "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
-   List<BoardVO> suggestionList(Criteria cri) throws Exception;
-
+	 @Select("SELECT * FROM suggestion " +
+	            "WHERE s_status = 'Y' " +
+	            "ORDER BY sug_no DESC " +
+	            "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
+	    List<BoardVO> suggestionList(Criteria cri) throws Exception;
    /**
     * 건의 사항 게시글 번호로 suggestion 테이블에서 하나의 게시글 정보 조회
     * 
@@ -42,8 +42,9 @@ public interface SuggestionMapper {
     * @param vo 테이블에 등록할 건의 사항 게시글 정보
  * @return 
     */
-   @Insert("INSERT INTO notice(s_title, s_author, s_content, s_userid) "
-         + " VALUES(#{s_title}, #{s_author}, #{s_content}, #{s_userid})")
+   @Insert("INSERT INTO suggestion(s_title, s_author, s_content, s_userid, s_status, s_create_date) " +
+	        "VALUES(#{s_title}, #{s_author}, #{s_content}, #{s_userid,jdbcType=VARCHAR}, 'Y', SYSDATE)")
+
    int suggestionWrite(BoardVO vo) throws Exception;
    
    /**
@@ -74,12 +75,23 @@ public interface SuggestionMapper {
     * @param user_id   작성한 건의 사항 조회할 아이디
     * @param cri      페이징 정보
     */
-   @Select("SELECT * FROM suggestion WHERE s_userid = #{s_userid} ORDER BY s_create_date DESC"
-   		+ "OFFSET #{cri.perPageNum} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
-   List<BoardVO> mySuggestion(@Param("s_userid") String user_id, @Param("cri") Criteria cri) throws Exception;
+ //로그인 사용자 건의사항 목록 (페이징)
+   @Select("SELECT * FROM suggestion " +
+           "WHERE s_userid = #{user_id} AND s_status = 'Y' " +
+           "ORDER BY s_create_date DESC " +
+           "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
+   List<BoardVO> mySuggestion(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
    
-   @Select("SELECT count(*) FROM suggestion WHERE s_status = 'Y'")
-	int countSuggestion() throws Exception;
+ // 전체 건의사항 수
+@Select("SELECT COUNT(*) FROM suggestion WHERE s_status = 'Y'")
+  int countSuggestion() throws Exception;
+
+ // 로그인 사용자 건의사항 수
+  @Select("SELECT COUNT(*) FROM suggestion WHERE s_userid = #{user_id} AND s_status = 'Y'")
+  int countMySuggestion(@Param("user_id") String user_id) throws Exception;
+
+  // 로그인 처리
+   @Select("SELECT * FROM users WHERE id = #{id} AND password = #{password}")
+   UserVO login(UserVO user) throws Exception;
+
 }
-
-

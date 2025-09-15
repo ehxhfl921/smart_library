@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
 import net.koreate.board.service.SuggestionService;
@@ -53,19 +55,17 @@ public class SuggestionController {
 	 * @return
 	 * @throws Exception
 	 */
-	@GetMapping("/mySuggestion")
-	public String mySuggestionList(
-				Criteria cri,
-				HttpSession session,
-				Model model
-			) throws Exception{
-		UserVO logins = (UserVO)session.getAttribute("logins");
-		Map<String, Object> result = ss.getMySuggestionLst(logins.getId(), cri);
-				
-		model.addAttribute("list", result.get("list"));
-		model.addAttribute("pm", result.get("pm"));
-				
-		return "board/mySuggestionList";
+	
+	 @GetMapping("/mySuggestion")
+    public String mySuggestionList(Criteria cri, HttpSession session, Model model) throws Exception {
+        UserVO logins = (UserVO) session.getAttribute("logins");
+        if (logins == null) {
+            return "redirect:/login";
+        }
+        Map<String, Object> map = ss.getMySuggestionLst(logins.getId(), cri);
+        model.addAttribute("list", map.get("list"));
+        model.addAttribute("pm", map.get("pm"));
+        return "board/mySuggestionList";
 	}
 	
 	/**
@@ -73,57 +73,99 @@ public class SuggestionController {
 	 * 
 	 * @param sug_no 상세 보기 요청한 건의사항 게시글 번호
 	 */
-	@GetMapping("/detail")
-	public String suggestionDetail(int sug_no, Model model) throws Exception{
-		  BoardVO board = ss.getDetail(sug_no);
-	      model.addAttribute("boardVO", board);
-	      
-	      return "board/SuggestionDetail";
-	}
+	 @GetMapping("/detail")
+	 public String suggestionDetail(@RequestParam(value="sug_no", required=false) Integer sug_no, Model model) throws Exception {
+	     if(sug_no == null) {
+	         // 값이 없거나 잘못된 경우 목록 페이지로 리다이렉트
+	         return "redirect:/suggest/list";
+	     }
+	     BoardVO detail = ss.getDetail(sug_no);
+	     model.addAttribute("suggestion", detail);
+	     return "board/suggestionDetail";
+	 }
+
+
 
 	/**
 	 * 건의 사항 등록 요청 처리
 	 * @param vo 등록할 건의 사항 게시글 정보
 	 */
 	@PostMapping("/register")
-	public String suggestionRegister(BoardVO vo, Model model) throws Exception{
-		System.out.println("param data : " + vo);
-	    String result = ss.write(vo);
-	    model.addAttribute("msg", result);
-	    return "redirect:/";
-	}
+    public String suggestionRegister(BoardVO vo, HttpSession session, RedirectAttributes rttr) {
+        UserVO logins = (UserVO) session.getAttribute("userInfo");
+       
+        vo.setS_userid(logins.getId());
+        vo.setS_author(logins.getName());
+
+        try {
+            ss.write(vo);
+            rttr.addFlashAttribute("msg", "건의 사항을 등록했습니다.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            rttr.addFlashAttribute("msg", "건의사항 등록 중 오류 발생");
+        }
+
+        return "redirect:/suggest/list";
+    }
+
+
+
 	
 	/**
-	 * 건의 사항 수정 폼 페이지 요청
-	 * 
-	 * @param sug_no	수정할 건의 사항 게시글 번호
+	 * 건의 사항 작성 폼 페이지로 이동 요청 처리
 	 */
-	@GetMapping("/modifyForm")
-	public String goToModifyForm(int sug_no, Model model) throws Exception{
-		BoardVO board = ss.getDetail(sug_no);
-	    model.addAttribute(board);
-	    return "board/suggestionUpdate";
+	 @GetMapping("/register")
+	   public String suggestionRegisterForm() throws Exception{
+
+	    return "board/suggestionWrite";
 	}
 	
 	/**
 	 * 건의 사항 수정 요청 처리
 	 * @param vo	수정할 건의 사항 게시글 정보
 	 */
-	@PostMapping("/modify")
-	public String suggestionModify(BoardVO vo, Model model) throws Exception{
-		String result = ss.update(vo);
-	    model.addAttribute("result", result);
-	    return "redirect:/board/suggestionDetail?nno=" + vo.getNno();
-	}
-	
+	 @PostMapping("/modify")
+	 public String modifySuggestion(BoardVO vo, HttpSession session, RedirectAttributes rttr) {
+	     UserVO logins = (UserVO) session.getAttribute("userInfo");
+	     vo.setS_userid(logins.getId());
+	        vo.setS_author(logins.getName());
+
+	        try {
+	            ss.write(vo);
+	            rttr.addFlashAttribute("msg", "수정 사항을 등록했습니다.");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            rttr.addFlashAttribute("msg", "수정사항 등록 중 오류 발생");
+	        }
+
+	        return "redirect:/suggest/list";
+	 }
+	 
+	 /**
+	    * 공지 사항 수정 폼 페이지 요청
+	    * 
+	    * @param nno   수정할 공지 사항 게시글 번호
+	    */
+	   @GetMapping("/modifyForm")
+	   public String suggestionModify(@RequestParam("sug_no") int nno, Model model) throws Exception {
+		   BoardVO vo  = ss.getDetail(nno);
+	       model.addAttribute("suggestion", vo);
+	       return "board/suggestionUpdate";
+	   }
+
 	/**
 	 * 건의 사항 삭제 요청 처리
 	 * @param sug_no 삭제 처리할 건의 사항 게시글 번호
 	 */
-	@GetMapping("/delete")
-	public String suggestionDelete(int sug_no, Model model) throws Exception{
-		 String result = ss.delete(sug_no);
-	     model.addAttribute("result", result);
-	     return "redirect:/board/suggestionDetail";
+	 @PostMapping("/delete")
+	    public String deleteSuggestion(@RequestParam("sug_no") int sug_no, RedirectAttributes rttr) {
+	        try {
+	            ss.delete(sug_no);
+	            rttr.addFlashAttribute("msg", "건의사항이 삭제되었습니다.");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            rttr.addFlashAttribute("msg", "삭제 중 오류 발생");
+	        }
+	        return "redirect:/suggest/list";
+	    }
 	}
-}
