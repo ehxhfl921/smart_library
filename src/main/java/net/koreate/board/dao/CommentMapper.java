@@ -57,4 +57,10 @@ public interface CommentMapper {
 	 */
 	@Select("SELECT count(*) FROM suggestion_reply WHERE sug_no = #{sug_no} AND rpl_status = 'Y'")
 	int totalCount(int sug_no) throws Exception;
+	
+	/**
+	 * 전달 받은 댓글 번호로 댓글 작성자 아이디 조회
+	 */
+	@Select("SELECT user_id FROM suggestion_reply WHERE rpl_no = #{rpl_no}")
+	String getUserIdByRplNo(int rpl_no) throws Exception;
 }

@@ -100,4 +100,9 @@ public class RoomServiceImpl implements RoomService {
 		return map;
 	}
 
+	@Override
+	public String getUserIdByRno(int rno) throws Exception{
+		String user_id = mapper.getUserIdByRno(rno);
+		return user_id;
+	}
 }

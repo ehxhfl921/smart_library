@@ -2,6 +2,8 @@ package net.koreate.board.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 import net.koreate.board.service.CommentService;
 import net.koreate.board.vo.CommentVO;
 import net.koreate.common.utils.Criteria;
+import net.koreate.user.vo.UserVO;
 
 @RestController
 @RequestMapping("/comment")
@@ -56,10 +59,21 @@ public class CommentContoroller {
 	 * 
 	 * @param vo 테이블에 저장될 댓글 정보
 	 */
-	@PostMapping("/addComment")
+	@PostMapping("/{sug_no}/addComment")
 	public ResponseEntity<String> addComment(
-			@RequestBody CommentVO vo
+			@PathVariable(name="sug_no") int sug_no,
+			@RequestBody CommentVO vo,
+			HttpSession session
 			) throws Exception{
+		
+		UserVO user = (UserVO)session.getAttribute("userInfo");
+		String loginId = null;
+		vo.setUser_id("");
+		
+		if(user != null) {
+			loginId = user.getId();
+			vo.setUser_id(loginId);
+		}
 		
 		ResponseEntity<String> entity = null;
 		
@@ -83,8 +97,9 @@ public class CommentContoroller {
 	 * 
 	 * @param vo 수정할 댓글 정보
 	 */
-	@PatchMapping("/modifyComment")
+	@PatchMapping("/modifyComment/{rpl_no}")
 	public ResponseEntity<String> modifyComment(
+			@PathVariable(name="rpl_no") int rpl_no,
 			@RequestBody CommentVO vo
 			) throws Exception{
 		ResponseEntity<String> entity = null;
@@ -109,7 +124,7 @@ public class CommentContoroller {
 	 * 
 	 * @param rpl_no 삭제 처리할 댓글 번호
 	 */
-	@PatchMapping("/{rpl_no}/removeComment")
+	@PatchMapping("/removeComment/{rpl_no}")
 	public ResponseEntity<String> removeComment(
 			@PathVariable(name="rpl_no") int rpl_no
 			) throws Exception{
