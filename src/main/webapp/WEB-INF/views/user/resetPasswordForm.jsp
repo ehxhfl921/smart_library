@@ -30,7 +30,7 @@
         <tr>
           <th>새 비밀번호 확인</th>
           <td>
-          	<input type="password" name="confirmPassword"  id ="re_pw" required />
+          	<input type="password" name="confirmPassword"  id ="confirmPassword" required />
           	<div class="result"></div>
           	</td>
         </tr>
@@ -74,7 +74,7 @@
 	// 비밀번호 확인 여부
 	let boolPwCheck = false;
 	
-	let re_pw = document.querySelector("#re_pw");
+	let re_pw = document.querySelector("#confirmPassword");
 	
 	re_pw.oninput = function(e){
 		

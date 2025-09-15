@@ -83,7 +83,7 @@
 	      </tr>
 	      <tr>
 	        <td colspan="2" style="text-align:center;">
-	          <input type="button" id="joinBtn" value="회원등록">	
+	          <input type="button" id="joinBtn" value="회원등록" class="btn_login">	
 	        </td>
 	      </tr>
 	    </table>

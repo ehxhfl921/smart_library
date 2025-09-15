@@ -18,11 +18,17 @@
         </tr>
         <tr>
           <th>비밀번호</th>
-          <td><input type="password" name="pw" placeholder="비밀번호(미입력 시 변경 없음)"></td>
+          <td>
+          <input type="password" name="pw" id="pw" placeholder="비밀번호(미입력 시 변경 없음)">
+          <div class="result"></div>
+          </td>
         </tr>
         <tr>
           <th>새 비밀번호 확인</th>
-          <td><input type="password" name="pwConfirm" placeholder="새 비밀번호 확인"></td>
+          <td>
+          <input type="password" name="pwConfirm" id="re_pw"placeholder="새 비밀번호 확인">
+          <div class="result"></div>
+          </td>
         </tr>
         <tr>
           <th>이름</th>
@@ -52,7 +58,71 @@
     </form>
   </div>
 </div>
-
 </section>
+
+<script>
+	function checkRegex(el, value, regex, msg){
+		  if(!regex.test(value)){
+		    showMessage(el, msg, false);
+		    return false;
+		  }
+		  return true;
+		}
+	
+		function showMessage(el, msg, isValid){
+		  el.innerText = msg;
+		  el.style.color = isValid ? "green" : "red";
+		}
+	
+	
+	// 비밀번호 확인
+	let boolPw = false; 
+	
+	var regexPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;	
+	
+	let pw = document.querySelector("#pw");
+	
+	pw.oninput = function(e){
+		let el = pw.parentElement.querySelector(".result");
+		let msg = "특수문자,숫자,영문 포함 8~16자 이내 작성"; 
+		boolPw = checkRegex(el, pw.value, regexPw, msg);
+		
+		if(boolPw) showMessage(el, "사용가능합니다." , true);
+	
+	};
+	
+	// 비밀번호 확인 여부
+	let boolPwCheck = false;
+	
+	let re_pw = document.querySelector("#re_pw");
+	
+	re_pw.oninput = function(e){
+		
+		let el = re_pw.parentElement.querySelector(".result");
+		
+		if(boolPw){
+			boolPwCheck = (re_pw.value == pw.value);
+			let msg = boolPwCheck ? "비밀번호가 일치합니다. " : " 비밀번호가 일치하지 않습니다.";
+			showMessage(el, msg, boolPwCheck);
+		}else{
+			showMessage(el, "비밀번호를 먼저 확인해주세요." , false);
+		}
+	} // 비밀번호 확인 check 
+	
+	function validateForm() {
+	const pw = document.getElementById("pw").value.trim();
+	const confirmPw = document.getElementById("confirmPassword").value.trim();
+	
+	if (pw !== confirmPw) {
+	  alert("비밀번호가 일치하지 않습니다.");
+	  return false;
+	}
+	return true;
+	}
+	
+
+</script>
+
+
 
 <%@ include file="../common/footer.jsp" %>

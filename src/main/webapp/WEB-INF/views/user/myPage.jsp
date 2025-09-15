@@ -40,19 +40,17 @@
       </tr>
     </table>
 
-    <!-- 버튼: 정보 수정 / 회원 탈퇴 -->
-    <div style="margin-top:12px; display:flex; gap:10px;">
-      <form method="get" action="${path}/user/myPage/modifyInfo" style="flex:1; margin:0;">
-        <button type="submit" class="btn_login" style="width:100%;">수정</button>
-      </form>
-
-		<form method="post" action="${path}/user/withdraw"
-		      onsubmit="return confirm('정말 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.');"
-		      style="flex:1; margin:0;">
-		  <input type="hidden" name="mno" value="${userInfo.mno}">
-		  <button type="submit" class="btn_login" style="width:100%;">회원 탈퇴</button>
-		</form>
-    </div>
+	<div class="btn_group">
+	  <form method="get" action="${path}/user/myPage/modifyInfo">
+	    <button type="submit" class="btn_login">수정</button>
+	  </form>
+	
+	  <form method="post" action="${path}/user/withdraw"
+	        onsubmit="return confirm('정말 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.');">
+	    <input type="hidden" name="mno" value="${userInfo.mno}">
+	    <button type="submit" class="btn_login">회원 탈퇴</button>
+	  </form>
+	</div>
   </div>
 </div>
 
