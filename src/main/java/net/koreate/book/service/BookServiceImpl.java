@@ -31,7 +31,7 @@ public class BookServiceImpl implements BookService {
 		
 		pm.setCri(cri);
 		pm.setTotalCount(totalCount);
-		pm.setDisplayPageNum(10);
+		pm.setDisplayPageNum(5);
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", bookList);
