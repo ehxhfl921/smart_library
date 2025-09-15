@@ -12,13 +12,29 @@
 </c:if>
 
 <section class="jinju1">
-    <main class="content">
-        <h2 class="up">공지사항</h2>
-        <button class="btn" 
-            onclick="if(confirm('공지 사항을 작성하시겠습니까?')) location.href='${path}/notice/register';">
-            작성
-        </button>
 
+<aside class="sidebar">
+      <div class="sidebar-header">열린 공간</div>
+      <div class="sidebar-item">
+      		<a href="${path}/notice/list"
+      	   	   style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
+      	   		공지 사항
+      	   	</a>
+      </div>
+      <div class="sidebar-item"><a href="${path}/suggest/list">건의 사항</a></div>
+</aside>
+
+    <main class="noticeList">
+    	<div class="head">
+	        <h2>공지사항</h2>
+	        <c:if test="${userInfo.id eq 'admin'}">
+		        <button class="btn" 
+		            onclick="if(confirm('공지 사항을 작성하시겠습니까?')) location.href='${path}/notice/register';">
+		            게시글 작성
+		        </button>
+	        </c:if>
+		</div>
+		<hr>
         <table class="form-table">
             <thead>
                 <tr>
