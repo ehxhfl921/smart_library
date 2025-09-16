@@ -5,30 +5,37 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class="jinju1">
-  <main class="content">
-    <h2 class="up">건의사항 수정</h2>
+  <main class="noticeUpdate">
+    <h2>건의사항 수정</h2>
     <form method="POST" action="${path}/suggest/modify">
         <input type="hidden" name="sug_no" value="${suggestion.sug_no}">
         
-        <div>
-            <label>제목</label>
-            <input type="text" name="s_title" required value="${suggestion.s_title}">
-        </div>
-        
-        <div>
-            <label>작성 내용</label>
-            <textarea name="s_content" required rows="5" cols="20">${suggestion.s_content}</textarea>
-        </div>
-        
-        <div>
-            <label>작성자</label>
-            <input type="text" name="s_author" value="${suggestion.s_author}" readonly>
-        </div>
-        
-        <div>
-            <button type="submit" class="btn"
-                onclick="return confirm('건의 사항을 수정하시겠습니까?')">수정</button>
-        </div>
+        <table class="form-table">
+       
+	        <tr>
+	            <th>제목</th>
+	            <td>
+	            	<input type="text" name="s_title" required value="${suggestion.s_title}">
+	            </td>
+	        </tr>
+	        
+	        <tr>
+	            <th>작성 내용</th>
+	            <td>
+	            	<textarea name="s_content" required rows="18" cols="20" autofocus>${suggestion.s_content}</textarea>
+	            </td>
+	        </tr>
+	        <tr>
+	            <th>작성자</th>
+	            <td>
+	            	<input type="text" name="s_author" value="${userInfo.name}" readonly>
+	            </td>
+	        </tr>
+         </table>
+         <div class="btnBox">
+         	<button type="submit" class="btn"
+             	onclick="return confirm('건의 사항을 수정하시겠습니까?')">수정하기</button>
+         </div>
     </form>
   </main>
 </section>

@@ -11,13 +11,33 @@
 </c:if>
 
 <section class="jinju1">
-    <main class="content">
-        <h2 class="up">건의사항</h2>
-        <button class="btn" 
-            onclick="if(confirm('건의 사항을 작성하시겠습니까?')) location.href='${path}/suggest/register';">
-            작성
-        </button>
 
+<aside class="sidebar">
+      <div class="sidebar-header">열린 공간</div>
+      <div class="sidebar-item">
+      		<a href="${path}/notice/list">
+      	   		공지 사항
+      	   	</a>
+      </div>
+      <div class="sidebar-item">
+      		<a href="${path}/suggest/list"
+				style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
+      	   		건의 사항
+      	   	</a>
+      </div>
+</aside>
+
+    <main class="noticeList">
+    	<div class="head">
+	        <h2>건의 사항</h2>
+	        <c:if test="${userInfo.id ne 'admin'}">
+		        <button class="btn" 
+		            onclick="if(confirm('건의 사항을 작성하시겠습니까?')) location.href='${path}/suggest/register';">
+		            게시글 작성
+		        </button>
+	        </c:if>
+		</div>
+		<hr>
         <table class="form-table">
             <thead>
                 <tr>
@@ -36,6 +56,9 @@
                                 <td>
                                     <a href="${path}/suggest/detail?sug_no=${suggestion.sug_no}">
                                         ${suggestion.s_title}
+                                        <c:if test="${suggestion.s_update_date != null}">
+                                        	&nbsp; <span style="color:#0d47a1">(수정됨)</span>
+                                        </c:if>
                                     </a>
                                 </td>
                                 <td>${suggestion.s_author}</td>
