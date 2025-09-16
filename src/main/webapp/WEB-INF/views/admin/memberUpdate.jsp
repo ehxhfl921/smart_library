@@ -5,9 +5,10 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class=jinju1>
+<main class="manageUpdate">
 <h2>회원 정보 수정</h2>
 
-<form action="/member/update" method="post">
+<form action="${path}/user/admin/modifyInfo" method="post">
   <input type="hidden" name="mno" value="${member.mno}">
 
 <table class="form-table">
@@ -17,7 +18,9 @@
     </tr>
     <tr>
       <th>비밀번호</th>
-      <td><input type="password" name="pw" placeholder="새 비밀번호 입력 (변경 시)"></td>
+      <td><input type="password" name="pw" id="pw" placeholder="새 비밀번호 입력 (미입력 시 변경 없음)">
+      <div class="result"></div>
+      </td>
     </tr>
     <tr>
       <th>이름</th>
@@ -46,9 +49,44 @@
 
   <div style="margin-top:16px; text-align:center;">
     <input type="submit" value="수정 완료" class="btn">
-    <input type="button" value="목록" class="btn outline" onclick="location.href='/member/detail?mno=${member.mno}'">
+    <input type="button" value="목록" class="btn outline"
+       onclick="location.href='${path}/user/admin/memberList?page=${cri.page}'">
   </div>
 </form>
+</main>
 </section>
+
+<script>
+	function checkRegex(el, value, regex, msg){
+		  if(!regex.test(value)){
+		    showMessage(el, msg, false);
+		    return false;
+		  }
+		  return true;
+		}
+	
+		function showMessage(el, msg, isValid){
+		  el.innerText = msg;
+		  el.style.color = isValid ? "green" : "red";
+		}
+	
+	
+	// 비밀번호 확인
+	let boolPw = false; 
+	
+	var regexPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;	
+	
+	let pw = document.querySelector("#pw");
+	
+	pw.oninput = function(e){
+		let el = pw.parentElement.querySelector(".result");
+		let msg = "특수문자,숫자,영문 포함 8~16자 이내 작성"; 
+		boolPw = checkRegex(el, pw.value, regexPw, msg);
+		
+		if(boolPw) showMessage(el, "사용가능합니다." , true);
+	
+	};
+
+</script>
 
 <%@ include file="../common/footer.jsp" %>

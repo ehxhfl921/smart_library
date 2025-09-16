@@ -13,7 +13,8 @@
 
     <!-- 성공 메시지 -->
     <c:if test="${not empty userId}">
-      <p class="info-msg">회원님의 아이디는 <span class="highlight">${userId}</span> 입니다.</p>
+      <p class="info-msg">회원님의 아이디는 <span class="highlight">${userId}</span> 입니다. 
+      <a href="${path}/user/goToLogin" class="btn-link">로그인 하러가기</a>
     </c:if>
 
     <!-- 아이디 찾기 입력 폼 -->
@@ -115,7 +116,8 @@
       .then(res => res.text())
       .then(userId => {
         document.getElementById("resultMsg").innerHTML =
-          "<p class='info-msg'>회원님의 아이디는 <span class='highlight'>" + userId + "</span> 입니다.</p>";
+          "<p class='info-msg'>회원님의 아이디는 <span class='highlight'>" + userId + "</span> 입니다."+
+          "<a href='" + path + "/user/goToLogin' class='btn-link'>로그인 하러가기</a></p>";
       });
   };
 </script>
@@ -129,6 +131,16 @@ section.jinju2 .info-msg {
   color: #111; 
 }
 section.jinju2 .highlight {color: #0d47a1;}
+
+section.jinju2 a.btn-link {
+  color: #0d47a1;
+  font-weight: bold;
+  margin-left: 8px;
+  text-decoration: none;
+}
+section.jinju2 a.btn-link:hover {
+  text-decoration: underline;
+}
 </style>
 
 
