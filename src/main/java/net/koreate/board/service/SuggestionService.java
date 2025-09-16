@@ -4,7 +4,6 @@ import java.util.Map;
 
 import net.koreate.board.vo.BoardVO;
 import net.koreate.common.utils.Criteria;
-import net.koreate.user.vo.UserVO;
 
 public interface SuggestionService {
 
@@ -59,5 +58,4 @@ public interface SuggestionService {
 	 */
 	Map<String, Object> getMySuggestionLst(String user_id, Criteria cri) throws Exception;
 
-	UserVO logins(UserVO user) throws Exception;
 }

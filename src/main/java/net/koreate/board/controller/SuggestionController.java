@@ -58,9 +58,9 @@ public class SuggestionController {
 	
 	 @GetMapping("/mySuggestion")
     public String mySuggestionList(Criteria cri, HttpSession session, Model model) throws Exception {
-        UserVO logins = (UserVO) session.getAttribute("logins");
+        UserVO logins = (UserVO) session.getAttribute("userInfo");
         if (logins == null) {
-            return "redirect:/login";
+            return "redirect:/user/goToLogin";
         }
         Map<String, Object> map = ss.getMySuggestionLst(logins.getId(), cri);
         model.addAttribute("list", map.get("list"));
@@ -102,7 +102,7 @@ public class SuggestionController {
             rttr.addFlashAttribute("msg", "건의 사항을 등록했습니다.");
         } catch (Exception e) {
             e.printStackTrace();
-            rttr.addFlashAttribute("msg", "건의사항 등록 중 오류 발생");
+            rttr.addFlashAttribute("msg", "건의 사항 등록 중 오류가 발생했습니다.");
         }
 
         return "redirect:/suggest/list";
@@ -131,24 +131,24 @@ public class SuggestionController {
 	        vo.setS_author(logins.getName());
 
 	        try {
-	            ss.write(vo);
-	            rttr.addFlashAttribute("msg", "수정 사항을 등록했습니다.");
+	            ss.update(vo);
+	            rttr.addFlashAttribute("msg", "건의 사항을 수정했습니다.");
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            rttr.addFlashAttribute("msg", "수정사항 등록 중 오류 발생");
+	            rttr.addFlashAttribute("msg", "수정 사항 등록 중 오류가 발생했습니다.");
 	        }
 
 	        return "redirect:/suggest/list";
 	 }
 	 
 	 /**
-	    * 공지 사항 수정 폼 페이지 요청
+	    * 건의 사항 수정 폼 페이지 요청
 	    * 
-	    * @param nno   수정할 공지 사항 게시글 번호
+	    * @param nno   수정할 건의 사항 게시글 번호
 	    */
 	   @GetMapping("/modifyForm")
-	   public String suggestionModify(@RequestParam("sug_no") int nno, Model model) throws Exception {
-		   BoardVO vo  = ss.getDetail(nno);
+	   public String suggestionModify(@RequestParam("sug_no") int sug_no, Model model) throws Exception {
+		   BoardVO vo  = ss.getDetail(sug_no);
 	       model.addAttribute("suggestion", vo);
 	       return "board/suggestionUpdate";
 	   }
@@ -161,10 +161,10 @@ public class SuggestionController {
 	    public String deleteSuggestion(@RequestParam("sug_no") int sug_no, RedirectAttributes rttr) {
 	        try {
 	            ss.delete(sug_no);
-	            rttr.addFlashAttribute("msg", "건의사항이 삭제되었습니다.");
+	            rttr.addFlashAttribute("msg", "건의 사항이 삭제되었습니다.");
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            rttr.addFlashAttribute("msg", "삭제 중 오류 발생");
+	            rttr.addFlashAttribute("msg", "건의 사항 삭제 중 오류가 발생했습니다.");
 	        }
 	        return "redirect:/suggest/list";
 	    }

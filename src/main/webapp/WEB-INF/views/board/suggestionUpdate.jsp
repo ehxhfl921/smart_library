@@ -27,7 +27,7 @@
         
         <div>
             <button type="submit" class="btn"
-                onclick="return confirm('공지 사항을 수정하시겠습니까?')">수정</button>
+                onclick="return confirm('건의 사항을 수정하시겠습니까?')">수정</button>
         </div>
     </form>
   </main>

@@ -134,6 +134,7 @@ public class CheckAdminOrAuthorInterceptor implements HandlerInterceptor {
 			res.getWriter().write("{\"msg\":\""+ msg +"\"}");
 			res.getWriter().flush();
 		}else {
+			res.setContentType("text/html; charset=UTF-8");
 			res.getWriter().write("<script>alert('" + msg +"'); history.back();</script>");
 			res.getWriter().flush();
 		}
