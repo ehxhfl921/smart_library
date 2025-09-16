@@ -58,14 +58,17 @@ public class SuggestionController {
 	
 	 @GetMapping("/mySuggestion")
     public String mySuggestionList(Criteria cri, HttpSession session, Model model) throws Exception {
-        UserVO logins = (UserVO) session.getAttribute("logins");
-        if (logins == null) {
-            return "redirect:/login";
-        }
-        Map<String, Object> map = ss.getMySuggestionLst(logins.getId(), cri);
-        model.addAttribute("list", map.get("list"));
-        model.addAttribute("pm", map.get("pm"));
-        return "board/mySuggestionList";
+     
+		 UserVO loginMember = (UserVO)session.getAttribute("userInfo");
+			
+			// 로그인 사용자 아이디, 페이징 정보로 목록과 pm 객체 조회
+			Map<String, Object> result = ss.getMySuggestionLst(loginMember.getId(), cri);
+			
+			// map에 저장된 목록, pm 객체 model에 저장
+			model.addAttribute("list", result.get("list"));
+			model.addAttribute("pm", result.get("pm"));
+			
+			return "board/mySuggestionList";
 	}
 	
 	/**

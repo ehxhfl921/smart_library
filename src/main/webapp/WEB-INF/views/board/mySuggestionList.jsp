@@ -1,24 +1,102 @@
 <!-- 내가 작성한 건의사항 페이지 -->
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../common/header.jsp" %>
 
-<section class="hyojin">
-	 <main class="content">
-      <div class="main-header">
-        <h2>건의사항</h2>
-        <button class="write-btn">작성</button>
-      </div>
+<c:if test="${not empty msg}">
+    <script>
+        alert('${msg}');
+    </script>
+</c:if>
 
-      <div class="notice-header">
-        <span>No.</span>
-        <span>제목</span>
-        <span>작성자</span>
-        <span>작성일</span>
+<section class="jinju1">
+
+<aside class="sidebar">
+      <div class="sidebar-header">열린 공간</div>
+      <div class="sidebar-item">
+      		<a href="${path}/notice/list">
+      	   		공지 사항
+      	   	</a>
       </div>
-      <div class="notice-list">
+      <div class="sidebar-item">
+      <a href="${path}/suggest/list">
+      		건의 사항
+      </a>
       </div>
+</aside>
+
+    <main class="suggestionList">
+    	<div class="head">
+	        <h2>내가 작성한 건의사항</h2>
+		</div>
+		<hr>
+        <table class="form-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+            <c:choose>
+                <c:when test="${not empty list}">
+                    <c:forEach var="suggestion" items="${list}">
+                        <tr>
+                            <td class="center">${suggestion.sug_no}</td>
+                            <td>
+                                <a href="${path}/suggest/detail?sug_no=${suggestion.sug_no}">
+                                    ${suggestion.s_title}
+                                </a>
+                            </td>
+                            <td>${suggestion.s_author}</td>
+                           <td class="center">
+   							 <fmt:formatDate value="${suggestion.s_create_date}" pattern="yyyy-MM-dd"/>
+						</td>
+	      				</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+                    <tr>
+                        <td colspan="4" class="center">내가 작성한 건의사항이 없습니다.</td>
+                    </tr>
+                </c:otherwise>
+            </c:choose>
+            </tbody>
+        </table>
+
+        <!-- ✅ 페이징 -->
+        <c:choose>
+            <c:when test="${not empty list and not empty pm}">
+                <div class="pagination">
+                    <c:if test="${pm.first}">
+                        <a href="${path}/suggest/mySuggestion?page=1">처음</a>
+                    </c:if>
+
+                    <c:if test="${pm.prev}">
+                        <a href="${path}/suggest/mySuggestion?page=${pm.startPage-1}">이전</a>
+                    </c:if>
+
+                    <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+                        <a href="${path}/suggest/mySuggestion?page=${i}" 
+                           <c:if test='${i == pm.cri.page}'> class='activePage' </c:if>>
+                            [${i}]
+                        </a>
+                    </c:forEach>
+
+                    <c:if test="${pm.next}">
+                        <a href="${path}/suggest/mySuggestion?page=${pm.endPage+1}">다음</a>
+                    </c:if>
+
+                    <c:if test="${pm.last}">
+                        <a href="${path}/suggest/mySuggestion?page=${pm.maxPage}">마지막</a>
+                    </c:if>
+                </div>
+            </c:when>
+        </c:choose>
     </main>
 </section>
 
