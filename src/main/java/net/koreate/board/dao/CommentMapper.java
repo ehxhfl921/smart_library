@@ -3,6 +3,7 @@ package net.koreate.board.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -31,6 +32,7 @@ public interface CommentMapper {
 	 */
 	@Insert("INSERT INTO suggestion_reply(sug_no, user_id, content) "
 			+ "VALUES(#{sug_no}, #{user_id}, #{content})")
+	@Options(useGeneratedKeys = true, keyProperty = "rpl_no", keyColumn = "rpl_no")
 	void writeComment(CommentVO vo) throws Exception;
 	
 	/**
@@ -63,4 +65,12 @@ public interface CommentMapper {
 	 */
 	@Select("SELECT user_id FROM suggestion_reply WHERE rpl_no = #{rpl_no}")
 	String getUserIdByRplNo(int rpl_no) throws Exception;
+	
+	/**
+	 * 댓글 번호로 검색된 하나의 댓글 정보 반환
+	 */
+	@Select("SELECT * FROM suggestion_reply WHERE rpl_no = #{rpl_no}")
+	CommentVO getCommentDetail(int rpl_no) throws Exception;
+	
+	
 }

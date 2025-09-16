@@ -34,4 +34,9 @@ public interface CommentService {
 	 *  전달 받은 댓글 번호로 댓글 작성자 아이디 조회 후 반환
 	 */
 	String getUserIdByRplNo(int rpl_no) throws Exception;
+	
+	/**
+	 * 전달 받은 댓글 번호로 검색된 하나의 댓글 정보 반환
+	 */
+	CommentVO getCommentDetail(int rpl_no) throws Exception;
 }

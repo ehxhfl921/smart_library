@@ -56,7 +56,11 @@ public class CommentServiceImpl implements CommentService {
 		String user_id = cm.getUserIdByRplNo(rpl_no);
 		return user_id;
 	}
-	
-	
 
+	@Override
+	public CommentVO getCommentDetail(int rpl_no) throws Exception {
+		CommentVO vo = cm.getCommentDetail(rpl_no);
+		return vo;
+	}
+	
 }

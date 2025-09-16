@@ -180,6 +180,11 @@ CREATE TABLE suggestion_reply(
 	rpl_status		char(1) DEFAULT 'Y'												-- 상태(삭제 시 'N')
 );
 
+INSERT INTO suggestion_reply(sug_no, user_id, content)
+VALUES(21, 'rlaehdms', '테스트용 댓글입니다');
+
+commit
+
 -- 전체 조회
 SELECT * FROM suggestion_reply;
 

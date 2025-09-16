@@ -26,7 +26,7 @@
 
     <main class="noticeList">
     	<div class="head">
-	        <h2>공지사항</h2>
+	        <h2>공지 사항</h2>
 	        <c:if test="${userInfo.id eq 'admin'}">
 		        <button class="btn" 
 		            onclick="if(confirm('공지 사항을 작성하시겠습니까?')) location.href='${path}/notice/register';">

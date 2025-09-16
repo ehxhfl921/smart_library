@@ -1,5 +1,6 @@
 package net.koreate.board.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -60,11 +61,13 @@ public class CommentContoroller {
 	 * @param vo 테이블에 저장될 댓글 정보
 	 */
 	@PostMapping("/{sug_no}/addComment")
-	public ResponseEntity<String> addComment(
+	public ResponseEntity<Map<String, Object>> addComment(
 			@PathVariable(name="sug_no") int sug_no,
 			@RequestBody CommentVO vo,
 			HttpSession session
 			) throws Exception{
+		
+		Map<String, Object> map = new HashMap<>();
 		
 		UserVO user = (UserVO)session.getAttribute("userInfo");
 		String loginId = null;
@@ -75,17 +78,22 @@ public class CommentContoroller {
 			vo.setUser_id(loginId);
 		}
 		
-		ResponseEntity<String> entity = null;
+		vo.setSug_no(sug_no);
 		
-		String msg = "";
+		ResponseEntity<Map<String, Object>> entity = null;
 		
 		try {
 			cs.writeComment(vo);
-			msg = "댓글이 등록되었습니다.";
-			entity = new ResponseEntity<>(msg, HttpStatus.OK);
+			CommentVO comment = cs.getCommentDetail(vo.getRpl_no());
+			
+			map.put("comment", comment);
+			
+			entity = new ResponseEntity<>(map, HttpStatus.OK);
 			
 		} catch (Exception e) {
-			entity = new ResponseEntity<>("댓글 등록에 실패하였습니다.", HttpStatus.BAD_REQUEST);
+			
+			map.put("msg", "댓글 등록에 실패하였습니다.");
+			entity = new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
 			e.printStackTrace();
 		}
 		
@@ -98,21 +106,32 @@ public class CommentContoroller {
 	 * @param vo 수정할 댓글 정보
 	 */
 	@PatchMapping("/modifyComment/{rpl_no}")
-	public ResponseEntity<String> modifyComment(
+	public ResponseEntity<Map<String, Object>> modifyComment(
 			@PathVariable(name="rpl_no") int rpl_no,
 			@RequestBody CommentVO vo
 			) throws Exception{
-		ResponseEntity<String> entity = null;
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		ResponseEntity<Map<String, Object>> entity = null;
 		
 		String msg = "";
 		
 		try {
 			cs.updateComment(vo);
+			CommentVO modifiedReply = cs.getCommentDetail(rpl_no);
 			msg = "댓글이 수정되었습니다.";
-			entity = new ResponseEntity<>(msg, HttpStatus.OK);
+			
+			map.put("msg", msg);
+			map.put("modifiedReply", modifiedReply);
+			
+			entity = new ResponseEntity<>(map, HttpStatus.OK);
 			
 		} catch (Exception e) {
-			entity = new ResponseEntity<>("댓글 수정에 실패하였습니다.", HttpStatus.BAD_REQUEST);
+			msg = "댓글이 수정에 실패하였습니다.";
+			map.put("msg", msg);
+			
+			entity = new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
 			e.printStackTrace();
 		}
 		
@@ -124,7 +143,7 @@ public class CommentContoroller {
 	 * 
 	 * @param rpl_no 삭제 처리할 댓글 번호
 	 */
-	@PatchMapping("/removeComment/{rpl_no}")
+	@PatchMapping(value="/removeComment/{rpl_no}", produces="text/plain;charset=UTF-8")
 	public ResponseEntity<String> removeComment(
 			@PathVariable(name="rpl_no") int rpl_no
 			) throws Exception{

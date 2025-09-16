@@ -765,45 +765,6 @@ section.hyojin .button {
       cursor: pointer;
     }
 
-section.hyojin .comment-section {
-      border-top: 2px solid #ccc;
-      padding-top: 10px;
-    }
-section.hyojin .comment-section h3 {
-      margin: 0 0 10px 0;
-      font-size: 16px;
-    }
-section.hyojin .comment-list {
-      min-height: 80px;
-      border: 1px solid #ddd;
-      background: #fafafa;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-section.hyojin .comment-item {
-      padding: 5px 0;
-      border-bottom: 1px solid #eee;
-    }
-section.hyojin .comment-item:last-child { border-bottom: none; }
-    .comment-form {
-      display: flex;
-      gap: 10px;
-    }
-section.hyojin .comment-input {
-      flex: 1;
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-section.hyojin .comment-btn {
-      padding: 6px 12px;
-      background-color: #ccc;
-      color: black;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
 /* suggestionList */
 section.hyojin .content {
       flex:1;
@@ -977,6 +938,35 @@ main.noticeDetail div.contentBox p.noAndTitle{
 	margin-top: 0;
 }
 
+.noticeDetail .replyFormBox,
+.noticeDetail .modifyFormBox{
+	border: 1px solid #ccc;
+	padding: 0;
+	margin-top: 20px;
+}
+
+.replyFormBox .replyHead,
+.modifyFormBox .replyHead{
+	margin: 0;
+	background-color: #f3f7fa;
+	font-weight: bold;
+	font-size: 18px;
+	border-bottom: 1px solid #ccc;
+	padding: 20px;
+}
+
+.replyFormBox .replyContent,
+.modifyFormBox .replyContent{
+	padding: 15px;
+}
+
+div.modifyFormBox > div.btnBox,
+div.replyFormBox > div.btnBox{
+	text-align: right;
+	padding: 0 15px;
+	margin-bottom: 15px;
+}
+
 div.contentBox p.noAndTitle span.no {
 	padding-right: 30px;
 }
@@ -1002,6 +992,101 @@ main.noticeDetail div.contentBox p.authAndDate{
 
 main.noticeDetail .btnBox{
 	text-align: center;
+}
+
+main.noticeDetail .replyBox{
+	margin-top: 20px;
+}
+
+main.noticeDetail .replyBox .reply{
+	border-bottom: 1px solid #ccc;
+	width: 100%;
+}
+
+main.noticeDetail .replyBox .reply:first-child{
+	border-top: 1px solid #ccc;
+}
+
+main.noticeDetail .reply .authorAndDate{
+	height: 80px;
+	background-color: #f3f7fa;
+	line-height: 70px;
+	padding: 10px;
+	font-weight: bold;
+}
+
+main.noticeDetail .authorAndDate .author{
+	font-size: 18px;
+}
+
+main.noticeDetail .authorAndDate .author, 
+main.noticeDetail .authorAndDate .date{
+	height: 80px;
+	margin:0;
+	padding: 0;
+	line-height: 80px;
+}
+
+main.noticeDetail .authorAndDate .date{
+	display: flex;
+	gap: 20px;
+}
+
+main.noticeDetail .authorAndDate .date p{
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	height: 35px;
+}
+
+main.noticeDetail .authorAndDate .date p span{
+	font-weight: lighter;
+}
+
+.noticeDetail .reply .content{
+	min-height: 100px;
+	padding: 15px;
+}
+
+.noticeDetail .reply .content p{
+	width: 100%;
+	text-align: right;	
+}
+
+.noticeDetail .reply .content p a:hover{
+	color: #0d47a1;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.noticeDetail a#active{
+	font-weight: bold;
+}
+
+.noticeDetail .pagenation{
+	height: 60px;
+	line-height: 60px;
+	font-size: 18px;
+}
+
+.noticeDetail .pagenation a:hover{
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.noticeDetail .reply .content pre{
+	min-height: 90px;
+	font-family: sans-serif;
+}
+
+.noticeDetail .modifyFormBox{
+	margin-top: 0;
+	border-top: none;
+}
+
+.noticeDetail .pagenation {
+	text-align: center;
+	padding: 20px;
 }
 
 section.jinju1 main.noticeUpdate {

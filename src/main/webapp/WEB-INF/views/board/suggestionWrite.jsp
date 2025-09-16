@@ -6,29 +6,39 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class="jinju1">
-  <main class="content">
-    <h2 class="up">건의사항 작성</h2>
-
-    <!-- 건의사항 작성 폼 -->
-    <form method="POST" action="${path}/suggest/register">
-        <div>
-            <label>제목</label>
-            <input type="text" name="s_title" required >
-        </div>
-        <div>
-            <label>작성 내용</label>
-            <textarea name="s_content" required rows="5" cols="20"></textarea>
-        </div>
-
-        <div>
-            <label>작성자</label>
-            <input type="text" name="s_author" value="${sessionScope.logins.name}" readonly>
-        </div>
-        <div>
+  <main class="noticeUpdate">
+    <h2>건의사항 작성</h2>
+    <form method="POST" action="${path}/notice/register">
+    
+    	 <table class="form-table">
+       
+	        <tr>
+	            <th>제목</th>
+	            <td>
+	            	<input type="text" name="s_title" required autofocus>
+	            </td>
+	        </tr>
+	        
+	        <tr>
+	            <th>작성 내용</th>
+	            <td>
+	            	<textarea name="s_content" required rows="18" cols="20"></textarea>
+	            </td>
+	        </tr>
+	        
+	        <tr>
+	            <th>작성자</th>
+	            <td>
+	            	<input type="text" name="s_author" value="${userInfo.name}" readonly>
+	            </td>
+	        </tr>
+         </table>
+         <div class="btnBox">
             <button type="submit" class="btn"
-                onclick="return confirm('건의 사항을 작성하시겠습니까?')">작성</button>
-        </div>
+                onclick="return confirm('건의 사항을 작성하시겠습니까?')">작성하기</button>
+         </div>
     </form>
+    
   </main>
 </section>
 
