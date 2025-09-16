@@ -13,17 +13,18 @@
 
 <section class="jinju1">
 
-<aside class="sidebar">
-      <div class="sidebar-header">열린 공간</div>
+<aside class="sidebar" style="width:220px;">
+      <div class="sidebar-header">내 서재</div>
+      <div class="sidebar-item"><a href="${path}/book/myPage/loans?page=1">도서 대출 현황</a></div>
       <div class="sidebar-item">
-      		<a href="${path}/notice/list">
-      	   		공지 사항
-      	   	</a>
+      		<a href="${path}/studyroom/myReservationList?page=1">
+      			스터디룸 예약 현황
+      		</a>
       </div>
-      <div class="sidebar-item">
-      <a href="${path}/suggest/list">
-      		건의 사항
-      </a>
+      <div class="sidebar-item"><a href="${path}/suggest/mySuggestion"
+      	   style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
+       작성한 건의 사항
+       </a>
       </div>
 </aside>
 
