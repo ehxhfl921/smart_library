@@ -5,7 +5,7 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class=jinju1>
-<aside class="admin-sidebar">
+<aside class="sidebar">
       <div class="sidebar-header">운영/관리</div>
       <div class="sidebar-item">
       	<a href="${path}/user/admin/memberList"
@@ -18,7 +18,7 @@
 <main class="manageMember">
 <h2>회원 목록</h2>
 
-<table class="table" style="width:600px; margin:auto;">
+<table class="form-table">
 	<tr>
 	    <th>회원번호</th>
 	    <th>아이디</th>

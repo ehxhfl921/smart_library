@@ -5,11 +5,13 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class=jinju1>
+<main class="manageUpdate">
 <h2>회원 상세 정보</h2>
 
 <table class="form-table">
   <tr><th>회원번호</th><td>${member.mno}</td></tr>
   <tr><th>아이디</th><td>${member.id}</td></tr>
+  <tr><th>비밀번호</th><td>******</td></tr>
   <tr><th>이름</th><td>${member.name}</td></tr>
   <tr><th>전화번호</th><td>${member.phone}</td></tr>
   <tr><th>이메일</th><td>${member.email}</td></tr>
@@ -35,7 +37,7 @@
   <input type="button" value="목록으로" class="btn weak"
        onclick="location.href='${path}/user/admin/memberList?page=${cri.page}'">
 </div>
-
+</main>
 </section>
 
 

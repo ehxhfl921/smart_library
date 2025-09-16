@@ -143,9 +143,15 @@ public class UserController {
 	 * @param vo	수정할 정보가 담긴 UserVO 타입 객체
 	 */
 	@PostMapping("/admin/modifyInfo")
-	public String updateInfo(UserVO vo, HttpSession session) throws Exception {
+	public String updateInfo(UserVO vo) throws Exception {
 	  
-	    userService.modifyInfo(vo);
+		UserVO memberData = userService.getMemberDetail(vo.getMno());
+		
+		if (vo.getPw() == null || vo.getPw().isEmpty()) {
+	        vo.setPw(memberData.getPw());
+	    }
+		
+		userService.modifyInfo(vo);
 
 	    return "redirect:/user/admin/memberDetail?mno=" + vo.getMno();
 	}
@@ -202,7 +208,7 @@ public class UserController {
 		userService.withdraw(mno);
 
 
-	    return "redirect:/admin/memberList?page=" +cri.getPage();
+	    return "redirect:/user/admin/memberList?page=" +cri.getPage();
 	}
 
 	
@@ -377,6 +383,7 @@ public class UserController {
 	    model.addAttribute("member", userService.getMemberDetail(mno));
 	    return "admin/memberUpdate";
 	}
+	
 }	
 	    
 	    
