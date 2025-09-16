@@ -21,19 +21,22 @@
 <br>
 
 <div class="actions" style="justify-content:center;">
-  <form action="/member/updateForm" method="get" style="display:inline;">
+  <form action="${path}/user/admin/memberUpdate" method="get" style="display:inline;">
     <input type="hidden" name="mno" value="${member.mno}">
     <input type="submit" value="수정하기" class="btn outline">
   </form>
 
-  <form action="/member/delete" method="post" style="display:inline;" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+  <form action="${path}/user/admin/delete" method="post" style="display:inline;" onsubmit="return confirm('정말 삭제하시겠습니까?');">
     <input type="hidden" name="mno" value="${member.mno}">
+    <input type="hidden" name="page" value="${cri.page}">
     <input type="submit" value="삭제하기" class="btn bad">
   </form>
 
-  <input type="button" value="목록으로" class="btn weak" onclick="location.href='/member/list'">
+  <input type="button" value="목록으로" class="btn weak"
+       onclick="location.href='${path}/user/admin/memberList?page=${cri.page}'">
 </div>
 
 </section>
+
 
 <%@ include file="../common/footer.jsp" %>

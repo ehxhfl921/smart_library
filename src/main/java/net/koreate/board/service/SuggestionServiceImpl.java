@@ -11,7 +11,6 @@ import net.koreate.board.dao.SuggestionMapper;
 import net.koreate.board.vo.BoardVO;
 import net.koreate.common.utils.Criteria;
 import net.koreate.common.utils.PageMaker;
-import net.koreate.user.vo.UserVO;
 
 @Service
 @RequiredArgsConstructor
@@ -76,8 +75,4 @@ public class SuggestionServiceImpl implements SuggestionService {
         return map;
     }
 
-    @Override
-    public UserVO logins(UserVO user) throws Exception {
-        return sug.login(user); // Mapper에서 로그인 처리
-    }
 }
