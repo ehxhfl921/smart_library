@@ -9,7 +9,9 @@
 	<bean id="login" class="net.koreate.common.interceptor.LoginInterceptor" />
 	<bean id="admin" class="net.koreate.common.interceptor.CheckAdminInterceptor" />
 	<bean id="adminOrAuthor" class="net.koreate.common.interceptor.CheckAdminOrAuthorInterceptor" />
+	<bean id="author" class="net.koreate.common.interceptor.AuthorCheckInterceptor" />
 
+	<!-- 로그인 체크 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 	        <mvc:mapping path="/studyroom/**"/>
@@ -38,7 +40,7 @@
 		</mvc:interceptor>
 	</mvc:interceptors>	
 	
-	
+	<!-- 관리자 계정 체크 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/user/admin/**"/>
@@ -62,7 +64,7 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
-	
+	<!-- 관리자 or 작성자 체크 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/studyroom/cancel/**"/>
@@ -71,6 +73,15 @@
 			<mvc:mapping path="/comment/**/addComment"/>
 			<mvc:mapping path="/comment/removeComment/**"/>
 			<ref bean="adminOrAuthor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- 작성자 체크 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/suggest/modify"/>
+			<mvc:mapping path="/comment/modifyComment/**"/>
+			<ref bean="author" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>
