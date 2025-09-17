@@ -97,6 +97,7 @@
 
 const path = "${path}";
 let sug_no = "${suggestion.sug_no}";
+const loginUser = "${userInfo.id}";
 
 const textarea = document.querySelector(".text");
 const replyBtn = document.querySelector("#addReply");
@@ -129,6 +130,9 @@ function getReplyList(page, sug_no){
 } // end getReplyList()
 
 
+let btnHtml = "";
+
+
 function printReplies(data){
 	let list = data.list;
 	let pm = data.pm;
@@ -150,6 +154,20 @@ function printReplies(data){
 		
 		let updateDate = null;
 		let updateDateStr = null;
+		
+		//작성자인 경우
+		if (loginUser === user_id) {
+		 btnHtml = `
+		     <a data-rplNo=\${rpl_no} class='modify'>수정</a> | 
+		     <a data-rplNo=\${rpl_no} class='delete'>삭제</a>
+		 `;
+		}
+		//관리자인 경우
+		else if (loginUser === "admin") {
+		 btnHtml = `
+		     <a data-rplNo=\${rpl_no} class='delete'>삭제</a>
+		 `;
+		}
 		
 		if(rpl_update_date != null){
 			updateDate = new Date(rpl_update_date);
@@ -184,8 +202,7 @@ function printReplies(data){
 				<div class='content'>
 					<pre data-content=\${content}>\${content}</pre>
 					<p>
-						<a data-rplNo=\${rpl_no} class='modify'>수정</a> | 
-						<a data-rplNo=\${rpl_no} class='delete'>삭제</a>
+						\${btnHtml}
 					</p>
 				</div>
 				
@@ -250,7 +267,7 @@ function printReplies(data){
 		`;
 	}
 
-	if(last){
+	if(last && pm.maxPage > 1){
 		pageHtml += `
 			<a class="pageBtn" data-page=\${pm.maxPage}>[마지막]</a>
 		`;
@@ -333,6 +350,20 @@ function addReply(newReply){
 	let updateDate = null;
 	let updateDateStr = null;
 	
+	//작성자인 경우
+	if (loginUser === user_id) {
+	 btnHtml = `
+	     <a data-rplNo=\${rpl_no} class='modify'>수정</a> | 
+	     <a data-rplNo=\${rpl_no} class='delete'>삭제</a>
+	 `;
+	}
+	//관리자인 경우
+	else if (loginUser === "admin") {
+	 btnHtml = `
+	     <a data-rplNo=\${rpl_no} class='delete'>삭제</a>
+	 `;
+	}
+	
 	if(rpl_update_date != null){
 		updateDate = new Date(rpl_update_date);
 		updateDateStr = updateDate.toLocaleString();
@@ -366,8 +397,7 @@ function addReply(newReply){
 			<div class='content'>
 				<pre data-content=\${content}>\${content}</pre>
 				<p>
-					<a data-rplNo=\${rpl_no} class='modify'>수정</a> | 
-					<a data-rplNo=\${rpl_no} class='delete'>삭제</a>
+					\${btnHtml}
 				</p>
 			</div>
 			
