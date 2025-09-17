@@ -4,9 +4,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju1>
+<section class="jinju1">
 <main class="manageUpdate">
-<h2>회원 정보 수정</h2>
+<h2 class="up">회원 정보 수정</h2>
 
 <form action="${path}/user/admin/modifyInfo" method="post">
   <input type="hidden" name="mno" value="${member.mno}">

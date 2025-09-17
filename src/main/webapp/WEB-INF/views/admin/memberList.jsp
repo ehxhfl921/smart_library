@@ -16,8 +16,8 @@
 </aside>
 
 <main class="manageMember">
-<h2>회원 목록</h2>
-
+<h2>회원 관리</h2>
+<hr>
 <table class="form-table">
 	<tr>
 	    <th>회원번호</th>

@@ -24,10 +24,10 @@
       </div>
 </aside>
 
-<main class="libraryInfo">
-	<div class="head">
+<main class="manageBook">
+	<div class="newBookBtnBox">
 		<h2>도서관 정보 관리</h2>
-		<button onclick="if(confirm('도서관 정보를 수정하시겠습니까?'))location.href='${path}/libraryInfo/modify';">도서관 정보 수정</button>
+		<button class="btn" onclick="if(confirm('도서관 정보를 수정하시겠습니까?'))location.href='${path}/libraryInfo/modify';">도서관 정보 수정</button>
 	</div>
 	<hr>
 	<div class="content">

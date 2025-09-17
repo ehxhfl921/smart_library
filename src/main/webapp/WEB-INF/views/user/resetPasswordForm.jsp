@@ -11,6 +11,7 @@
 </c:if>
 
 <section class=jinju2>
+<main>
 <div id="wrap">
     <h1>비밀번호 변경</h1>
 
@@ -38,6 +39,7 @@
       <input type="submit" value="변경하기" class="btn_login" />
     </form>
   </div>
+</main>
 </section>
 <script>
 

@@ -4,7 +4,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju2>
+<section class="jinju2">
+<main>
 <div id="wrap">
   <h1>회원정보 수정</h1>
 
@@ -58,6 +59,7 @@
     </form>
   </div>
 </div>
+</main>
 </section>
 
 <script>

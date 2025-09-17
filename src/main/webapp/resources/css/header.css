@@ -140,3 +140,21 @@ header{ background:#fff; }
 	height: 100%;
 	object-fit: cover;
 }
+
+@media screen and (max-width: 1080px) {
+	
+	.main-nav {
+  		gap:30px;   /* ✅ 메뉴 간격 */
+	}
+	
+	.main-nav > li {
+	  min-width: 12px;
+	}
+	
+	.logo{
+		height: 90px;
+		padding: 0;
+		margin-right: 20px;
+	}
+	
+}

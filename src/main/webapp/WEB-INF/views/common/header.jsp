@@ -29,7 +29,7 @@
         </c:if>
         
         <c:if test="${!empty userInfo}">
-	        <li>${userInfo.name} 님</li>
+	        <li style='font-weight:bold;'>${userInfo.name} 님</li>
 	        <li><a href="${path}/user/myPage">My Page</a></li>
 	        <li><a href="${path}/user/logout">로그아웃</a></li>
 	        <c:if test="${userInfo.id eq 'admin'}">

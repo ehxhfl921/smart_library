@@ -21,7 +21,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public String write(BoardVO vo) throws Exception {
         int result = map.writeNotice(vo);
-        String message = (result != 0) ? "공지사항 등록 성공" : "공지사항 등록 실패";
+        String message = (result != 0) ? "공지 사항 등록 성공" : "공지 사항 등록 실패";
 		return message;
     }
 

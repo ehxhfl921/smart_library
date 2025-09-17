@@ -10,6 +10,11 @@ body{
 	margin: 0;
 }
 
+section.jinju1, section.jinju2, section.hyojin{
+	min-height: 600px;
+	padding: 20px;
+}
+
 section.main {
 	text-align: center;
 }
@@ -200,276 +205,99 @@ div.libraryInfo div.infoRight{
 	width: 260px;
 }
 
-/* 효진 */
-/* libraryInfo */
+@media screen and (max-width: 1354px) {
+	
+	section.main .mainBox2 div.bookOftheMonth{
+		width: 700px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+	}
+	
+	section.main .mainBox2 div.libraryInfo{
+	    width: 700px;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;   
+	    align-items: center;       
+	    text-align: left;
+	    margin: 0;
+	}
+	
+	div.libraryInfo div.infoLeft, div.infoRight {
+	    margin-left: 0;
+	}
+	
+	section.main .mainBox1 input{
+		font-size: 25px;
+		width: 650px;
+		padding-left: 20px;
+	}
 
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-      align-items: center;
-      
-      min-height: 655px;
+	section.main .mainBox1 button{
+		font-size: 25px;
+		margin-left: -90px;
+	}
+	
+	section.main .mainBox1 input::placeholder{
+		top: 13px;
+		left: 20px;
+	}
 }
-    
-section.hyojin .content h2 {
-      margin-top: 0;
-      margin-bottom: 15px;
-    }
-section.hyojin .notice-header {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #ccc;
-      font-weight: bold;
-    }
-section.hyojin .notice-list ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-section.hyojin .notice-list li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-section.hyojin .notice-list li:last-child {
-      border-bottom: none;
-    }
-    
-/* loanList */    
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-    }
-    
-section.hyojin .content h2 {
-      margin-top: 0;
-      margin-bottom: 15px;
-    }
-    
-section.hyojin .notice-header {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #ccc;
-      font-weight: bold;
-    }
-section.hyojin .notice-list ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-section.hyojin .notice-list li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-section.hyojin .notice-list li:last-child {
-      border-bottom: none;
-    }
 
-/* noticeDetail */
-section.hyojin .content {
-            flex:1;
-            padding:24px;
-            background:#fff;
-            box-sizing:border-box;
-            display: flex;
-            flex-direction: column;
-        }
-section.hyojin .content h2 {
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-section.hyojin .notice-header {
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #ccc;
-            font-weight: bold;
-        }
-section.hyojin .notice-list {
-            min-height: 150px;
-            margin-top: 10px;
-            flex:1;
-        }
-section.hyojin .notice-footer {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-            gap: 10px;
-        }
-section.hyojin .button {
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            background-color: #eee;
-            cursor: pointer;
-        }
+@media screen and (max-width: 909px) {
 
-/* noticeForm */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-    }
-section.hyojin .content h2 {
-      margin-top: 0;
-      margin-bottom: 15px;
-    }
-section.hyojin .notice-header {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #ccc;
-      font-weight: bold;
-    }
-section.hyojin .notice-list ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-section.hyojin .notice-list li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-section.hyojin .notice-list li:last-child {
-      border-bottom: none;
-    }
 
-/* noticeList */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-    }
-section.hyojin .content h2 {
-      margin:0;
-      margin-bottom:15px;
-    }
-section.hyojin .main-header {
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      margin-bottom:15px;
-    }
-section.hyojin .write-btn {
-      padding:6px 12px;
-      background-color:#0d47a1;
-      color:white;
-      border:none;
-      border-radius:4px;
-      cursor:pointer;
-      font-size:14px;
-    }
-section.hyojin .write-btn:hover {
-      background-color:#0056b3;
-    }
+	section.main .mainBox1 input{
+		font-size: 22px;
+		width: 550px;
+		padding-left: 15px;
+	}
 
-section.hyojin .notice-header {
-      display:flex;
-      justify-content: space-between;
-      padding-bottom:5px;
-      border-bottom:1px solid #ccc;
-      font-weight:bold;
-    }
-section.hyojin .notice-list {
-      min-height:150px;
-      margin-top:10px;
-      flex:1;
-    }
+	section.main .mainBox1 button{
+		font-size: 22px;
+		margin-left: -90px;
+	}
+	
+	section.main .mainBox1 input::placeholder{
+		top: 16px;
+		left: 16px;
+	}
 
-/* noticeUpdate */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-    }
+	section.main .bomBox{
+		width: 600px;
+		padding: 0;
+	}
+	
+	section.main .mainBox2 div.bookOftheMonth{
+		width: 600px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+	}
+	
+	section.main .libBox{
+		width: 600px;
+		padding: 0;
+	}
+	
+	section.main .mainBox2 div.libraryInfo{
+	    width: 600px;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;   
+	    align-items: center;       
+	    text-align: left;
+	    margin: 0;
+	}
+	
+	div.libraryInfo div.infoLeft, div.infoRight {
+	    margin-left: 0;
+	}
+}
 
-section.hyojin .content h2 {
-      margin:0 0 15px 0;
-    }
-
-section.hyojin .notice-header {
-      display:flex;
-      justify-content: space-between;
-      padding-bottom:5px;
-      border-bottom:1px solid #ccc;
-      font-weight:bold;
-      margin-bottom:15px;
-    }
-
-section.hyojin .notice-list {
-      flex:1;
-      min-height:150px;
-    }
-
-section.hyojin .notice-footer {
-      display:flex;
-      justify-content:center;
-      margin-top:15px;
-      gap:10px;
-    }
-
-section.hyojin .button {
-      padding: 6px 12px;
-      border: 1px solid #ccc;
-      background-color: #eee;
-      cursor:pointer;
-      border-radius:4px;
-    }
-
-/* noticeWrite */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-    }
-
-section.hyojin .content h2 {
-      margin:0 0 15px 0;
-    }
-
-section.hyojin .notice-header {
-      display:flex;
-      justify-content: space-between;
-      padding-bottom:5px;
-      border-bottom:1px solid #ccc;
-      font-weight:bold;
-      margin-bottom:15px;
-    }
-
-section.hyojin .notice-list {
-      flex:1;
-      min-height:150px;
-    }
-
-section.hyojin .notice-footer {
-      display:flex;
-      justify-content:center;
-      margin-top:15px;
-      gap:10px;
-    }
-
-section.hyojin .button {
-      padding: 6px 12px;
-      border: 1px solid #ccc;
-      background-color: #eee;
-      cursor:pointer;
-      border-radius:4px;
-    }
-    
 /* roomReservation */
 section.jinju1 .roomReservation,
 section.jinju1 .noticeList {
@@ -581,28 +409,32 @@ section.searchBook .content {
       display:flex;
       flex-direction: column;
       width: 900px;
-      min-height: 653px;
-    }
+      min-height: 630px;
+}
 
 section.searchBook .search-section, .info-section {
       border:1px solid #ccc;
       padding:15px;
-    }
+}
+    
 section.searchBook .search-section h2, .info-section h3 {
       margin:0 0 15px 0;
       font-size:18px;
       color:#555;
-    }
+}
+    
 section.searchBook .search-box {
       display:flex;
       gap:10px;
-    }
+}
+
 section.searchBook .search-box input[type="text"] {
       flex-grow:1;
       padding:10px;
       border:1px solid #ddd;
       font-size:16px;
-    }
+}
+    
 section.searchBook .search-box button {
       padding:10px 20px;
       background-color:#0d47a1;
@@ -631,13 +463,13 @@ section.searchBook div#searchList .none{
 section.searchBook div#bookCard { 
 	width: 800px; 
 	height: 400px; 
-	margin: 20px auto; 
+	margin: 25px auto; 
 	padding: 15px auto; 
 	display: flex; 
 	justify-content: center; 
 	align-items: center; 
 	border: 2px solid #d7d7d7; 
-	border-radius: 10px; 
+	border-radius: 20px; 
 } 
 
 section.searchBook div#bookCard .bookInfo{ 
@@ -738,171 +570,14 @@ section.searchBook div#pagenation #textBtn:hover{
 	transition: 0.1s ease;
 }
 
-/* suggestionDetail */
 
-section.hyojin .notice-header {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #ccc;
-      font-weight: bold;
-    }
-
-section.hyojin .notice-list {
-      min-height: 150px;
-    }
-
-section.hyojin .notice-footer {
-      display: flex;
-      justify-content: center;
-      margin-top: 15px;
-      gap: 10px;
-    }
-section.hyojin .button {
-      padding: 5px 10px;
-      border: 1px solid #ccc;
-      background-color: #eee;
-      cursor: pointer;
-    }
-
-/* suggestionList */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-    }
-section.hyojin .content h2 {
-      margin:0;
-      margin-bottom:15px;
-    }
-section.hyojin .main-header {
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      margin-bottom:15px;
-    }
-section.hyojin .write-btn {
-      padding:6px 12px;
-      background-color:#0d47a1;
-      color:white;
-      border:none;
-      border-radius:4px;
-      cursor:pointer;
-      font-size:14px;
-    }
-section.hyojin .write-btn:hover {
-      background-color:#0056b3;
-    }
-
-section.hyojin .notice-header {
-      display:flex;
-      justify-content: space-between;
-      padding-bottom:5px;
-      border-bottom:1px solid #ccc;
-      font-weight:bold;
-    }
-section.hyojin .notice-list {
-      min-height:150px;
-      margin-top:10px;
-      flex:1;
-    }
-
-/* suggestionUpdate */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-    }
-
-section.hyojin .content h2 {
-      margin:0 0 15px 0;
-    }
-
-section.hyojin .notice-header {
-      display:flex;
-      justify-content: space-between;
-      padding-bottom:5px;
-      border-bottom:1px solid #ccc;
-      font-weight:bold;
-      margin-bottom:15px;
-    }
-
-section.hyojin .notice-list {
-      flex:1;
-      min-height:150px;
-    }
-
-section.hyojin .notice-footer {
-      display:flex;
-      justify-content:center;
-      margin-top:15px;
-      gap:10px;
-    }
-
-section.hyojin .button {
-      padding: 6px 12px;
-      border: 1px solid #ccc;
-      background-color: #eee;
-      cursor:pointer;
-      border-radius:4px;
-    }
-
-/* suggestionWrite */
-section.hyojin .content {
-      flex:1;
-      padding:24px;
-      background:#fff;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-    }
-
-section.hyojin .content h2 {
-      margin:0 0 15px 0;
-    }
-
-section.hyojin .notice-header {
-      display:flex;
-      justify-content: space-between;
-      padding-bottom:5px;
-      border-bottom:1px solid #ccc;
-      font-weight:bold;
-      margin-bottom:15px;
-    }
-
-section.hyojin .notice-list {
-      flex:1;
-      min-height:150px;
-    }
-
-section.hyojin .notice-footer {
-      display:flex;
-      justify-content:center;
-      margin-top:15px;
-      gap:10px;
-    }
-
-section.hyojin .button {
-      padding: 6px 12px;
-      border: 1px solid #ccc;
-      background-color: #eee;
-      cursor:pointer;
-      border-radius:4px;
-    }
-    
 /* 진주 */
 /* admin css*/  
 section.jinju1{
 	width: 1300px;
 	padding: 20px;
 	display: flex;
-	min-height: 575px;
+	min-height: 630px;
 	justify-content: center;
 	margin: 20px auto;
 }  
@@ -910,7 +585,7 @@ section.jinju1{
 section.jinju1 h2.up { 
 	text-align: center; 
 	padding: 0;
-	margin-top: -35px;
+	margin-top: -20px;
 }
 
 section.jinju1 main.loanList{
@@ -1261,6 +936,10 @@ section.jinju1 main.libraryInfo .form-table tr:hover{
 	background-color: white;
 }
 
+section.jinju1 main.manageMember .form-table tr:hover{
+	cursor: pointer;
+}
+
 section.jinju1 .bookDetail .table td img{
 	width: 100%;
 	height:100%;
@@ -1270,7 +949,8 @@ section.jinju1 .bookDetail .table td img{
 section.jinju1 .modifyBook .form-table td,
 section.jinju1 .registerBook .form-table td,
 section.jinju1 main.libraryInfo .form-table td,
-section.jinju1 main.noticeUpdate .form-table td{
+section.jinju1 main.noticeUpdate .form-table td,
+section.jinju1 main.manageUpdate .form-table td{
 	padding: 10px;	
 }
 
@@ -1286,15 +966,22 @@ section.jinju1 main.modifyBook .form-table{
 	width: 500px;
 }
 
+section.jinju1 main.manageUpdate .form-table{
+	height: 550px;
+	width: 550px;
+}
+
 section.jinju1 main.manageBook,
-section.jinju1 main.manageReservation{
+section.jinju1 main.manageReservation,
+section.jinju1 main.manageMember{
 	width: 900px;	
 	margin: 0 30px;
 }
 
 section.jinju1 main.manageBook .form-table,
 section.jinju1 main.manageReservation .form-table,
-section.jinju1 main.noticeUpdate .form-table{
+section.jinju1 main.noticeUpdate .form-table,
+section.jinju1 main.manageMember .form-table{
 	width: 900px;
 }
 
@@ -1308,7 +995,8 @@ section.jinju1 main.noticeUpdate .form-table th{
 
 section.jinju1 main.manageBook hr,
 section.jinju1 main.manageReservation hr,
-section.jinju1 main.noticeList hr{
+section.jinju1 main.noticeList hr,
+section.jinju1 main.manageMember hr{
 	margin-bottom: 20px;
 }
 
@@ -1474,7 +1162,7 @@ section.jinju1 main.manageBook div.newBookBtnBox{
 }
 
 section.jinju1 main.manageBook div.newBookBtnBox .btn{
-	width: 140px;
+	min-width: 140px;
 	height: 45px;
 	font-size: 17px;
 	border-radius: 15px;
@@ -1615,6 +1303,11 @@ section.jinju2 #wrap{
   box-sizing:border-box;
 }
 
+section.jinju2 main{
+	padding: 20px;
+	min-height: 635px;	
+}
+
 /* 타이틀 */
 section.jinju2 h1{
   margin:0 0 24px;
@@ -1708,7 +1401,7 @@ section.jinju2 .btn_login{
   box-shadow: 0 2px 0 rgba(0,0,0,.08) inset;
   transition: transform .02s ease, filter .15s ease;
 }
-section.jinju2 .btn_login:hover{ filter:brightness(.97); }
+section.jinju2 .btn_login:hover{ filter:brightness(1.2); }
 section.jinju2 .btn_login:active{ transform:translateY(1px); }
 
 /* 보조 버튼 (주소찾기 같은 버튼) */
@@ -1762,7 +1455,7 @@ section.jinju2 th, section.jinju2 td{
   vertical-align:middle;
 }
 section.jinju2 th{
-  width:140px;
+  width:150px;
   text-align:left;
   background:#f8fafc;
   color:#374151;
@@ -1781,12 +1474,40 @@ section.jinju2 td textarea{
   font-size:15px;
   box-sizing:border-box;
 }
+
 section.jinju2 td input:focus, section.jinju2 td textarea:focus{
   outline:none; border-color:#2f6bdc;
   box-shadow:0 0 0 3px rgba(47,107,220,.18);
   background:#fff;
 }
 
+section.jinju2 .info-msg {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 15px;
+  color: #111; 
+}
+
+section.jinju2 .highlight {color: #0d47a1;}
+
+section.jinju2 .info-msg {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 15px;
+  color: #111; 
+}
+section.jinju2 .highlight {color: #0d47a1;}
+
+section.jinju2 a.btn-link {
+  color: #0d47a1;
+  font-weight: bold;
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+section.jinju2 a.btn-link:hover {
+  text-decoration: underline;
+}
 
 .sidebar{
 	  width: 220px;

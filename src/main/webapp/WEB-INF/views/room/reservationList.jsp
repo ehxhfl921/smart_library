@@ -1,4 +1,4 @@
-<!-- 내 서재 / 도서 대출 내역 -->
+<!-- 내 서재 / 스터디룸 이용 내역 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

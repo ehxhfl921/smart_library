@@ -53,8 +53,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
+searchBox.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+        const keyword = searchBox.value;
+        getSearchList(keyword, 1);
+    }
+});
 
 // 최초 검색 시 키워드 + 페이지 1로 도서 목록 검색
 searchBtn.addEventListener("click", () => {
