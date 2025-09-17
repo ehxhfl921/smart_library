@@ -16,11 +16,7 @@
 <aside class="sidebar" style="width:220px;">
       <div class="sidebar-header">내 서재</div>
       <div class="sidebar-item"><a href="${path}/book/myPage/loans?page=1">도서 대출 현황</a></div>
-      <div class="sidebar-item">
-      		<a href="${path}/studyroom/myReservationList?page=1">
-      			스터디룸 예약 현황
-      		</a>
-      </div>
+      <div class="sidebar-item"><a href="${path}/studyroom/myReservationList?page=1">스터디룸 예약 현황</a></div>
       <div class="sidebar-item"><a href="${path}/suggest/mySuggestion"
       	   style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
        작성한 건의 사항
@@ -28,11 +24,9 @@
       </div>
 </aside>
 
-    <main class="suggestionList">
-    	<div class="head">
-	        <h2>내가 작성한 건의사항</h2>
-		</div>
-		<hr>
+    <main class="loanList">
+	    <h2>내가 작성한 건의사항</h2>
+		 <hr style="margin: 30px 0;">
         <table class="form-table">
             <thead>
                 <tr>

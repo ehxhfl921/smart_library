@@ -3,6 +3,7 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class="jinju2">
+<main>
   <div id="wrap">
     <h1>아이디 찾기</h1>
 
@@ -44,6 +45,7 @@
       <p id="resultMsg" class="info-msg"></p>
     </form>
   </div>
+</main>
 </section>
 
 <script>
@@ -123,25 +125,6 @@
 </script>
 
 <%@ include file="../common/footer.jsp" %>
-<style>
-section.jinju2 .info-msg {
-  text-align: center;
-  font-size: 15px;
-  margin-top: 15px;
-  color: #111; 
-}
-section.jinju2 .highlight {color: #0d47a1;}
-
-section.jinju2 a.btn-link {
-  color: #0d47a1;
-  font-weight: bold;
-  margin-left: 8px;
-  text-decoration: none;
-}
-section.jinju2 a.btn-link:hover {
-  text-decoration: underline;
-}
-</style>
 
 
 

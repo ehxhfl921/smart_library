@@ -8,7 +8,7 @@
 <section class="jinju1">
   <main class="noticeUpdate">
     <h2>건의사항 작성</h2>
-    <form method="POST" action="${path}/notice/register">
+    <form method="POST" action="${path}/suggest/register">
     
     	 <table class="form-table">
        

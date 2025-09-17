@@ -3,7 +3,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju2>
+<section class="jinju2">
+<main>
 <div id="wrap">
   <h1>마이페이지</h1>
 
@@ -54,7 +55,7 @@
   </div>
 </div>
 
-
+</main>
 </section>
 
 <%@ include file="../common/footer.jsp" %>

@@ -4,6 +4,8 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class="jinju2">
+
+<main>
   <div id="wrap">
 
     <h1>SMART 도서관</h1>
@@ -40,6 +42,7 @@
       
     </ul>
   </div>
+</main>
 </section>
 
 

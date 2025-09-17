@@ -2,6 +2,8 @@ package net.koreate.board.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import net.koreate.board.service.NoticeService;
 import net.koreate.board.vo.BoardVO;
 import net.koreate.common.utils.Criteria;
+import net.koreate.user.vo.UserVO;
 
 @Controller
 @RequestMapping("/notice")
@@ -78,14 +81,22 @@ public class NoticeController {
     */
    @PostMapping("/register")
    public String noticeRegister(BoardVO vo,
-		   RedirectAttributes rttr
+		   RedirectAttributes rttr,
+		   HttpSession session
 		   ) throws Exception{
       System.out.println("param data : " + vo);
       
+      UserVO login = (UserVO)session.getAttribute("userInfo");
+      
+      if(login != null) {
+    	  vo.setN_author(login.getName());
+      }
+      
       try {
 		String result = ns.write (vo);
-	    rttr.addFlashAttribute(result);
+	    rttr.addFlashAttribute("msg", result);
 	} catch (Exception e) {
+		rttr.addFlashAttribute("msg", "공지 사항 등록에 실패하였습니다.");
 		e.printStackTrace();
 	}
       

@@ -5,6 +5,8 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class="jinju2">
+
+<main>
   <div id="wrap">
     <h1>비밀번호 찾기</h1>
 
@@ -34,6 +36,7 @@
 		<p id="resultMsg" class="info-msg"></p>
     </form>
   </div>
+</main>
 </section>
 
 <script>
@@ -92,14 +95,4 @@ const path = "${path}";
 </script>
 
 <%@ include file="../common/footer.jsp" %>
-
-<style>
-section.jinju2 .info-msg {
-  text-align: center;
-  font-size: 15px;
-  margin-top: 15px;
-  color: #111; 
-}
-section.jinju2 .highlight {color: #0d47a1;}
-</style>
 
