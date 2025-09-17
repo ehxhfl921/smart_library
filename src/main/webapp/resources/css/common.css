@@ -658,6 +658,8 @@ main.noticeDetail div.contentBox div.body{
 
 main.noticeDetail div.contentBox div.body pre{
 	font-family: sans-serif;
+	white-space: pre-wrap;   /* 줄바꿈 허용 + 원래 줄바꿈도 유지 */
+  	word-wrap: break-word;
 }
 
 main.noticeDetail div.contentBox p.authAndDate{
@@ -670,6 +672,7 @@ main.noticeDetail .btnBox{
 }
 
 main.noticeDetail .replyBox{
+	width: 900px;
 	margin-top: 20px;
 }
 
@@ -719,7 +722,7 @@ main.noticeDetail .authorAndDate .date p span{
 }
 
 .noticeDetail .reply .content{
-	min-height: 100px;
+	min-height: 80px;
 	padding: 15px;
 }
 
@@ -732,6 +735,7 @@ main.noticeDetail .authorAndDate .date p span{
 	color: #0d47a1;
 	font-weight: bold;
 	cursor: pointer;
+	margin: 0;
 }
 
 .noticeDetail a#active{
@@ -750,8 +754,12 @@ main.noticeDetail .authorAndDate .date p span{
 }
 
 .noticeDetail .reply .content pre{
-	min-height: 90px;
+	width: inherit;
 	font-family: sans-serif;
+	white-space: pre-wrap;   /* 줄바꿈 허용 + 원래 줄바꿈도 유지 */
+  	word-wrap: break-word;
+  	padding: 15px;
+  	margin: 0;
 }
 
 .noticeDetail .modifyFormBox{
