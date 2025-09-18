@@ -1555,3 +1555,26 @@ section.jinju2 a.btn-link:hover {
       background: #f1f3f5;
       color: #000;
 }
+
+section.jinju1 .result {
+  display: none;    
+  font-size: 12px;
+  color: #c62828;
+  margin-top: 6px;
+}
+
+section.jinju1 .result.ok { 
+  color: #0a7a42; 
+}
+section.jinju2 .result {
+  display: none;    
+   min-height: 16px; 
+  font-size: 12px;
+  color: #c62828;
+  margin-top: 6px;
+}
+
+section.jinju2 .result.ok { 
+  color: #0a7a42; 
+}
+

@@ -10,7 +10,7 @@
   <h1>회원정보 수정</h1>
 
   <div class="login_wrap">
-    <form  method="post" action="${path}/user/modifyInfo" autocomplete="off">
+    <form  method="post" action="${path}/user/modifyInfo" autocomplete="off"  onsubmit="return validateForm()">
        <input type="hidden" name="mno" value="${userInfo.mno}">
       <table>
         <tr>
@@ -71,9 +71,10 @@
 		  return true;
 		}
 	
-		function showMessage(el, msg, isValid){
+		function showMessage(el, msg, isCheck){
 		  el.innerText = msg;
-		  el.style.color = isValid ? "green" : "red";
+		  el.style.color = isCheck ? "green" : "red";
+		  el.style.display = "block";
 		}
 	
 	
@@ -86,6 +87,7 @@
 	
 	pw.oninput = function(e){
 		let el = pw.parentElement.querySelector(".result");
+		if(pw.value.trim()===""){ el.style.display="none"; return; }
 		let msg = "특수문자,숫자,영문 포함 8~16자 이내 작성"; 
 		boolPw = checkRegex(el, pw.value, regexPw, msg);
 		
@@ -101,6 +103,7 @@
 	re_pw.oninput = function(e){
 		
 		let el = re_pw.parentElement.querySelector(".result");
+		if(re_pw.value.trim()===""){ el.style.display="none"; return; }
 		
 		if(boolPw){
 			boolPwCheck = (re_pw.value == pw.value);
@@ -112,16 +115,18 @@
 	} // 비밀번호 확인 check 
 	
 	function validateForm() {
-	const pw = document.getElementById("pw").value.trim();
-	const confirmPw = document.getElementById("confirmPassword").value.trim();
-	
-	if (pw !== confirmPw) {
-	  alert("비밀번호가 일치하지 않습니다.");
-	  return false;
-	}
-	return true;
-	}
-	
+	    const pwVal = document.getElementById("pw").value.trim();
+	    const reVal = document.getElementById("re_pw").value.trim();
+
+
+	    if(pwVal !== "" || reVal !== ""){
+	      if (pwVal !== reVal) {
+	        alert("비밀번호가 일치하지 않습니다.");
+	        return false;
+	      }
+	    }
+	    return true;
+	  }
 
 </script>
 
