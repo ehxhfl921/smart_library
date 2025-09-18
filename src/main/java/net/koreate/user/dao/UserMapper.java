@@ -67,7 +67,7 @@ public interface UserMapper {
 	 * @param email		전달 받은 이메일
 	 * @return			이메일로 검색된 회원의 아이디
 	 */
-	@Select("SELECT id FROM member WHERE email=#{email} AND status='Y'")
+	@Select("SELECT id FROM member WHERE email = #{email} AND status='Y'")
 	String findId(@Param("email")String email) throws Exception;
 	
 	/**
@@ -111,7 +111,7 @@ public interface UserMapper {
 	 * @param cri	페이징 정보
 	 * @return		페이징 처리된 회원 목록
 	 */
-	@Select("SELECT * FROM member WHERE status='Y'  ORDER BY mno DESC"
+	@Select("SELECT * FROM member WHERE status='Y' AND id != 'admin' ORDER BY mno DESC"
 			+ " OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
 	List<UserVO> memberList(Criteria cri) throws Exception;
 	
@@ -127,6 +127,6 @@ public interface UserMapper {
 	/**
 	 * 전체 회원 수 조회
 	 */
-	@Select("SELECT COUNT (*) FROM member WHERE status='Y'" )
+	@Select("SELECT COUNT (*) FROM member WHERE status='Y' AND id != 'admin'" )
 	int countMembers() throws Exception;
 }

@@ -298,7 +298,12 @@
 	} // check Regex
 	
 	function showMessage(el, msg, isCheck){
-		  el.innerHTML = `<span style="\${isCheck ? 'color:green;' : 'color:red;'}">\${msg}</span>`;
+		  if(msg && msg.trim() !== ""){
+		    el.style.display = "block";
+		    el.innerHTML = `<span style="\${isCheck ? 'color:green;' : 'color:red;'}">\${msg}</span>`;
+		  } else {
+			  el.innerText = ""; 
+		  }
 		}
 
 	
@@ -311,10 +316,11 @@
 
 	id.addEventListener("input", function(e){
 		
-		let val = id.value;
-		console.log(val);
 		let el = e.target.parentElement.querySelector(".result");
-		console.log(el);
+		if(id.value.trim() === ""){ 
+			 el.innerText = ""; 
+			return;
+		}
 		
 		boolId = checkRegex(el, id.value, regexId, "아이디는 4~12자의 영문+숫자 조합이어야 합니다.");
 		if(boolId) showMessage(el, "사용가능합니다.", true);
@@ -330,6 +336,12 @@
 	
 	pw.oninput = function(e){
 		let el = pw.parentElement.querySelector(".result");
+		
+		if(pw.value.trim() === ""){ 
+			 el.innerText = ""; 
+			return;
+		}
+		
 		let msg = "특수문자,숫자,영문 포함 8~16자 이내 작성"; 
 		boolPw = checkRegex(el, pw.value, regexPw, msg);
 		
@@ -345,6 +357,11 @@
 	re_pw.oninput = function(e){
 		
 		let el = re_pw.parentElement.querySelector(".result");
+		
+		if(re_pw.value.trim() === ""){ 
+			 el.innerText = ""; 
+			return;
+		}
 		
 		if(boolPw){
 			boolPwCheck = (re_pw.value == pw.value);
@@ -362,6 +379,12 @@
 
 	name.oninput = function(){
 		let el = name.parentElement.querySelector(".result");
+		
+		if(name.value.trim() === ""){
+			 el.innerText = ""; 
+			return;
+		}
+		
 		boolName = checkRegex(el, name.value, regexName, "이름은 2~6자의 한글만 가능합니다.");
 		if(boolName) showMessage(el, "사용가능합니다.", true);
 	};
@@ -373,6 +396,12 @@
 
 	phone.addEventListener("input", function(e){
 		let el = e.target.parentElement.querySelector(".result");
+		
+		if(phone.value.trim() === ""){
+			 el.innerText = ""; 
+			return;
+		}
+		
 		boolPhone = checkRegex(el, phone.value, regexMobile, "전화번호 형식(01012345678)으로 입력해주세요.");
 		if(boolPhone) showMessage(el, "사용 가능한 전화번호입니다.", true);
 	});
@@ -384,6 +413,12 @@
 
 	email.addEventListener("input", function(e){
 		let el = e.target.parentElement.querySelector(".result");
+		
+		if(email.value.trim() === ""){
+			 el.innerText = ""; 
+			return;
+		}
+		
 		boolEmail = checkRegex(el, email.value, regexEmail, "올바른 이메일 형식이 아닙니다.");
 		if(boolEmail) showMessage(el, "사용 가능한 이메일입니다.", true);
 	});
@@ -430,6 +465,12 @@
 
 	addr.oninput = function(){
 		  let el = addr.parentElement.querySelector(".result");
+		  
+			if(addr.value.trim() === ""){
+				 el.innerText = ""; 
+				return;
+			}
+		  
 		  let regexAddr = /[가-힣]+(시|군)\s?[가-힣]+(구)?\s?[가-힣]+동/;
 		  boolAddr = regexAddr.test(addr.value.trim());
 		  let msg = boolAddr ? "주소 입력 완료" : "주소는 시/군/동까지 입력해주세요.";
@@ -481,22 +522,3 @@
 
 </script>
 <%@ include file="../common/footer.jsp" %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

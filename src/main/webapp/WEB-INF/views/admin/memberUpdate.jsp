@@ -66,6 +66,7 @@
 		}
 	
 		function showMessage(el, msg, isValid){
+	      el.style.display = "block";
 		  el.innerText = msg;
 		  el.style.color = isValid ? "green" : "red";
 		}
