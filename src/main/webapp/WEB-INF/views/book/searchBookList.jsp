@@ -5,29 +5,41 @@
 <%@ include file="../common/header.jsp" %>
 
 <section class="searchBook">
-	 <main class="content">
-	 
-      <div class="search-section">
+<aside class="sidebar" style="width:220px;">
+	<div class="sidebar-header">자료 찾기</div>
+	<div class="sidebar-item">
+		<a href="${path}/book/search"
+			style="background-color:#f1f3f5;color:#0d47a1;font-weight:bold;">
+		도서 검색
+		</a>
+	</div>
+	<div class="sidebar-item"><a href="${path}/upcoming">출간 예정 도서</a></div>
+</aside>
+
+<main class="content">
+
+	<h2>도서 검색</h2>
+	<hr style="margin: 10px 0;">
+	<div class="search-section">
+    
+		<div class="search-box">
+		   <input type="text" id="keyword" placeholder="검색어를 입력하세요">
+		   <button id="searchBtn" type="submit">검색</button>
+		</div>
       
-        <h2>통합 검색</h2>
-        <div class="search-box">
-	          <input type="text" id="keyword" placeholder="검색어를 입력하세요">
-	          <button id="searchBtn" type="submit">검색</button>
-        </div>
-        
-        <!-- 검색된 도서 목록 -->
-        <div id="searchList">
-        	
-        </div>
-        
-        <!-- 페이징 블럭 -->
-        <div id="pagenation">
-        
-        </div>
-        
-      </div>
-      
-    </main>
+		<!-- 검색된 도서 목록 -->
+		<div id="searchList">
+			
+		</div>
+
+		<!-- 페이징 블럭 -->
+		<div id="pagenation">
+		
+		</div>
+    
+	</div>
+  
+</main>
 </section>
 
 

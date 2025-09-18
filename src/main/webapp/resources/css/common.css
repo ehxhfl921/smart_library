@@ -399,17 +399,22 @@ section.jinju1 .select-button:hover {
 
 section.searchBook{
 	display: flex;
-	width: 800px;
-	margin: 20px auto;
+	width: 1000px;
+	margin: 40px auto;
+}
+
+section.searchBook aside{
+	margin-left: -70px;	
 }
 
 section.searchBook .content {
-      padding:0;
-      box-sizing:border-box;
-      display:flex;
-      flex-direction: column;
-      width: 900px;
-      min-height: 630px;
+	padding:0;
+	box-sizing:border-box;
+	display:flex;
+	flex-direction: column;
+	width: 700px;
+	min-height: 580px;
+	margin-left: 50px;
 }
 
 section.searchBook .search-section, .info-section {
@@ -450,7 +455,7 @@ section.searchBook .search-box button:hover {
 
 
 section.searchBook div#searchList { 
-	width: 800px; 
+	width: 700px; 
 	margin: 0 auto; 
 	padding: 0; 
 } 
@@ -461,7 +466,7 @@ section.searchBook div#searchList .none{
 }
 
 section.searchBook div#bookCard { 
-	width: 800px; 
+	width: 700px; 
 	height: 400px; 
 	margin: 25px auto; 
 	padding: 15px auto; 
@@ -483,7 +488,7 @@ section.searchBook div#bookCard .bookInfo{
 section.searchBook .bookInfo div.info-left{
 	width: 160px;
 	padding: 0;
-	padding-left: 80px;
+	padding-left: 50px;
 	font-size: 20px;
 	font-weight: bold;
 	justify-content: center;
@@ -492,13 +497,13 @@ section.searchBook .bookInfo div.info-left{
 section.searchBook .bookInfo div.info-right{
 	width: 220px;
 	padding: 0;
-	padding-left: 50px;
+	padding-left: 30px;
 	font-size: 20px;
 }
 
 section.searchBook .bookInfo div p#avail {
 	width:420px;
-	padding-left:95px;
+	padding-left: 60px;
 }
 
 section.searchBook div#bookCard .coverBox{ 
