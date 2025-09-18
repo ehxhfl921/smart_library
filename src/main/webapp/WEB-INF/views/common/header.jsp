@@ -58,6 +58,7 @@
 			  	<a href="${path}/book/search">자료 찾기</a>
 			  	<ul class="dropdown">
 			      <li><a href="${path}/book/search">도서 검색</a></li>
+			      <li><a href="${path}/upcoming">출간 예정 도서</a></li>
 			    </ul>
 			  </li>
 			  <li>
