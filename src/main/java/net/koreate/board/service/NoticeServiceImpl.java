@@ -28,12 +28,12 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public String update(BoardVO vo) throws Exception {
     	int result = map.updateNotice(vo);
-    	return result == 1 ? "공지사항 수정 성공" : "공지사항 수정 실패"; 
+    	return result == 1 ? "공지 사항 수정 성공" : "공지 사항 수정 실패"; 
     }
 
     @Override
     public String delete(int nno) throws Exception {
-    	return map.deleteNotice(nno) == 1 ? "공지사항 삭제 성공" : "공지사항 삭제 실패";
+    	return map.deleteNotice(nno) == 1 ? "공지 사항 삭제 성공" : "공지 사항 삭제 실패";
     }
 
     @Override

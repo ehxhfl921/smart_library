@@ -13,13 +13,13 @@
 
 <section class="jinju1">
 	<main class="noticeDetail">
-        <h2>건의사항</h2>
+        <h2>건의 사항</h2>
 		<hr>
 		<div class="contentBox">
 		
 			<div class="head">
 				<p class="noAndTitle">
-					<span class="no">No.${suggestion.sug_no}</span>
+					<span class="no">No.${suggestion.rnum}</span>
 					<span class="title">${suggestion.s_title}</span>
 				</p>
 				<p class="authAndDate">
@@ -40,7 +40,8 @@
 		<div class="btnBox" style="margin-bottom:15px;">
 			<c:if test="${userInfo.id eq suggestion.s_userid}">
 			    <button type="button" class="btn"
-                		onclick="if(confirm('건의 사항을 수정하시겠습니까?')) location.href='${path}/suggest/modifyForm?sug_no=${suggestion.sug_no}'">
+                		onclick="if(confirm('건의 사항을 수정하시겠습니까?')) 
+                		location.href='${path}/suggest/modifyForm?sug_no=${suggestion.sug_no}&rnum=${suggestion.rnum}'">
                 	수정
             	</button>
 			</c:if>

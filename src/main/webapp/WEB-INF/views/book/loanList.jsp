@@ -23,6 +23,7 @@
       <hr style="margin: 30px 0;">
 	<table class="form-table">
     	<tr>
+	      		<th>no.</th>
 	      		<th>대출 번호</th>
 		        <th>제목</th>
 		        <th>저자</th>
@@ -34,6 +35,7 @@
 		<c:when test="${not empty list}">
 	      	<c:forEach var="loan" items="${list}">
 	      		<tr>
+		      		<td>${loan.rnum}</td>
 		      		<td>${loan.loan_no}</td>
 			        <td>${loan.title}</td>
 			        <td>${loan.author}</td>
@@ -61,7 +63,7 @@
 	      </c:when>
 	      <c:otherwise>
 		      <tr>
-		        <td colspan="6" class="center">도서 대출 기록이 없습니다.</td>
+		        <td colspan="7" class="center">도서 대출 기록이 없습니다.</td>
 		      </tr>
 		  </c:otherwise>
 	 </c:choose>

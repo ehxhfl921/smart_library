@@ -45,7 +45,8 @@ public interface BookMapper {
 	 * @param cri 페이징 정보
 	 * @return 전체 도서 목록
 	 */
-	@Select("SELECT * FROM book WHERE b_status = 'Y' ORDER BY bno DESC "
+	@Select("SELECT ROWNUM AS rnum, b.* FROM "
+			+ "(SELECT * FROM book WHERE b_status = 'Y' ORDER BY bno DESC) b ORDER BY rnum ASC "
 			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
 	List<BookVO> allBookList(Criteria cri) throws Exception;
 	

@@ -21,11 +21,11 @@ public interface SuggestionMapper {
     * @param cri 페이징 처리 정보
     * @return 페이징 처리된 건의 사항 게시글 목록
     */
-	 @Select("SELECT * FROM suggestion " +
-	            "WHERE s_status = 'Y' " +
-	            "ORDER BY sug_no DESC " +
-	            "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
-	    List<BoardVO> suggestionList(Criteria cri) throws Exception;
+	@Select("SELECT ROWNUM AS rnum, s.* FROM (SELECT * FROM suggestion " +
+	        "WHERE s_status = 'Y' " +
+	        "ORDER BY sug_no DESC) s ORDER BY rnum ASC " +
+	        "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
+	List<BoardVO> suggestionList(Criteria cri) throws Exception;
    /**
     * 건의 사항 게시글 번호로 suggestion 테이블에서 하나의 게시글 정보 조회
     * 
@@ -75,9 +75,9 @@ public interface SuggestionMapper {
     * @param cri      페이징 정보
     */
 	//로그인 사용자 건의사항 목록 (페이징)
-	@Select("SELECT * FROM suggestion " +
+	@Select("SELECT ROWNUM AS rnum, s.* FROM (SELECT * FROM suggestion " +
 	"WHERE s_userid = #{user_id} AND s_status = 'Y' " +
-	"ORDER BY s_create_date DESC " +
+	"ORDER BY s_create_date DESC) s ORDER BY rnum ASC " +
 	"OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
 	List<BoardVO> mySuggestion(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
    

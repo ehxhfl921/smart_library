@@ -72,12 +72,13 @@ public class SuggestionController {
 	 * @param sug_no 상세 보기 요청한 건의사항 게시글 번호
 	 */
 	 @GetMapping("/detail")
-	 public String suggestionDetail(@RequestParam(value="sug_no", required=false) Integer sug_no, Model model) throws Exception {
-	     if(sug_no == null) {
-	         // 값이 없거나 잘못된 경우 목록 페이지로 리다이렉트
-	         return "redirect:/suggest/list";
-	     }
+	 public String suggestionDetail(
+			 @RequestParam("sug_no") int sug_no, 
+			 @RequestParam("rnum") int rnum,
+			 Model model) throws Exception {
+	     
 	     BoardVO detail = ss.getDetail(sug_no);
+	     detail.setRnum(rnum);
 	     model.addAttribute("suggestion", detail);
 	     return "board/suggestionDetail";
 	 }
@@ -113,7 +114,7 @@ public class SuggestionController {
 	 * 건의 사항 작성 폼 페이지로 이동 요청 처리
 	 */
 	 @GetMapping("/register")
-	   public String suggestionRegisterForm() throws Exception{
+	   public String suggestionRegisterForm(int rnum) throws Exception{
 
 	    return "board/suggestionWrite";
 	}
@@ -137,7 +138,7 @@ public class SuggestionController {
 	            rttr.addFlashAttribute("msg", "수정 사항 등록 중 오류가 발생했습니다.");
 	        }
 
-	        return "redirect:/suggest/detail";
+	        return "redirect:/suggest/detail?sug_no="+vo.getSug_no() +"&rnum="+ vo.getRnum();
 	 }
 	 
 	 /**

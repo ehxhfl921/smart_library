@@ -111,8 +111,10 @@ public interface UserMapper {
 	 * @param cri	페이징 정보
 	 * @return		페이징 처리된 회원 목록
 	 */
-	@Select("SELECT * FROM member WHERE status='Y' AND id != 'admin' ORDER BY mno DESC"
-			+ " OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
+	@Select("SELECT ROWNUM AS rnum, u.* FROM "
+			+ "(SELECT * FROM member WHERE status='Y' AND id != 'admin' ORDER BY mno DESC) "
+			+ "u ORDER BY rnum ASC "
+			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
 	List<UserVO> memberList(Criteria cri) throws Exception;
 	
 	/**

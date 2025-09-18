@@ -70,6 +70,7 @@
     <h2 class="down">대출 현황</h2>
     <table class="form-table">
         <tr>
+            <th>no.</th>
             <th>대출 번호</th>
             <th>대출자 ID</th>
             <th>대출일</th>
@@ -81,6 +82,7 @@
 	        <c:when test="${not empty list}">
 	        	<c:forEach var="loan" items="${list}">
 			        <tr>
+			            <td>${loan.rnum}</td>
 			            <td>${loan.loan_no}</td>
 			            <td>${loan.name}(${loan.user_id})</td>
 			            <td>
@@ -108,7 +110,7 @@
 	        
 	        <c:otherwise>
 		        <tr>
-		            <td colspan="5" align="center">대출 내역이 없습니다.</td>
+		            <td colspan="6" align="center">대출 내역이 없습니다.</td>
 		        </tr>
 		    </c:otherwise>
         </c:choose>

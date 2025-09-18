@@ -3,15 +3,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
+<c:if test="${not empty msg}">
+    <script>
+        alert('${msg}');
+    </script>
+</c:if>
+
 <section class="jinju1">
 	<main class="noticeDetail">
-        <h2>공지사항</h2>
+        <h2>공지 사항</h2>
 		<hr>
 		<div class="contentBox">
 		
 			<div class="head">
 				<p class="noAndTitle">
-					<span class="no">No.${boardVO.nno}</span>
+					<span class="no">No.${boardVO.rnum}</span>
 					<span class="title">${boardVO.n_title}</span>
 				</p>
 				<p class="authAndDate">
@@ -28,7 +34,7 @@
 		<c:if test="${userInfo.id eq 'admin'}">
 	       <div class="btnBox">
 			    <button type="button" class="btn"
-			                onclick="if(confirm('공지 사항을 수정하시겠습니까?')) location.href='${path}/notice/modifyForm?nno=${boardVO.nno}'">
+			                onclick="if(confirm('공지 사항을 수정하시겠습니까?')) location.href='${path}/notice/modifyForm?nno=${boardVO.nno}&rnum=${boardVO.rnum}'">
 			                수정
 			    </button>
 			
