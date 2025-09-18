@@ -38,7 +38,7 @@
         <table class="form-table">
             <thead>
                 <tr>
-                    <th>No.</th>
+                    <th>no.</th>
                     <th>제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
@@ -49,9 +49,9 @@
                 <c:when test="${not empty lists}">
                     <c:forEach var="notice" items="${lists}">
                         <tr>
-                            <td class="center">${notice.nno}</td>
+                            <td class="center">${notice.rnum}</td>
                             <td>
-                                <a href="${path}/notice/detail?nno=${notice.nno}">
+                                <a href="${path}/notice/detail?nno=${notice.nno}&rnum=${notice.rnum}">
                                     ${notice.n_title}
                                 </a>
                             </td>

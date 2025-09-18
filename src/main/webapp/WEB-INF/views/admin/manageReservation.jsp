@@ -28,6 +28,7 @@
 <table class="form-table">
   <thead>
     <tr>
+      <th>no.</th>
       <th>예약 번호</th>
       <th>신청자 (아이디)</th>
       <th>스터디룸</th>
@@ -41,6 +42,7 @@
     <c:if test="${not empty list}">
 		<c:forEach var="reservation" items="${list}">
 	          <tr>
+	            <td>${reservation.rnum}</td>
 	            <td>${reservation.rno}</td>
 	            <td>${reservation.user_name} (${reservation.user_id})</td>
 	            <td>스터디룸 ${reservation.sno}</td>
@@ -94,7 +96,7 @@
 	</c:if>
 	<c:if test="${empty list}">
         <tr>
-          <td colspan="7">예약 내역이 없습니다.</td>
+          <td colspan="8">예약 내역이 없습니다.</td>
         </tr>
     </c:if>
   </tbody>

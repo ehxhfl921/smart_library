@@ -24,13 +24,13 @@
       </div>
 </aside>
 
-    <main class="loanList">
+    <main class="noticeList">
 	    <h2>내가 작성한 건의사항</h2>
 		 <hr style="margin: 30px 0;">
         <table class="form-table">
             <thead>
                 <tr>
-                    <th>No.</th>
+                    <th>no.</th>
                     <th>제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
@@ -41,9 +41,9 @@
                 <c:when test="${not empty list}">
                     <c:forEach var="suggestion" items="${list}">
                         <tr>
-                            <td class="center">${suggestion.sug_no}</td>
+                            <td class="center">${suggestion.rnum}</td>
                             <td>
-                                <a href="${path}/suggest/detail?sug_no=${suggestion.sug_no}">
+                                <a href="${path}/suggest/detail?sug_no=${suggestion.sug_no}&rnum=${suggestion.rnum}">
                                     ${suggestion.s_title}
                                 </a>
                             </td>

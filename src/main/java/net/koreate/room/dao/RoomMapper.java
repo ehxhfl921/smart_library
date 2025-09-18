@@ -72,9 +72,10 @@ public interface RoomMapper {
 	 * @param cri		페이징 정보
 	 * @return			페이징 처리된 로그인 사용자의 스터디룸 이용(예약) 내역 리스트 반환
 	 */
-	@Select("SELECT * FROM studyroom_reservation "
+	@Select("SELECT ROWNUM AS rnum, r.* FROM "
+			+ "(SELECT * FROM studyroom_reservation "
 			+ "WHERE user_id = #{user_id}"
-			+ "ORDER BY rno DESC "
+			+ "ORDER BY rno DESC) r ORDER BY rnum ASC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY ")
 	List<RoomVO> myReservationList(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
 	
@@ -84,8 +85,9 @@ public interface RoomMapper {
 	 * @param cri	페이징 정보
 	 * @return		페이징 처리된 모든 스터디룸 예약 내역 리스트로 반환
 	 */
-	@Select( "SELECT * FROM studyroom_reservation "
-			+ "ORDER BY rno DESC "
+	@Select( "SELECT ROWNUM AS rnum, r.* FROM "
+			+ "(SELECT * FROM studyroom_reservation "
+			+ "ORDER BY rno DESC) r ORDER BY rnum ASC "
 			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY ")
 	List<RoomVO> reservationList(Criteria cri) throws Exception;
 	

@@ -21,9 +21,9 @@ public interface NoticeMapper {
 	 * @param cri 페이징 처리 정보
 	 * @return 페이징 처리된 공지 사항 게시글 목록
 	 */
-	@Select("SELECT * FROM notice " +
+	@Select("SELECT ROWNUM AS rnum, n.* FROM (SELECT * FROM notice " +
 	        "WHERE n_status = 'Y' " +
-	        "ORDER BY nno DESC " +
+	        "ORDER BY nno DESC) n ORDER BY rnum ASC " +
 	        "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
 	List<BoardVO> noticeList(Criteria cri) throws Exception;
 	

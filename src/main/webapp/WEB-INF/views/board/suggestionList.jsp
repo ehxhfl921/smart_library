@@ -41,7 +41,7 @@
         <table class="form-table">
             <thead>
                 <tr>
-                    <th>No.</th>
+                    <th>no.</th>
                     <th>제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
@@ -52,9 +52,9 @@
                     <c:when test="${not empty list}">
                         <c:forEach var="suggestion" items="${list}">
                             <tr>
-                                <td class="center">${suggestion.sug_no}</td>
+                                <td class="center">${suggestion.rnum}</td>
                                 <td>
-                                    <a href="${path}/suggest/detail?sug_no=${suggestion.sug_no}">
+                                    <a href="${path}/suggest/detail?sug_no=${suggestion.sug_no}&rnum=${suggestion.rnum}">
                                         ${suggestion.s_title}
                                         <c:if test="${suggestion.s_update_date != null}">
                                         	&nbsp; <span style="color:#0d47a1">(수정됨)</span>
@@ -82,11 +82,11 @@
             <c:when test="${not empty list and not empty pm}">
                 <div class="pagination">
                     <c:if test="${pm.first}">
-                        <a href="${path}/suggest/list?page=1">처음</a>
+                        <a href="${path}/suggest/list?page=1">[처음]</a>
                     </c:if>
 
                     <c:if test="${pm.prev}">
-                        <a href="${path}/suggest/list?page=${pm.startPage-1}">이전</a>
+                        <a href="${path}/suggest/list?page=${pm.startPage-1}">[이전]</a>
                     </c:if>
 
                     <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
@@ -97,11 +97,11 @@
                     </c:forEach>
 
                     <c:if test="${pm.next}">
-                        <a href="${path}/suggest/list?page=${pm.endPage+1}">다음</a>
+                        <a href="${path}/suggest/list?page=${pm.endPage+1}">[다음]</a>
                     </c:if>
 
                     <c:if test="${pm.last}">
-                        <a href="${path}/suggest/list?page=${pm.maxPage}">마지막</a>
+                        <a href="${path}/suggest/list?page=${pm.maxPage}">[마지막]</a>
                     </c:if>
                 </div>
             </c:when>

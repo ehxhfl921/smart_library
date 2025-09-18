@@ -20,6 +20,7 @@
 <hr>
 <table class="form-table">
 	<tr>
+	    <th>no.</th>
 	    <th>회원번호</th>
 	    <th>아이디</th>
 	    <th>이름</th>
@@ -29,6 +30,7 @@
     <c:when test="${not empty list}">
       <c:forEach var="member" items="${list}">
         <tr onclick="location.href='${path}/user/admin/memberDetail?mno=${member.mno}&page=${pm.cri.page}'">
+          <td>${member.rnum}</td>
           <td class="center">${member.mno}</td>
           <td>${member.id}</td>
           <td>${member.name}</td>

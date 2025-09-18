@@ -36,7 +36,8 @@
   <!-- 도서 목록 테이블 -->
   <table class="form-table">
     <tr>
-      <th>번호</th>
+      <th>no.</th>
+      <th>도서 번호</th>
       <th>제목</th>
       <th>저자</th>
       <th>발행 기관</th>
@@ -47,6 +48,7 @@
 	<c:when test="${not empty list}"> 
 		<c:forEach var="book" items="${list}">
 	      <tr>
+	        <td>${book.rnum}</td>
 	        <td class="center">${book.bno}</td>
 	        <td>
 	          <a href="${path}/book/admin/${book.bno}?page=1">
@@ -61,7 +63,7 @@
 	</c:when>
 	<c:otherwise>
       <tr>
-        <td colspan="5" class="center">등록된 도서가 없습니다.</td>
+        <td colspan="6" class="center">등록된 도서가 없습니다.</td>
       </tr>
     </c:otherwise>
 </c:choose>

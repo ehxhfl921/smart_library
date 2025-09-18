@@ -23,6 +23,7 @@
       <hr style="margin: 30px 0;">
 	<table class="form-table">
     	<tr>
+      		<th>no.</th>
       		<th>예약 번호</th>
 	        <th>스터디룸</th>
 	        <th>예약 신청일</th>
@@ -34,6 +35,7 @@
 		<c:when test="${not empty list}">
 	      	<c:forEach var="reservation" items="${list}">
 	      		<tr>
+		      		<td>${reservation.rnum}</td>
 		      		<td>${reservation.rno}</td>
 			        <td>스터디룸 ${reservation.sno}</td>
 			        <td>
@@ -79,7 +81,7 @@
 	      </c:when>
 	      <c:otherwise>
 		      <tr>
-		        <td colspan="6" class="center">스터디룸 예약 기록이 없습니다.</td>
+		        <td colspan="7" class="center">스터디룸 예약 기록이 없습니다.</td>
 		      </tr>
 		  </c:otherwise>
 	 </c:choose>

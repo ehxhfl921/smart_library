@@ -9,6 +9,7 @@
     <h2>건의사항 수정</h2>
     <form method="POST" action="${path}/suggest/modify">
         <input type="hidden" name="sug_no" value="${suggestion.sug_no}">
+        <input type="hidden" name="sug_no" value="${suggestion.rnum}">
         
         <table class="form-table">
        

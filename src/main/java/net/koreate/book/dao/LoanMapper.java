@@ -26,11 +26,12 @@ public interface LoanMapper {
 	 * 
 	 * @param bno 대출 기록을 확인할 도서 번호
 	 */
-	@Select("SELECT bl.loan_no, bl.user_id, bl.loan_status, bl.borrow_date, bl.return_date, "
+	@Select("SELECT ROWNUM AS rnum, l.* FROM "
+			+ "(SELECT bl.loan_no, bl.user_id, bl.loan_status, bl.borrow_date, bl.return_date, "
 			+ "u.name "
 			+ "FROM book_loan bl "
 			+ "INNER JOIN member u ON bl.user_id = u.id "
-			+ "WHERE bl.bno = #{bno} ORDER BY loan_no DESC "
+			+ "WHERE bl.bno = #{bno} ORDER BY loan_no DESC) l ORDER BY rnum ASC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
 	List<BookVO> loanListOfBook(@Param("bno") int bno, @Param("cri") Criteria cri) throws Exception;
 	
@@ -41,11 +42,12 @@ public interface LoanMapper {
 	 * @param user_id 대출 내역을 검색할 사용자 아이디
 	 * @return 해당 사용자의 도서 대출 내역(목록)
 	 */
-	@Select("SELECT bl.loan_no, bl.loan_status, bl.borrow_date, bl.return_date, "
+	@Select("SELECT ROWNUM AS rnum, l.* FROM "
+			+ "(SELECT bl.loan_no, bl.loan_status, bl.borrow_date, bl.return_date, "
 			+ "b.title, b.author "
 			+ "FROM book_loan bl "
 			+ "INNER JOIN book b ON bl.bno = b.bno "
-			+ "WHERE bl.user_id = #{user_id} ORDER BY loan_no DESC "
+			+ "WHERE bl.user_id = #{user_id} ORDER BY loan_no DESC) l ORDER BY rnum ASC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
 	List<BookVO> loanListOfUser(@Param("user_id") String user_id, @Param("cri") Criteria cri) throws Exception;
 	

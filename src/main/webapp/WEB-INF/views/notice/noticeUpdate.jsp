@@ -5,8 +5,9 @@
 <section class="jinju1">
   <main class="noticeUpdate">
     <h2 class="up">공지사항 수정</h2>
-    <form method="POST" action="${path}/notice/update">
+    <form method="POST" action="${path}/notice/modify">
         <input type="hidden" name="nno" value="${boardVO.nno}">
+        <input type="hidden" name="rnum" value="${boardVO.rnum}">
         
         <table class="form-table">
        

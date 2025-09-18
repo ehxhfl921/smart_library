@@ -46,8 +46,12 @@ public class NoticeController {
     * @param model 공지 사항 게시글 정보
     */
    @GetMapping("/detail")
-   public String noticeDetail(@RequestParam("nno") int nno, Model model) throws Exception {
+   public String noticeDetail(
+		   @RequestParam("nno") int nno,
+		   @RequestParam("rnum") int rnum,
+		   Model model) throws Exception {
 	    BoardVO board = ns.getDetail(nno);
+	    board.setRnum(rnum);
 	    model.addAttribute("boardVO", board);
 	    return "notice/noticeDetail";
 	}
@@ -108,15 +112,12 @@ public class NoticeController {
     * @param vo 수정할 공지 사항 게시글 정보
     */
    @PostMapping("/modify")
-   public String noticeModifyPost(BoardVO boardVO, RedirectAttributes redirectAttr) throws Exception {
-	   ns.update(boardVO); // 서비스에서 수정 처리
-	   return "redirect:/notice/detail?nno=" + boardVO.getNno(); // 수정 완료 후 detail 이동
-   }
-
-   @PostMapping("/update")
-   public String noticeUpdate(BoardVO board) throws Exception {
-       ns.update(board);
-       return "redirect:/notice/detail?nno=" + board.getNno();
+   public String noticeModifyPost(BoardVO boardVO, RedirectAttributes rttr) throws Exception {
+	   
+	   String result = ns.update(boardVO); // 서비스에서 수정 처리
+	   rttr.addFlashAttribute("msg", result);
+	   
+	   return "redirect:/notice/detail?nno=" + boardVO.getNno() + "&rnum=" + boardVO.getRnum(); // 수정 완료 후 detail 이동
    }
    
    /**
