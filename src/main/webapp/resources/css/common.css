@@ -1,171 +1,171 @@
 @charset "UTF-8";
 
 *{
-	margin: 0, auto;
-	padding: 0;
-	box-sizing: border-box;
+   margin: 0, auto;
+   padding: 0;
+   box-sizing: border-box;
 }
 
 body{
-	margin: 0;
+   margin: 0;
 }
 
 section.mainSection1, section.mainSection2{
-	min-height: 600px;
-	padding: 20px;
+   min-height: 600px;
+   padding: 20px;
 }
 
 section.main {
-	text-align: center;
+   text-align: center;
 }
 
 section.main .mainBox1{
-	width: 1000px auto;
-	padding: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 40px;
-	padding-bottom: 0;
+   width: 1000px auto;
+   padding: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 40px;
+   padding-bottom: 0;
 }
 
 section.main .mainBox1 input{
-	font-size: 25px;
-	width: 800px;
-	height: 70px;
-	border: 2px solid #0c4192;
-	border-radius: 50px;
-	line-height: 70px;
-	vertical-align: middle;
-	padding-left: 15px;
+   font-size: 25px;
+   width: 800px;
+   height: 70px;
+   border: 2px solid #0c4192;
+   border-radius: 50px;
+   line-height: 70px;
+   vertical-align: middle;
+   padding-left: 15px;
 }
 
 section.main .mainBox1 input::placeholder{
-	position: absolute;
-	top: 13px;
-	left: 20px;
+   position: absolute;
+   top: 13px;
+   left: 20px;
 }
 
 section.main .mainBox1 button{
-	font-size: 25px;
-	color: white;
-	background-color: #0d47a1;
-	border: 2px solid #0d47a1;
-	border-radius: 50px;
-	height: 70px;
-	width: 100px;
-	line-height: 70px;
-	margin-left: -90px;
-	vertical-align: middle;
+   font-size: 25px;
+   color: white;
+   background-color: #0d47a1;
+   border: 2px solid #0d47a1;
+   border-radius: 50px;
+   height: 70px;
+   width: 100px;
+   line-height: 70px;
+   margin-left: -90px;
+   vertical-align: middle;
 }
 
 section.main .mainBox1 button:hover{
-	cursor: pointer;
+   cursor: pointer;
 }
 
 section.main .mainBox2{
-	width: 1300px auto;
-	padding: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	margin-bottom: 40px;
+   width: 1300px auto;
+   padding: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   margin-bottom: 40px;
 }
 
 section.main .mainBox2 p.titleBom{
-	width: 700px;
-	font-size: 35px;
-	font-weight: bold;
-	text-align: left;
-	margin-bottom: 20px;
-	padding-left: 30px;
+   width: 700px;
+   font-size: 35px;
+   font-weight: bold;
+   text-align: left;
+   margin-bottom: 20px;
+   padding-left: 30px;
 }
 
 section.main .mainBox2 p.title{
-	width: 500px;
-	font-size: 35px;
-	font-weight: bold;
-	text-align: left;
-	margin-bottom: 20px;
-	padding-left: 40px;
+   width: 500px;
+   font-size: 35px;
+   font-weight: bold;
+   text-align: left;
+   margin-bottom: 20px;
+   padding-left: 40px;
 }
 
 section.main .mainBox2 div.bookOftheMonth{
-	height: 450px;
-	width: 700px;
-	border: 3px solid #0d47a1;
-	border-radius: 50px;
-	
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-right: 20px;
+   height: 450px;
+   width: 700px;
+   border: 3px solid #0d47a1;
+   border-radius: 50px;
+   
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-right: 20px;
 }
 
 section.main .mainBox2 div.bookOftheMonth .slideWrapper{
-	overflow: hidden;
-	width: 600px;
+   overflow: hidden;
+   width: 600px;
 }
 
 section.main .mainBox2 div.bookOftheMonth .slide{
-	display: flex;
-	transition: transform 2s ease;
+   display: flex;
+   transition: transform 2s ease;
 }
 
 section.main .mainBox2 div.slideBookCard{
-	flex: 0 0 600px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	text-align: center;
+   flex: 0 0 600px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   text-align: center;
 }
 
 div.slideBookCard div.bomInfo{
-	width: 300px;
-	height: 400px;
+   width: 300px;
+   height: 400px;
 }
 
 div.slideBookCard div.img{
-	width: 250px;
-	height: 350px;
-	margin-right: 20px;
+   width: 250px;
+   height: 350px;
+   margin-right: 20px;
 }
 
 
 div.slideBookCard div.img img{
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
 
 div.slideBookCard div.bomInfo{
-	width: 300px;
-	height: 400px;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-wrap: wrap;
-	
+   width: 300px;
+   height: 400px;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   flex-wrap: wrap;
+   
 }
 
 div.slideBookCard div.bomInfo div{
-	text-align: left;
-	height: 300px;
-	line-height: 50px;
-	font-size: 23px;
+   text-align: left;
+   height: 300px;
+   line-height: 50px;
+   font-size: 23px;
 }
 
 div.slideBookCard div.bomInfo div.bold{
-	font-weight: bold;
-	margin-right: 10px;
+   font-weight: bold;
+   margin-right: 10px;
 }
 
 
 section.main .mainBox2 div.libraryInfo{
-	height: 450px;
+   height: 450px;
     width: 500px;
     border: 3px solid #0d47a1;
     border-radius: 50px;
@@ -179,16 +179,16 @@ section.main .mainBox2 div.libraryInfo{
 
 
 div.libraryInfo div.libInfo{
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-wrap: wrap;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   flex-wrap: wrap;
 }
 
 div.libName{
-	font-size: 25px;
-	margin-left: -200px;
-	font-weight: bold;
+   font-size: 25px;
+   margin-left: -200px;
+   font-weight: bold;
 }
 
 div.libraryInfo div.infoLeft, div.infoRight {
@@ -197,172 +197,172 @@ div.libraryInfo div.infoLeft, div.infoRight {
 }
 
 div.libraryInfo div.infoLeft{
-	width: 100px;
-	font-weight: bold;
+   width: 100px;
+   font-weight: bold;
 }
 
 div.libraryInfo div.infoRight{
-	width: 260px;
+   width: 260px;
 }
 
 @media screen and (max-width: 1354px) {
-	
-	section.main .mainBox2 div.bookOftheMonth{
-		width: 700px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin: 0;
-	}
-	
-	section.main .mainBox2 div.libraryInfo{
-	    width: 700px;
-	    display: flex;
-	    flex-direction: column;
-	    justify-content: center;   
-	    align-items: center;       
-	    text-align: left;
-	    margin: 0;
-	}
-	
-	div.libraryInfo div.infoLeft, div.infoRight {
-	    margin-left: 0;
-	}
-	
-	section.main .mainBox1 input{
-		font-size: 25px;
-		width: 650px;
-		padding-left: 20px;
-	}
+   
+   section.main .mainBox2 div.bookOftheMonth{
+      width: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+   }
+   
+   section.main .mainBox2 div.libraryInfo{
+       width: 700px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;   
+       align-items: center;       
+       text-align: left;
+       margin: 0;
+   }
+   
+   div.libraryInfo div.infoLeft, div.infoRight {
+       margin-left: 0;
+   }
+   
+   section.main .mainBox1 input{
+      font-size: 25px;
+      width: 650px;
+      padding-left: 20px;
+   }
 
-	section.main .mainBox1 button{
-		font-size: 25px;
-		margin-left: -90px;
-	}
-	
-	section.main .mainBox1 input::placeholder{
-		top: 13px;
-		left: 20px;
-	}
+   section.main .mainBox1 button{
+      font-size: 25px;
+      margin-left: -90px;
+   }
+   
+   section.main .mainBox1 input::placeholder{
+      top: 13px;
+      left: 20px;
+   }
 }
 
 @media screen and (max-width: 909px) {
 
 
-	section.main .mainBox1 input{
-		font-size: 22px;
-		width: 550px;
-		padding-left: 15px;
-	}
+   section.main .mainBox1 input{
+      font-size: 22px;
+      width: 550px;
+      padding-left: 15px;
+   }
 
-	section.main .mainBox1 button{
-		font-size: 22px;
-		margin-left: -90px;
-	}
-	
-	section.main .mainBox1 input::placeholder{
-		top: 16px;
-		left: 16px;
-	}
+   section.main .mainBox1 button{
+      font-size: 22px;
+      margin-left: -90px;
+   }
+   
+   section.main .mainBox1 input::placeholder{
+      top: 16px;
+      left: 16px;
+   }
 
-	section.main .bomBox{
-		width: 600px;
-		padding: 0;
-	}
-	
-	section.main .mainBox2 div.bookOftheMonth{
-		width: 600px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin: 0;
-	}
-	
-	section.main .libBox{
-		width: 600px;
-		padding: 0;
-	}
-	
-	section.main .mainBox2 div.libraryInfo{
-	    width: 600px;
-	    display: flex;
-	    flex-direction: column;
-	    justify-content: center;   
-	    align-items: center;       
-	    text-align: left;
-	    margin: 0;
-	}
-	
-	div.libraryInfo div.infoLeft, div.infoRight {
-	    margin-left: 0;
-	}
+   section.main .bomBox{
+      width: 600px;
+      padding: 0;
+   }
+   
+   section.main .mainBox2 div.bookOftheMonth{
+      width: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+   }
+   
+   section.main .libBox{
+      width: 600px;
+      padding: 0;
+   }
+   
+   section.main .mainBox2 div.libraryInfo{
+       width: 600px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;   
+       align-items: center;       
+       text-align: left;
+       margin: 0;
+   }
+   
+   div.libraryInfo div.infoLeft, div.infoRight {
+       margin-left: 0;
+   }
 }
 
 /* roomReservation */
 section.mainSection1 .roomReservation,
 section.mainSection1 .noticeList {
-	width:800px; 
+   width:800px; 
     box-sizing:border-box;
     margin: 0 60px;
 }
 
 section.mainSection1 div#studyroomBox{
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	gap: 30px;
-	padding: 20px;
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   gap: 30px;
+   padding: 20px;
 }
 
 section.mainSection1 div#studyroomBox p{
-	font-weight:bold;
-	width:800px;
-	margin: 0;
-	padding: 20px;
+   font-weight:bold;
+   width:800px;
+   margin: 0;
+   padding: 20px;
 }
 
 section.mainSection1 div#studyroomBox p span{
-	margin-right: 20px;	
+   margin-right: 20px;   
 }
 
 section.mainSection1 div#studyroomBox .available{
-	border:3px solid #0d47a1; 
-	width:200px; 
-	height:200px;
-	border-radius: 30px;
-	text-align: center;
-	line-height: 200px;
-	font-size: 20px;
+   border:3px solid #0d47a1; 
+   width:200px; 
+   height:200px;
+   border-radius: 30px;
+   text-align: center;
+   line-height: 200px;
+   font-size: 20px;
 }
 
 section.mainSection1 div#studyroomBox .unavailable{
-	border:3px solid #ccc; 
-	width:200px; 
-	height:200px;
-	border-radius: 30px;
-	text-align: center;
-	line-height: 200px;
-	font-size: 20px;
-	color: #ccc;
+   border:3px solid #ccc; 
+   width:200px; 
+   height:200px;
+   border-radius: 30px;
+   text-align: center;
+   line-height: 200px;
+   font-size: 20px;
+   color: #ccc;
 }
 
 
 div#studyroomBox .available.selected{
-	background-color: #0d47a1;
-	color: white;
+   background-color: #0d47a1;
+   color: white;
 }
 
 section.mainSection1 div#studyroomBox .available:hover{
-	background-color: #0d47a1;
-	transition: 0.1s ease;
-	color: white;
-	cursor: pointer;
+   background-color: #0d47a1;
+   transition: 0.1s ease;
+   color: white;
+   cursor: pointer;
 }
 
 section.mainSection1 .roomReservation .btnBox{
-	width: 500px;
-	text-align: center;
-	margin: 20px auto;
+   width: 500px;
+   text-align: center;
+   margin: 20px auto;
 }
 
 section.mainSection1 .date-selection {
@@ -398,23 +398,23 @@ section.mainSection1 .select-button:hover {
 /* searchBookList */
 
 section.searchBook{
-	display: flex;
-	width: 1000px;
-	margin: 40px auto;
+   display: flex;
+   width: 1000px;
+   margin: 40px auto;
 }
 
 section.searchBook aside{
-	margin-left: -70px;	
+   margin-left: -70px;   
 }
 
 section.searchBook .content {
-	padding:0;
-	box-sizing:border-box;
-	display:flex;
-	flex-direction: column;
-	width: 700px;
-	min-height: 585px;
-	margin-left: 50px;
+   padding:0;
+   box-sizing:border-box;
+   display:flex;
+   flex-direction: column;
+   width: 700px;
+   min-height: 585px;
+   margin-left: 50px;
 }
 
 section.searchBook .search-section, .info-section {
@@ -455,383 +455,383 @@ section.searchBook .search-box button:hover {
 
 
 section.searchBook div#searchList { 
-	width: 700px; 
-	margin: 0 auto; 
-	padding: 0; 
+   width: 700px; 
+   margin: 0 auto; 
+   padding: 0; 
 } 
 
 section.searchBook div#searchList .none{
-	margin: 30px auto;
-	text-align: center;
+   margin: 30px auto;
+   text-align: center;
 }
 
 section.searchBook div#bookCard { 
-	width: 700px; 
-	height: 400px; 
-	margin: 25px auto; 
-	padding: 15px auto; 
-	display: flex; 
-	justify-content: center; 
-	align-items: center; 
-	border: 2px solid #d7d7d7; 
-	border-radius: 20px; 
+   width: 700px; 
+   height: 400px; 
+   margin: 25px auto; 
+   padding: 15px auto; 
+   display: flex; 
+   justify-content: center; 
+   align-items: center; 
+   border: 2px solid #d7d7d7; 
+   border-radius: 20px; 
 } 
 
 section.searchBook div#bookCard .bookInfo{ 
-	width: 420px; 
-	display: flex; 
-	flex-wrap: wrap; 
-	justify-content: space-around; 
-	padding: 0; 
+   width: 420px; 
+   display: flex; 
+   flex-wrap: wrap; 
+   justify-content: space-around; 
+   padding: 0; 
 } 
 
 section.searchBook .bookInfo div.info-left{
-	width: 160px;
-	padding: 0;
-	padding-left: 50px;
-	font-size: 20px;
-	font-weight: bold;
-	justify-content: center;
+   width: 160px;
+   padding: 0;
+   padding-left: 50px;
+   font-size: 20px;
+   font-weight: bold;
+   justify-content: center;
 }
 
 section.searchBook .bookInfo div.info-right{
-	width: 220px;
-	padding: 0;
-	padding-left: 30px;
-	font-size: 20px;
+   width: 220px;
+   padding: 0;
+   padding-left: 30px;
+   font-size: 20px;
 }
 
 section.searchBook .bookInfo div p#avail {
-	width:420px;
-	padding-left: 60px;
+   width:420px;
+   padding-left: 60px;
 }
 
 section.searchBook div#bookCard .coverBox{ 
-	width: 270px; 
-	height: 350px; 
-	padding-left: 30px;
+   width: 270px; 
+   height: 350px; 
+   padding-left: 30px;
 } 
 
 section.searchBook div#bookCard .coverBox img{ 
-	width: 100%; 
-	height: 100%; 
-	object-fit: cover; 
+   width: 100%; 
+   height: 100%; 
+   object-fit: cover; 
 }
 
 section.searchBook div#pagenation {
-	text-align: center;
-	width: 100%;
+   text-align: center;
+   width: 100%;
 }
 
 section.searchBook .pageBtn{
-	width: 50px;
-	height: 50px;
-	color: #0d47a1;
-	font-size: 22px;
-	text-align: center;
-	vertical-align: middle;
-	border: 2px solid #0d47a1;
-	border-radius: 5px;
-	background-color: white;
+   width: 50px;
+   height: 50px;
+   color: #0d47a1;
+   font-size: 22px;
+   text-align: center;
+   vertical-align: middle;
+   border: 2px solid #0d47a1;
+   border-radius: 5px;
+   background-color: white;
 }
 
 section.searchBook button#active{
-	color: white;
-	background-color: #0d47a1;
-	cursor: pointer;
-	font-weight: bold;
+   color: white;
+   background-color: #0d47a1;
+   cursor: pointer;
+   font-weight: bold;
 }
 
 section.searchBook .pageBtn:hover{
-	color: white;
-	background-color: #0d47a1;
-	cursor: pointer;
-	font-weight: bold;
-	transition: 0.1s ease;
+   color: white;
+   background-color: #0d47a1;
+   cursor: pointer;
+   font-weight: bold;
+   transition: 0.1s ease;
 }
 
 section.searchBook .pageBtn:active{
-	color: white;
-	background-color: #0d47a1;
-	cursor: pointer;
-	font-weight: bold;
+   color: white;
+   background-color: #0d47a1;
+   cursor: pointer;
+   font-weight: bold;
 }
 
 section.searchBook div#pagenation #textBtn{
-	width: 70px;
-	font-size: 20px;
-	vertical-align: middle;
-	color: #0d47a1;
-	border: 2px solid #0d47a1;
-	border-radius: 5px;
-	background-color: white;
+   width: 70px;
+   font-size: 20px;
+   vertical-align: middle;
+   color: #0d47a1;
+   border: 2px solid #0d47a1;
+   border-radius: 5px;
+   background-color: white;
 }
 
 section.searchBook div#pagenation #textBtn:hover{
-	color: white;
-	background-color: #0d47a1;
-	cursor: pointer;
-	font-weight: bold;
-	transition: 0.1s ease;
+   color: white;
+   background-color: #0d47a1;
+   cursor: pointer;
+   font-weight: bold;
+   transition: 0.1s ease;
 }
 
 
 /* 진주 */
 /* admin css*/  
 section.mainSection1{
-	width: 1300px;
-	padding: 20px;
-	display: flex;
-	min-height: 630px;
-	justify-content: center;
-	margin: 20px auto;
+   width: 1300px;
+   padding: 20px;
+   display: flex;
+   min-height: 630px;
+   justify-content: center;
+   margin: 20px auto;
 }  
 
 section.mainSection1 h2.up { 
-	text-align: center; 
-	padding: 0;
-	margin-top: -20px;
+   text-align: center; 
+   padding: 0;
+   margin-top: -20px;
 }
 
 section.mainSection1 main.loanList{
-	margin: 0 60px;
+   margin: 0 60px;
 }
 
 section.mainSection1 main.noticeDetail div.contentBox{
-	width: 900px;
-	border: 1px solid #ccc;
-	padding: 0;
-	margin: 20px auto;
-	min-height: 400px;
+   width: 900px;
+   border: 1px solid #ccc;
+   padding: 0;
+   margin: 20px auto;
+   min-height: 400px;
 }
 
 main.noticeDetail div.contentBox div.head{
-	border-bottom: 1px solid #ccc;
-	padding: 20px;
-	background-color: #f3f7fa;
+   border-bottom: 1px solid #ccc;
+   padding: 20px;
+   background-color: #f3f7fa;
 }
 
 main.noticeDetail div.contentBox p.noAndTitle{
-	font-size: 23px;
-	font-weight: bold;
-	padding: 0;
-	margin-top: 0;
+   font-size: 23px;
+   font-weight: bold;
+   padding: 0;
+   margin-top: 0;
 }
 
 .noticeDetail .replyFormBox,
 .noticeDetail .modifyFormBox{
-	border: 1px solid #ccc;
-	padding: 0;
-	margin-top: 20px;
+   border: 1px solid #ccc;
+   padding: 0;
+   margin-top: 20px;
 }
 
 .replyFormBox .replyHead,
 .modifyFormBox .replyHead{
-	margin: 0;
-	background-color: #f3f7fa;
-	font-weight: bold;
-	font-size: 18px;
-	border-bottom: 1px solid #ccc;
-	padding: 20px;
+   margin: 0;
+   background-color: #f3f7fa;
+   font-weight: bold;
+   font-size: 18px;
+   border-bottom: 1px solid #ccc;
+   padding: 20px;
 }
 
 .replyFormBox .replyContent,
 .modifyFormBox .replyContent{
-	padding: 15px;
+   padding: 15px;
 }
 
 div.modifyFormBox > div.btnBox,
 div.replyFormBox > div.btnBox{
-	text-align: right;
-	padding: 0 15px;
-	margin-bottom: 15px;
+   text-align: right;
+   padding: 0 15px;
+   margin-bottom: 15px;
 }
 
 div.contentBox p.noAndTitle span.no {
-	padding-right: 30px;
+   padding-right: 30px;
 }
 
 div.contentBox p.noAndTitle span.title {
-	padding-left: 30px;
-	border-left: 2px solid;
+   padding-left: 30px;
+   border-left: 2px solid;
 }
 
 main.noticeDetail div.contentBox div.body{
-	padding: 20px;
-	font-size: 18px;
+   padding: 20px;
+   font-size: 18px;
 }
 
 main.noticeDetail div.contentBox div.body pre{
-	font-family: sans-serif;
-	white-space: pre-wrap;   /* 줄바꿈 허용 + 원래 줄바꿈도 유지 */
-  	word-wrap: break-word;
+   font-family: sans-serif;
+   white-space: pre-wrap;   /* 줄바꿈 허용 + 원래 줄바꿈도 유지 */
+     word-wrap: break-word;
 }
 
 main.noticeDetail div.contentBox p.authAndDate{
-	margin-bottom: 0;
-	font-size: 14px;
+   margin-bottom: 0;
+   font-size: 14px;
 }
 
 main.noticeDetail .btnBox{
-	text-align: center;
+   text-align: center;
 }
 
 main.noticeDetail .replyBox{
-	width: 900px;
-	margin-top: 20px;
+   width: 900px;
+   margin-top: 20px;
 }
 
 main.noticeDetail .replyBox .reply{
-	border-bottom: 1px solid #ccc;
-	width: 100%;
+   border-bottom: 1px solid #ccc;
+   width: 100%;
 }
 
 main.noticeDetail .replyBox .reply:first-child{
-	border-top: 1px solid #ccc;
+   border-top: 1px solid #ccc;
 }
 
 main.noticeDetail .reply .authorAndDate{
-	height: 80px;
-	background-color: #f3f7fa;
-	line-height: 70px;
-	padding: 10px;
-	font-weight: bold;
+   height: 80px;
+   background-color: #f3f7fa;
+   line-height: 70px;
+   padding: 10px;
+   font-weight: bold;
 }
 
 main.noticeDetail .authorAndDate .author{
-	font-size: 18px;
+   font-size: 18px;
 }
 
 main.noticeDetail .authorAndDate .author, 
 main.noticeDetail .authorAndDate .date{
-	height: 80px;
-	margin:0;
-	padding: 0;
-	line-height: 80px;
+   height: 80px;
+   margin:0;
+   padding: 0;
+   line-height: 80px;
 }
 
 main.noticeDetail .authorAndDate .date{
-	display: flex;
-	gap: 20px;
+   display: flex;
+   gap: 20px;
 }
 
 main.noticeDetail .authorAndDate .date p{
-	font-size: 14px;
-	margin: 0;
-	padding: 0;
-	height: 35px;
+   font-size: 14px;
+   margin: 0;
+   padding: 0;
+   height: 35px;
 }
 
 main.noticeDetail .authorAndDate .date p span{
-	font-weight: lighter;
+   font-weight: lighter;
 }
 
 .noticeDetail .reply .content{
-	min-height: 80px;
-	padding: 15px;
+   min-height: 80px;
+   padding: 15px;
 }
 
 .noticeDetail .reply .content p{
-	width: 100%;
-	text-align: right;	
+   width: 100%;
+   text-align: right;   
 }
 
 .noticeDetail .reply .content p a:hover{
-	color: #0d47a1;
-	font-weight: bold;
-	cursor: pointer;
-	margin: 0;
+   color: #0d47a1;
+   font-weight: bold;
+   cursor: pointer;
+   margin: 0;
 }
 
 .noticeDetail a#active{
-	font-weight: bold;
+   font-weight: bold;
 }
 
 .noticeDetail .pagenation{
-	height: 60px;
-	line-height: 60px;
-	font-size: 18px;
+   height: 60px;
+   line-height: 60px;
+   font-size: 18px;
 }
 
 .noticeDetail .pagenation a:hover{
-	font-weight: bold;
-	cursor: pointer;
+   font-weight: bold;
+   cursor: pointer;
 }
 
 .noticeDetail .reply .content pre{
-	width: inherit;
-	font-family: sans-serif;
-	white-space: pre-wrap;   /* 줄바꿈 허용 + 원래 줄바꿈도 유지 */
-  	word-wrap: break-word;
-  	padding: 15px;
-  	margin: 0;
+   width: inherit;
+   font-family: sans-serif;
+   white-space: pre-wrap;   /* 줄바꿈 허용 + 원래 줄바꿈도 유지 */
+     word-wrap: break-word;
+     padding: 15px;
+     margin: 0;
 }
 
 .noticeDetail .modifyFormBox{
-	margin-top: 0;
-	border-top: none;
+   margin-top: 0;
+   border-top: none;
 }
 
 .noticeDetail .pagenation {
-	text-align: center;
-	padding: 20px;
+   text-align: center;
+   padding: 20px;
 }
 
 section.mainSection1 main.noticeUpdate {
-	text-align: center;
+   text-align: center;
 }
 
 section.mainSection1 main.noticeUpdate textarea{
-	font-family: sans-serif;	
+   font-family: sans-serif;   
 }
 
 section.mainSection1 main.noticeUpdate .btnBox{
-	padding: 20px;	
+   padding: 20px;   
 }
 
 section.mainSection1 main.libraryInfo,
 section.mainSection1 main.noticeList{
-	width: 800px;
-	margin: 0 60px;
+   width: 800px;
+   margin: 0 60px;
 }
 
 section.mainSection1 main.libraryInfo .head,
 section.mainSection1 main.noticeList .head{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 section.mainSection1 main.libraryInfo .head button,
 section.mainSection1 main.noticeList .head button,
 section.mainSection1 main.lobraryInfo .btn{
-	height: 50px;
-	width: 130px;
-	border: 2px solid #0d47a1;
-	border-radius: 15px;
-	background-color: #0d47a1;
-	color: white;
-	font-size: 17px;
+   height: 50px;
+   width: 130px;
+   border: 2px solid #0d47a1;
+   border-radius: 15px;
+   background-color: #0d47a1;
+   color: white;
+   font-size: 17px;
 }
 
 section.mainSection1 main.libraryInfo .head button:hover,
 section.mainSection1 main.noticeList .head button:hover,
 section.mainSection1 main.lobraryInfo .btn:hover{
-	background-color: white;
-	color: #0d47a1;
-	cursor: pointer;
-	font-weight: bold;
-	transition: 0.1s ease;
+   background-color: white;
+   color: #0d47a1;
+   cursor: pointer;
+   font-weight: bold;
+   transition: 0.1s ease;
 }
 
 section.mainSection1 main.libraryInfo div.content{
-	width: 700px;
-	margin: 0;	
+   width: 700px;
+   margin: 0;   
 }
 
 section.mainSection1 main.libraryInfo .content .libName{
-	font-size: 20px;
-	font-weight: bold;
+   font-size: 20px;
+   font-weight: bold;
 }
 
 
@@ -900,22 +900,22 @@ section.mainSection1 .form-table {
 }
 
 section.mainSection1 div.bookDetail{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 800px;
-	flex-wrap: wrap;
-	padding: 20px;
-	text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 800px;
+   flex-wrap: wrap;
+   padding: 20px;
+   text-align: center;
 }
 
 section.mainSection1 div.bookDetail h2.down{
-	margin-top: 50px;
+   margin-top: 50px;
 }
 
 .bookDetail .pagenation {
-	margin: 30px auto;
-	margin-bottom: 0;
+   margin: 30px auto;
+   margin-bottom: 0;
 }
 
 section.mainSection1 .bookDetail .table tr:hover,
@@ -923,17 +923,17 @@ section.mainSection1 .modifyBook .form-table tr:hover,
 section.mainSection1 .registerBook .form-table tr:hover,
 section.mainSection1 .loanList .form-table tr:hover,
 section.mainSection1 main.libraryInfo .form-table tr:hover{
-	background-color: white;
+   background-color: white;
 }
 
 section.mainSection1 main.manageMember .form-table tr:hover{
-	cursor: pointer;
+   cursor: pointer;
 }
 
 section.mainSection1 .bookDetail .table td img{
-	width: 100%;
-	height:100%;
-	object-fit: cover;
+   width: 100%;
+   height:100%;
+   object-fit: cover;
 }
 
 section.mainSection1 .modifyBook .form-table td,
@@ -941,92 +941,92 @@ section.mainSection1 .registerBook .form-table td,
 section.mainSection1 main.libraryInfo .form-table td,
 section.mainSection1 main.noticeUpdate .form-table td,
 section.mainSection1 main.manageUpdate .form-table td{
-	padding: 10px;	
+   padding: 10px;   
 }
 
 section.mainSection1 .modifyBook .form-table td img,
 section.mainSection1 .registerBook .form-table td img{
-	margin-top: 10px;
-	margin-bottom: 5px;	
+   margin-top: 10px;
+   margin-bottom: 5px;   
 }
 
 section.mainSection1 main.registerBook .form-table,
 section.mainSection1 main.modifyBook .form-table{
-	height: 500px;
-	width: 500px;
+   height: 500px;
+   width: 500px;
 }
 
 section.mainSection1 main.manageUpdate .form-table{
-	height: 550px;
-	width: 550px;
+   height: 550px;
+   width: 550px;
 }
 
 section.mainSection1 main.manageBook,
 section.mainSection1 main.manageReservation,
 section.mainSection1 main.manageMember{
-	width: 900px;	
-	margin: 0 30px;
+   width: 900px;   
+   margin: 0 30px;
 }
 
 section.mainSection1 main.manageBook .form-table,
 section.mainSection1 main.manageReservation .form-table,
 section.mainSection1 main.noticeUpdate .form-table,
 section.mainSection1 main.manageMember .form-table{
-	width: 900px;
+   width: 900px;
 }
 
 section.mainSection1 main.noticeUpdate .form-table tr:last-child{
-	min-height: 400px;
+   min-height: 400px;
 }
 
 section.mainSection1 main.noticeUpdate .form-table th{
-	width: 100px;
+   width: 100px;
 }
 
 section.mainSection1 main.manageBook hr,
 section.mainSection1 main.manageReservation hr,
 section.mainSection1 main.noticeList hr,
 section.mainSection1 main.manageMember hr{
-	margin-bottom: 20px;
+   margin-bottom: 20px;
 }
 
 section.mainSection1 main.loanList .form-table,
 section.mainSection1 main.noticeList .form-table{
-	width: 800px;
+   width: 800px;
 }
 
 section.mainSection1 main.libraryInfo .form-table{
-	width: 750px;
+   width: 750px;
 }
 
 section.mainSection1 .form-table th {
-  	background: #f8fafc;
-  	text-align: center;
-  	font-weight: 700;
-	height: 40px;
-	border: 1px solid #ccc;
+     background: #f8fafc;
+     text-align: center;
+     font-weight: 700;
+   height: 40px;
+   border: 1px solid #ccc;
 }
 
 section.mainSection1 .form-table tr:hover {
-  	background: #f3f7ff;
+     background: #f3f7ff;
 }
 
 section.mainSection1 .form-table tr{
-	 height: 38px;
-	 border: 1px solid #ccc;
+    height: 38px;
+    border: 1px solid #ccc;
 }
 
 section.mainSection1 .form-table td {
-	border: 1px solid #ccc;
+   border: 1px solid #ccc;
 }
 
 section.mainSection1 .form-table td a{
-	color: black;
-	text-decoration: none;
+   color: black;
+   text-decoration: none;
 }
 
 section.mainSection1 .form-table td a:visited{
-	color: black;
+   color: black;
 }
 
 section.mainSection1 .table td:first-child{
@@ -1040,9 +1040,9 @@ section.mainSection1 .table td:first-child{
 }
 
 section.mainSection1 .form-table td img{
-	width: 100%;
-	height:100%;
-	object-fit: cover;
+   width: 100%;
+   height:100%;
+   object-fit: cover;
 }
 
 
@@ -1118,24 +1118,24 @@ section.mainSection1 .btn.bad {
 }
 
 section.mainSection1 .btn.bad:hover{
-	background: #df2f2f;
-  	border-color: #df2f2f;
-  	transition: 0.1s ease;
+   background: #df2f2f;
+     border-color: #df2f2f;
+     transition: 0.1s ease;
 }
 
 section.mainSection1 .cancelBtn{
-	color:white;
-	background-color:#cf1f1f;
-	border:1px solid #cf1f1f;
-	border-radius:10px;
-	width: 70px;
-	height: 30px;
+   color:white;
+   background-color:#cf1f1f;
+   border:1px solid #cf1f1f;
+   border-radius:10px;
+   width: 70px;
+   height: 30px;
 }
 
 section.mainSection1 .cancelBtn:hover{
-	background-color:#df2f2f;
-	border:1px solid #df2f2f;
-	cursor: pointer;
+   background-color:#df2f2f;
+   border:1px solid #df2f2f;
+   cursor: pointer;
 }
 
 section.mainSection1 .actions {
@@ -1146,34 +1146,34 @@ section.mainSection1 .actions {
 }
 
 section.mainSection1 main.manageBook div.newBookBtnBox{
-	display: flex;
-	justify-content: space-between;	
-	align-items: center;
+   display: flex;
+   justify-content: space-between;   
+   align-items: center;
 }
 
 section.mainSection1 main.manageBook div.newBookBtnBox .btn{
-	min-width: 140px;
-	height: 45px;
-	font-size: 17px;
-	border-radius: 15px;
-	vertical-align: middle;
+   min-width: 140px;
+   height: 45px;
+   font-size: 17px;
+   border-radius: 15px;
+   vertical-align: middle;
 }
 
 section.mainSection1 main.manageBook div.newBookBtnBox .btn:hover{
-	background-color: white;
-	color: #0d47a1;
-	border: 2px solid #0d47a1;
-	font-weight: bold;
-	transition: 0.1s ease;
+   background-color: white;
+   color: #0d47a1;
+   border: 2px solid #0d47a1;
+   font-weight: bold;
+   transition: 0.1s ease;
 }
 
 section.mainSection1 a.activePage{
-	font-weight: bold;
-	color: #0d47a1;
+   font-weight: bold;
+   color: #0d47a1;
 }
 
 section.mainSection1 main.manageBook div.pagenation{
-	font-size: 18px;
+   font-size: 18px;
 }
 
 /* Image box (book cover) */
@@ -1261,15 +1261,15 @@ section.mainSection1 .badge-finished { background:#6a6a6a; }     /* 취소/완�
 /* 예약 관리 버튼 */
 section.mainSection1 .btn-approve { background:#1976d2; color:#fff; border:none; }
 section.mainSection1 .btn-approve:hover{ 
-	background:#4296ea;
+   background:#4296ea;
 }
 section.mainSection1 .btn-reject  { background:#d32f2f; color:#fff; border:none; }
 section.mainSection1 .btn-reject:hover{ 
-	background:#e25050;
+   background:#e25050;
 }
 section.mainSection1 .btn-cancel  { background:#000; color:#fff; border:none; }
 section.mainSection1 .btn-cancel:hover{ 
-	background:#535353;
+   background:#535353;
 }
 section.mainSection1 .btn-approve,
 section.mainSection1 .btn-reject,
@@ -1293,8 +1293,8 @@ section.mainSection2 #wrap{
 }
 
 section.mainSection2 main{
-	padding: 20px;
-	min-height: 635px;	
+   padding: 20px;
+   min-height: 635px;   
 }
 
 /* 타이틀 */
@@ -1383,7 +1383,7 @@ section.mainSection2 input[type="submit"]{
 
 .mainSection2 .btn_small,
 #sendEmailBtn{
-	margin-top: 10px;
+   margin-top: 10px;
 }
 
 /* 기본 주요 버튼 */
@@ -1504,7 +1504,7 @@ section.mainSection2 a.btn-link:hover {
 }
 
 .sidebar{
-	  width: 220px;
+     width: 220px;
       margin: 20px;
       height: 255px;
       box-sizing: border-box;
