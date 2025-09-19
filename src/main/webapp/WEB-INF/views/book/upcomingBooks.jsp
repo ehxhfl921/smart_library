@@ -4,6 +4,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
+<c:if test="${not empty msg}">
+    <script>
+        alert('${msg}');
+    </script>
+</c:if>
+
 <section class="searchBook">
 
 <aside class="sidebar" style="width:220px;">
@@ -23,12 +29,75 @@
 	
 	<!-- 출간 예정 도서 목록 출력 -->
 	<div class="upcomingBooks">
-	
+		<c:choose>
+			<c:when test="${not empty list}">
+				<c:forEach var="book" items="${list}">
+					<div class="searchList">
+						
+						<!-- 책 표지 -->
+						<div class="book-thumb">
+							<c:if test="${not empty book.img_src}">
+								<img src="${book.img_src}" alt="${book.title}">
+							</c:if>
+							<c:if test="${empty book.img_src}">
+								<img src="${path}/resources/images/no-cover.png" alt="no cover">
+							</c:if>
+						</div>
+						
+						<!-- 책 정보 -->
+						<div class="book-info">
+							<h3 class="book-title">
+								<c:choose>
+									<c:when test="${not empty book.link}">
+										<a href="${book.link}" target="_blank">${book.title}</a>
+									</c:when>
+									<c:otherwise>
+										${book.title}
+									</c:otherwise>
+								</c:choose>
+							</h3>
+							
+							<p class="book-meta">
+								저자: ${book.author} | 출판사: ${book.publisher}<br>
+								출간일: <fmt:formatDate value="${book.p_date}" pattern="yyyy-MM-dd"/> | 
+								유형: ${book.book_type}
+							</p>
+						</div>
+					</div>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<p class="no-data">출간 예정 도서가 없습니다.</p>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	
  	<!-- 페이징 처리 -->
 	<div class="pagination">
-	
+		<c:if test="${not empty pm}">
+			<c:if test="${pm.first}">
+				<a href="${path}/upcoming?page=1">[처음]</a>
+			</c:if>
+			
+			<c:if test="${pm.prev}">
+				<a href="${path}/upcoming?page=${pm.startPage-1}">[이전]</a>
+			</c:if>
+			
+			<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+				<a href="${path}/upcoming?page=${i}"
+				   <c:if test="${i == pm.cri.page}">class="activePage"</c:if>>
+				   [${i}]
+				</a>
+			</c:forEach>
+			
+			<c:if test="${pm.next}">
+				<a href="${path}/upcoming?page=${pm.endPage+1}">[다음]</a>
+			</c:if>
+			
+			<c:if test="${pm.last}">
+				<a href="${path}/upcoming?page=${pm.maxPage}">[마지막]</a>
+			</c:if>
+		</c:if>
 	</div>
 
 </main>
