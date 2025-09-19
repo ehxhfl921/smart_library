@@ -144,11 +144,11 @@ header{ background:#fff; }
 @media screen and (max-width: 1080px) {
 	
 	.main-nav {
-  		gap:30px;   /* ✅ 메뉴 간격 */
+  		gap:40px;   /* ✅ 메뉴 간격 */
 	}
 	
 	.main-nav > li {
-	  min-width: 12px;
+	  min-width: 90px;
 	}
 	
 	.logo{
@@ -157,4 +157,12 @@ header{ background:#fff; }
 		margin-right: 20px;
 	}
 	
+	.dropdown {
+	  min-width:100px;
+	}
+
+	.dropdown li a {
+	  font-size:15px;
+	  padding:8px 10px;
+	}
 }

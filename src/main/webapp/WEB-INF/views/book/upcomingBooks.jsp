@@ -30,7 +30,13 @@
     <main class="content">
         <h2>출간 예정 도서</h2>
         <hr style="margin: 10px 0;">
-
+		<div class="upcomingInfo">
+			<p>* 출간 예정 도서 목록은 소장 도서 목록과 상이합니다. 소장 도서 검색은 '도서 검색' 탭을 이용해 주세요.</p>
+			<p>* 현재 목록은 2025-09-19 기준 한 달 이내 출간 예정 도서입니다. 이후 출간 예정 도서는 한 달 단위로 매달 1일 갱신됩니다.</p>
+	        <p>* 도서 클릭 시 &lt;출판 유통 통합 전산망&gt; 내 해당 도서 페이지로 이동합니다.</p>
+	        <p>* 출처 : 한국 출판 문화 산업 진흥원 &lt;출판 유통 통합 전산망&gt;</p>
+		</div>
+        
         <!-- 출간 예정 도서 목록 -->
         <div class="upcomingBooks">
             <c:choose>
@@ -57,7 +63,7 @@
                                 <div class="info">
                                     <strong class="title">${book.title}</strong><br>
                                     저자: ${book.author} | 출판사: ${book.publisher}<br>
-                                    출간일: <fmt:formatDate value="${book.p_date}" pattern="yyyy-MM-dd"/> | 
+                                    발행일: <fmt:formatDate value="${book.p_date}" pattern="yyyy-MM-dd"/> | 
                                     유형: ${book.book_type}
                                 </div>
                             </li>

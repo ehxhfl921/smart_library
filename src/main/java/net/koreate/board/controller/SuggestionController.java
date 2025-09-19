@@ -33,8 +33,6 @@ public class SuggestionController {
 	 */
 	@GetMapping("/list")
 	public String suggestionList(Criteria cri, Model model) throws Exception{
-		System.out.println("건의사항 목록 suggestionList 요청");
-		
 	       // 조회된 건의사항 게시글 목록
 	       Map<String, Object> map = ss.list(cri);
 	       model.addAllAttributes(map);
@@ -114,7 +112,7 @@ public class SuggestionController {
 	 * 건의 사항 작성 폼 페이지로 이동 요청 처리
 	 */
 	 @GetMapping("/register")
-	   public String suggestionRegisterForm(int rnum) throws Exception{
+	   public String suggestionRegisterForm() throws Exception{
 
 	    return "board/suggestionWrite";
 	}
@@ -127,18 +125,17 @@ public class SuggestionController {
 	 public String modifySuggestion(BoardVO vo, HttpSession session, RedirectAttributes rttr) {
 	     UserVO logins = (UserVO) session.getAttribute("userInfo");
 	     vo.setS_userid(logins.getId());
-	        vo.setS_author(logins.getName());
+	     vo.setS_author(logins.getName());
 
 	        try {
 	            ss.update(vo);
 	            rttr.addFlashAttribute("msg", "건의 사항을 수정했습니다.");
-	            rttr.addAttribute("sug_no", vo.getSug_no());
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            rttr.addFlashAttribute("msg", "수정 사항 등록 중 오류가 발생했습니다.");
 	        }
 
-	        return "redirect:/suggest/detail?sug_no="+vo.getSug_no() +"&rnum="+ vo.getRnum();
+	        return "redirect:/suggest/detail?sug_no=" + vo.getSug_no() + "&rnum=" + vo.getRnum();
 	 }
 	 
 	 /**
@@ -147,8 +144,14 @@ public class SuggestionController {
 	    * @param nno   수정할 건의 사항 게시글 번호
 	    */
 	   @GetMapping("/modifyForm")
-	   public String suggestionModify(@RequestParam("sug_no") int sug_no, Model model) throws Exception {
+	   public String suggestionModify(
+			   @RequestParam("sug_no") int sug_no, 
+			   @RequestParam("rnum") int rnum, 
+			   Model model) throws Exception {
+		   
 		   BoardVO vo  = ss.getDetail(sug_no);
+		   vo.setRnum(rnum);
+		   
 	       model.addAttribute("suggestion", vo);
 	       return "board/suggestionUpdate";
 	   }

@@ -32,8 +32,6 @@ public class NoticeController {
     */
    @GetMapping("/list")
    public String noticeList(Criteria cri, Model model) throws Exception{
-      System.out.println("공지사항 목록 noticeList 요청");
-       
        // 조회된 공지사항 게시글 목록
        Map<String, Object> map = ns.list(cri);
        model.addAllAttributes(map);
@@ -62,8 +60,14 @@ public class NoticeController {
     * @param nno   수정할 공지 사항 게시글 번호
     */
    @GetMapping("/modifyForm")
-   public String noticeModify(@RequestParam("nno") int nno, Model model) throws Exception {
+   public String noticeModify(
+		   @RequestParam("nno") int nno, 
+		   @RequestParam("rnum") int rnum, 
+		   Model model) throws Exception {
+	   
        BoardVO board = ns.getDetail(nno);
+       board.setRnum(rnum);
+       
        model.addAttribute("boardVO", board);
        return "notice/noticeUpdate";
    }
@@ -88,7 +92,6 @@ public class NoticeController {
 		   RedirectAttributes rttr,
 		   HttpSession session
 		   ) throws Exception{
-      System.out.println("param data : " + vo);
       
       UserVO login = (UserVO)session.getAttribute("userInfo");
       
@@ -97,7 +100,7 @@ public class NoticeController {
       }
       
       try {
-		String result = ns.write (vo);
+		String result = ns.write(vo);
 	    rttr.addFlashAttribute("msg", result);
 	} catch (Exception e) {
 		rttr.addFlashAttribute("msg", "공지 사항 등록에 실패하였습니다.");

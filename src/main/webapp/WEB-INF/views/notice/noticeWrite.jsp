@@ -6,7 +6,7 @@
 
 <section class="mainSection1">
   <main class="noticeUpdate">
-    <h2 class="up">공지사항 작성</h2>
+    <h2 class="up">공지 사항 작성</h2>
     <form method="POST" action="${path}/notice/register">
     
     	 <table class="form-table">
@@ -21,8 +21,7 @@
 	        <tr>
 	            <th>작성 내용</th>
 	            <td>
-	            	<textarea name="n_content" required rows="18" cols="20">
-	            	</textarea>
+	            	<textarea name="n_content" rows="18" cols="20" required></textarea>
 	            </td>
 	        </tr>
          </table>
