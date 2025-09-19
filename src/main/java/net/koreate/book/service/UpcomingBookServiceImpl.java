@@ -17,24 +17,24 @@ import net.koreate.common.utils.PageMaker;
 @RequiredArgsConstructor
 public class UpcomingBookServiceImpl implements UpcomingBookService {
 
-	@Autowired
-	private final UpcomingBookMapper um;
-	
-	@Override
-	public Map<String, Object> getList(Criteria cri) throws Exception {
-		
-		List<UpcomingBookVO> list = um.getList(cri);
-		
-		PageMaker pm = new PageMaker();
-		pm.setCri(cri);
-		pm.setTotalCount(um.countBooks());
-		pm.setDisplayPageNum(10);
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("pm", pm);
-		
-		return map;
-	}
+   @Autowired
+   private final UpcomingBookMapper um;
+   
+   @Override
+   public Map<String, Object> getList(Criteria cri) throws Exception {
+      
+      List<UpcomingBookVO> list = um.getList(cri);
+      
+      PageMaker pm = new PageMaker();
+      pm.setCri(cri);
+      pm.setTotalCount(um.countBooks());
+      pm.setDisplayPageNum(5);
+      
+      Map<String, Object> map = new HashMap<>();
+      map.put("list", list);
+      map.put("pm", pm);
+      
+      return map;
+   }
 
 }
