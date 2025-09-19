@@ -10,7 +10,7 @@ body{
 	margin: 0;
 }
 
-section.jinju1, section.jinju2, section.hyojin{
+section.mainSection1, section.mainSection2{
 	min-height: 600px;
 	padding: 20px;
 }
@@ -299,14 +299,14 @@ div.libraryInfo div.infoRight{
 }
 
 /* roomReservation */
-section.jinju1 .roomReservation,
-section.jinju1 .noticeList {
+section.mainSection1 .roomReservation,
+section.mainSection1 .noticeList {
 	width:800px; 
     box-sizing:border-box;
     margin: 0 60px;
 }
 
-section.jinju1 div#studyroomBox{
+section.mainSection1 div#studyroomBox{
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
@@ -314,18 +314,18 @@ section.jinju1 div#studyroomBox{
 	padding: 20px;
 }
 
-section.jinju1 div#studyroomBox p{
+section.mainSection1 div#studyroomBox p{
 	font-weight:bold;
 	width:800px;
 	margin: 0;
 	padding: 20px;
 }
 
-section.jinju1 div#studyroomBox p span{
+section.mainSection1 div#studyroomBox p span{
 	margin-right: 20px;	
 }
 
-section.jinju1 div#studyroomBox .available{
+section.mainSection1 div#studyroomBox .available{
 	border:3px solid #0d47a1; 
 	width:200px; 
 	height:200px;
@@ -335,7 +335,7 @@ section.jinju1 div#studyroomBox .available{
 	font-size: 20px;
 }
 
-section.jinju1 div#studyroomBox .unavailable{
+section.mainSection1 div#studyroomBox .unavailable{
 	border:3px solid #ccc; 
 	width:200px; 
 	height:200px;
@@ -352,34 +352,34 @@ div#studyroomBox .available.selected{
 	color: white;
 }
 
-section.jinju1 div#studyroomBox .available:hover{
+section.mainSection1 div#studyroomBox .available:hover{
 	background-color: #0d47a1;
 	transition: 0.1s ease;
 	color: white;
 	cursor: pointer;
 }
 
-section.jinju1 .roomReservation .btnBox{
+section.mainSection1 .roomReservation .btnBox{
 	width: 500px;
 	text-align: center;
 	margin: 20px auto;
 }
 
-section.jinju1 .date-selection {
+section.mainSection1 .date-selection {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 15px;
 }
 
-section.jinju1 .date-input {
+section.mainSection1 .date-input {
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 4px;
       width: 400px;
 }
 
-section.jinju1 .select-button {
+section.mainSection1 .select-button {
       padding: 8px 15px;
       border: none;
       background-color: #0d47a1;
@@ -390,7 +390,7 @@ section.jinju1 .select-button {
       height: 40px;
     }
 
-section.jinju1 .select-button:hover {
+section.mainSection1 .select-button:hover {
       background-color: #0371e6;
     }
 
@@ -413,7 +413,7 @@ section.searchBook .content {
 	display:flex;
 	flex-direction: column;
 	width: 700px;
-	min-height: 580px;
+	min-height: 585px;
 	margin-left: 50px;
 }
 
@@ -578,7 +578,7 @@ section.searchBook div#pagenation #textBtn:hover{
 
 /* 진주 */
 /* admin css*/  
-section.jinju1{
+section.mainSection1{
 	width: 1300px;
 	padding: 20px;
 	display: flex;
@@ -587,17 +587,17 @@ section.jinju1{
 	margin: 20px auto;
 }  
 
-section.jinju1 h2.up { 
+section.mainSection1 h2.up { 
 	text-align: center; 
 	padding: 0;
 	margin-top: -20px;
 }
 
-section.jinju1 main.loanList{
+section.mainSection1 main.loanList{
 	margin: 0 60px;
 }
 
-section.jinju1 main.noticeDetail div.contentBox{
+section.mainSection1 main.noticeDetail div.contentBox{
 	width: 900px;
 	border: 1px solid #ccc;
 	padding: 0;
@@ -777,34 +777,34 @@ main.noticeDetail .authorAndDate .date p span{
 	padding: 20px;
 }
 
-section.jinju1 main.noticeUpdate {
+section.mainSection1 main.noticeUpdate {
 	text-align: center;
 }
 
-section.jinju1 main.noticeUpdate textarea{
+section.mainSection1 main.noticeUpdate textarea{
 	font-family: sans-serif;	
 }
 
-section.jinju1 main.noticeUpdate .btnBox{
+section.mainSection1 main.noticeUpdate .btnBox{
 	padding: 20px;	
 }
 
-section.jinju1 main.libraryInfo,
-section.jinju1 main.noticeList{
+section.mainSection1 main.libraryInfo,
+section.mainSection1 main.noticeList{
 	width: 800px;
 	margin: 0 60px;
 }
 
-section.jinju1 main.libraryInfo .head,
-section.jinju1 main.noticeList .head{
+section.mainSection1 main.libraryInfo .head,
+section.mainSection1 main.noticeList .head{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-section.jinju1 main.libraryInfo .head button,
-section.jinju1 main.noticeList .head button,
-section.jinju1 main.lobraryInfo .btn{
+section.mainSection1 main.libraryInfo .head button,
+section.mainSection1 main.noticeList .head button,
+section.mainSection1 main.lobraryInfo .btn{
 	height: 50px;
 	width: 130px;
 	border: 2px solid #0d47a1;
@@ -814,9 +814,9 @@ section.jinju1 main.lobraryInfo .btn{
 	font-size: 17px;
 }
 
-section.jinju1 main.libraryInfo .head button:hover,
-section.jinju1 main.noticeList .head button:hover,
-section.jinju1 main.lobraryInfo .btn:hover{
+section.mainSection1 main.libraryInfo .head button:hover,
+section.mainSection1 main.noticeList .head button:hover,
+section.mainSection1 main.lobraryInfo .btn:hover{
 	background-color: white;
 	color: #0d47a1;
 	cursor: pointer;
@@ -824,102 +824,74 @@ section.jinju1 main.lobraryInfo .btn:hover{
 	transition: 0.1s ease;
 }
 
-section.jinju1 main.libraryInfo div.content{
+section.mainSection1 main.libraryInfo div.content{
 	width: 700px;
 	margin: 0;	
 }
 
-section.jinju1 main.libraryInfo .content .libName{
+section.mainSection1 main.libraryInfo .content .libName{
 	font-size: 20px;
 	font-weight: bold;
 }
 
 
 /* Container */
-section.jinju1 .container {
+section.mainSection1 .container {
   max-width: 1100px;
   margin: 32px auto;
   padding: 0 16px;
 }
 
 /* Page head */
-section.jinju1 .page-head {
+section.mainSection1 .page-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 6px 0 16px;
 }
 
-section.jinju1 .page-title {
+section.mainSection1 .page-title {
   font-size: 22px;
   font-weight: 800;
 }
 
-/* Layout helpers */
-section.jinju1 .row {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-
-section.jinju1 .col {
-  flex: 1 1 0;
-}
-
-/* Card */
-section.jinju1 .card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 16px;
-}
-
-section.jinju1 .card + .card {
-  margin-top: 12px;
-}
-
-section.jinju1 .card-title {
-  font-weight: 700;
-  margin: 0 0 10px;
-}
 
 /* Tables */
-section.jinju1 .table {
+section.mainSection1 .table {
   width: 100%;
   border-collapse: collapse;
 }
 
-section.jinju1 .table th,
-section.jinju1 .table td {
+section.mainSection1 .table th,
+section.mainSection1 .table td {
   border: 1px solid #e5e7eb;
   padding: 10px 8px;
 }
 
-section.jinju1 .table th {
+section.mainSection1 .table th {
   background: #f8fafc;
   font-weight: 700;
   text-align: center;
 }
 
-section.jinju1 .table td {
+section.mainSection1 .table td {
   vertical-align: middle;
 }
 
-section.jinju1 .table tr:hover {
+section.mainSection1 .table tr:hover {
   background: #f3f7ff;
 }
 
-section.jinju1 .table .center {
+section.mainSection1 .table .center {
   text-align: center;
 }
 
-section.jinju1 .table .right {
+section.mainSection1 .table .right {
   text-align: right;
 }
 
 /* Form tables */
-section.jinju1 .form-table {
+section.mainSection1 .form-table {
   width: 1000px;
   border-collapse: collapse;
   border: 1px solid #ccc;
@@ -927,7 +899,7 @@ section.jinju1 .form-table {
   text-align: center;
 }
 
-section.jinju1 div.bookDetail{
+section.mainSection1 div.bookDetail{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -937,92 +909,97 @@ section.jinju1 div.bookDetail{
 	text-align: center;
 }
 
-section.jinju1 div.bookDetail h2.down{
-	margin-top: 80px;
+section.mainSection1 div.bookDetail h2.down{
+	margin-top: 50px;
 }
 
-section.jinju1 .bookDetail .table tr:hover,
-section.jinju1 .modifyBook .form-table tr:hover,
-section.jinju1 .registerBook .form-table tr:hover,
-section.jinju1 .loanList .form-table tr:hover,
-section.jinju1 main.libraryInfo .form-table tr:hover{
+.bookDetail .pagenation {
+	margin: 30px auto;
+	margin-bottom: 0;
+}
+
+section.mainSection1 .bookDetail .table tr:hover,
+section.mainSection1 .modifyBook .form-table tr:hover,
+section.mainSection1 .registerBook .form-table tr:hover,
+section.mainSection1 .loanList .form-table tr:hover,
+section.mainSection1 main.libraryInfo .form-table tr:hover{
 	background-color: white;
 }
 
-section.jinju1 main.manageMember .form-table tr:hover{
+section.mainSection1 main.manageMember .form-table tr:hover{
 	cursor: pointer;
 }
 
-section.jinju1 .bookDetail .table td img{
+section.mainSection1 .bookDetail .table td img{
 	width: 100%;
 	height:100%;
 	object-fit: cover;
 }
 
-section.jinju1 .modifyBook .form-table td,
-section.jinju1 .registerBook .form-table td,
-section.jinju1 main.libraryInfo .form-table td,
-section.jinju1 main.noticeUpdate .form-table td,
-section.jinju1 main.manageUpdate .form-table td{
+section.mainSection1 .modifyBook .form-table td,
+section.mainSection1 .registerBook .form-table td,
+section.mainSection1 main.libraryInfo .form-table td,
+section.mainSection1 main.noticeUpdate .form-table td,
+section.mainSection1 main.manageUpdate .form-table td{
 	padding: 10px;	
 }
 
-section.jinju1 .modifyBook .form-table td img,
-section.jinju1 .registerBook .form-table td img{
+section.mainSection1 .modifyBook .form-table td img,
+section.mainSection1 .registerBook .form-table td img{
 	margin-top: 10px;
 	margin-bottom: 5px;	
 }
 
-section.jinju1 main.registerBook .form-table,
-section.jinju1 main.modifyBook .form-table{
+section.mainSection1 main.registerBook .form-table,
+section.mainSection1 main.modifyBook .form-table{
 	height: 500px;
 	width: 500px;
 }
 
-section.jinju1 main.manageUpdate .form-table{
+section.mainSection1 main.manageUpdate .form-table{
 	height: 550px;
 	width: 550px;
 }
 
-section.jinju1 main.manageBook,
-section.jinju1 main.manageReservation,
-section.jinju1 main.manageMember{
+section.mainSection1 main.manageBook,
+section.mainSection1 main.manageReservation,
+section.mainSection1 main.manageMember{
 	width: 900px;	
 	margin: 0 30px;
 }
 
-section.jinju1 main.manageBook .form-table,
-section.jinju1 main.manageReservation .form-table,
-section.jinju1 main.noticeUpdate .form-table,
-section.jinju1 main.manageMember .form-table{
+section.mainSection1 main.manageBook .form-table,
+section.mainSection1 main.manageReservation .form-table,
+section.mainSection1 main.noticeUpdate .form-table,
+section.mainSection1 main.manageMember .form-table{
 	width: 900px;
 }
 
-section.jinju1 main.noticeUpdate .form-table tr:last-child{
+section.mainSection1 main.noticeUpdate .form-table tr:last-child{
 	min-height: 400px;
 }
 
-section.jinju1 main.noticeUpdate .form-table th{
+section.mainSection1 main.noticeUpdate .form-table th{
 	width: 100px;
 }
 
-section.jinju1 main.manageBook hr,
-section.jinju1 main.manageReservation hr,
-section.jinju1 main.noticeList hr,
-section.jinju1 main.manageMember hr{
+section.mainSection1 main.manageBook hr,
+section.mainSection1 main.manageReservation hr,
+section.mainSection1 main.noticeList hr,
+section.mainSection1 main.manageMember hr{
 	margin-bottom: 20px;
 }
 
-section.jinju1 main.loanList .form-table,
-section.jinju1 main.noticeList .form-table{
+section.mainSection1 main.loanList .form-table,
+section.mainSection1 main.noticeList .form-table{
 	width: 800px;
 }
 
-section.jinju1 main.libraryInfo .form-table{
+section.mainSection1 main.libraryInfo .form-table{
 	width: 750px;
 }
 
-section.jinju1 .form-table th {
+section.mainSection1 .form-table th {
   	background: #f8fafc;
   	text-align: center;
   	font-weight: 700;
@@ -1030,29 +1007,29 @@ section.jinju1 .form-table th {
 	border: 1px solid #ccc;
 }
 
-section.jinju1 .form-table tr:hover {
+section.mainSection1 .form-table tr:hover {
   	background: #f3f7ff;
 }
 
-section.jinju1 .form-table tr{
+section.mainSection1 .form-table tr{
 	 height: 38px;
 	 border: 1px solid #ccc;
 }
 
-section.jinju1 .form-table td {
+section.mainSection1 .form-table td {
 	border: 1px solid #ccc;
 }
 
-section.jinju1 .form-table td a{
+section.mainSection1 .form-table td a{
 	color: black;
 	text-decoration: none;
 }
 
-section.jinju1 .form-table td a:visited{
+section.mainSection1 .form-table td a:visited{
 	color: black;
 }
 
-section.jinju1 .table td:first-child{
+section.mainSection1 .table td:first-child{
   width: 280px;   /* 고정폭 표지 칸 */
   height: 380px;
   text-align: center;
@@ -1062,7 +1039,7 @@ section.jinju1 .table td:first-child{
   margin: 0;
 }
 
-section.jinju1 .form-table td img{
+section.mainSection1 .form-table td img{
 	width: 100%;
 	height:100%;
 	object-fit: cover;
@@ -1070,19 +1047,19 @@ section.jinju1 .form-table td img{
 
 
 /* 왼쪽 첫 칸(표지) */
-section.jinju1 .table td:first-child {
+section.mainSection1 .table td:first-child {
   text-align: center;
   vertical-align: middle;
 }
 
 /* Inputs */
-section.jinju1 input[type="text"],
-section.jinju1 input[type="password"],
-section.jinju1 input[type="email"],
-section.jinju1 input[type="number"],
-section.jinju1 input[type="date"],
-section.jinju1 textarea,
-section.jinju1 select {
+section.mainSection1 input[type="text"],
+section.mainSection1 input[type="password"],
+section.mainSection1 input[type="email"],
+section.mainSection1 input[type="number"],
+section.mainSection1 input[type="date"],
+section.mainSection1 textarea,
+section.mainSection1 select {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #d1d5db;
@@ -1091,18 +1068,18 @@ section.jinju1 select {
   font-size: 15px;
 }
 
-section.jinju1 input[readonly] {
+section.mainSection1 input[readonly] {
   background: #f3f4f6;
   color: #6b7280;
 }
 
-section.jinju1 textarea {
+section.mainSection1 textarea {
   min-height: 120px;
   resize: vertical;
 }
 
 /* Buttons */
-section.jinju1 .btn {
+section.mainSection1 .btn {
   display: inline-block;
   padding: 6px 12px;  
   border: 1px solid #0d47a1;
@@ -1114,39 +1091,39 @@ section.jinju1 .btn {
   font-size: 13px;  
 }
 
-section.jinju1 .btn.outline {
+section.mainSection1 .btn.outline {
   background: #fff;
   color: #0d47a1;
 }
 
-section.jinju1 .btn.weak {
+section.mainSection1 .btn.weak {
   background: #e6eefc;
   color: #0d47a1;
   border-color: #e6eefc;
 }
 
-section.jinju1 .btn.ok {
+section.mainSection1 .btn.ok {
   background: #14532d;
   border-color: #14532d;
 }
 
-section.jinju1 .btn.warn {
+section.mainSection1 .btn.warn {
   background: #b45309;
   border-color: #b45309;
 }
 
-section.jinju1 .btn.bad {
+section.mainSection1 .btn.bad {
   background: #cf1f1f;
   border-color: #cf1f1f;
 }
 
-section.jinju1 .btn.bad:hover{
+section.mainSection1 .btn.bad:hover{
 	background: #df2f2f;
   	border-color: #df2f2f;
   	transition: 0.1s ease;
 }
 
-section.jinju1 .cancelBtn{
+section.mainSection1 .cancelBtn{
 	color:white;
 	background-color:#cf1f1f;
 	border:1px solid #cf1f1f;
@@ -1155,26 +1132,26 @@ section.jinju1 .cancelBtn{
 	height: 30px;
 }
 
-section.jinju1 .cancelBtn:hover{
+section.mainSection1 .cancelBtn:hover{
 	background-color:#df2f2f;
 	border:1px solid #df2f2f;
 	cursor: pointer;
 }
 
-section.jinju1 .actions {
+section.mainSection1 .actions {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-section.jinju1 main.manageBook div.newBookBtnBox{
+section.mainSection1 main.manageBook div.newBookBtnBox{
 	display: flex;
 	justify-content: space-between;	
 	align-items: center;
 }
 
-section.jinju1 main.manageBook div.newBookBtnBox .btn{
+section.mainSection1 main.manageBook div.newBookBtnBox .btn{
 	min-width: 140px;
 	height: 45px;
 	font-size: 17px;
@@ -1182,7 +1159,7 @@ section.jinju1 main.manageBook div.newBookBtnBox .btn{
 	vertical-align: middle;
 }
 
-section.jinju1 main.manageBook div.newBookBtnBox .btn:hover{
+section.mainSection1 main.manageBook div.newBookBtnBox .btn:hover{
 	background-color: white;
 	color: #0d47a1;
 	border: 2px solid #0d47a1;
@@ -1190,17 +1167,17 @@ section.jinju1 main.manageBook div.newBookBtnBox .btn:hover{
 	transition: 0.1s ease;
 }
 
-section.jinju1 a.activePage{
+section.mainSection1 a.activePage{
 	font-weight: bold;
 	color: #0d47a1;
 }
 
-section.jinju1 main.manageBook div.pagenation{
+section.mainSection1 main.manageBook div.pagenation{
 	font-size: 18px;
 }
 
 /* Image box (book cover) */
-section.jinju1 .form-table td.cover-box {
+section.mainSection1 .form-table td.cover-box {
   width: 250px;
   height: 350px;
   border: 1px solid #e5e7eb;
@@ -1213,8 +1190,8 @@ section.jinju1 .form-table td.cover-box {
   margin: auto;
 }
 
-section.jinju1 .cover-box img,
-section.jinju1 .book-cover {
+section.mainSection1 .cover-box img,
+section.mainSection1 .book-cover {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
@@ -1222,7 +1199,7 @@ section.jinju1 .book-cover {
 }
 
 /* Pagination */
-section.jinju1 .pagination {
+section.mainSection1 .pagination {
   display: flex;
   gap: 6px;
   justify-content: center;
@@ -1230,20 +1207,20 @@ section.jinju1 .pagination {
   text-align: center;
 }
 
-section.jinju1 .pagination a,
-section.jinju1 .pagination b {
+section.mainSection1 .pagination a,
+section.mainSection1 .pagination b {
   padding: 6px 10px;
   text-decoration: none;
   color: #1f2937;
 }
 
 
-section.jinju1 .pagination a {
+section.mainSection1 .pagination a {
   border: none;      
   background: none;  
 }
 
-section.jinju1 .pagination b {
+section.mainSection1 .pagination b {
   font-weight: bold;  
   border: none;       
   background: none;
@@ -1251,53 +1228,52 @@ section.jinju1 .pagination b {
 }
 
 /* ===== Reservation (Scoped) ===== */
-section.jinju1 .reservation-page h2 { margin:16px 0; }
+section.mainSection1 .reservation-page h2 { margin:16px 0; }
 
-section.jinju1 .reservation-page .toolbar {
+section.mainSection1 .reservation-page .toolbar {
   display:flex; justify-content:space-between; margin:12px 0;
 }
-section.jinju1 .reservation-page .hint { color:#666; font-size:12px; }
+section.mainSection1 .reservation-page .hint { color:#666; font-size:12px; }
 
 /* 표 */
-section.jinju1 .reservation-page table { width:100%; border-collapse:collapse; }
-section.jinju1 .reservation-page th,
-section.jinju1 .reservation-page td {
+section.mainSection1 .reservation-page table { width:100%; border-collapse:collapse; }
+section.mainSection1 .reservation-page th,
+section.mainSection1 .reservation-page td {
   border:1px solid #ddd;
   padding:10px;
   text-align:center;
 }
-/* Reservation 전용 스타일*/
 
 /* 상태 배지 */
-section.jinju1 .badge {
+section.mainSection1 .badge {
   display:inline-block;
   padding:3px 8px;
   border-radius:12px;
   font-size:12px;
   color:#fff;
 }
-section.jinju1 .badge-pending { background:#2e7d32; }   /* 대기중 */
-section.jinju1 .badge-approved { background:#1976d2; }  /* 승인됨 */
-section.jinju1 .badge-rejected { background:#d32f2f; }  /* 거절됨 */
-section.jinju1 .badge-cancelled,
-section.jinju1 .badge-finished { background:#6a6a6a; }     /* 취소/완료 */
+section.mainSection1 .badge-pending { background:#2e7d32; }   /* 대기중 */
+section.mainSection1 .badge-approved { background:#1976d2; }  /* 승인됨 */
+section.mainSection1 .badge-rejected { background:#d32f2f; }  /* 거절됨 */
+section.mainSection1 .badge-cancelled,
+section.mainSection1 .badge-finished { background:#6a6a6a; }     /* 취소/완료 */
 
 /* 예약 관리 버튼 */
-section.jinju1 .btn-approve { background:#1976d2; color:#fff; border:none; }
-section.jinju1 .btn-approve:hover{ 
+section.mainSection1 .btn-approve { background:#1976d2; color:#fff; border:none; }
+section.mainSection1 .btn-approve:hover{ 
 	background:#4296ea;
 }
-section.jinju1 .btn-reject  { background:#d32f2f; color:#fff; border:none; }
-section.jinju1 .btn-reject:hover{ 
+section.mainSection1 .btn-reject  { background:#d32f2f; color:#fff; border:none; }
+section.mainSection1 .btn-reject:hover{ 
 	background:#e25050;
 }
-section.jinju1 .btn-cancel  { background:#000; color:#fff; border:none; }
-section.jinju1 .btn-cancel:hover{ 
+section.mainSection1 .btn-cancel  { background:#000; color:#fff; border:none; }
+section.mainSection1 .btn-cancel:hover{ 
 	background:#535353;
 }
-section.jinju1 .btn-approve,
-section.jinju1 .btn-reject,
-section.jinju1 .btn-cancel {
+section.mainSection1 .btn-approve,
+section.mainSection1 .btn-reject,
+section.mainSection1 .btn-cancel {
   padding:6px 10px;
   font-size:12px;
   border-radius:6px;
@@ -1306,7 +1282,7 @@ section.jinju1 .btn-cancel {
 
 /* user css*/   
 /* 카드 컨테이너 */
-section.jinju2 #wrap{
+section.mainSection2 #wrap{
   max-width:520px;
   margin:48px auto;
   background:#fff;
@@ -1316,13 +1292,13 @@ section.jinju2 #wrap{
   box-sizing:border-box;
 }
 
-section.jinju2 main{
+section.mainSection2 main{
 	padding: 20px;
 	min-height: 635px;	
 }
 
 /* 타이틀 */
-section.jinju2 h1{
+section.mainSection2 h1{
   margin:0 0 24px;
   text-align:center;
   font-size:32px;
@@ -1332,11 +1308,11 @@ section.jinju2 h1{
 }
 
 /* 폼 공통 */
-section.jinju2 .input_item{ margin-bottom:14px; }
+section.mainSection2 .input_item{ margin-bottom:14px; }
 
-section.jinju2 .input_item input,
-section.jinju2 .input_item select,
-section.jinju2 .input_item textarea{
+section.mainSection2 .input_item input,
+section.mainSection2 .input_item select,
+section.mainSection2 .input_item textarea{
   width:100%;
   padding:12px 14px;
   font-size:15px;
@@ -1346,53 +1322,53 @@ section.jinju2 .input_item textarea{
   box-sizing:border-box;
   transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
 }
-section.jinju2 .input_item input::placeholder{ color:#a0a7b4; }
-section.jinju2 .input_item input:focus,
-section.jinju2 .input_item select:focus,
-section.jinju2 .input_item textarea:focus{
+section.mainSection2 .input_item input::placeholder{ color:#a0a7b4; }
+section.mainSection2 .input_item input:focus,
+section.mainSection2 .input_item select:focus,
+section.mainSection2 .input_item textarea:focus{
   outline:none;
   border-color:#2f6bdc;
   box-shadow:0 0 0 3px rgba(47,107,220,.18);
   background:#fff;
 }
-section.jinju2 .input_item input[readonly],
-section.jinju2 .input_item input:disabled{
+section.mainSection2 .input_item input[readonly],
+section.mainSection2 .input_item input:disabled{
   background:#f2f4f8;
   color:#6b7280;
 }
 
 /* 체크박스 */
-section.jinju2 .login_keep_wrap{ margin:6px 0 16px; font-size:14px; }
-section.jinju2 .login_keep_wrap label{ display:flex; align-items:center; gap:10px; cursor:pointer; }
-section.jinju2 .login_keep_wrap input[type="checkbox"]{
+section.mainSection2 .login_keep_wrap{ margin:6px 0 16px; font-size:14px; }
+section.mainSection2 .login_keep_wrap label{ display:flex; align-items:center; gap:10px; cursor:pointer; }
+section.mainSection2 .login_keep_wrap input[type="checkbox"]{
   appearance:none; -webkit-appearance:none;
   width:18px; height:18px;
   border:2px solid #c7ced9; border-radius:50%;
   background:#fff; transition:all .15s ease;
 }
-section.jinju2 .login_keep_wrap input[type="checkbox"]:checked{
+section.mainSection2 .login_keep_wrap input[type="checkbox"]:checked{
   border-color:#0d47a1;
   background: radial-gradient(#0d47a1 55%, transparent 56%);
 }
 
 /* 안내/검증 메시지 */
-section.jinju2 .result{ font-size:12px; color:#c62828; margin-top:6px; min-height:16px; }
-section.jinju2 .result.ok{ color:#0a7a42; }
-section.jinju2 .hint{ font-size:12px; color:#777; margin-top:6px; }
+section.mainSection2 .result{ font-size:12px; color:#c62828; margin-top:6px; min-height:16px; }
+section.mainSection2 .result.ok{ color:#0a7a42; }
+section.mainSection2 .hint{ font-size:12px; color:#777; margin-top:6px; }
 
 /* 인라인 배치 */
-section.jinju2 .inline{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-section.jinju2 .inline input{ flex:1 1 200px; min-width:0; }
+section.mainSection2 .inline{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+section.mainSection2 .inline input{ flex:1 1 200px; min-width:0; }
 
 /* 주소 입력 묶음 */
-section.jinju2 .addr{ margin-top:8px; }
-section.jinju2 .addr_post_row{ display:flex; gap:8px; flex-wrap:wrap; }
+section.mainSection2 .addr{ margin-top:8px; }
+section.mainSection2 .addr_post_row{ display:flex; gap:8px; flex-wrap:wrap; }
 
 /* 버튼 */
-section.jinju2 button, 
-section.jinju2 .btn_login, 
-section.jinju2 input[type="button"], 
-section.jinju2 input[type="submit"]{
+section.mainSection2 button, 
+section.mainSection2 .btn_login, 
+section.mainSection2 input[type="button"], 
+section.mainSection2 input[type="submit"]{
   font-family:inherit;
   display:inline-block;
   min-height:40px;
@@ -1405,8 +1381,13 @@ section.jinju2 input[type="submit"]{
   word-break:keep-all;
 }
 
+.mainSection2 .btn_small,
+#sendEmailBtn{
+	margin-top: 10px;
+}
+
 /* 기본 주요 버튼 */
-section.jinju2 .btn_login{
+section.mainSection2 .btn_login{
   width:100%;
   color:#fff;
   font-size:16px; font-weight:700;
@@ -1414,11 +1395,11 @@ section.jinju2 .btn_login{
   box-shadow: 0 2px 0 rgba(0,0,0,.08) inset;
   transition: transform .02s ease, filter .15s ease;
 }
-section.jinju2 .btn_login:hover{ filter:brightness(1.2); }
-section.jinju2 .btn_login:active{ transform:translateY(1px); }
+section.mainSection2 .btn_login:hover{ filter:brightness(1.2); }
+section.mainSection2 .btn_login:active{ transform:translateY(1px); }
 
 /* 보조 버튼 (주소찾기 같은 버튼) */
-section.jinju2 .btn-outline {
+section.mainSection2 .btn-outline {
   background: #f8f9fa;     
   color: #333;              
   border: none;    
@@ -1429,7 +1410,7 @@ section.jinju2 .btn-outline {
   transition: all 0.2s ease;   
 }
 
-section.jinju2 .btn-outline:hover {
+section.mainSection2 .btn-outline:hover {
   background: #e6eefc;    
   border-color: #0d47a1;       
   color: #0d47a1;             
@@ -1437,48 +1418,48 @@ section.jinju2 .btn-outline:hover {
 
 
 /* 버튼 그룹 (수정 / 탈퇴 등 두 개 이상 있을 때) */
-section.jinju2 .btn_group {
+section.mainSection2 .btn_group {
   display: flex;
   gap: 10px;
   margin-top: 12px;
 }
-section.jinju2 .btn_group form {
+section.mainSection2 .btn_group form {
   flex: 1;
   margin: 0;
 }
-section.jinju2 .btn_group .btn_login {
+section.mainSection2 .btn_group .btn_login {
   width: 100%;
   height: 48px; 
 }
 
 /* 하단 링크 */
-section.jinju2 .find_wrap{
+section.mainSection2 .find_wrap{
   display:flex; justify-content:space-between;
   gap:24px; padding:0; margin:14px 0 0; list-style:none; font-size:14px;
 }
-section.jinju2 .find_wrap li{ flex:1; text-align:center; }
-section.jinju2 .find_wrap a{ color:#0d47a1; text-decoration:none; }
-section.jinju2 .find_wrap a:hover{ text-decoration:underline; }
+section.mainSection2 .find_wrap li{ flex:1; text-align:center; }
+section.mainSection2 .find_wrap a{ color:#0d47a1; text-decoration:none; }
+section.mainSection2 .find_wrap a:hover{ text-decoration:underline; }
 
 /* 테이블 기반 폼(join/mypage/updateInfo 등) */
-section.jinju2 table{ width:100%; border-collapse:collapse; }
-section.jinju2 th, section.jinju2 td{
+section.mainSection2 table{ width:100%; border-collapse:collapse; }
+section.mainSection2 th, section.mainSection2 td{
   padding:10px 8px;
   border:1px solid #eef1f6;
   vertical-align:middle;
 }
-section.jinju2 th{
+section.mainSection2 th{
   width:150px;
   text-align:left;
   background:#f8fafc;
   color:#374151;
   font-weight:700;
 }
-section.jinju2 td input[type="text"],
-section.jinju2 td input[type="password"],
-section.jinju2 td input[type="email"],
-section.jinju2 td input[type="phone"],
-section.jinju2 td textarea{
+section.mainSection2 td input[type="text"],
+section.mainSection2 td input[type="password"],
+section.mainSection2 td input[type="email"],
+section.mainSection2 td input[type="phone"],
+section.mainSection2 td textarea{
   width:100%;
   padding:12px 14px;
   border:1px solid #d9dee7;
@@ -1488,37 +1469,37 @@ section.jinju2 td textarea{
   box-sizing:border-box;
 }
 
-section.jinju2 td input:focus, section.jinju2 td textarea:focus{
+section.mainSection2 td input:focus, section.mainSection2 td textarea:focus{
   outline:none; border-color:#2f6bdc;
   box-shadow:0 0 0 3px rgba(47,107,220,.18);
   background:#fff;
 }
 
-section.jinju2 .info-msg {
+section.mainSection2 .info-msg {
   text-align: center;
   font-size: 15px;
   margin-top: 15px;
   color: #111; 
 }
 
-section.jinju2 .highlight {color: #0d47a1;}
+section.mainSection2 .highlight {color: #0d47a1;}
 
-section.jinju2 .info-msg {
+section.mainSection2 .info-msg {
   text-align: center;
   font-size: 15px;
   margin-top: 15px;
   color: #111; 
 }
-section.jinju2 .highlight {color: #0d47a1;}
+section.mainSection2 .highlight {color: #0d47a1;}
 
-section.jinju2 a.btn-link {
+section.mainSection2 a.btn-link {
   color: #0d47a1;
   font-weight: bold;
   margin-left: 8px;
   text-decoration: none;
 }
 
-section.jinju2 a.btn-link:hover {
+section.mainSection2 a.btn-link:hover {
   text-decoration: underline;
 }
 
@@ -1561,17 +1542,17 @@ section.jinju2 a.btn-link:hover {
       color: #000;
 }
 
-section.jinju1 .result {
+section.mainSection1 .result {
   display: none;    
   font-size: 12px;
   color: #c62828;
   margin-top: 6px;
 }
 
-section.jinju1 .result.ok { 
+section.mainSection1 .result.ok { 
   color: #0a7a42; 
 }
-section.jinju2 .result {
+section.mainSection2 .result {
   display: none;    
    min-height: 16px; 
   font-size: 12px;
@@ -1579,7 +1560,7 @@ section.jinju2 .result {
   margin-top: 6px;
 }
 
-section.jinju2 .result.ok { 
+section.mainSection2 .result.ok { 
   color: #0a7a42; 
 }
 

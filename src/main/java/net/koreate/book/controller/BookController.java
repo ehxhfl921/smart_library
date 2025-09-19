@@ -169,6 +169,8 @@ public class BookController {
 		// 상세 페이지에 출력할 도서 정보
 		BookVO book = bs.getBookDetail(bno);
 		
+		cri.setPerPageNum(5);
+		
 		// 해당 도서의 대출 내역
 		Map<String, Object> result = bs.getLoanListOfBook(bno, cri);
 		

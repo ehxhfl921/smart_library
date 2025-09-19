@@ -10,7 +10,7 @@
     </script>
 </c:if>
 
-<section class="jinju1">
+<section class="mainSection1">
 
 <aside class="sidebar">
       <div class="sidebar-header">열린 공간</div>

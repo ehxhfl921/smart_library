@@ -11,7 +11,7 @@
     </script>
 </c:if>
 
-<section class="jinju1">
+<section class="mainSection1">
 
 <aside class="sidebar" style="width:220px;">
       <div class="sidebar-header">내 서재</div>

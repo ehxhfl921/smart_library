@@ -5,7 +5,7 @@
 <%@ include file="../common/header.jsp" %>
 <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" var="todayStr" />
 
-<section class="jinju1">
+<section class="mainSection1">
 
 <aside class="sidebar" style="width:220px;">
       <div class="sidebar-header">도서관 이용</div>

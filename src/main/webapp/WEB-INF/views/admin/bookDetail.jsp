@@ -10,9 +10,9 @@
     </script>
 </c:if>
 
-<section class="jinju1">
+<section class="mainSection1">
 <div class="bookDetail">
-<h2 class="up">도서 상세 페이지</h2>
+<h2 class="up">도서 상세 정보</h2>
 
     <!-- 도서 상세 정보 -->
     <table class="table">
@@ -63,9 +63,7 @@
            </td>
           </tr>
     </table>
-
-    <br>
-
+    
     <!-- 대출 현황 -->
     <h2 class="down">대출 현황</h2>
     <table class="form-table">
@@ -115,6 +113,33 @@
 		    </c:otherwise>
         </c:choose>
     </table>
+    <!-- 페이징 블럭 출력 -->
+    <div class="pagenation">
+    	<c:if test="${not empty list and not empty pm}">
+    		<c:if test="${pm.first}">
+	    		<a href="${path}/book/admin/${book.bno}?page=1">[처음]</a>
+	    	</c:if>
+
+			<c:if test="${pm.prev}">
+	    		<a href="${path}/book/admin/${book.bno}?page=${pm.startPage-1}">[이전]</a>
+	    	</c:if>
+	    	
+			<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+			      	<a href="${path}/book/admin/${book.bno}?page=${i}"
+			      	   <c:if test='${i == pm.cri.page}'> class='activePage' </c:if> >
+			      		[${i}]
+			      	</a>
+  			</c:forEach>
+		
+			<c:if test="${pm.next}">
+	    		<a href="${path}/book/admin/${book.bno}?page=${pm.endPage+1}">[다음]</a>
+	    	</c:if>
+	    	
+	    	<c:if test="${pm.last}">
+		      	<a href="${path}/book/admin/${book.bno}?page=${pm.maxPage}">[마지막]</a>
+		    </c:if>
+    	</c:if>
+    </div>
 </div>
 </section>
 

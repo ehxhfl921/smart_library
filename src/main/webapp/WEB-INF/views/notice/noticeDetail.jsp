@@ -9,7 +9,7 @@
     </script>
 </c:if>
 
-<section class="jinju1">
+<section class="mainSection1">
 	<main class="noticeDetail">
         <h2>공지 사항</h2>
 		<hr>

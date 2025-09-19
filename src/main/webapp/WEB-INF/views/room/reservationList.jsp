@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class="jinju1">
+<section class="mainSection1">
 
 <aside class="sidebar" style="width:220px;">
       <div class="sidebar-header">내 서재</div>
@@ -55,7 +55,7 @@
 							<td style="color:#b91c1c;">예약 거절</td>
 						</c:when>
 						<c:when test="${reservation.status eq 'CANCELED'}">
-							<td style="color:#cdcdcd">예약 취소</td>
+							<td style="color:#aaa">예약 취소</td>
 						</c:when>
 			        	<c:otherwise>
 							-				        	
@@ -70,6 +70,10 @@
 				        			예약 취소
 				        		</button>
 				        	</c:when>
+				        	<c:when test="${reservation.status eq 'APPROVED'
+		                    				and reservation.reserve_date < today}">
+		                    	<span style="color:#aaa;">이용 완료</span>
+		                    </c:when>
 				        	<c:otherwise>
 								-				        	
 				        	</c:otherwise>

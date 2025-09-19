@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class="jinju1">
+<section class="mainSection1">
   <main class="noticeUpdate">
     <h2 class="up">공지사항 작성</h2>
     <form method="POST" action="${path}/notice/register">
@@ -28,7 +28,7 @@
          </table>
          <div class="btnBox">
             <button type="submit" class="btn"
-                onclick="return confirm('공지 사항을 작성하시겠습니까?')">작성하기</button>
+                onclick="return confirm('공지 사항을 등록하시겠습니까?')">작성하기</button>
          </div>
     </form>
   </main>

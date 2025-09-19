@@ -10,7 +10,7 @@
     </script>
 </c:if>
 
-<section class=jinju2>
+<section class="mainSection2">
 <main>
 <div id="wrap">
     <h1>비밀번호 변경</h1>

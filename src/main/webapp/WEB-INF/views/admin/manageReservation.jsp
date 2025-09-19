@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju1>
+<section class="mainSection1">
 <aside class="sidebar">
       <div class="sidebar-header">운영/관리</div>
       <div class="sidebar-item"><a href="${path}/user/admin/memberList">회원 관리</a></div>
@@ -82,8 +82,13 @@
 			                 	<button class="btn btn-approve" data-rno="${reservation.rno}">승인</button>
 			                    <button class="btn btn-reject" data-rno="${reservation.rno}">거절</button>
 			                 </c:when>
-							<c:when test="${reservation.status eq 'APPROVED'}">
+							<c:when test="${reservation.status eq 'APPROVED'
+											and reservation.reserve_date >= today}">
 			                    <button class="btn btn-cancel" data-rno="${reservation.rno}">취소</button>
+		                    </c:when>
+		                    <c:when test="${reservation.status eq 'APPROVED'
+		                    				and reservation.reserve_date < today}">
+		                    	<span style="color:#aaa;font-size:14px;">이용 완료</span>
 		                    </c:when>
 		                    <c:otherwise>
 		                    	-
@@ -107,11 +112,11 @@
 		<div class="pagination">
 		
 			<c:if test="${pm.first}">
-	    		<a href="${path}/studyroom/admin/reservationList?page=1">처음</a>
+	    		<a href="${path}/studyroom/admin/reservationList?page=1">[처음]</a>
 	    	</c:if>
 
 			<c:if test="${pm.prev}">
-	    		<a href="${path}/studyroom/admin/reservationList?page=${pm.startPage-1}">이전</a>
+	    		<a href="${path}/studyroom/admin/reservationList?page=${pm.startPage-1}">[이전]</a>
 	    	</c:if>
 	    	
 			<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
@@ -122,11 +127,11 @@
   			</c:forEach>
 		
 			<c:if test="${pm.next}">
-	    		<a href="${path}/studyroom/admin/reservationList?page=${pm.endPage+1}">다음</a>
+	    		<a href="${path}/studyroom/admin/reservationList?page=${pm.endPage+1}">[다음]</a>
 	    	</c:if>
 	    	
 	    	<c:if test="${pm.last}">
-		      	<a href="${path}/studyroom/admin/reservationList?page=${pm.maxPage}">마지막</a>
+		      	<a href="${path}/studyroom/admin/reservationList?page=${pm.maxPage}">[마지막]</a>
 		    </c:if>
 		</div>
   	</c:when>

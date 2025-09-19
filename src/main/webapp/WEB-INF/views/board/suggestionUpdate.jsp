@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class="jinju1">
+<section class="mainSection1">
   <main class="noticeUpdate">
     <h2>건의사항 수정</h2>
     <form method="POST" action="${path}/suggest/modify">
