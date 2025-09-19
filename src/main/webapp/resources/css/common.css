@@ -1564,3 +1564,185 @@ section.mainSection2 .result.ok {
   color: #0a7a42; 
 }
 
+/* upcomingBooks */
+
+section.upcomingBooks{
+	display: flex;
+	width: 1000px;
+	margin: 40px auto;
+}
+
+section.upcomingBooks aside{
+	margin-left: -70px;	
+}
+
+section.upcomingBooks .content {
+	padding:0;
+	box-sizing:border-box;
+	display:flex;
+	flex-direction: column;
+	width: 700px;
+	min-height: 585px;
+	margin-left: 50px;
+}
+
+section.upcomingBooks .search-section, 
+section.upcomingBooks .info-section {
+      border:1px solid #ccc;
+      padding:15px;
+}
+    
+section.upcomingBooks .search-section h2, 
+section.upcomingBooks .info-section h3 {
+      margin:0 0 15px 0;
+      font-size:18px;
+      color:#555;
+}
+    
+section.upcomingBooks .search-box {
+      display:flex;
+      gap:10px;
+}
+
+section.upcomingBooks .search-box input[type="text"] {
+      flex-grow:1;
+      padding:10px;
+      border:1px solid #ddd;
+      font-size:16px;
+}
+    
+section.upcomingBooks .search-box button {
+      padding:10px 20px;
+      background-color:#0d47a1;
+      color:white;
+      border:none;
+      cursor:pointer;
+      font-size:16px;
+}
+    
+section.upcomingBooks .search-box button:hover {
+      background-color:#0056b3;
+}
+
+/* 리스트 영역 */
+section.upcomingBooks div#upcomingList { 
+	width: 700px; 
+	margin: 0 auto; 
+	padding: 0; 
+} 
+
+section.upcomingBooks div#upcomingList .none{
+	margin: 30px auto;
+	text-align: center;
+}
+
+section.upcomingBooks div#bookCard { 
+	width: 700px; 
+	height: 400px; 
+	margin: 25px auto; 
+	padding: 15px auto; 
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+	border: 2px solid #d7d7d7; 
+	border-radius: 20px; 
+} 
+
+section.upcomingBooks div#bookCard .bookInfo{ 
+	width: 420px; 
+	display: flex; 
+	flex-wrap: wrap; 
+	justify-content: space-around; 
+	padding: 0; 
+} 
+
+section.upcomingBooks .bookInfo div.info-left{
+	width: 160px;
+	padding: 0;
+	padding-left: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	justify-content: center;
+}
+
+section.upcomingBooks .bookInfo div.info-right{
+	width: 220px;
+	padding: 0;
+	padding-left: 30px;
+	font-size: 20px;
+}
+
+section.upcomingBooks .bookInfo div p#avail {
+	width:420px;
+	padding-left: 60px;
+}
+
+section.upcomingBooks div#bookCard .coverBox{ 
+	width: 270px; 
+	height: 350px; 
+	padding-left: 30px;
+} 
+
+section.upcomingBooks div#bookCard .coverBox img{ 
+	width: 100%; 
+	height: 100%; 
+	object-fit: cover; 
+}
+
+/* 페이지네이션 */
+section.upcomingBooks div#pagenation {
+	text-align: center;
+	width: 100%;
+}
+
+section.upcomingBooks .pageBtn{
+	width: 50px;
+	height: 50px;
+	color: #0d47a1;
+	font-size: 22px;
+	text-align: center;
+	vertical-align: middle;
+	border: 2px solid #0d47a1;
+	border-radius: 5px;
+	background-color: white;
+}
+
+section.upcomingBooks button#active{
+	color: white;
+	background-color: #0d47a1;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+section.upcomingBooks .pageBtn:hover{
+	color: white;
+	background-color: #0d47a1;
+	cursor: pointer;
+	font-weight: bold;
+	transition: 0.1s ease;
+}
+
+section.upcomingBooks .pageBtn:active{
+	color: white;
+	background-color: #0d47a1;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+section.upcomingBooks div#pagenation #textBtn{
+	width: 70px;
+	font-size: 20px;
+	vertical-align: middle;
+	color: #0d47a1;
+	border: 2px solid #0d47a1;
+	border-radius: 5px;
+	background-color: white;
+}
+
+section.upcomingBooks div#pagenation #textBtn:hover{
+	color: white;
+	background-color: #0d47a1;
+	cursor: pointer;
+	font-weight: bold;
+	transition: 0.1s ease;
+}
