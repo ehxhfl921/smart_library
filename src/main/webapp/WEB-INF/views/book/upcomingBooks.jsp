@@ -72,32 +72,34 @@
 
         <!-- 페이징 -->
        <div class="pagination">
-          <c:if test="${not empty pm}">
-              <c:if test="${pm.first}">
-                  <a href="${path}/upcoming?page=1">[처음]</a>
-              </c:if>
-      
-              <c:if test="${pm.prev}">
-                  <a href="${path}/upcoming?page=${pm.startPage-1}">[이전]</a>
-              </c:if>
-      
-              <!-- 최대 5개까지만 페이지 번호 노출 -->
-              <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage < pm.startPage+4 ? pm.endPage : pm.startPage+4}">
-                  <a href="${path}/upcoming?page=${i}"
-                     <c:if test="${i == pm.cri.page}">class="activePage"</c:if>>
-                     [${i}]
-                  </a>
-              </c:forEach>
-      
-              <c:if test="${pm.next}">
-                  <a href="${path}/upcoming?page=${pm.endPage+1}">[다음]</a>
-              </c:if>
-      
-              <c:if test="${pm.last}">
-                  <a href="${path}/upcoming?page=${pm.maxPage}">[마지막]</a>
-              </c:if>
-          </c:if>
-      </div>
+
+		    <c:if test="${not empty pm}">
+		        <c:if test="${pm.first}">
+		            <a href="${path}/upcoming?page=1">처음</a>
+		        </c:if>
+		
+		        <c:if test="${pm.prev}">
+		            <a href="${path}/upcoming?page=${pm.startPage-1}">이전</a>
+		        </c:if>
+		
+		        <!-- 최대 5개까지만 페이지 번호 노출 -->
+		        <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage < pm.startPage+4 ? pm.endPage : pm.startPage+4}">
+		            <a href="${path}/upcoming?page=${i}"
+		               <c:if test="${i == pm.cri.page}">class="activePage"</c:if>>
+		               ${i}
+		            </a>
+		        </c:forEach>
+		
+		        <c:if test="${pm.next}">
+		            <a href="${path}/upcoming?page=${pm.endPage+1}">다음</a>
+		        </c:if>
+		
+		        <c:if test="${pm.last}">
+		            <a href="${path}/upcoming?page=${pm.maxPage}">마지막</a>
+		        </c:if>
+		    </c:if>
+		</div>
+
 
     </main>
 </section>
