@@ -1628,8 +1628,7 @@ section.mainSection2 .result.ok {
 
 .pagination a:hover {
   background: #f3f7ff;
-  color: #0d47a1;
-  font-weight: bold;
+  color: black;
 }
 
 .pagination b {
@@ -1639,3 +1638,11 @@ section.mainSection2 .result.ok {
   background: #fff;
 }
 
+.pagination .activePage {
+  color: #ffffff;         
+  border: 1px solid #9ca3af;
+  background: #9ca3af;    
+  font-weight: bold;
+  pointer-events: none;    
+  cursor: default;
+}
