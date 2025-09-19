@@ -1,3 +1,5 @@
+<!-- 출간 예쩡 페이지 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -70,6 +72,7 @@
 
         <!-- 페이징 -->
        <div class="pagination">
+
 		    <c:if test="${not empty pm}">
 		        <c:if test="${pm.first}">
 		            <a href="${path}/upcoming?page=1">처음</a>
@@ -96,6 +99,7 @@
 		        </c:if>
 		    </c:if>
 		</div>
+
 
     </main>
 </section>
