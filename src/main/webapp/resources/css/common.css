@@ -515,7 +515,8 @@ section.searchBook div#bookCard .coverBox{
 section.searchBook div#bookCard .coverBox img{ 
    width: 100%; 
    height: 100%; 
-   object-fit: cover; 
+   object-fit: cover;
+   border: 1px solid #ccc;
 }
 
 section.searchBook div#pagenation {
