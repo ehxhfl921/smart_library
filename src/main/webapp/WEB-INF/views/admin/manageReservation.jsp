@@ -82,8 +82,13 @@
 			                 	<button class="btn btn-approve" data-rno="${reservation.rno}">승인</button>
 			                    <button class="btn btn-reject" data-rno="${reservation.rno}">거절</button>
 			                 </c:when>
-							<c:when test="${reservation.status eq 'APPROVED'}">
+							<c:when test="${reservation.status eq 'APPROVED'
+											and reservation.reserve_date >= today}">
 			                    <button class="btn btn-cancel" data-rno="${reservation.rno}">취소</button>
+		                    </c:when>
+		                    <c:when test="${reservation.status eq 'APPROVED'
+		                    				and reservation.reserve_date < today}">
+		                    	<span style="color:#aaa;font-size:14px;">이용 완료</span>
 		                    </c:when>
 		                    <c:otherwise>
 		                    	-
