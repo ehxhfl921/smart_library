@@ -11,7 +11,7 @@
     </script>
 </c:if>
 
-<section class="jinju1">
+<section class="mainSection1">
 	<main class="noticeDetail">
         <h2>건의 사항</h2>
 		<hr>

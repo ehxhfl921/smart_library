@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class="jinju1">
+<section class="mainSection1">
 <main class="manageUpdate">
 <h2 class="up">회원 상세 정보</h2>
 

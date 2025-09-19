@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class="jinju1">
+<section class="mainSection1">
 
 <aside class="sidebar">
       <div class="sidebar-header">운영/관리</div>

@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class="jinju1">
+<section class="mainSection1">
 
 <aside class="sidebar" style="width:220px;">
       <div class="sidebar-header">도서관 이용</div>

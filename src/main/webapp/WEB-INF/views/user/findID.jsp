@@ -2,7 +2,7 @@
 
 <%@ include file="../common/header.jsp" %>
 
-<section class="jinju2">
+<section class="mainSection2">
 <main>
   <div id="wrap">
     <h1>아이디 찾기</h1>

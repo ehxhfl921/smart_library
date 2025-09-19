@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju1>
+<section class="mainSection1">
 <aside class="sidebar">
       <div class="sidebar-header">운영/관리</div>
       <div class="sidebar-item">
@@ -48,11 +48,11 @@
 		<div class="pagination">
 		
 			<c:if test="${pm.first}">
-	    		<a href="${path}/user/admin/memberList?page=1">처음</a>
+	    		<a href="${path}/user/admin/memberList?page=1">[처음]</a>
 	    	</c:if>
 			
 						<c:if test="${pm.prev}">
-	    		<a href="${path}/user/admin/memberList?page=${pm.startPage-1}">이전</a>
+	    		<a href="${path}/user/admin/memberList?page=${pm.startPage-1}">[이전]</a>
 	    	</c:if>
 	    	
 			<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
@@ -63,11 +63,11 @@
   			</c:forEach>
 		
 			<c:if test="${pm.next}">
-	    		<a href="${path}/user/admin/memberList?page=${pm.endPage+1}">다음</a>
+	    		<a href="${path}/user/admin/memberList?page=${pm.endPage+1}">[다음]</a>
 	    	</c:if>
 	    	
 	    	<c:if test="${pm.last}">
-		      	<a href="${path}/user/admin/memberList?page=${pm.maxPage}">마지막</a>
+		      	<a href="${path}/user/admin/memberList?page=${pm.maxPage}">[마지막]</a>
 		    </c:if>	
 		</div>
 	</c:when>

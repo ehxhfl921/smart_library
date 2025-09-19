@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
-<section class=jinju1>
+<section class="mainSection1">
 <main class="modifyBook">
 	<div class="container">
 
