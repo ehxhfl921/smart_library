@@ -1,5 +1,3 @@
-<!-- 출간 예정 도서 페이지 -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -12,10 +10,10 @@
     </script>
 </c:if>
 
-<section class="upcomingBooks">
+<section class="searchBook">
 
     <!-- 사이드바 -->
-    <aside class="sidebar">
+    <aside class="sidebar" style="width:220px;">
         <div class="sidebar-header">자료 찾기</div>
         <div class="sidebar-item"><a href="${path}/book/search">도서 검색</a></div>
         <div class="sidebar-item">
@@ -31,86 +29,73 @@
         <h2>출간 예정 도서</h2>
         <hr style="margin: 10px 0;">
 
-        <!-- 도서 리스트 -->
-        <div id="upcomingList">
+        <!-- 출간 예정 도서 목록 -->
+        <div class="upcomingBooks">
             <c:choose>
                 <c:when test="${not empty list}">
-                    <c:forEach var="book" items="${list}">
-                        <div id="bookCard">
-
-                            <!-- 책 표지 -->
-                            <div class="coverBox">
-                                <c:if test="${not empty book.img_src}">
-                                    <img src="${book.img_src}" alt="${book.title}">
+                    <ul class="book-list">
+                        <c:forEach var="book" items="${list}">
+                            <li class="book-row"
+                                <c:if test="${not empty book.link}">
+                                    onclick="location.href='${book.link}';"
                                 </c:if>
-                                <c:if test="${empty book.img_src}">
-                                    <img src="${path}/resources/images/no-cover.png" alt="no cover">
-                                </c:if>
-                            </div>
-
-                            <!-- 책 정보 -->
-                            <div class="bookInfo">
-                                <div class="info-left">제목</div>
-                                <div class="info-right">
-                                    <c:choose>
-                                        <c:when test="${not empty book.link}">
-                                            <a href="${book.link}" target="_blank">${book.title}</a>
-                                        </c:when>
-                                        <c:otherwise>
-                                            ${book.title}
-                                        </c:otherwise>
-                                    </c:choose>
+                                style="cursor:pointer;">
+                                
+                                <!-- 책 표지 -->
+                                <div class="thumb">
+                                    <c:if test="${not empty book.img_src}">
+                                        <img src="${book.img_src}" alt="${book.title}">
+                                    </c:if>
+                                    <c:if test="${empty book.img_src}">
+                                        <img src="${path}/resources/images/no-cover.png" alt="no cover">
+                                    </c:if>
                                 </div>
 
-                                <div class="info-left">저자</div>
-                                <div class="info-right">${book.author}</div>
-
-                                <div class="info-left">출판사</div>
-                                <div class="info-right">${book.publisher}</div>
-
-                                <div class="info-left">출간일</div>
-                                <div class="info-right">
-                                    <fmt:formatDate value="${book.p_date}" pattern="yyyy-MM-dd"/>
+                                <!-- 책 정보 -->
+                                <div class="info">
+                                    <strong class="title">${book.title}</strong><br>
+                                    저자: ${book.author} | 출판사: ${book.publisher}<br>
+                                    출간일: <fmt:formatDate value="${book.p_date}" pattern="yyyy-MM-dd"/> | 
+                                    유형: ${book.book_type}
                                 </div>
-
-                                <div class="info-left">유형</div>
-                                <div class="info-right">${book.book_type}</div>
-                            </div>
-                        </div>
-                    </c:forEach>
+                            </li>
+                        </c:forEach>
+                    </ul>
                 </c:when>
                 <c:otherwise>
-                    <p class="none">출간 예정 도서가 없습니다.</p>
+                    <p class="no-data">출간 예정 도서가 없습니다.</p>
                 </c:otherwise>
             </c:choose>
         </div>
 
-        <!-- 페이지네이션 -->
-        <div id="pagenation">
-            <c:if test="${not empty pm}">
-                <c:if test="${pm.first}">
-                    <button id="textBtn" onclick="location.href='${path}/upcoming?page=1'">처음</button>
-                </c:if>
-
-                <c:if test="${pm.prev}">
-                    <button id="textBtn" onclick="location.href='${path}/upcoming?page=${pm.startPage-1}'">이전</button>
-                </c:if>
-
-                <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
-                    <button class="pageBtn"
-                            <c:if test="${i == pm.cri.page}">id="active"</c:if>
-                            onclick="location.href='${path}/upcoming?page=${i}'">${i}</button>
-                </c:forEach>
-
-                <c:if test="${pm.next}">
-                    <button id="textBtn" onclick="location.href='${path}/upcoming?page=${pm.endPage+1}'">다음</button>
-                </c:if>
-
-                <c:if test="${pm.last}">
-                    <button id="textBtn" onclick="location.href='${path}/upcoming?page=${pm.maxPage}'">마지막</button>
-                </c:if>
-            </c:if>
-        </div>
+        <!-- 페이징 -->
+       <div class="pagination">
+		    <c:if test="${not empty pm}">
+		        <c:if test="${pm.first}">
+		            <a href="${path}/upcoming?page=1">[처음]</a>
+		        </c:if>
+		
+		        <c:if test="${pm.prev}">
+		            <a href="${path}/upcoming?page=${pm.startPage-1}">[이전]</a>
+		        </c:if>
+		
+		        <!-- 최대 5개까지만 페이지 번호 노출 -->
+		        <c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage < pm.startPage+4 ? pm.endPage : pm.startPage+4}">
+		            <a href="${path}/upcoming?page=${i}"
+		               <c:if test="${i == pm.cri.page}">class="activePage"</c:if>>
+		               [${i}]
+		            </a>
+		        </c:forEach>
+		
+		        <c:if test="${pm.next}">
+		            <a href="${path}/upcoming?page=${pm.endPage+1}">[다음]</a>
+		        </c:if>
+		
+		        <c:if test="${pm.last}">
+		            <a href="${path}/upcoming?page=${pm.maxPage}">[마지막]</a>
+		        </c:if>
+		    </c:if>
+		</div>
 
     </main>
 </section>
