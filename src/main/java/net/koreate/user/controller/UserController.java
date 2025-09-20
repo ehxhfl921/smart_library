@@ -1,15 +1,20 @@
 package net.koreate.user.controller;
 
+import java.util.List;
+
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,6 +64,29 @@ public class UserController {
 	    }
 	}
 	
+	@GetMapping("/checkId/{id}")
+	@ResponseBody
+	public ResponseEntity<String> checkId(
+			@PathVariable String id) throws Exception{
+		
+		ResponseEntity<String> entity = null;
+		
+		String checkedId = userService.checkId(id);
+		String msg = "";
+		
+		if(checkedId != null) {
+			// 이미 존재하는 아이디인 경우
+			msg = "true";
+			entity = new ResponseEntity<>(msg, HttpStatus.BAD_REQUEST);
+		}else {
+			// 사용 가능한 아이디인 경우
+			msg = "false";
+			entity = new ResponseEntity<>(msg, HttpStatus.OK);
+		}
+		
+		return entity;
+	}
+	
 	/**
 	 * 로그인 페이지로 이동 요청 처리
 	 */
@@ -80,7 +108,8 @@ public class UserController {
 	        String pw,
 	        String autoLogin,   
 	        HttpSession session,
-	        HttpServletResponse response
+	        HttpServletResponse response,
+	        Model model
 	) throws Exception {
 
 	    UserVO user = userService.login(id, pw);
@@ -95,9 +124,13 @@ public class UserController {
 	            cookie.setMaxAge(60 * 60 * 3);
 	            response.addCookie(cookie);
 	        }
+	        
 	        return "redirect:/";
 	    }
 
+	    String msg = "로그인에 실패하였습니다. 아이디와 비밀번호를 확인해 주세요.";
+	    model.addAttribute("msg", msg);
+	    
 	    return "user/login";
 	}
 	/**
@@ -300,9 +333,20 @@ public class UserController {
 	 */
 	@GetMapping("/findId")
 	@ResponseBody
-	public String findId(String email) throws Exception{
+	public ResponseEntity<List<String>> findId(String email) throws Exception{
 		
-		return userService.getId(email);
+		ResponseEntity<List<String>> entity = null;
+		
+		try {
+			List<String> list = userService.getId(email);
+			entity = new ResponseEntity<>(list, HttpStatus.OK);
+		}catch(Exception e){
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			e.printStackTrace();
+		}
+		
+		
+		return entity;
 	}
 	
 	/**

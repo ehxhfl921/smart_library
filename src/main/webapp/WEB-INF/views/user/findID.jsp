@@ -115,13 +115,29 @@
 
     const email = document.getElementById("email").value.trim();
     fetch(path + "/user/findId?email=" + email)
-      .then(res => res.text())
-      .then(userId => {
-        document.getElementById("resultMsg").innerHTML =
-          "<p class='info-msg'>회원님의 아이디는 <span class='highlight'>" + userId + "</span> 입니다."+
-          "<a href='" + path + "/user/goToLogin' class='btn-link'>로그인 하러가기</a></p>";
-      });
-  };
+      .then(res => res.json())
+      .then(list => {
+			if(list && list.length > 0){
+			    let idListHtml = `<p class='info-msg'>회원님의 정보와 일치하는 아이디입니다.</p>
+			    	<div class='idListBox'>
+			    `;
+			
+			    list.forEach(id => {
+			        idListHtml += `<span class='highlight'>◦ \${id}</span><br>`;
+			    });
+			
+			    idListHtml += `
+			    	<p><a href='\${path}/user/goToLogin' class='btn-link'>로그인 하러가기</a></p>
+			    	</div>
+			    `;
+			
+			    document.getElementById("resultMsg").innerHTML = idListHtml;
+			} else {
+			    document.getElementById("resultMsg").innerHTML =
+			        "<p class='info-msg' style='color:red'>일치하는 아이디가 없습니다.</p>";
+			} // end if else
+     }); // end fetch
+  }; 
 </script>
 
 <%@ include file="../common/footer.jsp" %>

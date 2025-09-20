@@ -1,5 +1,6 @@
 package net.koreate.user.service;
 
+import java.util.List;
 import java.util.Map;
 
 import net.koreate.common.utils.Criteria;
@@ -12,8 +13,12 @@ public interface UserService {
 	 * 
 	 * @param vo	가입 요청한 회원 정보
 	 */
-	
 	void join(UserVO vo) throws Exception;
+
+	/**
+	 * 아이디 중복 체크
+	 */
+	String checkId(String id) throws Exception;
 	
 	/**
 	 * 전달 받은 아이디와 비밀번호로 회원 정보 조회 후 로그인 처리
@@ -39,7 +44,7 @@ public interface UserService {
 	 * @param email	인증된 이메일
 	 * @return		이메일이 일치하는 회원의 아이디
 	 */
-	String getId(String email) throws Exception;
+	List<String> getId(String email) throws Exception;
 	
 	/**
 	 * 비밀번호 찾기(이메일 검증) - 전달 받은 아이디, 이메일과 정보가 일치하는 회원의 이메일 반환

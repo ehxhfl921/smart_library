@@ -1383,7 +1383,8 @@ section.mainSection2 input[type="submit"]{
 }
 
 .mainSection2 .btn_small,
-#sendEmailBtn{
+#sendEmailBtn,
+#checkEmailCodeBtn{
    margin-top: 10px;
 }
 
@@ -1489,8 +1490,15 @@ section.mainSection2 .info-msg {
   text-align: center;
   font-size: 15px;
   margin-top: 15px;
-  color: #111; 
+  color: #111;
 }
+
+section.mainSection2 .idListBox {
+	background-color: #eaedf2;
+	border-radius: 20px;
+	padding: 10px;
+}
+
 section.mainSection2 .highlight {color: #0d47a1;}
 
 section.mainSection2 a.btn-link {

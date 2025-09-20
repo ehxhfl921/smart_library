@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public String checkId(String id) throws Exception {
+		return mapper.checkId(id);
+	}
+	
+	@Override
 	public UserVO login(String id, String pw) throws Exception {
 		
 		return mapper.login(id, pw);
@@ -41,8 +46,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String getId(String email) throws Exception {
-
+	public List<String> getId(String email) throws Exception {
 		return mapper.findId(email);
 	}
 
@@ -95,5 +99,6 @@ public class UserServiceImpl implements UserService {
 
 		return mapper.memberDetail(mno);
 	}
+
 
 }
