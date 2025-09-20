@@ -33,7 +33,7 @@
 		    </td>
 		  </tr>
 		</table>
-		<p id="resultMsg" class="info-msg"></p>
+		<p id="resultMsg" class="info-msg" style="margin-bottom:-20px;"></p>
     </form>
   </div>
 </main>
@@ -97,7 +97,7 @@ const path = "${path}";
       window.location.href = path + "/user/resetPwForm?id=" + encodeURIComponent(id);
     } else {
       document.getElementById("resultMsg").innerHTML =
-        "<p class='info-msg' style='color:red'>인증코드가 일치하지 않습니다.</p>";
+        "<p class='info-msg' style='color:red;'>인증코드가 일치하지 않습니다.</p>";
     }
   };
 </script>
