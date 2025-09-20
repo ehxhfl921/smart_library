@@ -43,6 +43,7 @@
 </section>
 <script>
 
+
 	function checkRegex(el, value, regex, msg){
 		  if(!regex.test(value)){
 		    showMessage(el, msg, false);
@@ -97,7 +98,7 @@
 	  const confirmPw = document.getElementById("confirmPassword").value.trim();
 	
 	  if (pw !== confirmPw) {
-	    alert("비밀번호가 일치하지 않습니다.");
+	    alert("비밀번호가 일치하지 않습니다.");	    
 	    return false;
 	  }
 	  return true;
