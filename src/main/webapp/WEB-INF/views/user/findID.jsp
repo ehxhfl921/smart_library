@@ -41,8 +41,8 @@
         </tr>
       </table>
       <br>
+      <p id="resultMsg" class="info-msg" style="margin-bottom:15px;margin-top:-20px;"></p>
       <input type="button" id="findIdBtn" value="아이디 찾기" class="btn_login">
-      <p id="resultMsg" class="info-msg"></p>
     </form>
   </div>
 </main>
@@ -53,12 +53,16 @@
   let emailCode = "";
   let verified = false;
   let requestSent = false; // 중복 방지 
+  document.getElementById("findIdBtn").style.display = 'block';
   
   // 인증코드 요청 버튼
   document.getElementById("requestCodeBtn").onclick = function(){
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
 
+ 	// 기존 메시지 초기화
+    document.getElementById("resultMsg").innerHTML = "";
+    
     if(!name || !email){
       document.getElementById("resultMsg").innerHTML =
         "<p class='info-msg' style='color:red'>이름과 이메일을 입력해주세요.</p>";
@@ -75,7 +79,7 @@
         if(result){
           return fetch(path + "/user/sendEmail?email=" + email);
         } else {
-          throw new Error("일치하는 회원이 없습니다.");
+          throw new Error("일치하는 회원이 없습니다. 이름과 이메일을 확인해 주세요.");
         }
       })
       .then(res => res.text())
@@ -86,6 +90,7 @@
         document.getElementById("codeRow").style.display = "table-row";
       })
       .catch(err => {
+    	document.getElementById("requestCodeBtn").disabled = false;
         document.getElementById("resultMsg").innerHTML =
           "<p class='info-msg' style='color:red'>" + err.message + "</p>";
       });
@@ -97,7 +102,7 @@
     if(inputCode === emailCode){
       verified = true;
       document.getElementById("resultMsg").innerHTML =
-        "<p class='info-msg'>인증 성공했습니다. 이제 아이디 찾기를 진행하세요.</p>";
+        "<p class='info-msg'>인증에 성공했습니다. <br>이제 아이디 찾기 버튼을 눌러 아이디 찾기를 진행 하세요.</p>";
     } else {
       verified = false;
       document.getElementById("resultMsg").innerHTML =
@@ -132,6 +137,8 @@
 			    `;
 			
 			    document.getElementById("resultMsg").innerHTML = idListHtml;
+			    document.getElementById("findIdBtn").style.display = 'none';
+			    
 			} else {
 			    document.getElementById("resultMsg").innerHTML =
 			        "<p class='info-msg' style='color:red'>일치하는 아이디가 없습니다.</p>";

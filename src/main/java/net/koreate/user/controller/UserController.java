@@ -378,7 +378,7 @@ public class UserController {
 		
 		try {
 			userService.resetPassword(id, pw);
-			rttr.addFlashAttribute("msg", "비밀번호가 성공적으로 변경되었습니다. 새 비밀번호로 로그인하세요");
+			rttr.addFlashAttribute("msg", "비밀번호가 성공적으로 변경되었습니다. 새 비밀번호로 로그인하세요.");
 			return "redirect:/user/goToLogin";
 		}catch(Exception e){
 			e.getStackTrace();
