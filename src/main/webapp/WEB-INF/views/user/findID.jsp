@@ -102,7 +102,7 @@
     if(inputCode === emailCode){
       verified = true;
       document.getElementById("resultMsg").innerHTML =
-        "<p class='info-msg'>인증에 성공했습니다. <br>이제 아이디 찾기 버튼을 눌러 아이디 찾기를 진행 하세요.</p>";
+        "<p class='info-msg'>인증에 성공했습니다. <br>이제 아이디 찾기 버튼을 눌러 아이디 찾기를 진행하세요.</p>";
     } else {
       verified = false;
       document.getElementById("resultMsg").innerHTML =
