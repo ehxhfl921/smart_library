@@ -284,6 +284,8 @@
 </section>
 
 <script>
+
+const path = "${path}";
 	
 	function checkRegex(el, val, regex, message, ajax){
 		if(!regex.test(val)){
@@ -323,7 +325,28 @@
 		}
 		
 		boolId = checkRegex(el, id.value, regexId, "아이디는 4~12자의 영문+숫자 조합이어야 합니다.");
-		if(boolId) showMessage(el, "사용가능합니다.", true);
+		
+		const userid = id.value.trim();
+		
+		if(boolId){
+			fetch(`${path}/user/checkId/\${userid}`)
+			.then(res => res.text())
+			.then(msg =>{
+				
+				if(msg === "true") {
+					showMessage(el, "이미 사용 중인 아이디입니다.", false);
+					boolId = false;
+				}else {
+					showMessage(el, "사용 가능한 아이디입니다.", true);
+					boolId = true;
+				}
+			})
+			.catch(err =>{
+				console.log(err.message);
+			}); // end checkId
+		}
+		
+		
 	});
 	
 	
@@ -342,10 +365,10 @@
 			return;
 		}
 		
-		let msg = "특수문자,숫자,영문 포함 8~16자 이내 작성"; 
+		let msg = "특수 문자,숫자,영문 포함 8~16자 이내 작성"; 
 		boolPw = checkRegex(el, pw.value, regexPw, msg);
 		
-		if(boolPw) showMessage(el, "사용가능합니다." , true);
+		if(boolPw) showMessage(el, "사용 가능합니다." , true);
 	
 	};
 	
@@ -386,7 +409,7 @@
 		}
 		
 		boolName = checkRegex(el, name.value, regexName, "이름은 2~6자의 한글만 가능합니다.");
-		if(boolName) showMessage(el, "사용가능합니다.", true);
+		if(boolName) showMessage(el, "사용 가능합니다.", true);
 	};
 
 	// 전화번호 
@@ -509,7 +532,7 @@
 	    let info = document.getElementById("info");
 	    if(!info.checked){
 	        info.focus();
-	        alert("개인정보 이용동의를 해주세요.");
+	        alert("개인 정보 이용에 동의해 주세요.");
 	        return;
 	    }
 	

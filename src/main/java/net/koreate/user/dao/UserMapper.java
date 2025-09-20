@@ -19,6 +19,7 @@ public interface UserMapper {
 
 	/**
 	 *  회원 가입 - 회원 테이블에 정보 저장
+	 *  아이디 중복 체크
 	 *  로그인 - 아이디, 비밀번호로 조회된 회원 정보
 	 *  아이디 찾기 - 전달 받은 이름, 이메일과 정보가 일치하는 회원의 이메일
 	 *  		   이메일로 조회된 회원의 아이디
@@ -41,6 +42,9 @@ public interface UserMapper {
             " VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{addr}, #{info})")
 	void join(UserVO vo) throws Exception;
 	
+	@Select("SELECT id FROM member WHERE id = #{id}")
+	String checkId(String id) throws Exception;
+	
 	/**
 	 * 전달 받은 아이디, 비밀번호로 회원 정보 조회
 	 * 
@@ -58,17 +62,17 @@ public interface UserMapper {
 	 * @param email		아이디 찾기 할 회원 이메일
 	 * @return			이름과 이메일이 일치하는 회원의 이메일
 	 */
-	@Select("SELECT email FROM member WHERE name=#{name} AND email=#{email} AND status='Y'")
+	@Select("SELECT email FROM member WHERE name=#{name} AND email=#{email} AND status='Y' AND ROWNUM = 1")
 	String getEmailForId(@Param("name")String name, @Param("email")String email) throws Exception;
 	
 	/**
 	 * 인증된 이메일과 이메일이 일치하는 회원의 아이디 조회
 	 * 
 	 * @param email		전달 받은 이메일
-	 * @return			이메일로 검색된 회원의 아이디
+	 * @return			이메일로 검색된 회원의 아이디 목록
 	 */
 	@Select("SELECT id FROM member WHERE email = #{email} AND status='Y'")
-	String findId(@Param("email")String email) throws Exception;
+	List<String> findId(@Param("email")String email) throws Exception;
 	
 	/**
 	 * 전달 받은 아이디, 이메일과 정보가 일치하는 회원의 이메일 조회
