@@ -23,7 +23,7 @@
         <tr>
           <th>새 비밀번호</th>
           <td>
-          	<input type="password" name="pw" id ="pw" required />
+          	<input type="password" name="pw" id="pw" required />
           	<div class="result"></div>
           </td>
           
@@ -36,7 +36,7 @@
           	</td>
         </tr>
       </table>
-      <input type="submit" value="변경하기" class="btn_login" />
+      <input type="submit" value="변경하기" class="btn_login" style="margin-top:15px;"/>
     </form>
   </div>
 </main>
@@ -52,8 +52,8 @@
 		}
 	
 		function showMessage(el, msg, isValid){
-		  el.innerText = msg;
-		  el.style.color = isValid ? "green" : "red";
+			el.innerHTML = `<span style="color:\${isValid ? 'green':'red'}">\${msg}</span>`;
+			el.style.display = "block";
 		}
 	
 	
@@ -66,10 +66,11 @@
 	
 	pw.oninput = function(e){
 		let el = pw.parentElement.querySelector(".result");
-		let msg = "특수문자,숫자,영문 포함 8~16자 이내 작성"; 
+		console.log(el);
+		let msg = "특수 문자, 숫자, 영문 포함 8~16자 이내 작성"; 
 		boolPw = checkRegex(el, pw.value, regexPw, msg);
 		
-		if(boolPw) showMessage(el, "사용가능합니다." , true);
+		if(boolPw) showMessage(el, "사용 가능한 비밀번호입니다." , true);
 	
 	};
 	
@@ -83,7 +84,7 @@
 		let el = re_pw.parentElement.querySelector(".result");
 		
 		if(boolPw){
-			boolPwCheck = (re_pw.value == pw.value);
+			boolPwCheck = (re_pw.value === pw.value);
 			let msg = boolPwCheck ? "비밀번호가 일치합니다. " : " 비밀번호가 일치하지 않습니다.";
 			showMessage(el, msg, boolPwCheck);
 		}else{

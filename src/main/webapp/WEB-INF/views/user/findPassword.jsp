@@ -50,6 +50,9 @@ const path = "${path}";
     const id = document.getElementById("id").value.trim();
     const email = document.getElementById("email").value.trim();
 
+ 	// 기존 메시지 초기화
+    document.getElementById("resultMsg").innerHTML = "";
+ 
     if(!id || !email){
       alert("아이디와 이메일을 입력해주세요.");
       return;
@@ -64,7 +67,7 @@ const path = "${path}";
         if(result){
           return fetch(path + "/user/sendEmail?email=" + email);
         } else {
-          throw new Error("일치하는 회원이 없습니다.");
+          throw new Error("일치하는 회원이 없습니다. 아이디와 이메일을 확인해 주세요.");
         }
       })
       .then(res => res.text())
@@ -75,8 +78,9 @@ const path = "${path}";
         document.getElementById("codeRow").style.display = "table-row";
       })
       .catch(err => {
+    	document.getElementById("requestCodeBtn").disabled = false;
         document.getElementById("resultMsg").innerHTML =
-          "<p class='info-msg'>" + err.message + "</p>";
+          "<p class='info-msg' style='color:red;'>" + err.message + "</p>";
       });
   };
 
@@ -89,7 +93,7 @@ const path = "${path}";
       window.location.href = path + "/user/resetPwForm?id=" + encodeURIComponent(id);
     } else {
       document.getElementById("resultMsg").innerHTML =
-        "<p class='info-msg'>인증코드가 일치하지 않습니다.</p>";
+        "<p class='info-msg' style='color:red'>인증코드가 일치하지 않습니다.</p>";
     }
   };
 </script>
