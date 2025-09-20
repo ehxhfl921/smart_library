@@ -356,8 +356,9 @@ public class UserController {
 	 * @param id	이메일 인증을 마친 사용자 아이디
 	 */
 	@GetMapping("/resetPwForm")
-	public String goToResetPw(String id) throws Exception{
+	public String goToResetPw(String id, Model model) throws Exception{
 		
+		model.addAttribute("id", id);
 		return "user/resetPasswordForm";
 	}
 	

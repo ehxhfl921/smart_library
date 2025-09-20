@@ -90,7 +90,7 @@ public interface UserMapper {
 	 * @param id	비밀번호 변경할 회원 아이디
 	 * @param pw	새로운 비밀번호
 	 */
-	@Update("UPDATE member SET  pw =#{pw} WHERE id=#{id} AND status='Y'")
+	@Update("UPDATE member SET pw=#{pw} WHERE id=#{id} AND status='Y'")
 	void resetPassword(@Param("id")String id, @Param("pw")String pw) throws Exception;
 	
 	/**

@@ -88,8 +88,12 @@ const path = "${path}";
   document.getElementById("verifyCodeBtn").onclick = function(){
     const inputCode = document.getElementById("emailCodeInput").value.trim();
     const id = document.getElementById("id").value.trim();
-
+	
+    console.log(id);
+    console.log("테스트");
+    
     if(inputCode === emailCode){
+    	console.log(path + "/user/resetPwForm?id=" + encodeURIComponent(id));
       window.location.href = path + "/user/resetPwForm?id=" + encodeURIComponent(id);
     } else {
       document.getElementById("resultMsg").innerHTML =
