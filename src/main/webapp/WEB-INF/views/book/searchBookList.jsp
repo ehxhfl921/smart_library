@@ -67,14 +67,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 searchBox.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
-        const keyword = searchBox.value;
+        const keyword = searchBox.value.trim();
+        if(!keyword){
+        	alert('검색어를 입력해 주세요.');
+        	return;
+        }
         getSearchList(keyword, 1);
     }
 });
 
 // 최초 검색 시 키워드 + 페이지 1로 도서 목록 검색
 searchBtn.addEventListener("click", () => {
-	const keyword = searchBox.value;
+	const keyword = searchBox.value.trim();
+	if(!keyword){
+    	alert('검색어를 입력해 주세요.');
+    	return;
+    }
 	getSearchList(keyword, 1);
 });
 
@@ -140,7 +148,7 @@ function printList(list){
 		html += `
 			<div id='bookCard'>
     		<div class='coverBox'>
-    			<img alt=\${title} src=\${contextPath}/\${cover}>
+    			<img alt=\${title} src='\${contextPath}/\${cover}'>
     		</div>
     		<div class='bookInfo'>
     			<div class='info-left'>

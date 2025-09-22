@@ -10,12 +10,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="context-path" content="${pageContext.request.contextPath}">
 	<meta charset="UTF-8">
 	<title>Smart Library</title>
 <link href="${path}/resources/css/header.css" rel="stylesheet" type="text/css" />
 <link href="${path}/resources/css/common.css" rel="stylesheet" type="text/css" />
 <link href="${path}/resources/css/footer.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+
 
 </head>
 <body>

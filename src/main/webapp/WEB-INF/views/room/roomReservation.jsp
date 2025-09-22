@@ -27,7 +27,7 @@
       <p>* 스터디룸 예약을 신청하신 뒤, 관리자의 승인 후에 이용 가능합니다. (최대 3 영업일 소요)</p>
       <p>* 예약 신청하실 날짜를 선택해 주세요.</p>
       <div class="date-selection">
-        <input type="date" id="date" class="date-input" min="${todayStr}">
+        <input type="text" id="date" class="date-input">
         <button class="select-button" id="btn">선택</button>
       </div>
 
@@ -38,6 +38,13 @@
 </section>
 
 <script>
+
+	flatpickr("#date", {
+	    enableTime: false,       // 시간 선택 여부
+	    dateFormat: "Y-m-d",     // 포맷
+	    minDate: "today",        // 오늘 이후만 선택 가능
+	    locale: "ko"             // 한국어
+	});
 	
 	const contextPath = "${path}";
 	const dateInput = document.querySelector("#date");

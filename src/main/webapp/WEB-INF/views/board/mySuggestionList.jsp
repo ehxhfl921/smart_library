@@ -56,7 +56,7 @@
 						</c:when>
 						<c:otherwise>
                     <tr>
-                        <td colspan="4" class="center">내가 작성한 건의사항이 없습니다.</td>
+                        <td colspan="4" class="center">작성한 건의 사항이 없습니다.</td>
                     </tr>
                 </c:otherwise>
             </c:choose>
