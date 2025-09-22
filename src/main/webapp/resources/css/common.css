@@ -377,7 +377,7 @@ section.mainSection1 .date-input {
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      width: 400px;
+      width: 350px !important;
 }
 
 section.mainSection1 .select-button {
@@ -389,12 +389,12 @@ section.mainSection1 .select-button {
       cursor: pointer;
       width: 100px;
       height: 40px;
-    }
+}
 
 section.mainSection1 .select-button:hover {
       background-color: #0371e6;
-    }
 
+}
 
 /* searchBookList */
 
