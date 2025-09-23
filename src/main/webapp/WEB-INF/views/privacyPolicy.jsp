@@ -118,6 +118,11 @@
 			filter:brightness(1.2);
 		}
 		
+		@media screen and (max-width: 960px){
+			#toTopBtn {
+				right: 30px;
+			}
+		}
 	</style>
 </head>
 <body>
