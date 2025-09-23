@@ -1391,6 +1391,10 @@ section.mainSection2 input[type="submit"]{
    margin-top: 10px;
 }
 
+.goToLogin{
+	margin-bottom: 0;
+}
+
 /* 기본 주요 버튼 */
 section.mainSection2 .btn_login{
   width:100%;

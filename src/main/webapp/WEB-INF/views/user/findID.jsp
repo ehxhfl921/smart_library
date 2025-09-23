@@ -7,17 +7,6 @@
   <div id="wrap">
     <h1>아이디 찾기</h1>
 
-    <!-- 에러 메시지 -->
-    <c:if test="${not empty error}">
-      <p class="info-msg" style="color:red">${error}</p>
-    </c:if>
-
-    <!-- 성공 메시지 -->
-    <c:if test="${not empty userId}">
-      <p class="info-msg">회원님의 아이디는 <span class="highlight">${userId}</span> 입니다. 
-      <a href="${path}/user/goToLogin" class="btn-link">로그인 하러가기</a>
-    </c:if>
-
     <!-- 아이디 찾기 입력 폼 -->
     <form id="findIdForm">
       <table>
@@ -132,7 +121,7 @@
 			    });
 			
 			    idListHtml += `
-			    	<p><a href='\${path}/user/goToLogin' class='btn-link'>로그인 하러가기</a></p>
+			    	<p class='goToLogin'><a href='\${path}/user/goToLogin' class='btn-link'>로그인 하러가기</a></p>
 			    	</div>
 			    `;
 			
