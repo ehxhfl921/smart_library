@@ -24,10 +24,10 @@
 				</p>
 				<p class="authAndDate">
 					<span>◦ 작성자 : ${suggestion.s_author}</span> <br>
-					<span>◦ 작성일 : <fmt:formatDate value="${suggestion.s_create_date}" pattern="yyyy-MM-dd hh:mm"/></span>
+					<span>◦ 작성일 : <fmt:formatDate value="${suggestion.s_create_date}" pattern="yyyy-MM-dd HH:mm"/></span>
 					
 					<c:if test="${suggestion.s_update_date != null}">	
-						<span>&nbsp;&nbsp;◦ 수정일 : <fmt:formatDate value="${suggestion.s_update_date}" pattern="yyyy-MM-dd hh:mm"/></span>
+						<span>&nbsp;&nbsp;◦ 수정일 : <fmt:formatDate value="${suggestion.s_update_date}" pattern="yyyy-MM-dd HH:mm"/></span>
 					</c:if>
 				</p>
 			</div>
