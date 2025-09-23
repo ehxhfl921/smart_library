@@ -13,6 +13,10 @@
 	<div class="copyright">
 		<p>Copyright &copy; 2025 SMARTLIBRARY. All rights reserved.</p>
 	</div>
+	
+	<div class="policy">
+		<a href="${path}/privacyPolicy" target="_blank">개인정보처리방침</a>
+	</div>
 </footer>
 	
 </body>
