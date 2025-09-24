@@ -1,4 +1,4 @@
 # Smart Library Team Project
 
 
-![Image](https://github.com/user-attachments/assets/d0abb210-745c-49c8-9853-9851c49eb6f0)
+<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/d2908872-f971-4dd3-b547-94c591d3bee9" />
