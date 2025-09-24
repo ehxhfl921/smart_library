@@ -208,7 +208,7 @@ db.password=1234
 
 * **김도은** : ✉ ehxhfl921@gmail.com    
 * **김진주** : ✉ kpearl0416@gmail.com   
-* **김효진** : ✉ huojin4168@naver.com
+* **김효진** : ✉ djduebfu3747@gmail.com
 * **이동윤** : ✉ -
 * **조반석** : ✉ -
 * **하진이** : ✉ -
