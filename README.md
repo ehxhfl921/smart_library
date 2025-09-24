@@ -3,9 +3,9 @@
 
 
 
-
-<img width="646" height="293" alt="Image" src="https://github.com/user-attachments/assets/2692061e-504c-441c-84b1-6372adacc223" />   
-
+<p align="center">
+<img width="646" height="293" alt="SMARTLIBRARY" src="https://github.com/user-attachments/assets/2692061e-504c-441c-84b1-6372adacc223" />   
+</p>
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -55,7 +55,7 @@
   **로그인 한** 일반 사용자라면 누구나 건의 사항 작성, 관리자와 댓글로 소통   
   *-관리자와 게시글 작성자 본인만 접근 가능한 프라이빗한 페이지*   
      
-* **내 서재** -로그인 사용자 전용 페이지   
+* **내 서재** - 로그인 사용자 전용 페이지   
   + **도서 대출 현황**   
   로그인 사용자의 도서 대출 현황   
   + **스터디룸 예약 현황**   
@@ -63,7 +63,7 @@
   + **작성한 건의 사항**   
   로그인 사용자가 작성한 건의 사항 목록 *-클릭 시 해당 건의 사항 상세 페이지로 이동*   
 
-* **운영/관리** -관리자 전용 운영 및 관리 페이지   
+* **운영/관리** - 관리자 전용 운영 및 관리 페이지   
   + **회원 관리**   
     회원 정보 열람/수정/삭제
   + **도서 관리**   
@@ -109,6 +109,44 @@
 -----------------------------------------------------------------------------------------------------------------
 
 
+## 🗃설치 및 실행
+
+### ✔ 필수 요구 사항
+* Java 11 (or newer)
+* Apache Tomcat v.9.0.108
+* Maven v.4.0.0
+* Oracle DataBase
+* Your prefered IDE
+  \- Spring Tools Suite(STS)
+
+### ✔ 설정 변경
+**1. DB 설정 변경**
+```properties
+# src/main/resources/prop/db.properties
+# db.username=your_username
+# db.password=your_password
+db.driver=oracle.jdbc.driver.OracleDriver
+db.url=jdbc:oracle:thin:@localhost:1521:xe
+db.username=smart_library
+db.password=1234
+```
+
+**2. 이미지 경로 변경**
+  1. BookController.java (파일 저장 경로)
+  ```java
+  // uploadPath = "your_upload_path";
+  private String uploadPath = "C:/Users/사용자명/Desktop/SmartLibrary/cover";
+  ```
+  2. servlet-context.xml (웹 접근 경로 매핑)
+  ```xml
+  <!-- location="your_uploadFile_location" -->
+  <resources mapping="/images/**" location="file:///C:/Users/사용자명/Desktop/SmartLibrary/cover/" />
+  ```   
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
 ## 📝 ERD
 
 <img width="814" height="467" alt="FINAL_PROJECT" src="https://github.com/user-attachments/assets/f352a921-6462-4849-bca4-590849b4c722" />
@@ -138,8 +176,8 @@
     <th>담당 기능</th>
   </tr>
   <tr>
-    <td>🔰 김도은</td>
-    <td>프로젝트 설계, 아이디 찾기, 비밀번호 찾기, 이메일 발송, 이미지 업로드, 도서 검색, 스터디룸 예약, 공지 사항 상세 페이지, 건의 사항 상세 페이지 및 댓글 기능, 내 서재(도서 대출 현황/스터디룸 예약 현황), 관리자 - 도서 관리(도서 신규 등록, 수정, 삭제, 이달의 도서로 등록/삭제), 스터디룸 예약 관리(스터디룸 예약 승인/거절/취소), 출간 예정 도서 데이터 수집(파이썬 크롤링), 개인정보처리방침 공개 페이지, 권한 체크, 페이징 처리, 페이지별 버튼 노출 조건 분기</td>
+    <td>⭐김도은</td>
+    <td>프로젝트 설계(DB, Class, UI/UX etc.), 아이디 찾기, 비밀번호 찾기, 이메일 발송, 이미지 업로드, 도서 검색, 스터디룸 예약, 공지 사항 상세 페이지, 건의 사항 상세 페이지 및 댓글 기능, 내 서재(도서 대출 현황/스터디룸 예약 현황), 관리자 - 도서 관리(도서 신규 등록/수정/삭제, 이달의 도서로 등록/삭제), 스터디룸 예약 관리(스터디룸 예약 승인/거절/취소), 출간 예정 도서 데이터 수집(파이썬 크롤링), 개인정보처리방침 공개 페이지, 권한 체크, 페이징 처리, 페이지별 버튼 노출 조건 분기</td>
   </tr>
   <tr>
     <td>&nbsp;&nbsp;&nbsp;김진주</td>
@@ -149,6 +187,18 @@
     <td>&nbsp;&nbsp;&nbsp;김효진</td>
     <td>공지 사항 목록/상세 페이지, 공지 사항 작성/수정/삭제, 건의 사항 목록/상세 페이지, 건의 사항 작성/수정/삭제, 페이징 처리</td>
   </tr>  
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;이동윤</td>
+    <td>자료 조사</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;조반석</td>
+    <td>자료 조사</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;하진이</td>
+    <td>자료 조사</td>
+  </tr>
 </table>
 
 
@@ -156,8 +206,11 @@
 
 ## 💌 연락처
 
-**김도은** : ✉ ehxhfl921@gmail.com    
-**김진주** : ✉ kpearl0416@gmail.com   
-**김효진** : ✉ djduebfu3747@gmail.com
+* **김도은** : ✉ ehxhfl921@gmail.com    
+* **김진주** : ✉ kpearl0416@gmail.com   
+* **김효진** : ✉ huojin4168@naver.com
+* **이동윤** : ✉ -
+* **조반석** : ✉ -
+* **하진이** : ✉ -
 
 -----------------------------------------------------------------------------------------------------------------
