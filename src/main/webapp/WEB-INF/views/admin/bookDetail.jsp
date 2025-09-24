@@ -21,7 +21,7 @@
                 <img src="${path}/${book.cover}"
                      alt="${book.title}">
             </td>
-            <th width="100">제목</th>
+            <th>제목</th>
             <td>${book.title}</td>
         </tr>
         <tr>

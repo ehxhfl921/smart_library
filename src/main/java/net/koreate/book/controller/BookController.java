@@ -35,6 +35,7 @@ import net.koreate.user.vo.UserVO;
 public class BookController {
 
 	private final BookService bs;
+	private String uploadPath = "C:/Users/KTE/Desktop/SmartLibrary/cover";
 	
 	/**
 	 * 도서 검색 페이지로 이동 요청 처리
@@ -280,10 +281,17 @@ public class BookController {
 		
 		// 표지 이미지 새로 업로드할 경우 파일 이름 저장할 변수
 		String fileName = null;
-		
+
+
 		if (dto.getCoverFile() != null && !dto.getCoverFile().isEmpty()) {
 			// 표지 이미지를 새로 등록한 경우
-			
+			// 기존 파일 삭제 (tempImg.png 제외)
+	        String oldCover = vo.getCover().replace("images/", "");
+	        if (!oldCover.equals("tempImg.png")) {
+	            File oldFile = new File(uploadPath, oldCover);
+	            if (oldFile.exists()) oldFile.delete();
+	        }
+	        
 			// 새로운 표지 이미지 업로드 후 파일 이름 받아오기
 			fileName = uploadFile(dto.getCoverFile());
 			// 표지 이미지 경로("images/새로운 파일 이름") cover 필드에 저장
@@ -319,6 +327,14 @@ public class BookController {
 			RedirectAttributes rttr
 			) throws Exception{
 		
+		BookVO vo = bs.getBookDetail(bno);
+		String coverFileName = vo.getCover().replace("images/", "");
+		
+		if (!coverFileName.equals("tempImg.png")) {
+			File file = new File(uploadPath, coverFileName);
+			if (file.exists()) file.delete();
+		}
+		
 		try {
 			bs.removeBook(bno);
 			rttr.addFlashAttribute("msg", "도서가 삭제되었습니다.");
@@ -336,6 +352,7 @@ public class BookController {
 	 * 파일 업로드 후 저장된 파일 이름 반환 메서드
 	 */
 	public String uploadFile(MultipartFile file) throws IOException{
+		
 		String fileName = "";
 		
 		UUID uid = UUID.randomUUID();
@@ -344,13 +361,19 @@ public class BookController {
 		
 		fileName = random + "_" + origin;
 		
-		// 파일 업로드
-		File f = new File("C:\\Temp\\upload", fileName);
-		// copy(업로드할 파일 데이터, 업로드 파일 위치 밎 이름);
-		FileCopyUtils.copy(file.getBytes(), f);
+		// 임시 업로드
+		File f = new File("C:\\Temp\\upload");
+		if (!f.exists()) {
+        	f.mkdirs();
+        }
+		File temp = new File(f, fileName);
+		FileCopyUtils.copy(file.getBytes(), temp);
 		
-		// 파일 실제 경로에 저장
-		String realDir = "C:/Users/KTE/Desktop/SmartLibrary/cover";
+		// 실제 경로에 업로드
+		File realDir = new File(uploadPath);
+        if (!realDir.exists()) {
+        	realDir.mkdirs();
+        }
 		File r = new File(realDir, fileName);
 		FileCopyUtils.copy(file.getBytes(), r);
 		
