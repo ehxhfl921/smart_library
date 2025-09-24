@@ -92,6 +92,12 @@
   * Jackson v.2.19.2
   * Javax.mail v.1.6.2
   * Commons-fileupload v.1.6.0
+  * Maven
+  * Javascript
+  * HTML5
+  * CSS3
+  * Visual Studio Code
+  * Python
     
 ### 📘 DataBase
   * Oracle DataBase
