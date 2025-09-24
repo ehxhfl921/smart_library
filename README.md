@@ -110,7 +110,7 @@
 
 <img width="814" height="467" alt="FINAL_PROJECT" src="https://github.com/user-attachments/assets/f352a921-6462-4849-bca4-590849b4c722" />
 
-## Tables
+## 💾 Tables
 > **member** \- 회원 정보 테이블   
 > **book** \- 도서 정보 테이블   
 > **book_loan** \- 도서 대출 정보 테이블   
