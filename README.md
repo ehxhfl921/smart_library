@@ -1,4 +1,3 @@
 # Smart Library Team Project
 
-
-<img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/d2908872-f971-4dd3-b547-94c591d3bee9" />
+<img width="720" height="405" alt="Image" src="https://github.com/user-attachments/assets/a382a273-2e78-4f3a-bac9-6a83b869e490" />
