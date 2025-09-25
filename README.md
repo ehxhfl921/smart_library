@@ -77,11 +77,18 @@
 -----------------------------------------------------------------------------------------------------------------
 
 
-## ⚙ 개발 환경
+## ⚙ 개발 환경   
 
-### 📗 Spring Tool Suite 3
-  * Spring Framework v.5.3.39
+<div align="center">
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">   
+<img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+</div>
+
+### 📒 Language & Framework / Library
   * Java 11
+  * Spring Framework v.5.3.39
+  * Maven v.4.0.0
   * Jstl v.1.2
   * Lombok v.1.18.38
   * Mybatis v.3.5.19
@@ -89,33 +96,49 @@
   * Jackson v.2.19.2
   * Javax.mail v.1.6.2
   * Commons-fileupload v.1.6.0
-  * Maven
-  * Javascript
-  * HTML5
-  * CSS3
+  * flatpickr 
+
+### 📗 IDE / Tool
+  * Spring Tool Suite 3
   * Visual Studio Code
-  * Python
+  * Git
     
-### 📘 DataBase
-  * Oracle DataBase
+### 📘 Database
+  * Oracle Database
 
 ### 📕 Server
   * Apache Tomcat v.9.0.108
-
-### 📆 date picker library
-  * flatpickr 
-
+  
 
 -----------------------------------------------------------------------------------------------------------------
 
 
-## 🗃설치 및 실행
+## 🗃 프로젝트 구조
+```
+📦smart_library
+ ┣ 📂src/📂main/📂java/📂net/📂koreate/
+ ┃ ┣ 📂board/                          # 공지 사항, 건의 사항 게시판
+ ┃ ┣ 📂book/                           # 도서
+ ┃ ┣ 📂common/                         # 공통 (홈 컨트롤러, 컨트롤러 어드바이스, 인터셉터, 유틸리티)
+ ┃ ┣ 📂library/                        # 도서관 정보
+ ┃ ┣ 📂room/                           # 스터디룸
+ ┃ ┗ 📂user/                           # 회원
+ ┣ 📂src/📂main/📂resources/📂prop/  # 설정 파일
+ ┣ 📜db.properties
+ ┗ 📜mail.properties
+ ┣ 📂src/📂main/📂webapp/               
+ ┃ ┣ 📂resources/           # CSS, 이미지
+ ┃ ┗ 📂WEB-INF/📂views/    # 뷰 페이지 
+ ┗ 📜smart_library.sql     # sql 파일
+```
+
+## 🧰 설치 및 실행
 
 ### ✔ 필수 요구 사항
 * Java 11 (or newer)
 * Apache Tomcat v.9.0.108
 * Maven v.4.0.0
-* Oracle DataBase
+* Oracle Database
 * Your prefered IDE
   \- Spring Tools Suite(STS)
 
@@ -131,7 +154,16 @@ db.username=smart_library
 db.password=1234
 ```
 
-**2. 이미지 경로 변경**
+**2. 메일 발송 설정 변경**
+```properties
+# src/main/resources/prop/mail.properties
+# gmail.username=your_gmail
+# gmail.password=your_password
+gmail.username=example@gmail.com
+gmail.password=abcd efgh igkl mnop
+```
+
+**3. 이미지 경로 변경**
   1. BookController.java (파일 저장 경로)
   ```java
   // uploadPath = "your_upload_path";
