@@ -96,7 +96,7 @@
 ### 📒 Language & Framework / Library
   * Java 11
   * Spring Framework v.5.3.39
-  * Maven v.4.0.0
+  * Maven v.3.8.1
   * Jstl v.1.2
   * Lombok v.1.18.38
   * Mybatis v.3.5.19
@@ -104,10 +104,10 @@
   * Jackson v.2.19.2
   * Javax.mail v.1.6.2
   * Commons-fileupload v.1.6.0
-  * flatpickr 
+  * flatpickr v.4
 
 ### 📗 IDE / Tool
-  * Spring Tool Suite 3
+  * Spring Tool Suite 3 (Eclipse)
   * Visual Studio Code
   * Git
     
@@ -147,7 +147,7 @@
 ### ✔ 필수 요구 사항
 * Java 11 (or newer)
 * Apache Tomcat v.9.0.108
-* Maven v.4.0.0
+* Maven v.3.6.x or newer
 * Oracle Database
 * Your prefered IDE
   \- Spring Tools Suite(STS)
