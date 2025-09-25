@@ -147,7 +147,7 @@
 ### ✔ 필수 요구 사항
 * Java 11 (or newer)
 * Apache Tomcat v.9.0.108
-* Maven v.3.6.x or newer
+* Maven v.3.6.x (or newer)
 * Oracle Database
 * Your prefered IDE
   \- Spring Tools Suite(STS)
