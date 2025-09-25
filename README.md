@@ -20,7 +20,7 @@
 
 ## 🔗 Link
 * **Github Repository** : https://github.com/ehxhfl921/smart_library
-* **Presentation** : [link here]()
+* **Presentation** : https://youtu.be/vSda0KNsSYQ
 
 <br>
 
