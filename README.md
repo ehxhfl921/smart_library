@@ -9,6 +9,7 @@
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## 📚 프로젝트 소개
 
@@ -20,9 +21,11 @@
 * **Github Repository** : https://github.com/ehxhfl921/smart_library
 * **Presentation** : [link here]()
 
+<br>
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## 📖 주요 기능
 
@@ -73,16 +76,20 @@
   + **도서관 정보 관리**   
     도서관 이름, 전화번호, 위치 및 휴관일 정보 관리
 
+<br>
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## ⚙ 개발 환경   
 
 <div align="center">
+<br>
 <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">   
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <br>
 <img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<br><br>
 </div>
 
 ### 📒 Language & Framework / Library
@@ -109,9 +116,11 @@
 ### 📕 Server
   * Apache Tomcat v.9.0.108
   
+<br>
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## 🗃 프로젝트 구조
 ```
@@ -175,9 +184,11 @@ gmail.password=abcd efgh igkl mnop
   <resources mapping="/images/**" location="file:///C:/Users/사용자명/Desktop/SmartLibrary/cover/" />
   ```   
 
+<br>
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## 📝 ERD
 
@@ -196,7 +207,8 @@ gmail.password=abcd efgh igkl mnop
 > **library_info** \- 도서관 정보 테이블   
 > **upcoming_books** \- 출간 예정 도서 테이블   
 
- 
+<br>
+
 -----------------------------------------------------------------------------------------------------------------
 
 
