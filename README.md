@@ -4,8 +4,9 @@
 
 
 <p align="center">
-<img width="646" height="293" alt="SMARTLIBRARY" src="https://github.com/user-attachments/assets/2692061e-504c-441c-84b1-6372adacc223" />   
+<img width="720" height="405" alt="SMARTLIBRARY" src="https://github.com/user-attachments/assets/63deeadf-52b8-4df6-b396-f53ec3372cd0" />  
 </p>
+
 
 -----------------------------------------------------------------------------------------------------------------
 
