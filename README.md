@@ -138,7 +138,7 @@
  ┣ 📂src/📂main/📂webapp/               
  ┃ ┣ 📂resources/           # CSS, 이미지
  ┃ ┗ 📂WEB-INF/📂views/    # 뷰 페이지 
- ┗ 📜smart_library.sql     # sql 파일
+ ┗ 📜smart_library.sql     # 초기 DB 스키마
 ```
 
 ## 🧰 설치 및 실행
