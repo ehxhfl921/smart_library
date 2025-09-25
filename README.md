@@ -133,8 +133,8 @@
  ┃ ┣ 📂room/                           # 스터디룸
  ┃ ┗ 📂user/                           # 회원
  ┣ 📂src/📂main/📂resources/📂prop/  # 설정 파일
- ┣ 📜db.properties
- ┗ 📜mail.properties
+ ┃ ┣ 📜db.properties
+ ┃ ┗ 📜mail.properties
  ┣ 📂src/📂main/📂webapp/               
  ┃ ┣ 📂resources/           # CSS, 이미지
  ┃ ┗ 📂WEB-INF/📂views/    # 뷰 페이지 
