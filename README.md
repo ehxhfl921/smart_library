@@ -94,20 +94,22 @@
 </div>
 
 ### 📒 Language & Framework / Library
-  * Java 11
-  * Spring Framework v.5.3.39
-  * Maven v.3.8.1
-  * Jstl v.1.2
-  * Lombok v.1.18.38
-  * Mybatis v.3.5.19
-  * HikariCP v.7.0.2
-  * Jackson v.2.19.2
-  * Javax.mail v.1.6.2
-  * Commons-fileupload v.1.6.0
-  * flatpickr v.4
+  * Language :   
+    * Java 11
+  * Framework:   
+    * Spring Framework v.5.3.39
+    * Mybatis v.3.5.19
+  * Library :   
+    * JSTL v.1.2
+    * Lombok v.1.18.38
+    * HikariCP v.7.0.2
+    * Jackson v.2.19.2
+    * Javax.mail v.1.6.2
+    * Commons-fileupload v.1.6.0
+    * flatpickr v.4
 
-### 📗 IDE / Tool
-  * Spring Tool Suite 3 (Eclipse)
+### 📗 IDE / Development Tools
+  * Spring Tool Suite 3 (based on Eclipse)
   * Visual Studio Code
   * Git
     
