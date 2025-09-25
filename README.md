@@ -4,11 +4,13 @@
 
 
 <p align="center">
-<img width="646" height="293" alt="SMARTLIBRARY" src="https://github.com/user-attachments/assets/2692061e-504c-441c-84b1-6372adacc223" />   
+<img width="720" height="405" alt="SMARTLIBRARY" src="https://github.com/user-attachments/assets/63deeadf-52b8-4df6-b396-f53ec3372cd0" />  
 </p>
+
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## 📚 프로젝트 소개
 
@@ -20,9 +22,11 @@
 * **Github Repository** : https://github.com/ehxhfl921/smart_library
 * **Presentation** : [link here]()
 
+<br>
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## 📖 주요 기능
 
@@ -73,15 +77,26 @@
   + **도서관 정보 관리**   
     도서관 이름, 전화번호, 위치 및 휴관일 정보 관리
 
+<br>
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
-## ⚙ 개발 환경
+## ⚙ 개발 환경   
 
-### 📗 Spring Tool Suite 3
-  * Spring Framework v.5.3.39
+<div align="center">
+<br>
+<img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"> <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <br>
+<img src="https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/apachemaven-C71A36.svg?style=for-the-badge&logo=apachemaven&logoColor=white"> <img src="https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black"> <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> 
+<br><br>
+</div>
+
+### 📒 Language & Framework / Library
   * Java 11
+  * Spring Framework v.5.3.39
+  * Maven v.3.8.1
   * Jstl v.1.2
   * Lombok v.1.18.38
   * Mybatis v.3.5.19
@@ -89,33 +104,51 @@
   * Jackson v.2.19.2
   * Javax.mail v.1.6.2
   * Commons-fileupload v.1.6.0
-  * Maven
-  * Javascript
-  * HTML5
-  * CSS3
+  * flatpickr v.4
+
+### 📗 IDE / Tool
+  * Spring Tool Suite 3 (Eclipse)
   * Visual Studio Code
-  * Python
+  * Git
     
-### 📘 DataBase
-  * Oracle DataBase
+### 📘 Database
+  * Oracle Database
 
 ### 📕 Server
   * Apache Tomcat v.9.0.108
-
-### 📆 date picker library
-  * flatpickr 
-
+  
+<br>
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
-## 🗃설치 및 실행
+## 🗃 프로젝트 구조
+```
+📦smart_library
+ ┣ 📂src/📂main/📂java/📂net/📂koreate/
+ ┃ ┣ 📂board/                          # 공지 사항, 건의 사항 게시판
+ ┃ ┣ 📂book/                           # 도서
+ ┃ ┣ 📂common/                         # 공통 (홈 컨트롤러, 컨트롤러 어드바이스, 인터셉터, 유틸리티)
+ ┃ ┣ 📂library/                        # 도서관 정보
+ ┃ ┣ 📂room/                           # 스터디룸
+ ┃ ┗ 📂user/                           # 회원
+ ┣ 📂src/📂main/📂resources/📂prop/  # 설정 파일
+ ┃ ┣ 📜db.properties
+ ┃ ┗ 📜mail.properties
+ ┣ 📂src/📂main/📂webapp/               
+ ┃ ┣ 📂resources/           # CSS, 이미지
+ ┃ ┗ 📂WEB-INF/📂views/    # 뷰 페이지 
+ ┗ 📜smart_library.sql     # 초기 DB 스키마
+```
+
+## 🧰 설치 및 실행
 
 ### ✔ 필수 요구 사항
 * Java 11 (or newer)
 * Apache Tomcat v.9.0.108
-* Maven v.4.0.0
-* Oracle DataBase
+* Maven v.3.6.x (or newer)
+* Oracle Database
 * Your prefered IDE
   \- Spring Tools Suite(STS)
 
@@ -131,7 +164,16 @@ db.username=smart_library
 db.password=1234
 ```
 
-**2. 이미지 경로 변경**
+**2. 메일 발송 설정 변경**
+```properties
+# src/main/resources/prop/mail.properties
+# gmail.username=your_gmail
+# gmail.password=your_password
+gmail.username=example@gmail.com
+gmail.password=abcd efgh igkl mnop
+```
+
+**3. 이미지 경로 변경**
   1. BookController.java (파일 저장 경로)
   ```java
   // uploadPath = "your_upload_path";
@@ -143,9 +185,11 @@ db.password=1234
   <resources mapping="/images/**" location="file:///C:/Users/사용자명/Desktop/SmartLibrary/cover/" />
   ```   
 
+<br>
 
 -----------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## 📝 ERD
 
@@ -164,7 +208,8 @@ db.password=1234
 > **library_info** \- 도서관 정보 테이블   
 > **upcoming_books** \- 출간 예정 도서 테이블   
 
- 
+<br>
+
 -----------------------------------------------------------------------------------------------------------------
 
 
@@ -177,15 +222,15 @@ db.password=1234
   </tr>
   <tr>
     <td>⭐김도은</td>
-    <td>프로젝트 설계(DB, Class, UI/UX etc.), 아이디 중복 체크, 아이디 찾기, 비밀번호 찾기, 이메일 발송, 이미지 업로드, 도서 검색, 스터디룸 예약, 공지 사항 상세 페이지, 건의 사항 상세 페이지 및 댓글 기능, 내 서재(도서 대출 현황/스터디룸 예약 현황), 관리자 - 도서 관리(도서 신규 등록/수정/삭제, 이달의 도서로 등록/삭제), 스터디룸 예약 관리(스터디룸 예약 승인/거절/취소), 출간 예정 도서 데이터 수집(파이썬 크롤링), 개인정보처리방침 공개 페이지, 로그인 체크 및 권한 체크, 페이징 처리, 페이지별 버튼 노출 조건 분기</td>
+    <td>프로젝트 설계(DB, Class, UI/UX etc.), 아이디 중복 체크, 아이디 찾기, 비밀번호 찾기, 이메일 발송, 이미지 업로드, 도서 검색, 스터디룸 예약, 공지 사항/건의 사항 상세 페이지 및 댓글 기능, 내 서재(도서 대출 현황/스터디룸 예약 현황), 관리자 - 도서 관리(도서 신규 등록/수정/삭제, 이달의 도서로 등록/삭제), 관리자 - 스터디룸 예약 관리(스터디룸 예약 승인/거절/취소), 관리자 - 도서관 정보 관리(도서관 정보 수정), 출간 예정 도서 데이터 수집(파이썬 크롤링), 개인정보처리방침 공개 페이지, 로그인 체크 및 권한 체크, 페이징 처리, 페이지별 버튼 노출 조건 분기</td>
   </tr>
   <tr>
     <td>&nbsp;&nbsp;&nbsp;김진주</td>
-    <td>회원 가입, 로그인, 로그아웃, 아이디 찾기, 비밀번호 찾기, 회원 정보 수정, 회원 탈퇴, 관리자 - 회원 관리(회원 정보 열람/수정/삭제), 스터디룸 예약, 페이징 처리</td>
+    <td>회원 가입(유효성 검사), 로그인, 로그아웃, 아이디 찾기, 비밀번호 찾기, 회원 정보 수정, 회원 탈퇴, 관리자 - 회원 관리(회원 정보 열람/수정/삭제), 스터디룸 예약, 관리자 - 스터디룸 예약 관리(스터디룸 예약 승인/거절/취소), 페이징 처리</td>
   </tr>
   <tr>
     <td>&nbsp;&nbsp;&nbsp;김효진</td>
-    <td>공지 사항 목록/상세 페이지, 공지 사항 작성/수정/삭제, 건의 사항 목록/상세 페이지, 건의 사항 작성/수정/삭제, 페이징 처리</td>
+    <td>공지 사항 목록/상세 페이지, 공지 사항 작성/수정/삭제, 건의 사항 목록/상세 페이지, 건의 사항 작성/수정/삭제, 내 서재(작성한 건의 사항), 출간 예정 도서 페이지, 페이징 처리</td>
   </tr>  
   <tr>
     <td>&nbsp;&nbsp;&nbsp;이동윤</td>
