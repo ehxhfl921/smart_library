@@ -5,7 +5,7 @@
 <footer>
 	<div class="information">
 		<p>⦁ ${info.library_name}</p>
-		<p>전화 번호 : ${info.tel}</p>
+		<p>전화번호 : ${info.tel}</p>
 		<p>위치 : ${info.location}</p>
 		<p>운영 시간 : ${info.operating_hour}</p>
 	</div>
