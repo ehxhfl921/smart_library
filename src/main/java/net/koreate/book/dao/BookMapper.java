@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Update;
 
 import net.koreate.book.vo.BookVO;
 import net.koreate.common.utils.Criteria;
+import net.koreate.common.utils.SearchCriteria;
 
 /**
  * 	도서, 이달의 도서 관련 DB 작업 
@@ -37,7 +38,44 @@ public interface BookMapper {
 			+ "author LIKE '%' || #{keyword} || '%') AND b_status = 'Y' "
 			+ "ORDER BY bno DESC "
 			+ "OFFSET #{cri.startRow} ROWS FETCH NEXT #{cri.perPageNum} ROWS ONLY")
-	List<BookVO> serchBookList(@Param("cri") Criteria cri, @Param("keyword") String keyword) throws Exception;
+	List<BookVO> searchBookList(@Param("cri") Criteria cri, @Param("keyword") String keyword) throws Exception;
+	
+	/**
+	 * 도서 제목이나 저자에 키워드가 포함된 도서 목록 조회
+	 */
+	@Select("SELECT ROWNUM AS rnum, b.* FROM "
+			+ "(SELECT * FROM book WHERE (title LIKE '%' || #{keyword} || '%' OR "
+			+ "author LIKE '%' || #{keyword} || '%') AND b_status = 'Y' "
+			+ "ORDER BY bno DESC) b ORDER BY rnum ASC "
+			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
+	List<BookVO> searchBookByTitleNAuthor(SearchCriteria scri) throws Exception;
+	
+	/**
+	 * 도서 제목에 키워드가 포함된 도서 목록 조회
+	 */
+	@Select("SELECT ROWNUM AS rnum, b.* FROM "
+			+ "(SELECT * FROM book WHERE title LIKE '%' || #{keyword} || '%' AND b_status = 'Y' ORDER BY bno DESC) "
+			+ " b ORDER BY rnum ASC "
+			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
+	List<BookVO> searchBookByTitle(SearchCriteria scri) throws Exception;
+	
+	/**
+	 * 저자에 키워드가 포함된 도서 목록 조회
+	 */
+	@Select("SELECT ROWNUM AS rnum, b.* FROM "
+			+ "(SELECT * FROM book WHERE author LIKE '%' || #{keyword} || '%' AND b_status = 'Y' ORDER BY bno DESC) "
+			+ " b ORDER BY rnum ASC "
+			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
+	List<BookVO> searchBookByAuthor(SearchCriteria scri) throws Exception;
+	
+	/**
+	 * 발행기관에 키워드가 포함된 도서 목록 조회
+	 */
+	@Select("SELECT ROWNUM AS rnum, b.* FROM "
+			+ "(SELECT * FROM book WHERE publisher LIKE '%' || #{keyword} || '%' AND b_status = 'Y' ORDER BY bno DESC) "
+			+ " b ORDER BY rnum ASC "
+			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
+	List<BookVO> searchBookByPublisher(SearchCriteria scri) throws Exception;
 	
 	/**
 	 * 페이징 처리된 전체 도서 목록 조회
@@ -48,7 +86,7 @@ public interface BookMapper {
 	@Select("SELECT ROWNUM AS rnum, b.* FROM "
 			+ "(SELECT * FROM book WHERE b_status = 'Y' ORDER BY bno DESC) b ORDER BY rnum ASC "
 			+ "OFFSET #{startRow} ROWS FETCH NEXT #{perPageNum} ROWS ONLY")
-	List<BookVO> allBookList(Criteria cri) throws Exception;
+	List<BookVO> allBookList(SearchCriteria scri) throws Exception;
 	
 	/**
 	 * 도서 번호로 도서 상세 정보 조회
@@ -134,4 +172,22 @@ public interface BookMapper {
 	@Select("SELECT count(*) FROM book WHERE (title LIKE '%' || #{keyword} || '%' OR "
 			+ "author LIKE '%' || #{keyword} || '%') AND b_status = 'Y'")
 	int countSearchBook(String keyword) throws Exception;
+	
+	/**
+	 * 제목에 키워드가 포함된 도서의 개수
+	 */
+	@Select("SELECT count(*) FROM book WHERE title LIKE '%' || #{keyword} || '%' AND b_status = 'Y'")
+	int countSearchBookByTitle(String keyword) throws Exception;
+	
+	/**
+	 * 저자에 키워드가 포함된 도서의 개수
+	 */
+	@Select("SELECT count(*) FROM book WHERE author LIKE '%' || #{keyword} || '%' AND b_status = 'Y'")
+	int countSearchBookByAuthor(String keyword) throws Exception;
+	
+	/**
+	 * 발행기관에 키워드가 포함된 도서의 개수
+	 */
+	@Select("SELECT count(*) FROM book WHERE publisher LIKE '%' || #{keyword} || '%' AND b_status = 'Y'")
+	int countSearchBookByPublisher(String keyword) throws Exception;
 }

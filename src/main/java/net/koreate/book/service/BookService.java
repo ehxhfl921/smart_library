@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.koreate.book.vo.BookVO;
 import net.koreate.common.utils.Criteria;
+import net.koreate.common.utils.SearchCriteria;
 
 public interface BookService {
 
@@ -16,7 +17,7 @@ public interface BookService {
 	 * @param keyword	검색 키워드
 	 * @return			페이징 처리된 키워드 포함 도서 목록, 페이징 블럭 출력용 PageMaker 객체가 저장된 Map 객체
 	 */
-    Map<String, Object> getSerchBookList(Criteria cri, String keyword) throws Exception;
+    Map<String, Object> getSearchBookList(Criteria cri, String keyword) throws Exception;
 	
 	/**
 	 * cri에 저장된 페이징 정보를 이용하여 검색한 모든 도서 목록과
@@ -25,8 +26,28 @@ public interface BookService {
 	 * @param cri 		페이징 정보
 	 * @return			페이징 처리된 전체 도서 목록, PageMaker 객체가 저장된 Map 객체
 	 */
-    Map<String, Object> getAllBookList(Criteria cri) throws Exception;
+    Map<String, Object> getAllBookList(SearchCriteria scri) throws Exception;
 	
+    /**
+     * 도서 제목이나 저자로 검색된 도서 목록과 pm 객체 map에 저장 후 반환
+     */
+    Map<String, Object> getSearchBookByTitleNAuthor(SearchCriteria scri) throws Exception;
+    
+    /**
+     * 도서 제목으로 검색된 도서 목록과 pm 객체 map에 저장 후 반환
+     */
+    Map<String, Object> getSearchBookByTitle(SearchCriteria scri) throws Exception;
+   
+    /**
+     * 저자로 검색된 도서 목록과 pm 객체 map에 저장 후 반환
+     */
+    Map<String, Object> getSearchBookByAuthor(SearchCriteria scri) throws Exception;
+    
+    /**
+     * 발행기관으로 검색된 도서 목록과 pm 객체 map에 저장 후 반환
+     */
+    Map<String, Object> getSearchBookByPublisher(SearchCriteria scri) throws Exception;
+    
 	/**
 	 * 전달 받은 도서 번호로 도서 정보 검색 후 BookVO 객체에 저장 후 반환
 	 * 
