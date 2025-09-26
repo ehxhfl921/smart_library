@@ -33,6 +33,28 @@
 	</button>
 </div>
 <hr>
+<div class="filterBox">
+	<form action="${path}/book/admin/list" class="filteringSelector">
+		<div class="category">
+		<select name="searchType">
+			<option value="n">-</option>
+			<option value="t" ${pm.cri.searchType eq 't' ? "selected" : ""}>제목</option>
+			<option value="a" ${pm.cri.searchType eq 'a' ? "selected" : ""}>저자</option>
+			<option value="p" ${pm.cri.searchType eq 'p' ? "selected" : ""}>발행 기관</option>
+			<option value="ta" ${pm.cri.searchType eq 'ta' ? "selected" : ""} 
+							   ${pm.cri.searchType eq 'n' ? "selected" : ""}>제목/저자</option>
+		</select>
+		</div>
+		<!-- 검색어 입력 -->
+		<div class="keywordInput">
+		  <input type="text" name="keyword" value="${keyword}" placeholder="검색어 입력"/>
+		</div>
+		<!-- 검색 버튼 -->
+		<div class="btnBox">
+		  <button class="btn" type="submit">검색</button>
+		</div>
+	</form>
+</div>
   <!-- 도서 목록 테이블 -->
   <table class="form-table">
     <tr>
@@ -70,25 +92,51 @@
   </table>
 
   <!-- 페이징 처리 -->
-<c:choose>
-	<c:when test="${not empty list and not empty pm}"> 
-		<div class="pagination">
-		
+
+<c:if test="${not empty list and not empty pm}"> 
+	<div class="pagination">
+	
+	<c:choose>
+     	<c:when test="${pm.cri.searchType != null}">
+	      	<c:if test="${pm.first}">
+	    		<a href="${path}/book/admin/list${pm.makeQuery(1)}">[처음]</a>
+	    	</c:if>
+	
+			<c:if test="${pm.prev}">
+	    		<a href="${path}/book/admin/list${pm.makeQuery(pm.startPage-1)}">[이전]</a>
+	    	</c:if>
+	      	
+	      	<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
+		      	<a href="${path}/book/admin/list${pm.makeQuery(i)}"
+	               <c:if test='${i == pm.cri.page}'> class='activePage' </c:if>>
+	                [${i}]
+	            </a>
+	        </c:forEach>
+	        
+	        <c:if test="${pm.next}">
+    			<a href="${path}/book/admin/list${pm.makeQuery(pm.endPage+1)}">[다음]</a>
+    		</c:if>
+    	
+	    	<c:if test="${pm.last}">
+		      	<a href="${path}/book/admin/list${pm.makeQuery(pm.maxPage)}">[마지막]</a>
+		    </c:if>
+	    </c:when>
+		<c:otherwise>
 			<c:if test="${pm.first}">
 	    		<a href="${path}/book/admin/list?page=1">[처음]</a>
 	    	</c:if>
-
+	
 			<c:if test="${pm.prev}">
 	    		<a href="${path}/book/admin/list?page=${pm.startPage-1}">[이전]</a>
 	    	</c:if>
 	    	
 			<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}">
-			      	<a href="${path}/book/admin/list?page=${i}"
-			      	   <c:if test='${i == pm.cri.page}'> class='activePage' </c:if> >
-			      		[${i}]
-			      	</a>
-  			</c:forEach>
-		
+		    	<a href="${path}/book/admin/list?page=${i}"
+		      	   <c:if test='${i == pm.cri.page}'> class='activePage' </c:if> >
+		      		[${i}]
+		      	</a>
+			</c:forEach>
+			
 			<c:if test="${pm.next}">
 	    		<a href="${path}/book/admin/list?page=${pm.endPage+1}">[다음]</a>
 	    	</c:if>
@@ -96,9 +144,11 @@
 	    	<c:if test="${pm.last}">
 		      	<a href="${path}/book/admin/list?page=${pm.maxPage}">[마지막]</a>
 		    </c:if>
-		</div>
-  	</c:when>
-</c:choose>
+		</c:otherwise>
+	    
+	</c:choose>    
+	</div>
+</c:if>
 </main>
 </section>
 

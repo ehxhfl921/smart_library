@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ import net.koreate.book.dto.BookDTO;
 import net.koreate.book.service.BookService;
 import net.koreate.book.vo.BookVO;
 import net.koreate.common.utils.Criteria;
+import net.koreate.common.utils.SearchCriteria;
 import net.koreate.user.vo.UserVO;
 
 @Controller
@@ -59,7 +61,7 @@ public class BookController {
 			try {
 				cri.setPerPageNum(5);
 				// 키워드로 검색 후 검색된 도서 목록, pm 객체
-				Map<String, Object> searchResult = bs.getSerchBookList(cri, keyword);
+				Map<String, Object> searchResult = bs.getSearchBookList(cri, keyword);
 				
 				// 각각 list, pm으로 모델에 저장
 				model.addAttribute("list", searchResult.get("list"));
@@ -94,7 +96,7 @@ public class BookController {
 		if(keyword != null && !keyword.isEmpty()) {
 			try {
 				// 키워드로 검색 후 검색된 도서 목록, pm 객체
-				Map<String, Object> searchResult = bs.getSerchBookList(cri, keyword);
+				Map<String, Object> searchResult = bs.getSearchBookList(cri, keyword);
 				
 				entity = new ResponseEntity<Map<String, Object>>(searchResult, HttpStatus.OK);
 				
@@ -140,12 +142,40 @@ public class BookController {
 	 * @param cri 페이징 정보
 	 */
 	@GetMapping("/admin/list")
-	public String showAllBooks(Criteria cri, Model model) throws Exception{
+	public String showAllBooks(@ModelAttribute SearchCriteria scri, Model model) throws Exception{
 		
-		Map<String, Object> result = bs.getAllBookList(cri);
+		Map<String, Object> result = null;
+		
+		if(scri.getKeyword() == null || scri.getKeyword().isEmpty()) {
+			result = bs.getAllBookList(scri);
+		}else {
+			if((scri.getSearchType().equals("n") && !scri.getKeyword().isEmpty()) || 
+			   (scri.getSearchType().equals("ta") && !scri.getKeyword().isEmpty())	) {
+				// 검색 카테고리를 선택하지 않고 검색어 입력 후 검색한 경우, 도서 혹은 저자로 키워드 검색한 경우
+				result = bs.getSearchBookByTitleNAuthor(scri);
+			}
+			
+			if(scri.getSearchType().equals("t") && !scri.getKeyword().isEmpty()) {
+				// 제목으로 검색
+				result = bs.getSearchBookByTitle(scri);
+			}
+			
+			if(scri.getSearchType().equals("a") && !scri.getKeyword().isEmpty()) {
+				// 저자로 검색
+				result = bs.getSearchBookByAuthor(scri);
+			}
+			
+			if(scri.getSearchType().equals("p") && !scri.getKeyword().isEmpty()) {
+				// 발행기관으로 검색
+				result = bs.getSearchBookByPublisher(scri);
+			}
+		}
+		
 		
 		model.addAttribute("list", result.get("list"));
 		model.addAttribute("pm", result.get("pm"));
+		model.addAttribute("keyword", scri.getKeyword());
+		
 		return "admin/bookList"; // 관리자 전용 - 도서 관리 페이지
 	}
 	

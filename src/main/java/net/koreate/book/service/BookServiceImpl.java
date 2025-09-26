@@ -12,6 +12,8 @@ import net.koreate.book.dao.LoanMapper;
 import net.koreate.book.vo.BookVO;
 import net.koreate.common.utils.Criteria;
 import net.koreate.common.utils.PageMaker;
+import net.koreate.common.utils.SearchCriteria;
+import net.koreate.common.utils.SearchPageMaker;
 
 @Service
 @RequiredArgsConstructor
@@ -21,10 +23,10 @@ public class BookServiceImpl implements BookService {
 	private final LoanMapper loan;
 	
 	@Override
-	public Map<String, Object> getSerchBookList(
+	public Map<String, Object> getSearchBookList(
 			Criteria cri, String keyword
 			) throws Exception {
-		List<BookVO> bookList = book.serchBookList(cri, keyword);
+		List<BookVO> bookList = book.searchBookList(cri, keyword);
 		PageMaker pm = new PageMaker();
 		
 		int totalCount = book.countSearchBook(keyword);
@@ -41,14 +43,14 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Map<String, Object> getAllBookList(Criteria cri) throws Exception {
+	public Map<String, Object> getAllBookList(SearchCriteria scri) throws Exception {
 		
-		List<BookVO> list = book.allBookList(cri);
+		List<BookVO> list = book.allBookList(scri);
 		PageMaker pm = new PageMaker();
 		
 		int totalCount = book.countAllBooks();
 				
-		pm.setCri(cri);
+		pm.setCri(scri);
 		pm.setTotalCount(totalCount);
 		pm.setDisplayPageNum(10);
 		
@@ -59,6 +61,7 @@ public class BookServiceImpl implements BookService {
 		return map;
 	}
 
+	
 	@Override
 	public BookVO getBookDetail(int bno) throws Exception {
 		BookVO vo = book.bookDetail(bno);
@@ -133,6 +136,78 @@ public class BookServiceImpl implements BookService {
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
+		map.put("pm", pm);
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> getSearchBookByTitleNAuthor(SearchCriteria scri) throws Exception {
+		List<BookVO> bookList = book.searchBookByTitleNAuthor(scri);
+		SearchPageMaker pm = new SearchPageMaker();
+		
+		int totalCount = book.countSearchBook(scri.getKeyword());
+		
+		pm.setCri(scri);
+		pm.setTotalCount(totalCount);
+		pm.setDisplayPageNum(10);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", bookList);
+		map.put("pm", pm);
+		
+		return map;
+	}
+	
+	@Override
+	public Map<String, Object> getSearchBookByTitle(SearchCriteria scri) throws Exception {
+		List<BookVO> bookList = book.searchBookByTitle(scri);
+		SearchPageMaker pm = new SearchPageMaker();
+		
+		int totalCount = book.countSearchBookByTitle(scri.getKeyword());
+		
+		pm.setCri(scri);
+		pm.setTotalCount(totalCount);
+		pm.setDisplayPageNum(10);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", bookList);
+		map.put("pm", pm);
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> getSearchBookByAuthor(SearchCriteria scri) throws Exception {
+		List<BookVO> bookList = book.searchBookByAuthor(scri);
+		SearchPageMaker pm = new SearchPageMaker();
+		
+		int totalCount = book.countSearchBookByAuthor(scri.getKeyword());
+		
+		pm.setCri(scri);
+		pm.setTotalCount(totalCount);
+		pm.setDisplayPageNum(10);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", bookList);
+		map.put("pm", pm);
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> getSearchBookByPublisher(SearchCriteria scri) throws Exception {
+		List<BookVO> bookList = book.searchBookByPublisher(scri);
+		SearchPageMaker pm = new SearchPageMaker();
+		
+		int totalCount = book.countSearchBookByPublisher(scri.getKeyword());
+		
+		pm.setCri(scri);
+		pm.setTotalCount(totalCount);
+		pm.setDisplayPageNum(10);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", bookList);
 		map.put("pm", pm);
 		
 		return map;

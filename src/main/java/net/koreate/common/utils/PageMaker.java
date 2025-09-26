@@ -1,5 +1,8 @@
 package net.koreate.common.utils;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.ToString;
 
@@ -11,7 +14,7 @@ import lombok.ToString;
 public class PageMaker {
 	
 	private int totalCount;		// 전체 게시글 수
-	private Criteria cri;		// 요청 정보를 저장하는 class
+	protected Criteria cri;		// 요청 정보를 저장하는 class
 	private int displayPageNum; // 한 페이지 블럭에 출력할 페이지 번호 개수
 	
 	// 계산된 결과를 저장할 필드
@@ -21,7 +24,6 @@ public class PageMaker {
 	
 	// 페이지 블럭 이동 가능 여부를 저장할 변수
 	private boolean first, last, prev, next; 
-	
 	
 	public void calc() {
 		if(cri == null) cri = new Criteria();
@@ -42,7 +44,8 @@ public class PageMaker {
 		
 	} // end calc()
 
-
+	
+	
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 		calc();
@@ -58,6 +61,26 @@ public class PageMaker {
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
 		calc();
+	}
+
+	public PageMaker() {
+		this(new Criteria(), 0 , 10);
+	}
+	
+	public PageMaker(Criteria cri,  int totalCount, int displayPageNum) {
+		setTotalCount(totalCount);
+		setCri(cri);
+		setDisplayPageNum(displayPageNum);
+	}
+
+	public String makeQuery(int page) {
+		UriComponents uriComponents 
+			= UriComponentsBuilder.newInstance()
+			  .queryParam("page",page)
+			  .queryParam("perPageNum", cri.getPerPageNum())
+			  .build();
+		String query = uriComponents.toUriString();
+		return query;
 	}
 	
 	
