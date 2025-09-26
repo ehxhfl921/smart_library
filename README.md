@@ -154,7 +154,7 @@
 * Maven v.3.6.x (or newer)
 * Oracle Database
 * Your prefered IDE
-  \- Spring Tools Suite(STS)
+  \- Spring Tool Suite(STS)
 
 ### ✔ 설정 변경
 **1. DB 설정 변경**
