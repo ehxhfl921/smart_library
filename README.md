@@ -20,7 +20,7 @@
 
 ## 🔗 Link
 * **Github Repository** : https://github.com/ehxhfl921/smart_library
-* **Presentation** : [link here]()
+* **Presentation** : https://youtu.be/vSda0KNsSYQ
 
 <br>
 
@@ -30,9 +30,9 @@
 
 ## 📖 주요 기능
 
-* **메인 페이지**    
+* **메인 페이지**   
   도서 검색 페이지로 이어지는 소장 도서 검색창, 이달의 도서 슬라이드 카드, 도서관 이용 안내   
-  
+
 * **회원 가입**   
   유효성 검사 적용, 아이디 중복 검사, 이메일 인증 후 가입   
   
@@ -59,7 +59,8 @@
   **로그인 한** 일반 사용자라면 누구나 건의 사항 작성, 관리자와 댓글로 소통   
   *-관리자와 게시글 작성자 본인만 접근 가능한 프라이빗한 페이지*   
      
-* **내 서재** - 로그인 사용자 전용 페이지   
+* **내 서재**   
+  \- 로그인 사용자 전용 페이지   
   + **도서 대출 현황**   
   로그인 사용자의 도서 대출 현황   
   + **스터디룸 예약 현황**   
@@ -67,7 +68,8 @@
   + **작성한 건의 사항**   
   로그인 사용자가 작성한 건의 사항 목록 *-클릭 시 해당 건의 사항 상세 페이지로 이동*   
 
-* **운영/관리** - 관리자 전용 운영 및 관리 페이지   
+* **운영/관리**   
+  \- 관리자 전용 운영 및 관리 페이지   
   + **회원 관리**   
     회원 정보 열람/수정/삭제
   + **도서 관리**   
@@ -94,20 +96,22 @@
 </div>
 
 ### 📒 Language & Framework / Library
-  * Java 11
-  * Spring Framework v.5.3.39
-  * Maven v.3.8.1
-  * Jstl v.1.2
-  * Lombok v.1.18.38
-  * Mybatis v.3.5.19
-  * HikariCP v.7.0.2
-  * Jackson v.2.19.2
-  * Javax.mail v.1.6.2
-  * Commons-fileupload v.1.6.0
-  * flatpickr v.4
+  * Language :   
+    * Java 11
+  * Framework:   
+    * Spring Framework v.5.3.39
+    * Mybatis v.3.5.19
+  * Library :   
+    * JSTL v.1.2
+    * Lombok v.1.18.38
+    * HikariCP v.7.0.2
+    * Jackson v.2.19.2
+    * Javax.mail v.1.6.2
+    * Commons-fileupload v.1.6.0
+    * flatpickr v.4
 
-### 📗 IDE / Tool
-  * Spring Tool Suite 3 (Eclipse)
+### 📗 IDE / Development Tools
+  * Spring Tool Suite 3 (based on Eclipse)
   * Visual Studio Code
   * Git
     
