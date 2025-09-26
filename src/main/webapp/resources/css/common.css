@@ -831,7 +831,8 @@ section.mainSection1 main.libraryInfo div.content{
    margin: 0;   
 }
 
-section.mainSection1 main.libraryInfo .content .libName{
+section.mainSection1 main.libraryInfo .content .libName,
+section.mainSection1 main.manageBook .libName{
    font-size: 20px;
    font-weight: bold;
 }
