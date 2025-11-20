@@ -73,7 +73,7 @@
 
         <!-- ✅ 페이징 -->
         <c:choose>
-            <c:when test="${not empty pm}">
+            <c:when test="${not empty lists and not empty pm}">
                 <div class="pagination">
                     <c:if test="${pm.first}">
                         <a href="${path}/notice/list?page=1">[처음]</a>
