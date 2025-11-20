@@ -235,18 +235,6 @@ gmail.password=abcd efgh igkl mnop
   <tr>
     <td>&nbsp;&nbsp;&nbsp;김효진</td>
     <td>공지 사항 목록/상세 페이지, 공지 사항 작성/수정/삭제, 건의 사항 목록/상세 페이지, 건의 사항 작성/수정/삭제, 내 서재(작성한 건의 사항), 출간 예정 도서 페이지, 페이징 처리</td>
-  </tr>  
-  <tr>
-    <td>&nbsp;&nbsp;&nbsp;이동윤</td>
-    <td>자료 조사</td>
-  </tr>
-  <tr>
-    <td>&nbsp;&nbsp;&nbsp;조반석</td>
-    <td>자료 조사</td>
-  </tr>
-  <tr>
-    <td>&nbsp;&nbsp;&nbsp;하진이</td>
-    <td>자료 조사</td>
   </tr>
 </table>
 
@@ -258,8 +246,5 @@ gmail.password=abcd efgh igkl mnop
 * **김도은** : ✉ ehxhfl921@gmail.com    
 * **김진주** : ✉ kpearl0416@gmail.com   
 * **김효진** : ✉ djduebfu3747@gmail.com
-* **이동윤** : ✉ -
-* **조반석** : ✉ -
-* **하진이** : ✉ -
 
 -----------------------------------------------------------------------------------------------------------------
