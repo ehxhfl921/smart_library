@@ -190,21 +190,24 @@ public class UserController {
 	}
 	
 	@PostMapping("/modifyInfo")
-	public String updateMyInfo(UserVO vo, HttpSession session) throws Exception {
+	public String updateMyInfo(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 		
 		UserVO userInfo = (UserVO) session.getAttribute("userInfo");
-		
 		
 		if (vo.getPw() == null || vo.getPw().isEmpty()) {
 			vo.setPw(userInfo.getPw());
 		}
 		
-		
-		userService.modifyInfo(vo);
-		
-		
-		if (userInfo != null && userInfo.getMno() == vo.getMno()) {
-			session.setAttribute("userInfo", vo);
+		try {
+			userService.modifyInfo(vo);
+			
+			if (userInfo != null && userInfo.getMno() == vo.getMno()) {
+				session.setAttribute("userInfo", vo);
+			}
+			
+			rttr.addFlashAttribute("msg", "회원 정보가 수정되었습니다.");
+		}catch(Exception e) {
+			rttr.addFlashAttribute("msg", "회원 정보 수정에 실패하였습니다.");
 		}
 		
 		return "redirect:/user/myPage";

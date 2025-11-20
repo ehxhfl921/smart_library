@@ -15,7 +15,13 @@
   <tr><th>이름</th><td>${member.name}</td></tr>
   <tr><th>전화번호</th><td>${member.phone}</td></tr>
   <tr><th>이메일</th><td>${member.email}</td></tr>
-  <tr><th>주소</th><td>${member.addr}</td></tr>
+  <tr>
+  	<th>주소</th>
+  	<td>
+  		(${member.addr_post}) <br>
+  		${member.addr}+' '+${member.addr_detail}
+  	</td>
+  </tr>
   <tr><th>개인정보 동의</th><td>${member.info}</td></tr>
 </table>
 

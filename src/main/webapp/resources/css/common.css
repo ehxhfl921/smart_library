@@ -11,8 +11,9 @@ body{
 }
 
 section.mainSection1, section.mainSection2{
-   min-height: 600px;
+   
    padding: 20px;
+   flex: 1;
 }
 
 section.main {
@@ -1410,6 +1411,18 @@ section.mainSection2 .inline input{ flex:1 1 200px; min-width:0; }
 section.mainSection2 .addr{ margin-top:8px; }
 section.mainSection2 .addr_post_row{ display:flex; gap:8px; flex-wrap:wrap; }
 
+section.mainSection2 .addrBox input{
+	margin-bottom: 5px;
+}
+
+section.mainSection2 .addrBox input:first-child{
+	width: 58%;	
+}
+
+section.mainSection2 .addrBox input:last-child{
+	margin-bottom: 0;
+}
+
 /* 버튼 */
 section.mainSection2 button, 
 section.mainSection2 .btn_login, 
@@ -1501,7 +1514,7 @@ section.mainSection2 th, section.mainSection2 td{
 }
 section.mainSection2 th{
   width:150px;
-  text-align:left;
+  text-align:center;
   background:#f8fafc;
   color:#374151;
   font-weight:700;
@@ -1574,6 +1587,10 @@ section.mainSection2 a.btn-link:hover {
       border-top-right-radius: 4px;
       cursor: default;
       pointer-events: none;
+}
+
+.sidebar-item {
+	text-align: center;	
 }
 
 .sidebar-item a {

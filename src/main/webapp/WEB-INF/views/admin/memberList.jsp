@@ -37,6 +37,11 @@
         </tr>
       </c:forEach>
     </c:when>
+    <c:otherwise>
+    	<tr>
+    		<td colspan="4">등록된 회원이 없습니다.</td>
+    	</tr>
+    </c:otherwise>
   	</c:choose>
     
 
@@ -44,7 +49,7 @@
 
 <!-- 페이징 -->
 <c:choose>
-	<c:when test="${not empty pm}">
+	<c:when test="${not empty list and not empty pm}">
 		<div class="pagination">
 		
 			<c:if test="${pm.first}">

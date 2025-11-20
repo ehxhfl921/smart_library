@@ -36,7 +36,12 @@
     </tr>
     <tr>
       <th>주소</th>
-      <td><input type="text" name="addr" value="${member.addr}"></td>
+      <td>
+      	<input type="text" name="addr_post" value="${member.addr_post}" readonly><br>
+        <input type="text" name="addr" value="${member.addr}" readonly><br>
+        <input type="text" name="addr_detail" value="${member.addr_detail}" readonly style="margin-bottom:6px;">
+      </td>
+        
     </tr>
     <tr>
       <th>개인정보 동의</th>

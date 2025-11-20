@@ -38,8 +38,8 @@ public interface UserMapper {
 	 * 
 	 * @param vo	회원 정보
 	 */
-	@Insert("INSERT INTO member(id, pw, name, phone, email, addr, info) " +
-            " VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{addr}, #{info})")
+	@Insert("INSERT INTO member(id, pw, name, phone, email, addr, addr_detail, addr_post, info) " +
+            " VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{addr}, #{addr_detail}, #{addr_post}, #{info})")
 	void join(UserVO vo) throws Exception;
 	
 	@Select("SELECT id FROM member WHERE id = #{id}")
@@ -98,7 +98,7 @@ public interface UserMapper {
 	 * 
 	 * @param vo	수정할 회원 정보
 	 */
-	@Update("UPDATE member SET pw=#{pw}, name=#{name}, phone=#{phone}, addr=#{addr} WHERE mno=#{mno} ")
+	@Update("UPDATE member SET pw=#{pw}, name=#{name}, phone=#{phone}, addr=#{addr}, addr_detail=#{addr_detail}, addr_post=#{addr_post} WHERE mno=#{mno} ")
 	void modifyInfo(UserVO vo) throws Exception;
 	
 	/**
@@ -106,7 +106,7 @@ public interface UserMapper {
 	 * 
 	 * @param mno	회원 번호
 	 */
-	@Update("UPDATE member SET status='N' WHERE mno=#{mno}")
+	@Update("UPDATE member SET status='N', delete_date = SYSTIMESTAMP WHERE mno=#{mno}")
 	void withdraw(int mno) throws Exception;
 	
 	/**

@@ -1,5 +1,7 @@
 package net.koreate.user.vo;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -7,13 +9,16 @@ public class UserVO {
 	
 	private int rnum;		// 목록 출력 시 행 번호 저장
 
-	private int mno;         // 회원 번호
-	private String id;       // 아이디
-	private String pw;       // 비밀번호
-	private String name;     // 이름
-	private String phone;    // 전화번호
-	private String email;    // 이메일
-	private String addr;     // 주소
-	private String info;	 // 개인 정보 이용 동의 여부
-	private String status;   // 계정 활성화 여부
+	private int mno;         	// 회원 번호
+	private String id;       	// 아이디
+	private String pw;       	// 비밀번호
+	private String name;     	// 이름
+	private String phone;    	// 전화번호
+	private String email;    	// 이메일
+	private String addr;     	// 주소
+	private String addr_detail; // 상세 주소
+	private String addr_post;	// 우편번호
+	private String info;	 	// 개인 정보 이용 동의 여부
+	private String status;   	// 계정 활성화 여부
+	private Date delete_date;	// 탈퇴 날짜
 }

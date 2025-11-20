@@ -3,6 +3,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp" %>
 
+<c:if test="${not empty msg}">
+    <script>
+        alert('${msg}');
+    </script>
+</c:if>
+
 <section class="mainSection2">
 <main>
 <div id="wrap">
@@ -34,9 +40,8 @@
       <tr>
         <th>주소</th>
         <td>
-        
-          <input type="text" value="${userInfo.addr}" readonly style="margin-bottom:6px;">
-
+          <input type="text" value="${userInfo.addr_post}" readonly style="margin-bottom:5px;"><br>
+          <input type="text" value="${userInfo.addr} ${userInfo.addr_detail}" readonly>
         </td>
       </tr>
     </table>

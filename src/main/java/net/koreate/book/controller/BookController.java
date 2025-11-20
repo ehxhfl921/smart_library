@@ -37,7 +37,7 @@ import net.koreate.user.vo.UserVO;
 public class BookController {
 
 	private final BookService bs;
-	private String uploadPath = "C:/Users/KTE/Desktop/SmartLibrary/cover";
+	private String uploadPath = "/Users/DoEun/Desktop/SmartLibrary/cover/";
 	
 	/**
 	 * 도서 검색 페이지로 이동 요청 처리
